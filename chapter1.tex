@@ -1,0 +1,167 @@
+% !TEX root = main.tex
+\chapter{COMBINATORIAL STRUCTURES AND ORDINARY GENERATING FUNCTIONS}
+\label{chap:combinatorial structures and ordinary generating functions}
+
+\section{Symbolic enumeration methods}
+% The sum construction $\mathcal{A} = \mathcal{B} + \mathcal{C}$ corresponds to:
+% \begin{equation} \label{eq:sum_rule}
+%     A(z) = B(z) + C(z)
+% \end{equation}
+
+
+\section{Admissible constructions and specifications}
+
+
+\section{Integer compositions and partitions}
+$\rhd$ \textbf{I.16.} \textit{Partitions with summands bounded in number and size}. The number of partitions
+of size $\displaystyle n$ with at most $\displaystyle k$ summands, each at most $\displaystyle l$, is
+\begin{equation} \label{eq:I.16.1}
+    \left[z^{n}\right]
+    \frac{\left(1 - z\right)\left(1 - z^{2}\right)\cdots \left(1 - z^{k + l}\right)}
+         {\left(\left(1 - z\right)\left(1 - z^{2}\right)\cdots \left(1 - z^{k}\right)\right)\cdot \left(\left(1 - z\right)\left(1 - z^{2}\right)\cdots \left(1 - z^{l}\right)\right)}
+\end{equation}
+Let $\displaystyle f\left(k, l\right)$ be the generating function in which the coefficient of $\displaystyle z^{n}$ is the number
+of partitions of size $\displaystyle n$ with at most $\displaystyle k$ summands, each at most $\displaystyle l$.
+Consider the largest possible part in our partition. There are two mutually exclusive cases:
+the largest part is $\displaystyle < l$, and the largest part is $\displaystyle = l$. This yields the functional equation:
+\begin{equation} \label{eq:I.16.2}
+    f\left(k, l\right) = f\left(k, l - 1\right) + z^{l}f\left(k - 1, l\right)
+\end{equation}
+We can verify that \ref{eq:I.16.1} satisfies \ref{eq:I.16.2}. Can we derive \ref{eq:I.16.1} from \ref{eq:I.16.2}?
+Let $\displaystyle F_{k}\left(x\right)$ be the generating function for $\displaystyle f\left(k, l\right)$ with respect to the index $\displaystyle l$:
+\begin{equation}
+    F_{k}\left(x\right) = \sum_{l = 0}^{\infty}f\left(k, l\right)x^{l}
+\end{equation}
+For $\displaystyle k = 0$, there is only one partition of $0$ into at most $0$ parts (the empty partition).
+Thus $\displaystyle f\left(0,l\right) = 1$ for all $\displaystyle l \geq 0$.
+\begin{equation}
+    F_{0}\left(x\right) = \sum_{l = 0}^{\infty}1\cdot x^{l} = \frac{1}{1 - x}
+\end{equation}
+Take \ref{eq:I.16.2}, multiply by $\displaystyle x^{l}$, and sum over $\displaystyle l \geq 1$:
+\begin{equation}
+    \sum_{l = 1}^{\infty}f\left(k, l\right)x^{l} - \sum_{l = 1}^{\infty}f\left(k, l - 1\right)x^{l} =
+        \sum_{l = 1}^{\infty}f\left(k - 1, l\right)\left(zx\right)^{l}
+\end{equation}
+\begin{itemize}
+    \item The first term is $\displaystyle F_{k}\left(x\right) - f\left(k, 0\right)$. Since $\displaystyle f\left(k, 0\right) = 1$ (at most $0$ size summands),
+    this equals $\displaystyle F_{k}\left(x\right) - 1$.
+    \item The second term is $\displaystyle x\sum_{j = 0}^{\infty}f\left(k, j\right)x^{j} = xF_{k}\left(x\right)$.
+    \item The right-hand side is $\displaystyle F_{k -1}\left(zx\right) - f\left(k - 1, 0\right) = F_{k - 1}\left(zx\right) - 1$.
+\end{itemize}
+Plugging these in:
+\begin{equation}
+    \left(1 - x\right)F_{k}\left(x\right) - 1 = F_{k - 1}\left(zx\right) - 1
+        \Rightarrow F_{k}\left(x\right) = \frac{1}{1 - x}F_{k - 1}\left(zx\right)
+\end{equation}
+Now we apply this functional relation repeatedly:
+\begin{equation}
+    \begin{aligned}
+        F_{k}\left(x\right)
+        &= \frac{1}{1 - x}F_{k - 1}\left(zx\right) \\
+        &= \frac{1}{1 - x}\cdot \frac{1}{1 - zx}F_{k - 2}\left(z^{2}x\right) \\
+        &= \frac{1}{\left(1 - x\right)\left(1 - zx\right)\cdots \left(1 - z^{k - 1}x\right)}F_{0}\left(z^{k}x\right)
+    \end{aligned}
+\end{equation}
+Since $\displaystyle F_{0}\left(x\right) = \frac{1}{1 - x}$, we have $\displaystyle F_{0}\left(z^{k}x\right) = \frac{1}{1 - z^{k}x}$. Thus:
+\begin{equation}
+F_{k}\left(x\right) = \sum_{l = 0}^{\infty}f\left(k, l\right)x^{l} = \frac{1}{\left(1 - x\right)\left(1 - zx\right)\cdots \left(1 - z^{k}x\right)}
+\end{equation}
+Since all the roots of the denominator are distinct (assuming $\displaystyle |z| < 1$ or that $\displaystyle z$ is a formal variable),
+we can decompose this into a sum of partial fractions:
+\begin{equation}
+    \frac{1}{\prod_{i = 0}^{k}\left(1 - z^{i}x\right)} = \sum_{j = 0}^{k}\frac{A_{j}}{1 - z^{j}x}
+\end{equation}
+To find a specific $\displaystyle A_{j}$, we multiply both sides by $\displaystyle \left(1 - z^{j}x\right)$ and then
+set $\displaystyle x = z^{-j}$:
+\begin{equation}
+    \begin{aligned}
+        A_{j}
+        &= \left[\frac{1 - z^{j}x}{\prod_{i = 0}^{k}\left(1 - z^{i}x\right)}\right]_{x = z^{-j}} \\
+        &= \frac{1}{\prod_{i = 0}^{j - 1}\left(1 - z^{i}z^{-j}\right)\prod_{i = j + 1}^{k}\left(1 - z^{i}z^{-j}\right)} \\
+        &= \frac{\left(-1\right)^{j}z^{j\left(j + 1\right)/2}}{\prod_{i = 1}^{j}\left(1 - z^{i}\right)\prod_{i = 1}^{k - j}\left(1 - z^{i}\right)}
+    \end{aligned}
+\end{equation}
+The coefficient of $\displaystyle x^{l}$ in $\displaystyle F_{k}\left(x\right)$ is the sum of the coefficients of $\displaystyle x^{l}$
+in each partial fraction. For a term $\displaystyle \frac{A_{j}}{1 - z^{j}x}$, the coefficient is $\displaystyle A_{j}\left(z^{j}\right)^{l}$.
+\begin{equation}
+    \begin{aligned}
+        f\left(k, l\right)
+        &= \sum_{j = 0}^{k}A_{j}\left(z^{j}\right)^{l} \\
+        &= \sum_{j = 0}^{k}\frac{\left(-1\right)^{j}z^{j\left(j + 1\right)/2}\cdot z^{jl}}
+                                {\prod_{i = 1}^{j}\left(1 - z^{i}\right)\prod_{i = 1}^{k - j}\left(1 - z^{i}\right)} \\
+        &= \frac{1}{\prod_{i = 1}^{k}\left(1 - z^{i}\right)}\sum_{j = 0}^{k}\binom{k}{j}_{z}\left(-1\right)^{j}z^{j\left(j + 1\right)/2 + jl}
+    \end{aligned}
+\end{equation}
+where $\displaystyle \binom{k}{j}_{z}$ is the Gaussian binomial coefficient:
+\begin{equation}
+    \begin{aligned}
+        \binom{k}{j}_{z}
+        &= \frac{\prod_{i = 1}^{k}\left(1 - z^{i}\right)}
+                {\prod_{i = 1}^{j}\left(1 - z^{i}\right)\prod_{i = 1}^{k - j}\left(1 - z^{i}\right)} \\
+        &= \frac{\left(1 - z^{k}\right)\left(1 - z^{k - 1}\right)\cdots \left(1 - z^{k - j + 1}\right)}
+                {\left(1 - z\right)\left(1 - z^{2}\right)\cdots \left(1 - z^{j}\right)}
+    \end{aligned}
+\end{equation}
+We can rewrite the exponent in the sum:
+\begin{equation}
+    \frac{j\left(j + 1\right)}{2} + jl = \frac{j\left(j - 1\right)}{2} + j\left(l + 1\right)
+\end{equation}
+Now the sum becomes
+\begin{equation}
+    f\left(k, l\right)
+    = \frac{1}{\prod_{i = 1}^{k}\left(1 - z^{i}\right)}\sum_{j = 0}^{k}\binom{k}{j}_{z}\left(-1\right)^{j}z^{j\left(j - 1\right)/2}\left(z^{l + 1}\right)^{j}
+\end{equation}
+The $q$-binomial theorem states that for a variable $X$:
+\begin{equation}
+    \prod_{i = 0}^{k - 1}\left(1 - z^{i}X\right) = \sum_{j = 0}^{k}\binom{k}{j}_{z}\left(-1\right)^{j}z^{j\left(j - 1\right)/2}X^{j}
+\end{equation}
+Plugging $\displaystyle X = z^{l + 1}$ into the theorem yields:
+\begin{equation}
+    \begin{aligned}
+        f\left(k, l\right)
+        &= \frac{\left(1 - z^{l + 1}\right)\left(1 - z^{l + 2}\right)\cdots \left(1 - z^{l + k}\right)}
+                {\left(1 - z^{1}\right)\left(1 - z^{2}\right)\cdots \left(1 - z^{k}\right)} \\
+        &= \frac{\left(1 - z\right)\left(1 - z^{2}\right)\cdots \left(1 - z^{k + l}\right)}
+                {\left(\left(1 - z\right)\left(1 - z^{2}\right)\cdots \left(1 - z^{k}\right)\right)\cdot \left(\left(1 - z\right)\left(1 - z^{2}\right)\cdots \left(1 - z^{l}\right)\right)}
+    \end{aligned}
+\end{equation}
+
+
+
+\section{Words and regular languages}
+
+
+\section{Tree structures}
+$\rhd$ \textbf{I.42.} \textit{Faster determination of Schröder numbers}.\linebreak[0]
+\begin{equation}
+    S\left(z\right) = \frac{1}{4}\left(1 + z - \sqrt{1 - 6z + z^{2}}\right)
+\end{equation}
+Consider in general
+\begin{equation}
+    p\left(z\right)S\left(z\right) + q\left(z\right) = \sqrt[k]{r\left(z\right)}
+\end{equation}
+where $\displaystyle p\left(z\right)$, $\displaystyle q\left(z\right)$, and $\displaystyle r\left(z\right)$ are functions of $\displaystyle z$.
+Taking the derivative with respect to $\displaystyle z$,
+\begin{equation}
+    p'S + pS' + q' = \frac{1}{k}{r}^{\frac{1}{k}-1}r'
+\end{equation}
+Multiplying both sides by $\displaystyle r\left(z\right)$,
+\begin{equation}
+    p'rS + prS' + q'r = \frac{1}{k}{r}^{\frac{1}{k}}r' = \frac{1}{k}\left(pS + q\right)r'
+\end{equation}
+Rearranging,
+\begin{equation}
+    prS' + \left(p'r - \frac{1}{k}pr'\right)S = \frac{1}{k}qr' - q'r
+\end{equation}
+Plugging $\displaystyle p\left(z\right) = -4$, $\displaystyle q\left(z\right) = 1 + z$, $\displaystyle k = 2$,
+and $\displaystyle r\left(z\right) = 1 - 6z + z^{2}$ into the equation and simplifying yields
+\begin{equation}
+    \left(z^{2} - 6z + 1\right)S' + \left(3 - z\right)S = 1 - z
+\end{equation}
+from which the recurrence follows.
+
+
+\section{Additional constructions}
+
+
+\section{Perspective}
