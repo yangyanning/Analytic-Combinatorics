@@ -112,10 +112,10 @@ Now the sum becomes
     = \frac{1}{\prod_{i = 1}^{k}\left(1 - z^{i}\right)}\sum_{j = 0}^{k}\binom{k}{j}_{z}\left(-1\right)^{j}z^{j\left(j - 1\right)/2}\left(z^{l + 1}\right)^{j}
 \end{equation}
 The $q$-binomial theorem states that for a variable $X$:
-\begin{equation}
+\begin{equation} \label{eq:I.16.3}
     \prod_{i = 0}^{k - 1}\left(1 - z^{i}X\right) = \sum_{j = 0}^{k}\binom{k}{j}_{z}\left(-1\right)^{j}z^{j\left(j - 1\right)/2}X^{j}
 \end{equation}
-Plugging $\displaystyle X = z^{l + 1}$ into the theorem yields:
+Plugging $\displaystyle X = z^{l + 1}$ into the theorem yields \ref{eq:I.16.1}:
 \begin{equation}
     \begin{aligned}
         f\left(k, l\right)
@@ -125,7 +125,52 @@ Plugging $\displaystyle X = z^{l + 1}$ into the theorem yields:
                 {\left(\left(1 - z\right)\left(1 - z^{2}\right)\cdots \left(1 - z^{k}\right)\right)\cdot \left(\left(1 - z\right)\left(1 - z^{2}\right)\cdots \left(1 - z^{l}\right)\right)}
     \end{aligned}
 \end{equation}
-
+To prove \ref{eq:I.16.3}, let $\displaystyle P_{k}\left(X\right)$ be the product we are expanding:
+\begin{equation}
+    P_{k}\left(X\right) = \prod_{i = 0}^{k - 1}\left(1 - z^{i}X\right)
+\end{equation}
+We want to show that $\displaystyle P_{k}\left(X\right) = \sum_{j = 0}^{k}\binom{k}{j}_{z}\left(-1\right)^{j}z^{j\left(j - 1\right)/2}X^{j}$.
+Consider the relationship between $\displaystyle P_{k}\left(X\right)$ and $\displaystyle P_{k - 1}\left(X\right)$. By definition:
+\begin{equation}
+    P_{k}\left(X\right) = \left(1 - z^{k - 1}X\right)P_{k - 1}\left(X\right)
+\end{equation}
+Now notice what happens if we replace $\displaystyle X$ with $\displaystyle zX$ in $\displaystyle P_{k}\left(X\right)$:
+\begin{equation}
+    P_{k}\left(zX\right) = \prod_{i = 0}^{k - 1}\left(1 - z^{i + 1}X\right) = \frac{1 - z^{k}X}{1 - X}P_{k}\left(X\right)
+\end{equation}
+Rearranging this gives us a functional equation for $\displaystyle P_{k}\left(X\right)$:
+\begin{equation}
+    \left(1 - X\right)P_{k}\left(zX\right) = \left(1 - z^{k}X\right)P_{k}\left(X\right)
+\end{equation}
+Let $\displaystyle P_{k}\left(X\right) = \sum_{j = 0}^{k}c_{j}X^{j}$. We substitute this power series into the functional equation:
+\begin{equation}
+    \left(1 - X\right)\sum_{j = 0}^{k}c_{j}\left(zX\right)^{j} = \left(1 - z^{k}X\right)\sum_{j = 0}^{k}c_{j}X^{j}
+\end{equation}
+Now, we compare the coefficients of $\displaystyle X^{j}$ on both sides. For a specific power $\displaystyle j$:
+\begin{equation}
+    c_{j}z^{j} - c_{j - 1}z^{j - 1} = c_{j} - c_{j - 1}z^{k}
+\end{equation}
+Rearranging to solve for $\displaystyle c_{j}$ in terms of $\displaystyle c_{j - 1}$:
+\begin{equation}
+    c_{j} = c_{j - 1}\frac{z^{j - 1} - z^{k}}{z^{j} - 1} = -c_{j - 1}z^{j - 1}\frac{1 - z^{k - j + 1}}{1 - z^{j}}
+\end{equation}
+Starting from the base case $\displaystyle c_{0} = P_{k}\left(0\right) = 1$, we can find $\displaystyle c_{j}$ by iteration:
+\begin{equation}
+    c_{1} = -c_{0}z^{0}\frac{1 - z^{k}}{1 - z^{1}}, \quad
+    c_{2} = -c_{1}z^{1}\frac{1 - z^{k - 1}}{1 - z^{2}}
+        = \left(-1\right)^2z^{0 + 1}\frac{\left(1 - z^{k}\right)\left(1 - z^{k - 1}\right)}{\left(1 - z^{1}\right)\left(1 - z^{2}\right)}
+\end{equation}
+The exponent of $\displaystyle z$ becomes $\displaystyle 0 + 1 + 2 + \cdots + \left(j - 1\right) = \frac{j\left(j - 1\right)}{2}$.
+The fraction is the definition of the Gaussian binomial coefficient $\displaystyle \binom{k}{j}_{z}$.
+Thus, the coefficient is:
+\begin{equation}
+    c_{j} = \left(-1\right)^{j}z^{j\left(j - 1\right)/2}\binom{k}{j}_{z}
+\end{equation}
+Plugging the coefficients back into the sum, we obtain:
+\begin{equation}
+    \prod_{i = 0}^{k - 1}\left(1 - z^{i}X\right) = \sum_{j = 0}^{k}\binom{k}{j}_{z}\left(-1\right)^{j}z^{j\left(j - 1\right)/2}X^{j}
+\end{equation}
+This completes the proof.
 
 
 \section{Words and regular languages}
