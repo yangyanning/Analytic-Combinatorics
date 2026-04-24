@@ -2,6 +2,8 @@
 \chapter{COMBINATORIAL STRUCTURES AND ORDINARY GENERATING FUNCTIONS}
 \label{chap:combinatorial structures and ordinary generating functions}
 
+
+
 \section{Symbolic enumeration methods}
 % The sum construction $\mathcal{A} = \mathcal{B} + \mathcal{C}$ corresponds to:
 % \begin{equation} \label{eq:sum_rule}
@@ -9,10 +11,14 @@
 % \end{equation}
 
 
+
 \section{Admissible constructions and specifications}
 
 
+
 \section{Integer compositions and partitions}
+% Note I.16
+\noindent
 $\rhd$ \textbf{I.16.} \textit{Partitions with summands bounded in number and size}. The number of partitions
 of size $\displaystyle n$ with at most $\displaystyle k$ summands, each at most $\displaystyle l$, is
 \begin{equation} \label{eq:I.16.1}
@@ -33,11 +39,11 @@ Let $\displaystyle F_{k}\left(x\right)$ be the generating function for $\display
     F_{k}\left(x\right) = \sum_{l = 0}^{\infty}f\left(k, l\right)x^{l}
 \end{equation}
 For $\displaystyle k = 0$, there is only one partition of $0$ into at most $0$ parts (the empty partition).
-Thus $\displaystyle f\left(0,l\right) = 1$ for all $\displaystyle l \geq 0$.
+Thus $\displaystyle f\left(0,l\right) = 1$ for all $\displaystyle l\geq 0$.
 \begin{equation}
     F_{0}\left(x\right) = \sum_{l = 0}^{\infty}1\cdot x^{l} = \frac{1}{1 - x}
 \end{equation}
-Take \ref{eq:I.16.2}, multiply by $\displaystyle x^{l}$, and sum over $\displaystyle l \geq 1$:
+Take \ref{eq:I.16.2}, multiply by $\displaystyle x^{l}$, and sum over $\displaystyle l\geq 1$:
 \begin{equation}
     \sum_{l = 1}^{\infty}f\left(k, l\right)x^{l} - \sum_{l = 1}^{\infty}f\left(k, l - 1\right)x^{l} =
         \sum_{l = 1}^{\infty}f\left(k - 1, l\right)\left(zx\right)^{l}
@@ -51,7 +57,7 @@ Take \ref{eq:I.16.2}, multiply by $\displaystyle x^{l}$, and sum over $\displays
 Plugging these in:
 \begin{equation}
     \left(1 - x\right)F_{k}\left(x\right) - 1 = F_{k - 1}\left(zx\right) - 1
-        \Rightarrow F_{k}\left(x\right) = \frac{1}{1 - x}F_{k - 1}\left(zx\right)
+        \Longrightarrow F_{k}\left(x\right) = \frac{1}{1 - x}F_{k - 1}\left(zx\right)
 \end{equation}
 Now we apply this functional relation repeatedly:
 \begin{equation}
@@ -172,8 +178,182 @@ Plugging the coefficients back into the sum, we obtain:
 \end{equation}
 This completes the proof.
 
+% Note I.17
+\vspace{\baselineskip}
+\noindent
+$\rhd$ \textbf{I.17.} \textit{Systems of linear Diophantine inequalities}.\linebreak[0]
+\begin{equation}
+    \left\{x_{1}\geq 0,\; x_{2}\geq 2x_{1},\; x_{3}\geq 2x_{2},\; x_{4}\geq 2x_{3}\right\}
+\end{equation}
+We introduce non-negative slack variables $\displaystyle y_{j}\in \mathbb{Z}_{\geq 0}$
+that measure the excess of each term over its minimum bound:
+\begin{align}
+    x_{1} &= y_{1} \\
+    x_{2} &= 2x_{1} + y_{2} = 2y_{1} + y_{2} \\
+    x_{3} &= 2x_{2} + y_{3} = 4y_{1} + 2y_{2} + y_{3} \\
+    x_{4} &= 2x_{3} + y_{4} = 8y_{1} + 4y_{2} + 2y_{3} + y_{4}
+\end{align}
+The size of the composition is $\displaystyle S = x_{1} + x_{2} + x_{3} + x_{4} = 15y_{1} + 7y_{2} + 3y_{3} + y_{4}$.
+Since the variables $\displaystyle y_{1}, y_{2}, y_{3}, y_{4}$ are independent and each ranges freely over the non-negative integers,
+the OGF for the class $\displaystyle \mathcal{F}$ is the product of the generating functions for the individual $\displaystyle y_{j}$:
+\begin{itemize}
+    \item For $\displaystyle 15y_{1}: \sum_{y_{1} = 0}^{\infty}\left(z^{15}\right)^{y_{1}} = \frac{1}{1 - z^{15}}$
+    \item For $\displaystyle  7y_{2}: \sum_{y_{2} = 0}^{\infty}\left(z^{ 7}\right)^{y_{2}} = \frac{1}{1 - z^{ 7}}$
+    \item For $\displaystyle  3y_{3}: \sum_{y_{3} = 0}^{\infty}\left(z^{ 3}\right)^{y_{3}} = \frac{1}{1 - z^{ 3}}$
+    \item For $\displaystyle   y_{4}: \sum_{y_{4} = 0}^{\infty}\left(z^{ 1}\right)^{y_{4}} = \frac{1}{1 - z^{ 1}}$
+\end{itemize}
+Multiplying these together yields the desired OGF:
+\begin{equation}
+    F\left(z\right) = \frac{1}{\left(1 -z\right)\left(1 -z^{3}\right)\left(1 -z^{7}\right)\left(1 -z^{15}\right)}
+\end{equation}
+
+\vspace{\baselineskip}
+\begin{equation}
+    \left\{x_{1} + x_{2}\leq x_{3}\right\}
+\end{equation}
+Following the same approach as in the previous problem, we use slack variables to convert the inequality into an equality of independent parts.
+The constraint $\displaystyle x_{3}\geq x_{1} + x_{2}$ can be rewritten by introducing a non-negative integer $\displaystyle y\geq 0$:
+\begin{equation}
+    x_{3} = x_{1} + x_{2} + y
+\end{equation}
+The size of the composition is $\displaystyle S = x_{1} + x_{2} + x_{3} + x_{4} = 2x_{1} + 2x_{2} + y + x_{4}$.
+Since the variables $\displaystyle x_{1}, x_{2}, y, x_{4}$ are independent and each ranges freely over the non-negative integers,
+the OGF is the product of the generating functions for the individual terms in the sum:
+\begin{itemize}
+    \item For $\displaystyle 2x_{1}: \frac{1}{1 - z^{2}}$
+    \item For $\displaystyle 2x_{2}: \frac{1}{1 - z^{2}}$
+    \item For $\displaystyle y: \frac{1}{1 - z}$
+    \item For $\displaystyle x_{4}: \frac{1}{1 - z}$
+\end{itemize}
+Multiplying these together gives:
+\begin{equation}
+    F\left(z\right) = \frac{1}{\left(1 -z^{2}\right)^{2}\left(1 -z\right)^{2}}
+\end{equation}
+
+\vspace{\baselineskip}
+\begin{equation}
+    \left\{x_{1} + x_{2}\geq x_{3}\right\}
+\end{equation}
+Because the inequality does not immediately suggest a single slack variable to absorb the excess,
+the most robust approach is to use the complement method.
+We know the OGF for four unrestricted variables $\displaystyle \left(x_{1},x_{2},x_{3},x_{4}\right)$
+with $\displaystyle x_{i}\geq 0$ is:
+\begin{equation}
+    U\left(z\right) = \frac{1}{\left(1 - z\right)^{4}}
+\end{equation}
+The set of all such compositions partitions naturally into two disjoint subsets: those satisfying
+$\displaystyle x_{1} + x_{2} < x_{3}$ (i.e., $\displaystyle x_{1} + x_{2} + 1\leq x_{3}$), and those satisfying
+$\displaystyle x_{1} + x_{2}\geq x_{3}$ (our target class). We find the OGF for the complement
+$\displaystyle x_{1} + x_{2} < x_{3}$. Set $\displaystyle x_{3} = x_{1} + x_{2} + 1 + y$, where $\displaystyle y\geq 0$.
+The total sum $\displaystyle S$ is:
+\begin{equation}
+    S = x_{1} + x_{2} + \left(x_{1} + x_{2} + 1 + y\right) + x_{4} = 2x_{1} + 2x_{2} + y + x_{4} + 1
+\end{equation}
+The OGF for this complement, which we denote by $\displaystyle C\left(z\right)$, is:
+\begin{equation}
+    C\left(z\right) = \frac{z}{\left(1 - z^{2}\right)^{2}\left(1 - z\right)^2}
+\end{equation}
+The OGF for our constraint is then:
+\begin{equation}
+    F\left(z\right)
+        = U\left(z\right) - C\left(z\right)
+        = \frac{1}{\left(1 - z\right)^{4}} - \frac{z}{\left(1 - z^{2}\right)^{2}\left(1 - z\right)^2}
+        = \frac{1 + z + z^{2}}{\left(1 - z\right)^{4}\left(1 + z\right)^{2}}
+\end{equation}
+
+\vspace{\baselineskip}
+\begin{equation}
+    \left\{x_{1} + x_{2}\leq x_{3} + x_{4}\right\}
+\end{equation}
+To find the OGF for $\displaystyle \left\{x_{1} + x_{2}\leq x_{3} + x_{4}\right\}$, we can use the complement method
+combined with the symmetry of the variables. Let $\displaystyle A = x_{1} + x_{2}$ and $\displaystyle B = x_{3} + x_{4}$.
+We seek the OGF for compositions satisfying $\displaystyle A\leq B$. In the universe of all possible compositions
+$\displaystyle \left(x_{1}, x_{2}, x_{3}, x_{4}\right)$, there are three mutually exclusive cases:
+$\displaystyle 1.\; A < B,\; 2.\; A > B,\; 3.\; A = B$. By symmetry, the OGF for case 1 must be identical to the OGF for case 2,
+since $\displaystyle A$ and $\displaystyle B$ are built from the same number of variables with the same weights.
+Denote this common OGF by $\displaystyle G_{<}\left(z\right)$, and let $\displaystyle G_{=}\left(z\right)$ be the OGF for case 3.
+The total unrestricted OGF is $\displaystyle U\left(z\right) = \frac{1}{\left(1 - z\right)^{4}}$. Therefore:
+\begin{equation}
+    U\left(z\right) = 2G_{<}\left(z\right) + G_{=}\left(z\right)
+\end{equation}
+Our target OGF is $\displaystyle F\left(z\right) = G_{<}\left(z\right) + G_{=}\left(z\right)$. Solving the system gives:
+\begin{equation}
+    F\left(z\right) = \frac{U\left(z\right) + G_{=}\left(z\right)}{2}
+\end{equation}
+Now $\displaystyle G_{=}\left(z\right)$ is the OGF for compositions in which the sum of the first two variables equals
+the sum of the last two.
+\begin{itemize}
+    \item The number of compositions with $\displaystyle x_{1} + x_{2} = n$ is
+        $\displaystyle \left[z^{n}\right]\frac{1}{\left(1 - z\right)^{2}} = n + 1$.
+    \item The number of compositions with $\displaystyle x_{3} + x_{4} = n$ is the same.
+    \item For the equality $\displaystyle x_{1} + x_{2} = x_{3} + x_{4}$ to hold, both sums must equal some $\displaystyle n\geq 0$.
+        \begin{equation}
+            G_{=}\left(z\right)
+                = \sum_{n = 0}^{\infty}\left(n + 1\right)^{2}z^{2n}
+                = \frac{1 + z^{2}}{\left(1 - z^{2}\right)^{3}}
+        \end{equation}
+\end{itemize}
+Substituting $\displaystyle U\left(z\right)$ and $\displaystyle G_{=}\left(z\right)$ into our formula yields:
+\begin{equation}
+    F\left(z\right)
+        = \frac{1}{2}\left[\frac{1}{\left(1 - z\right)^{4}} + \frac{1 + z^{2}}{\left(1 - z^{2}\right)^{3}}\right]
+        = \frac{1 + z + 2z^{2}}{\left(1 - z\right)^{4}\left(1 + z\right)^{3}}
+\end{equation}
+
+\vspace{\baselineskip}
+\begin{equation}
+    \left\{x_{1}\leq x_{2},\; x_{2}\geq x_{3},\; x_{3}\leq x_{4}\right\}
+\end{equation}
+Because the inequalities alternate direction (up, down, up), we cannot use a straightforward chain of slack variable substitutions
+as we did for $\displaystyle x_{1}\leq x_{2}\leq x_{3}\leq x_{4}$. Instead, we apply the inclusion–exclusion principle to the constraints.
+We begin with the universe of all unrestricted compositions, whose OGF is $\displaystyle U\left(z\right) = \frac{1}{\left(1 - z\right)^{4}}$.
+We wish to enforce three conditions:
+\begin{itemize}
+    \item $\displaystyle C_{1}: x_{1}\leq x_{2}$
+    \item $\displaystyle C_{2}: x_{2}\geq x_{3}$
+    \item $\displaystyle C_{3}: x_{3}\leq x_{4}$
+\end{itemize}
+However, it is simpler to work with chains of "less than or equal" inequalities. Consider the complement of the downward middle step.
+Take the set of all compositions satisfying both $\displaystyle x_{1}\leq x_{2}$ and $\displaystyle x_{3}\leq x_{4}$.
+From this set, we subtract those compositions that violate the middle constraint (i.e., $\displaystyle x_{2} < x_{3}$). \\
+The OGF for the set defined by $\displaystyle x_{1}\leq x_{2}$ and $\displaystyle x_{3}\leq x_{4}$:
+These two pairs are independent.
+\begin{itemize}
+    \item For $\displaystyle x_{1}\leq x_{2}$, set $\displaystyle x_{2} = x_{1} + y_{1}$. The total contribution is $\displaystyle 2x_{1} + y_{1}$,
+        so the OGF is $\displaystyle \frac{1}{\left(1 - z^{2}\right)\left(1 - z\right)}$.
+    \item For $\displaystyle x_{3}\leq x_{4}$, the OGF is identically $\displaystyle \frac{1}{\left(1 - z^{2}\right)\left(1 - z\right)}$.
+\end{itemize}
+Since the two pairs are independent, we multiply their OGFs:
+\begin{equation}
+    A\left(z\right) = \frac{1}{\left(1 - z^{2}\right)^{2}\left(1 - z\right)^{2}}
+\end{equation}
+Now we find the OGF for the violation $\displaystyle x_{1}\leq x_{2} < x_{3}\leq x_{4}$ by introducing slack variables:
+\begin{itemize}
+    \item $\displaystyle x_{1} = y_{1}$
+    \item $\displaystyle x_{2} = y_{1} + y_{2}$
+    \item $\displaystyle x_{3} = y_{1} + y_{2} + 1 + y_{3}$
+    \item $\displaystyle x_{4} = y_{1} + y_{2} + 1 + y_{3} + y_{4}$
+\end{itemize}
+Summing the four expressions gives:
+\begin{equation}
+    S = 4y_{1} + 3y_{2} + 2y_{3} + y_{4} + 2
+\end{equation}
+The OGF for this violation is therefore:
+\begin{equation}
+    V\left(z\right) = \frac{z^{2}}{\left(1 - z^{4}\right)\left(1 - z^{3}\right)\left(1 - z^{2}\right)\left(1 - z\right)}
+\end{equation}
+The OGF for the zigzag constraint is the OGF for the two independent pairs minus the OGF for the cases where the peak at $\displaystyle x_{2}$ fails:
+\begin{equation}
+    \begin{aligned}
+        F\left(z\right)
+        &= \frac{1}{\left(1 - z^{2}\right)^{2}\left(1 - z\right)^{2}} - \frac{z^{2}}{\left(1 - z^{4}\right)\left(1 - z^{3}\right)\left(1 - z^{2}\right)\left(1 - z\right)} \\
+        &= \frac{1}{\left(1 - z\right)\left(1 - z^{2}\right)}\left[\frac{1}{\left(1 - z\right)\left(1 - z^{2}\right)} - \frac{z^{2}}{\left(1 - z^{3}\right)\left(1 - z^{4}\right)}\right]
+    \end{aligned}
+\end{equation}
+
 
 \section{Words and regular languages}
+
 
 
 \section{Tree structures}
@@ -206,7 +386,9 @@ and $\displaystyle r\left(z\right) = 1 - 6z + z^{2}$ into the equation and simpl
 from which the recurrence follows.
 
 
+
 \section{Additional constructions}
+
 
 
 \section{Perspective}
