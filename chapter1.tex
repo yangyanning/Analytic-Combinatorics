@@ -418,8 +418,8 @@ Euler's Pentagonal Number Theorem states that this product expands into the foll
 \begin{equation}
     \begin{aligned}
         A\left(z\right)
-            &= \left(\sum_{k = -\infty}^{\infty}\left(-1\right)^{k}z^{k\left(3k + 1\right)/2}\right) \\
-            &= \left(\sum_{k = -\infty}^{\infty}\left(-1\right)^{k}z^{k\left(3k - 1\right)/2}\right) \\
+            &= \sum_{k = -\infty}^{\infty}\left(-1\right)^{k}z^{k\left(3k + 1\right)/2} \\
+            &= \sum_{k = -\infty}^{\infty}\left(-1\right)^{k}z^{k\left(3k - 1\right)/2} \\
             &= 1 - z^{1} - z^{2} + z^{5} + z^{7} - z^{12} - z^{15} + \cdots
     \end{aligned}
 \end{equation}
@@ -468,6 +468,31 @@ A Python implementation is provided below:
             k += 1
     return P
 \end{lstlisting}
+
+% Note I.20
+\vspace{\baselineskip}
+\noindent
+$\rhd$ \textbf{I.20.} \textit{A digital surprise}.
+\begin{equation}
+    \begin{aligned}
+        \varphi
+            &= \left(1 - 10^{-1}\right)\left(1 - 10^{-2}\right)\left(1 - 10^{-3}\right)\left(1 - 10^{-4}\right)\cdots \\
+            &= \prod_{n = 1}^{\infty}\left(1 - z^{n}\right)|_{z = .1} \\
+            &= 1 - z^{1} - z^{2} + z^{5} + z^{7} - z^{12} - z^{15} + z^{22} + z^{26} - \cdots |_{z = .1} \\
+            &= .\dot{9} - .1 - .01 + .00001 + .0000001 - .000000000001 -\cdots
+    \end{aligned}
+\end{equation}
+The partial sums are:
+\begin{itemize}
+    \item $\displaystyle \varphi_{1} = .99999 99999 99999 99999 99999$
+    \item $\displaystyle \varphi_{2} = .89999 99999 99999 99999 99999$
+    \item $\displaystyle \varphi_{3} = .88999 99999 99999 99999 99999$
+    \item $\displaystyle \varphi_{4} = .89000 99999 99999 99999 99999$
+    \item $\displaystyle \varphi_{5} = .89001 00999 99999 99999 99999$
+    \item $\displaystyle \varphi_{6} = .89001 00999 98999 99999 99999$
+    \item $\displaystyle \varphi_{7} = .89001 00999 98998 99999 99999$
+    \item $\displaystyle \varphi_{8} = .89001 00999 98999 00000 00999$
+\end{itemize}
 
 
 
