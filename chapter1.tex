@@ -7,7 +7,7 @@
 \section{Symbolic enumeration methods}
 % Note I.2
 \noindent
-$\rhd$ \textbf{I.2.} \textit{Unimodal permutations}.\linebreak[0]
+$\rhd$ \textbf{I.2.} \textit{Unimodal permutations}.
 \begin{equation}
     \mathcal{P}^{\mathcal{U}} = \mathrm{S}\textsc{et}\left(\mathcal{Z}\right) \star \mathcal{Z}^{\blacksquare} \star \mathrm{S}\textsc{et}\left(\mathcal{Z}\right)
 \end{equation}
@@ -195,7 +195,7 @@ This completes the proof.
 % Note I.17
 \vspace{\baselineskip}
 \noindent
-$\rhd$ \textbf{I.17.} \textit{Systems of linear Diophantine inequalities}.\linebreak[0]
+$\rhd$ \textbf{I.17.} \textit{Systems of linear Diophantine inequalities}.
 \begin{equation}
     \left\{x_{1}\geq 0,\; x_{2}\geq 2x_{1},\; x_{3}\geq 2x_{2},\; x_{4}\geq 2x_{3}\right\}
 \end{equation}
@@ -365,13 +365,55 @@ The OGF for the zigzag constraint is the OGF for the two independent pairs minus
     \end{aligned}
 \end{equation}
 
+% Note I.18
+\vspace{\baselineskip}
+\noindent
+$\rhd$ \textbf{I.18.} \textit{Odd versus distinct summands}.
+We establish a one-to-one correspondence between partitions into odd parts and partitions into distinct parts.
+\begin{itemize}
+    \item Odd $\rightarrow$ Distinct
+        \begin{enumerate}
+            \item Group identical odd parts together.
+            \item If an odd part $\displaystyle k$ appears $\displaystyle m$ times, write $\displaystyle m$ in binary:
+                    $\displaystyle m = 2^{a_{1}} + 2^{a_{2}} + \cdots$ with distinct powers of two.
+            \item Replace the $\displaystyle m$ copies of $\displaystyle k$ by $\displaystyle 2^{a_{1}}\cdot k,\;
+                    2^{a_{2}}\cdot k,\; \cdots$
+        \end{enumerate}
+    \item Distinct $\rightarrow$ Odd
+        \begin{enumerate}
+            \item Factor each part as $\displaystyle 2^{a}\times \text{odd}$.
+            \item Split it into $\displaystyle 2^{a}$ copies of that odd factor.
+            \item Do this for all parts; now all parts are odd.
+            \item Sort the resulting parts to obtain a partition into odd parts.
+        \end{enumerate}
+\end{itemize}
+As an example:
+\begin{equation}
+    \begin{aligned}
+        3 + 3 + 3 + 3 + 3 + 1 + 1
+        &= 5\times 3 + 2\times 1 \\
+        &= \left(2^{2} + 2^{0}\right)\times 3 + 2^{1}\times 1 \\
+        &= 4\times 3 + 1\times 3 + 2\times 1 \\
+        &= 12 + 3 + 2
+    \end{aligned}
+\end{equation}
+\begin{equation}
+    \begin{aligned}
+        12 + 3 + 2
+        &= 4\times 3 + 3 + 2\times 1 \\
+        &= \left(3 + 3 + 3 + 3\right) + 3 + \left(1 + 1\right) \\
+        &= 3 + 3 + 3 + 3 + 3 + 1 + 1
+    \end{aligned}
+\end{equation}
+
+
 
 \section{Words and regular languages}
 
 
 
 \section{Tree structures}
-$\rhd$ \textbf{I.42.} \textit{Faster determination of Schröder numbers}.\linebreak[0]
+$\rhd$ \textbf{I.42.} \textit{Faster determination of Schröder numbers}.
 \begin{equation}
     S\left(z\right) = \frac{1}{4}\left(1 + z - \sqrt{1 - 6z + z^{2}}\right)
 \end{equation}
