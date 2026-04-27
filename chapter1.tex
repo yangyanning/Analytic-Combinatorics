@@ -406,6 +406,69 @@ As an example:
     \end{aligned}
 \end{equation}
 
+% Note I.19
+\vspace{\baselineskip}
+\noindent
+$\rhd$ \textbf{I.19.} \textit{Euler’s pentagonal number theorem}.
+To find a recurrence for the partition numbers, we consider the reciprocal of the generating function $\displaystyle P\left(z\right)$:
+\begin{equation}
+    A\left(z\right) = \prod_{n = 1}^{\infty}\left(1 - z^{n}\right)
+\end{equation}
+Euler's Pentagonal Number Theorem states that this product expands into the following sparse power series:
+\begin{equation}
+    \begin{aligned}
+        A\left(z\right)
+            &= \left(\sum_{k = -\infty}^{\infty}\left(-1\right)^{k}z^{k\left(3k + 1\right)/2}\right) \\
+            &= \left(\sum_{k = -\infty}^{\infty}\left(-1\right)^{k}z^{k\left(3k - 1\right)/2}\right) \\
+            &= 1 - z^{1} - z^{2} + z^{5} + z^{7} - z^{12} - z^{15} + \cdots
+    \end{aligned}
+\end{equation}
+The exponents $\displaystyle g_{k} = \frac{k\left(3k - 1\right)}{2}$ are the generalized pentagonal numbers.
+The product of $\displaystyle P\left(z\right)$ and $\displaystyle A\left(z\right)$ must equal $\displaystyle 1$:
+\begin{equation}
+    \left(\sum_{n = 0}^{\infty}p\left(n\right)z^{n}\right)
+        \left(\sum_{k = -\infty}^{\infty}\left(-1\right)^{k}z^{g_{k}}\right) = 1
+\end{equation}
+Comparing the coefficient of $\displaystyle z^{n}$ on both sides yields the algorithmically useful recurrence:
+\begin{equation}
+    p\left(n\right) = p\left(n - 1\right) + p\left(n - 2\right)
+        - p\left(n - 5\right) - p\left(n - 7\right)
+        + p\left(n - 12\right) + p\left(n - 15\right)\cdots
+\end{equation}
+A Python implementation is provided below:
+\newpage
+\begin{lstlisting}
+    def compute_partitions(N):
+    P = [0] * (N + 1)
+    P[0] = 1  # Base case: p(0) = 1
+
+    for i in range(1, N + 1):
+        k = 1
+        while True:
+            # Calculate pentagonal numbers for k and -k
+            g_k_pos = k * (3 * k - 1) // 2
+            g_k_neg = k * (3 * k + 1) // 2
+
+            # Determine sign: +1 for k=1,2 (terms 1,2), -1 for k=3,4 (terms 3,4)...
+            # Simplest way: (-1)^(k-1)
+            sign = 1 if k % 2 == 1 else -1
+
+            # Add p(i - g_k_pos)
+            if g_k_pos <= i:
+                P[i] += sign * P[i - g_k_pos]
+            else:
+                break # No more terms will fit
+
+            # Add p(i - g_k_neg)
+            if g_k_neg <= i:
+                P[i] += sign * P[i - g_k_neg]
+            else:
+                break
+
+            k += 1
+    return P
+\end{lstlisting}
+
 
 
 \section{Words and regular languages}
