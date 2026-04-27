@@ -5,10 +5,24 @@
 
 
 \section{Symbolic enumeration methods}
-% The sum construction $\mathcal{A} = \mathcal{B} + \mathcal{C}$ corresponds to:
-% \begin{equation} \label{eq:sum_rule}
-%     A(z) = B(z) + C(z)
-% \end{equation}
+% Note I.2
+\noindent
+$\rhd$ \textbf{I.2.} \textit{Unimodal permutations}.\linebreak[0]
+\begin{equation}
+    \mathcal{P}^{\mathcal{U}} = \mathrm{S}\textsc{et}\left(\mathcal{Z}\right) \star \mathcal{Z}^{\blacksquare} \star \mathrm{S}\textsc{et}\left(\mathcal{Z}\right)
+\end{equation}
+\begin{equation}
+    P^{U}\left(z\right) = \int_{0}^{z}\left(e^{t}\cdot \frac{d}{dt}t\cdot e^{t}\right)dt = \frac{1}{2}\left(e^{2z} - 1\right)
+\end{equation}
+which yields
+\begin{equation}
+    P^{U}_{n} = n!\frac{1}{2}\left[z^{n}\right]e^{2z} = n!\frac{1}{2}\frac{2^{n}}{n!} = 2^{n - 1}
+\end{equation}
+Alternatively,
+\begin{equation}
+    P^{U}_{n} = \sum_{k = 1}^{n}\binom{n - 1}{k - 1} = \sum_{j = 0}^{n - 1}\binom{n - 1}{j} = 2^{n - 1}
+\end{equation}
+where $\displaystyle k$ is the position of $\displaystyle n$ in the permutation.
 
 
 
