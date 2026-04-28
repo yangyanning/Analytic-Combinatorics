@@ -9,20 +9,20 @@
 \noindent
 $\rhd$ \textbf{I.2.} \textit{Unimodal permutations}.
 \begin{equation}
-    \mathcal{P}^{\mathcal{U}} = \mathrm{S}\textsc{et}\left(\mathcal{Z}\right) \star \mathcal{Z}^{\blacksquare} \star \mathrm{S}\textsc{et}\left(\mathcal{Z}\right)
+    \mathcal{P}^{\mathcal{U}} = \mathrm{S}\textsc{et}(\mathcal{Z}) \star \mathcal{Z}^{\blacksquare} \star \mathrm{S}\textsc{et}(\mathcal{Z})
 \end{equation}
 \begin{equation}
-    P^{U}\left(z\right) = \int_{0}^{z}\left(e^{t}\cdot \frac{d}{dt}t\cdot e^{t}\right)dt = \frac{1}{2}\left(e^{2z} - 1\right)
+    P^{U}(z) = \int_{0}^{z}(e^{t} \cdot \frac{d}{dt}t \cdot e^{t})dt = \frac{1}{2}(e^{2z} - 1)
 \end{equation}
 which yields
 \begin{equation}
-    P^{U}_{n} = n!\frac{1}{2}\left[z^{n}\right]e^{2z} = n!\frac{1}{2}\frac{2^{n}}{n!} = 2^{n - 1}
+    P^{U}_{n} = n![z^{n}]\frac{1}{2}e^{2z} = n!\frac{1}{2}\frac{2^{n}}{n!} = 2^{n - 1}
 \end{equation}
 Alternatively,
 \begin{equation}
     P^{U}_{n} = \sum_{k = 1}^{n}\binom{n - 1}{k - 1} = \sum_{j = 0}^{n - 1}\binom{n - 1}{j} = 2^{n - 1}
 \end{equation}
-where $\displaystyle k$ is the position of $\displaystyle n$ in the permutation.
+where $k$ is the position of $n$ in the permutation.
 
 
 
@@ -34,161 +34,150 @@ where $\displaystyle k$ is the position of $\displaystyle n$ in the permutation.
 % Note I.16
 \noindent
 $\rhd$ \textbf{I.16.} \textit{Partitions with summands bounded in number and size}. The number of partitions
-of size $\displaystyle n$ with at most $\displaystyle k$ summands, each at most $\displaystyle l$, is
+of size $n$ with at most $k$ summands, each at most $l$, is
 \begin{equation} \label{eq:I.16.1}
-    \left[z^{n}\right]
-    \frac{\left(1 - z\right)\left(1 - z^{2}\right)\cdots \left(1 - z^{k + l}\right)}
-         {\left(\left(1 - z\right)\left(1 - z^{2}\right)\cdots \left(1 - z^{k}\right)\right)\cdot \left(\left(1 - z\right)\left(1 - z^{2}\right)\cdots \left(1 - z^{l}\right)\right)}
+    [z^{n}]\frac{(1 - z)(1 - z^{2}) \cdots (1 - z^{k + l})}{((1 - z)(1 - z^{2}) \cdots (1 - z^{k})) \cdot ((1 - z)(1 - z^{2}) \cdots (1 - z^{l}))}
 \end{equation}
-Let $\displaystyle f\left(k, l\right)$ be the generating function in which the coefficient of $\displaystyle z^{n}$ is the number
-of partitions of size $\displaystyle n$ with at most $\displaystyle k$ summands, each at most $\displaystyle l$.
+Let $f(k, l)$ be the generating function in which the coefficient of $z^{n}$ is the number
+of partitions of size $n$ with at most $k$ summands, each at most $l$.
 Consider the largest possible part in our partition. There are two mutually exclusive cases:
-the largest part is $\displaystyle < l$, and the largest part is $\displaystyle = l$. This yields the functional equation:
+the largest part $< l$, and the largest part $= l$. This yields the functional equation:
 \begin{equation} \label{eq:I.16.2}
-    f\left(k, l\right) = f\left(k, l - 1\right) + z^{l}f\left(k - 1, l\right)
+    f(k, l) = f(k, l - 1) + z^{l}f(k - 1, l)
 \end{equation}
 We can verify that \ref{eq:I.16.1} satisfies \ref{eq:I.16.2}. Can we derive \ref{eq:I.16.1} from \ref{eq:I.16.2}?
-Let $\displaystyle F_{k}\left(x\right)$ be the generating function for $\displaystyle f\left(k, l\right)$ with respect to the index $\displaystyle l$:
+Let $F_{k}(x)$ be the generating function for $f(k, l)$ with respect to the index $l$:
 \begin{equation}
-    F_{k}\left(x\right) = \sum_{l = 0}^{\infty}f\left(k, l\right)x^{l}
+    F_{k}(x) = \sum_{l = 0}^{\infty}f(k, l)x^{l}
 \end{equation}
-For $\displaystyle k = 0$, there is only one partition of $0$ into at most $0$ parts (the empty partition).
-Thus $\displaystyle f\left(0,l\right) = 1$ for all $\displaystyle l\geq 0$.
+For $k = 0$, there is only one partition of $0$ into at most $0$ parts (the empty partition).
+Thus $f(0,l) = 1$ for all $l\geq 0$.
 \begin{equation}
-    F_{0}\left(x\right) = \sum_{l = 0}^{\infty}1\cdot x^{l} = \frac{1}{1 - x}
+    F_{0}(x) = \sum_{l = 0}^{\infty}1 \cdot x^{l} = \frac{1}{1 - x}
 \end{equation}
-Take \ref{eq:I.16.2}, multiply by $\displaystyle x^{l}$, and sum over $\displaystyle l\geq 1$:
+Take \ref{eq:I.16.2}, multiply by $x^{l}$, and sum over $l\geq 1$:
 \begin{equation}
-    \sum_{l = 1}^{\infty}f\left(k, l\right)x^{l} - \sum_{l = 1}^{\infty}f\left(k, l - 1\right)x^{l} =
-        \sum_{l = 1}^{\infty}f\left(k - 1, l\right)\left(zx\right)^{l}
+    \sum_{l = 1}^{\infty}f(k, l)x^{l} - \sum_{l = 1}^{\infty}f(k, l - 1)x^{l} = \sum_{l = 1}^{\infty}f(k - 1, l)(zx)^{l}
 \end{equation}
 \begin{itemize}
-    \item The first term is $\displaystyle F_{k}\left(x\right) - f\left(k, 0\right)$. Since $\displaystyle f\left(k, 0\right) = 1$ (at most $0$ size summands),
-    this equals $\displaystyle F_{k}\left(x\right) - 1$.
-    \item The second term is $\displaystyle x\sum_{j = 0}^{\infty}f\left(k, j\right)x^{j} = xF_{k}\left(x\right)$.
-    \item The right-hand side is $\displaystyle F_{k -1}\left(zx\right) - f\left(k - 1, 0\right) = F_{k - 1}\left(zx\right) - 1$.
+    \item The first term is $F_{k}(x) - f(k, 0)$. Since $f(k, 0) = 1$ (at most $0$ size summands),
+    this equals $F_{k}(x) - 1$.
+    \item The second term is $x\sum_{j = 0}^{\infty}f(k, j)x^{j} = xF_{k}(x)$.
+    \item The right-hand side is $F_{k -1}(zx) - f(k - 1, 0) = F_{k - 1}(zx) - 1$.
 \end{itemize}
 Plugging these in:
 \begin{equation}
-    \left(1 - x\right)F_{k}\left(x\right) - 1 = F_{k - 1}\left(zx\right) - 1
-        \Longrightarrow F_{k}\left(x\right) = \frac{1}{1 - x}F_{k - 1}\left(zx\right)
+    (1 - x)F_{k}(x) - 1 = F_{k - 1}(zx) - 1 \Longrightarrow F_{k}(x) = \frac{1}{1 - x}F_{k - 1}(zx)
 \end{equation}
 Now we apply this functional relation repeatedly:
 \begin{equation}
     \begin{aligned}
-        F_{k}\left(x\right)
-        &= \frac{1}{1 - x}F_{k - 1}\left(zx\right) \\
-        &= \frac{1}{1 - x}\cdot \frac{1}{1 - zx}F_{k - 2}\left(z^{2}x\right) \\
-        &= \frac{1}{\left(1 - x\right)\left(1 - zx\right)\cdots \left(1 - z^{k - 1}x\right)}F_{0}\left(z^{k}x\right)
+        F_{k}(x)
+        &= \frac{1}{1 - x}F_{k - 1}(zx) \\
+        &= \frac{1}{1 - x}\frac{1}{1 - zx}F_{k - 2}(z^{2}x) \\
+        &= \frac{1}{(1 - x)(1 - zx) \cdots (1 - z^{k - 1}x)}F_{0}(z^{k}x)
     \end{aligned}
 \end{equation}
-Since $\displaystyle F_{0}\left(x\right) = \frac{1}{1 - x}$, we have $\displaystyle F_{0}\left(z^{k}x\right) = \frac{1}{1 - z^{k}x}$. Thus:
+Since $F_{0}(x) = \frac{1}{1 - x}$, we have $F_{0}(z^{k}x) = \frac{1}{1 - z^{k}x}$. Thus:
 \begin{equation}
-F_{k}\left(x\right) = \sum_{l = 0}^{\infty}f\left(k, l\right)x^{l} = \frac{1}{\left(1 - x\right)\left(1 - zx\right)\cdots \left(1 - z^{k}x\right)}
+    F_{k}(x) = \sum_{l = 0}^{\infty}f(k, l)x^{l} = \frac{1}{(1 - x)(1 - zx) \cdots (1 - z^{k}x)}
 \end{equation}
-Since all the roots of the denominator are distinct (assuming $\displaystyle |z| < 1$ or that $\displaystyle z$ is a formal variable),
+Since all the roots of the denominator are distinct (assuming $|z| < 1$ or that $z$ is a formal variable),
 we can decompose this into a sum of partial fractions:
 \begin{equation}
-    \frac{1}{\prod_{i = 0}^{k}\left(1 - z^{i}x\right)} = \sum_{j = 0}^{k}\frac{A_{j}}{1 - z^{j}x}
+    \frac{1}{\prod_{i = 0}^{k}(1 - z^{i}x)} = \sum_{j = 0}^{k}\frac{A_{j}}{1 - z^{j}x}
 \end{equation}
-To find a specific $\displaystyle A_{j}$, we multiply both sides by $\displaystyle \left(1 - z^{j}x\right)$ and then
-set $\displaystyle x = z^{-j}$:
+To find a specific $A_{j}$, we multiply both sides by $(1 - z^{j}x)$ and then
+set $x = z^{-j}$:
 \begin{equation}
     \begin{aligned}
         A_{j}
-        &= \left[\frac{1 - z^{j}x}{\prod_{i = 0}^{k}\left(1 - z^{i}x\right)}\right]_{x = z^{-j}} \\
-        &= \frac{1}{\prod_{i = 0}^{j - 1}\left(1 - z^{i}z^{-j}\right)\prod_{i = j + 1}^{k}\left(1 - z^{i}z^{-j}\right)} \\
-        &= \frac{\left(-1\right)^{j}z^{j\left(j + 1\right)/2}}{\prod_{i = 1}^{j}\left(1 - z^{i}\right)\prod_{i = 1}^{k - j}\left(1 - z^{i}\right)}
+        &= \left[\frac{1 - z^{j}x}{\prod_{i = 0}^{k}(1 - z^{i}x)}\right]_{x = z^{-j}} \\
+        &= \frac{1}{\prod_{i = 0}^{j - 1}(1 - z^{i}z^{-j})\prod_{i = j + 1}^{k}(1 - z^{i}z^{-j})} \\
+        &= \frac{(-1)^{j}z^{j(j + 1)/2}}{\prod_{i = 1}^{j}(1 - z^{i})\prod_{i = 1}^{k - j}(1 - z^{i})}
     \end{aligned}
 \end{equation}
-The coefficient of $\displaystyle x^{l}$ in $\displaystyle F_{k}\left(x\right)$ is the sum of the coefficients of $\displaystyle x^{l}$
-in each partial fraction. For a term $\displaystyle \frac{A_{j}}{1 - z^{j}x}$, the coefficient is $\displaystyle A_{j}\left(z^{j}\right)^{l}$.
+The coefficient of $x^{l}$ in $F_{k}(x)$ is the sum of the coefficients of $x^{l}$
+in each partial fraction. For a term $\frac{A_{j}}{1 - z^{j}x}$, the coefficient is $A_{j}(z^{j})^{l}$.
 \begin{equation}
     \begin{aligned}
-        f\left(k, l\right)
-        &= \sum_{j = 0}^{k}A_{j}\left(z^{j}\right)^{l} \\
-        &= \sum_{j = 0}^{k}\frac{\left(-1\right)^{j}z^{j\left(j + 1\right)/2}\cdot z^{jl}}
-                                {\prod_{i = 1}^{j}\left(1 - z^{i}\right)\prod_{i = 1}^{k - j}\left(1 - z^{i}\right)} \\
-        &= \frac{1}{\prod_{i = 1}^{k}\left(1 - z^{i}\right)}\sum_{j = 0}^{k}\binom{k}{j}_{z}\left(-1\right)^{j}z^{j\left(j + 1\right)/2 + jl}
+        f(k, l)
+        &= \sum_{j = 0}^{k}A_{j}(z^{j})^{l} \\
+        &= \sum_{j = 0}^{k}\frac{(-1)^{j}z^{j(j + 1)/2} \cdot z^{jl}}{\prod_{i = 1}^{j}(1 - z^{i})\prod_{i = 1}^{k - j}(1 - z^{i})} \\
+        &= \frac{1}{\prod_{i = 1}^{k}(1 - z^{i})}\sum_{j = 0}^{k}\binom{k}{j}_{z}(-1)^{j}z^{j(j + 1)/2 + jl}
     \end{aligned}
 \end{equation}
-where $\displaystyle \binom{k}{j}_{z}$ is the Gaussian binomial coefficient:
+where $\binom{k}{j}_{z}$ is the Gaussian binomial coefficient:
 \begin{equation}
     \begin{aligned}
         \binom{k}{j}_{z}
-        &= \frac{\prod_{i = 1}^{k}\left(1 - z^{i}\right)}
-                {\prod_{i = 1}^{j}\left(1 - z^{i}\right)\prod_{i = 1}^{k - j}\left(1 - z^{i}\right)} \\
-        &= \frac{\left(1 - z^{k}\right)\left(1 - z^{k - 1}\right)\cdots \left(1 - z^{k - j + 1}\right)}
-                {\left(1 - z\right)\left(1 - z^{2}\right)\cdots \left(1 - z^{j}\right)}
+        &= \frac{\prod_{i = 1}^{k}(1 - z^{i})}{\prod_{i = 1}^{j}(1 - z^{i})\prod_{i = 1}^{k - j}(1 - z^{i})} \\
+        &= \frac{(1 - z^{k})(1 - z^{k - 1}) \cdots (1 - z^{k - j + 1})}{(1 - z)(1 - z^{2}) \cdots (1 - z^{j})}
     \end{aligned}
 \end{equation}
 We can rewrite the exponent in the sum:
 \begin{equation}
-    \frac{j\left(j + 1\right)}{2} + jl = \frac{j\left(j - 1\right)}{2} + j\left(l + 1\right)
+    \frac{j(j + 1)}{2} + jl = \frac{j(j - 1)}{2} + j(l + 1)
 \end{equation}
 Now the sum becomes
 \begin{equation}
-    f\left(k, l\right)
-    = \frac{1}{\prod_{i = 1}^{k}\left(1 - z^{i}\right)}\sum_{j = 0}^{k}\binom{k}{j}_{z}\left(-1\right)^{j}z^{j\left(j - 1\right)/2}\left(z^{l + 1}\right)^{j}
+    f(k, l) = \frac{1}{\prod_{i = 1}^{k}(1 - z^{i})}\sum_{j = 0}^{k}\binom{k}{j}_{z}(-1)^{j}z^{j(j - 1)/2}(z^{l + 1})^{j}
 \end{equation}
 The $q$-binomial theorem states that for a variable $X$:
 \begin{equation} \label{eq:I.16.3}
-    \prod_{i = 0}^{k - 1}\left(1 - z^{i}X\right) = \sum_{j = 0}^{k}\binom{k}{j}_{z}\left(-1\right)^{j}z^{j\left(j - 1\right)/2}X^{j}
+    \prod_{i = 0}^{k - 1}(1 - z^{i}X) = \sum_{j = 0}^{k}\binom{k}{j}_{z}(-1)^{j}z^{j(j - 1)/2}X^{j}
 \end{equation}
-Plugging $\displaystyle X = z^{l + 1}$ into the theorem yields \ref{eq:I.16.1}:
+Plugging $X = z^{l + 1}$ into the theorem yields \ref{eq:I.16.1}:
 \begin{equation}
     \begin{aligned}
-        f\left(k, l\right)
-        &= \frac{\left(1 - z^{l + 1}\right)\left(1 - z^{l + 2}\right)\cdots \left(1 - z^{l + k}\right)}
-                {\left(1 - z^{1}\right)\left(1 - z^{2}\right)\cdots \left(1 - z^{k}\right)} \\
-        &= \frac{\left(1 - z\right)\left(1 - z^{2}\right)\cdots \left(1 - z^{k + l}\right)}
-                {\left(\left(1 - z\right)\left(1 - z^{2}\right)\cdots \left(1 - z^{k}\right)\right)\cdot \left(\left(1 - z\right)\left(1 - z^{2}\right)\cdots \left(1 - z^{l}\right)\right)}
+        f(k, l)
+        &= \frac{(1 - z^{l + 1})(1 - z^{l + 2}) \cdots (1 - z^{l + k})}{(1 - z^{1})(1 - z^{2}) \cdots (1 - z^{k})} \\
+        &= \frac{(1 - z)(1 - z^{2}) \cdots (1 - z^{k + l})}{((1 - z)(1 - z^{2}) \cdots (1 - z^{k})) \cdot ((1 - z)(1 - z^{2}) \cdots (1 - z^{l}))}
     \end{aligned}
 \end{equation}
-To prove \ref{eq:I.16.3}, let $\displaystyle P_{k}\left(X\right)$ be the product we are expanding:
+To prove \ref{eq:I.16.3}, let $P_{k}(X)$ be the product we are expanding:
 \begin{equation}
-    P_{k}\left(X\right) = \prod_{i = 0}^{k - 1}\left(1 - z^{i}X\right)
+    P_{k}(X) = \prod_{i = 0}^{k - 1}(1 - z^{i}X)
 \end{equation}
-We want to show that $\displaystyle P_{k}\left(X\right) = \sum_{j = 0}^{k}\binom{k}{j}_{z}\left(-1\right)^{j}z^{j\left(j - 1\right)/2}X^{j}$.
-Consider the relationship between $\displaystyle P_{k}\left(X\right)$ and $\displaystyle P_{k - 1}\left(X\right)$. By definition:
+We want to show that $P_{k}(X) = \sum_{j = 0}^{k}\binom{k}{j}_{z}(-1)^{j}z^{j(j - 1)/2}X^{j}$.
+Consider the relationship between $P_{k}(X)$ and $P_{k - 1}(X)$. By definition:
 \begin{equation}
-    P_{k}\left(X\right) = \left(1 - z^{k - 1}X\right)P_{k - 1}\left(X\right)
+    P_{k}(X) = (1 - z^{k - 1}X)P_{k - 1}(X)
 \end{equation}
-Now notice what happens if we replace $\displaystyle X$ with $\displaystyle zX$ in $\displaystyle P_{k}\left(X\right)$:
+Now notice what happens if we replace $X$ with $zX$ in $P_{k}(X)$:
 \begin{equation}
-    P_{k}\left(zX\right) = \prod_{i = 0}^{k - 1}\left(1 - z^{i + 1}X\right) = \frac{1 - z^{k}X}{1 - X}P_{k}\left(X\right)
+    P_{k}(zX) = \prod_{i = 0}^{k - 1}(1 - z^{i + 1}X) = \frac{1 - z^{k}X}{1 - X}P_{k}(X)
 \end{equation}
-Rearranging this gives us a functional equation for $\displaystyle P_{k}\left(X\right)$:
+Rearranging this gives us a functional equation for $P_{k}(X)$:
 \begin{equation}
-    \left(1 - X\right)P_{k}\left(zX\right) = \left(1 - z^{k}X\right)P_{k}\left(X\right)
+    (1 - X)P_{k}(zX) = (1 - z^{k}X)P_{k}(X)
 \end{equation}
-Let $\displaystyle P_{k}\left(X\right) = \sum_{j = 0}^{k}c_{j}X^{j}$. We substitute this power series into the functional equation:
+Let $P_{k}(X) = \sum_{j = 0}^{k}c_{j}X^{j}$. We substitute this power series into the functional equation:
 \begin{equation}
-    \left(1 - X\right)\sum_{j = 0}^{k}c_{j}\left(zX\right)^{j} = \left(1 - z^{k}X\right)\sum_{j = 0}^{k}c_{j}X^{j}
+    (1 - X)\sum_{j = 0}^{k}c_{j}(zX)^{j} = (1 - z^{k}X)\sum_{j = 0}^{k}c_{j}X^{j}
 \end{equation}
-Now, we compare the coefficients of $\displaystyle X^{j}$ on both sides. For a specific power $\displaystyle j$:
+Now, we compare the coefficients of $X^{j}$ on both sides. For a specific power $j$:
 \begin{equation}
     c_{j}z^{j} - c_{j - 1}z^{j - 1} = c_{j} - c_{j - 1}z^{k}
 \end{equation}
-Rearranging to solve for $\displaystyle c_{j}$ in terms of $\displaystyle c_{j - 1}$:
+Rearranging to solve for $c_{j}$ in terms of $c_{j - 1}$:
 \begin{equation}
     c_{j} = c_{j - 1}\frac{z^{j - 1} - z^{k}}{z^{j} - 1} = -c_{j - 1}z^{j - 1}\frac{1 - z^{k - j + 1}}{1 - z^{j}}
 \end{equation}
-Starting from the base case $\displaystyle c_{0} = P_{k}\left(0\right) = 1$, we can find $\displaystyle c_{j}$ by iteration:
+Starting from the base case $c_{0} = P_{k}(0) = 1$, we can find $c_{j}$ by iteration:
 \begin{equation}
     c_{1} = -c_{0}z^{0}\frac{1 - z^{k}}{1 - z^{1}}, \quad
-    c_{2} = -c_{1}z^{1}\frac{1 - z^{k - 1}}{1 - z^{2}}
-        = \left(-1\right)^2z^{0 + 1}\frac{\left(1 - z^{k}\right)\left(1 - z^{k - 1}\right)}{\left(1 - z^{1}\right)\left(1 - z^{2}\right)}
+    c_{2} = -c_{1}z^{1}\frac{1 - z^{k - 1}}{1 - z^{2}} = (-1)^2z^{0 + 1}\frac{(1 - z^{k})(1 - z^{k - 1})}{(1 - z^{1})(1 - z^{2})}
 \end{equation}
-The exponent of $\displaystyle z$ becomes $\displaystyle 0 + 1 + 2 + \cdots + \left(j - 1\right) = \frac{j\left(j - 1\right)}{2}$.
-The fraction is the definition of the Gaussian binomial coefficient $\displaystyle \binom{k}{j}_{z}$.
+The exponent of $z$ becomes $0 + 1 + 2 + \cdots + (j - 1) = \frac{j(j - 1)}{2}$.
+The fraction is the definition of the Gaussian binomial coefficient $\binom{k}{j}_{z}$.
 Thus, the coefficient is:
 \begin{equation}
-    c_{j} = \left(-1\right)^{j}z^{j\left(j - 1\right)/2}\binom{k}{j}_{z}
+    c_{j} = (-1)^{j}z^{j(j - 1)/2}\binom{k}{j}_{z}
 \end{equation}
 Plugging the coefficients back into the sum, we obtain:
 \begin{equation}
-    \prod_{i = 0}^{k - 1}\left(1 - z^{i}X\right) = \sum_{j = 0}^{k}\binom{k}{j}_{z}\left(-1\right)^{j}z^{j\left(j - 1\right)/2}X^{j}
+    \prod_{i = 0}^{k - 1}(1 - z^{i}X) = \sum_{j = 0}^{k}\binom{k}{j}_{z}(-1)^{j}z^{j(j - 1)/2}X^{j}
 \end{equation}
 This completes the proof.
 
@@ -199,7 +188,7 @@ $\rhd$ \textbf{I.17.} \textit{Systems of linear Diophantine inequalities}.
 \begin{equation}
     \left\{x_{1}\geq 0,\; x_{2}\geq 2x_{1},\; x_{3}\geq 2x_{2},\; x_{4}\geq 2x_{3}\right\}
 \end{equation}
-We introduce non-negative slack variables $\displaystyle y_{j}\in \mathbb{Z}_{\geq 0}$
+We introduce non-negative slack variables $y_{j}\in \mathbb{Z}_{\geq 0}$
 that measure the excess of each term over its minimum bound:
 \begin{align}
     x_{1} &= y_{1} \\
@@ -207,18 +196,18 @@ that measure the excess of each term over its minimum bound:
     x_{3} &= 2x_{2} + y_{3} = 4y_{1} + 2y_{2} + y_{3} \\
     x_{4} &= 2x_{3} + y_{4} = 8y_{1} + 4y_{2} + 2y_{3} + y_{4}
 \end{align}
-The size of the composition is $\displaystyle S = x_{1} + x_{2} + x_{3} + x_{4} = 15y_{1} + 7y_{2} + 3y_{3} + y_{4}$.
-Since the variables $\displaystyle y_{1}, y_{2}, y_{3}, y_{4}$ are independent and each ranges freely over the non-negative integers,
-the OGF for the class $\displaystyle \mathcal{F}$ is the product of the generating functions for the individual $\displaystyle y_{j}$:
+The size of the composition is $S = x_{1} + x_{2} + x_{3} + x_{4} = 15y_{1} + 7y_{2} + 3y_{3} + y_{4}$.
+Since the variables $y_{1}, y_{2}, y_{3}, y_{4}$ are independent and each ranges freely over the non-negative integers,
+the OGF for the class $\mathcal{F}$ is the product of the generating functions for the individual $y_{j}$:
 \begin{itemize}
-    \item For $\displaystyle 15y_{1}: \sum_{y_{1} = 0}^{\infty}\left(z^{15}\right)^{y_{1}} = \frac{1}{1 - z^{15}}$
-    \item For $\displaystyle  7y_{2}: \sum_{y_{2} = 0}^{\infty}\left(z^{ 7}\right)^{y_{2}} = \frac{1}{1 - z^{ 7}}$
-    \item For $\displaystyle  3y_{3}: \sum_{y_{3} = 0}^{\infty}\left(z^{ 3}\right)^{y_{3}} = \frac{1}{1 - z^{ 3}}$
-    \item For $\displaystyle   y_{4}: \sum_{y_{4} = 0}^{\infty}\left(z^{ 1}\right)^{y_{4}} = \frac{1}{1 - z^{ 1}}$
+    \item For $15y_{1}: \sum_{y_{1} = 0}^{\infty}(z^{15})^{y_{1}} = \frac{1}{1 - z^{15}}$
+    \item For $ 7y_{2}: \sum_{y_{2} = 0}^{\infty}(z^{ 7})^{y_{2}} = \frac{1}{1 - z^{ 7}}$
+    \item For $ 3y_{3}: \sum_{y_{3} = 0}^{\infty}(z^{ 3})^{y_{3}} = \frac{1}{1 - z^{ 3}}$
+    \item For $  y_{4}: \sum_{y_{4} = 0}^{\infty}(z^{ 1})^{y_{4}} = \frac{1}{1 - z^{ 1}}$
 \end{itemize}
 Multiplying these together yields the desired OGF:
 \begin{equation}
-    F\left(z\right) = \frac{1}{\left(1 -z\right)\left(1 -z^{3}\right)\left(1 -z^{7}\right)\left(1 -z^{15}\right)}
+    F(z) = \frac{1}{(1 -z)(1 -z^{3})(1 -z^{7})(1 -z^{15})}
 \end{equation}
 
 \vspace{\baselineskip}
@@ -226,22 +215,22 @@ Multiplying these together yields the desired OGF:
     \left\{x_{1} + x_{2}\leq x_{3}\right\}
 \end{equation}
 Following the same approach as in the previous problem, we use slack variables to convert the inequality into an equality of independent parts.
-The constraint $\displaystyle x_{3}\geq x_{1} + x_{2}$ can be rewritten by introducing a non-negative integer $\displaystyle y\geq 0$:
+The constraint $x_{3}\geq x_{1} + x_{2}$ can be rewritten by introducing a non-negative integer $y\geq 0$:
 \begin{equation}
     x_{3} = x_{1} + x_{2} + y
 \end{equation}
-The size of the composition is $\displaystyle S = x_{1} + x_{2} + x_{3} + x_{4} = 2x_{1} + 2x_{2} + y + x_{4}$.
-Since the variables $\displaystyle x_{1}, x_{2}, y, x_{4}$ are independent and each ranges freely over the non-negative integers,
+The size of the composition is $S = x_{1} + x_{2} + x_{3} + x_{4} = 2x_{1} + 2x_{2} + y + x_{4}$.
+Since the variables $x_{1}, x_{2}, y, x_{4}$ are independent and each ranges freely over the non-negative integers,
 the OGF is the product of the generating functions for the individual terms in the sum:
 \begin{itemize}
-    \item For $\displaystyle 2x_{1}: \frac{1}{1 - z^{2}}$
-    \item For $\displaystyle 2x_{2}: \frac{1}{1 - z^{2}}$
-    \item For $\displaystyle y: \frac{1}{1 - z}$
-    \item For $\displaystyle x_{4}: \frac{1}{1 - z}$
+    \item For $2x_{1}: \frac{1}{1 - z^{2}}$
+    \item For $2x_{2}: \frac{1}{1 - z^{2}}$
+    \item For $y: \frac{1}{1 - z}$
+    \item For $x_{4}: \frac{1}{1 - z}$
 \end{itemize}
 Multiplying these together gives:
 \begin{equation}
-    F\left(z\right) = \frac{1}{\left(1 -z^{2}\right)^{2}\left(1 -z\right)^{2}}
+    F(z) = \frac{1}{(1 -z^{2})^{2}(1 -z)^{2}}
 \end{equation}
 
 \vspace{\baselineskip}
@@ -250,68 +239,61 @@ Multiplying these together gives:
 \end{equation}
 Because the inequality does not immediately suggest a single slack variable to absorb the excess,
 the most robust approach is to use the complement method.
-We know the OGF for four unrestricted variables $\displaystyle \left(x_{1},x_{2},x_{3},x_{4}\right)$
-with $\displaystyle x_{i}\geq 0$ is:
+We know the OGF for four unrestricted variables $(x_{1},x_{2},x_{3},x_{4})$
+with $x_{i}\geq 0$ is:
 \begin{equation}
-    U\left(z\right) = \frac{1}{\left(1 - z\right)^{4}}
+    U(z) = \frac{1}{(1 - z)^{4}}
 \end{equation}
 The set of all such compositions partitions naturally into two disjoint subsets: those satisfying
-$\displaystyle x_{1} + x_{2} < x_{3}$ (i.e., $\displaystyle x_{1} + x_{2} + 1\leq x_{3}$), and those satisfying
-$\displaystyle x_{1} + x_{2}\geq x_{3}$ (our target class). We find the OGF for the complement
-$\displaystyle x_{1} + x_{2} < x_{3}$. Set $\displaystyle x_{3} = x_{1} + x_{2} + 1 + y$, where $\displaystyle y\geq 0$.
-The total sum $\displaystyle S$ is:
+$x_{1} + x_{2} < x_{3}$ (i.e., $x_{1} + x_{2} + 1\leq x_{3}$), and those satisfying
+$x_{1} + x_{2}\geq x_{3}$ (our target class). We find the OGF for the complement
+$x_{1} + x_{2} < x_{3}$. Set $x_{3} = x_{1} + x_{2} + 1 + y$, where $y\geq 0$.
+The total sum $S$ is:
 \begin{equation}
-    S = x_{1} + x_{2} + \left(x_{1} + x_{2} + 1 + y\right) + x_{4} = 2x_{1} + 2x_{2} + y + x_{4} + 1
+    S = x_{1} + x_{2} + (x_{1} + x_{2} + 1 + y) + x_{4} = 2x_{1} + 2x_{2} + y + x_{4} + 1
 \end{equation}
-The OGF for this complement, which we denote by $\displaystyle C\left(z\right)$, is:
+The OGF for this complement, which we denote by $C(z)$, is:
 \begin{equation}
-    C\left(z\right) = \frac{z}{\left(1 - z^{2}\right)^{2}\left(1 - z\right)^2}
+    C(z) = \frac{z}{(1 - z^{2})^{2}(1 - z)^2}
 \end{equation}
 The OGF for our constraint is then:
 \begin{equation}
-    F\left(z\right)
-        = U\left(z\right) - C\left(z\right)
-        = \frac{1}{\left(1 - z\right)^{4}} - \frac{z}{\left(1 - z^{2}\right)^{2}\left(1 - z\right)^2}
-        = \frac{1 + z + z^{2}}{\left(1 - z\right)^{4}\left(1 + z\right)^{2}}
+    F(z) = U(z) - C(z) = \frac{1}{(1 - z)^{4}} - \frac{z}{(1 - z^{2})^{2}(1 - z)^2} = \frac{1 + z + z^{2}}{(1 - z)^{4}(1 + z)^{2}}
 \end{equation}
 
 \vspace{\baselineskip}
 \begin{equation}
     \left\{x_{1} + x_{2}\leq x_{3} + x_{4}\right\}
 \end{equation}
-To find the OGF for $\displaystyle \left\{x_{1} + x_{2}\leq x_{3} + x_{4}\right\}$, we can use the complement method
-combined with the symmetry of the variables. Let $\displaystyle A = x_{1} + x_{2}$ and $\displaystyle B = x_{3} + x_{4}$.
-We seek the OGF for compositions satisfying $\displaystyle A\leq B$. In the universe of all possible compositions
-$\displaystyle \left(x_{1}, x_{2}, x_{3}, x_{4}\right)$, there are three mutually exclusive cases:
-$\displaystyle 1.\; A < B,\; 2.\; A > B,\; 3.\; A = B$. By symmetry, the OGF for case 1 must be identical to the OGF for case 2,
-since $\displaystyle A$ and $\displaystyle B$ are built from the same number of variables with the same weights.
-Denote this common OGF by $\displaystyle G_{<}\left(z\right)$, and let $\displaystyle G_{=}\left(z\right)$ be the OGF for case 3.
-The total unrestricted OGF is $\displaystyle U\left(z\right) = \frac{1}{\left(1 - z\right)^{4}}$. Therefore:
+To find the OGF for $\left\{x_{1} + x_{2}\leq x_{3} + x_{4}\right\}$, we can use the complement method
+combined with the symmetry of the variables. Let $A = x_{1} + x_{2}$ and $B = x_{3} + x_{4}$.
+We seek the OGF for compositions satisfying $A\leq B$. In the universe of all possible compositions
+$(x_{1}, x_{2}, x_{3}, x_{4})$, there are three mutually exclusive cases:
+$1.\; A < B,\; 2.\; A > B,\; 3.\; A = B$. By symmetry, the OGF for case 1 must be identical to the OGF for case 2,
+since $A$ and $B$ are built from the same number of variables with the same weights.
+Denote this common OGF by $G_{<}(z)$, and let $G_{=}(z)$ be the OGF for case 3.
+The total unrestricted OGF is $U(z) = \frac{1}{(1 - z)^{4}}$. Therefore:
 \begin{equation}
-    U\left(z\right) = 2G_{<}\left(z\right) + G_{=}\left(z\right)
+    U(z) = 2G_{<}(z) + G_{=}(z)
 \end{equation}
-Our target OGF is $\displaystyle F\left(z\right) = G_{<}\left(z\right) + G_{=}\left(z\right)$. Solving the system gives:
+Our target OGF is $F(z) = G_{<}(z) + G_{=}(z)$. Solving the system gives:
 \begin{equation}
-    F\left(z\right) = \frac{U\left(z\right) + G_{=}\left(z\right)}{2}
+    F(z) = \frac{U(z) + G_{=}(z)}{2}
 \end{equation}
-Now $\displaystyle G_{=}\left(z\right)$ is the OGF for compositions in which the sum of the first two variables equals
+Now $G_{=}(z)$ is the OGF for compositions in which the sum of the first two variables equals
 the sum of the last two.
 \begin{itemize}
-    \item The number of compositions with $\displaystyle x_{1} + x_{2} = n$ is
-        $\displaystyle \left[z^{n}\right]\frac{1}{\left(1 - z\right)^{2}} = n + 1$.
-    \item The number of compositions with $\displaystyle x_{3} + x_{4} = n$ is the same.
-    \item For the equality $\displaystyle x_{1} + x_{2} = x_{3} + x_{4}$ to hold, both sums must equal some $\displaystyle n\geq 0$.
+    \item The number of compositions with $x_{1} + x_{2} = n$ is
+        $[z^{n}]\frac{1}{(1 - z)^{2}} = n + 1$.
+    \item The number of compositions with $x_{3} + x_{4} = n$ is the same.
+    \item For the equality $x_{1} + x_{2} = x_{3} + x_{4}$ to hold, both sums must equal some $n\geq 0$.
         \begin{equation}
-            G_{=}\left(z\right)
-                = \sum_{n = 0}^{\infty}\left(n + 1\right)^{2}z^{2n}
-                = \frac{1 + z^{2}}{\left(1 - z^{2}\right)^{3}}
+            G_{=}(z) = \sum_{n = 0}^{\infty}(n + 1)^{2}z^{2n} = \frac{1 + z^{2}}{(1 - z^{2})^{3}}
         \end{equation}
 \end{itemize}
-Substituting $\displaystyle U\left(z\right)$ and $\displaystyle G_{=}\left(z\right)$ into our formula yields:
+Substituting $U(z)$ and $G_{=}(z)$ into our formula yields:
 \begin{equation}
-    F\left(z\right)
-        = \frac{1}{2}\left[\frac{1}{\left(1 - z\right)^{4}} + \frac{1 + z^{2}}{\left(1 - z^{2}\right)^{3}}\right]
-        = \frac{1 + z + 2z^{2}}{\left(1 - z\right)^{4}\left(1 + z\right)^{3}}
+    F(z) = \frac{1}{2}\left[\frac{1}{(1 - z)^{4}} + \frac{1 + z^{2}}{(1 - z^{2})^{3}}\right] = \frac{1 + z + 2z^{2}}{(1 - z)^{4}(1 + z)^{3}}
 \end{equation}
 
 \vspace{\baselineskip}
@@ -319,34 +301,34 @@ Substituting $\displaystyle U\left(z\right)$ and $\displaystyle G_{=}\left(z\rig
     \left\{x_{1}\leq x_{2},\; x_{2}\geq x_{3},\; x_{3}\leq x_{4}\right\}
 \end{equation}
 Because the inequalities alternate direction (up, down, up), we cannot use a straightforward chain of slack variable substitutions
-as we did for $\displaystyle x_{1}\leq x_{2}\leq x_{3}\leq x_{4}$. Instead, we apply the inclusion–exclusion principle to the constraints.
-We begin with the universe of all unrestricted compositions, whose OGF is $\displaystyle U\left(z\right) = \frac{1}{\left(1 - z\right)^{4}}$.
+as we did for $x_{1}\leq x_{2}\leq x_{3}\leq x_{4}$. Instead, we apply the inclusion–exclusion principle to the constraints.
+We begin with the universe of all unrestricted compositions, whose OGF is $U(z) = \frac{1}{(1 - z)^{4}}$.
 We wish to enforce three conditions:
 \begin{itemize}
-    \item $\displaystyle C_{1}: x_{1}\leq x_{2}$
-    \item $\displaystyle C_{2}: x_{2}\geq x_{3}$
-    \item $\displaystyle C_{3}: x_{3}\leq x_{4}$
+    \item $C_{1}: x_{1}\leq x_{2}$
+    \item $C_{2}: x_{2}\geq x_{3}$
+    \item $C_{3}: x_{3}\leq x_{4}$
 \end{itemize}
 However, it is simpler to work with chains of "less than or equal" inequalities. Consider the complement of the downward middle step.
-Take the set of all compositions satisfying both $\displaystyle x_{1}\leq x_{2}$ and $\displaystyle x_{3}\leq x_{4}$.
-From this set, we subtract those compositions that violate the middle constraint (i.e., $\displaystyle x_{2} < x_{3}$). \\
-The OGF for the set defined by $\displaystyle x_{1}\leq x_{2}$ and $\displaystyle x_{3}\leq x_{4}$:
+Take the set of all compositions satisfying both $x_{1}\leq x_{2}$ and $x_{3}\leq x_{4}$.
+From this set, we subtract those compositions that violate the middle constraint (i.e., $x_{2} < x_{3}$). \\
+The OGF for the set defined by $x_{1}\leq x_{2}$ and $x_{3}\leq x_{4}$:
 These two pairs are independent.
 \begin{itemize}
-    \item For $\displaystyle x_{1}\leq x_{2}$, set $\displaystyle x_{2} = x_{1} + y_{1}$. The total contribution is $\displaystyle 2x_{1} + y_{1}$,
-        so the OGF is $\displaystyle \frac{1}{\left(1 - z^{2}\right)\left(1 - z\right)}$.
-    \item For $\displaystyle x_{3}\leq x_{4}$, the OGF is identically $\displaystyle \frac{1}{\left(1 - z^{2}\right)\left(1 - z\right)}$.
+    \item For $x_{1}\leq x_{2}$, set $x_{2} = x_{1} + y_{1}$. The total contribution is $2x_{1} + y_{1}$,
+        so the OGF is $\frac{1}{(1 - z^{2})(1 - z)}$.
+    \item For $x_{3}\leq x_{4}$, the OGF is identically $\frac{1}{(1 - z^{2})(1 - z)}$.
 \end{itemize}
 Since the two pairs are independent, we multiply their OGFs:
 \begin{equation}
-    A\left(z\right) = \frac{1}{\left(1 - z^{2}\right)^{2}\left(1 - z\right)^{2}}
+    A(z) = \frac{1}{(1 - z^{2})^{2}(1 - z)^{2}}
 \end{equation}
-Now we find the OGF for the violation $\displaystyle x_{1}\leq x_{2} < x_{3}\leq x_{4}$ by introducing slack variables:
+Now we find the OGF for the violation $x_{1}\leq x_{2} < x_{3}\leq x_{4}$ by introducing slack variables:
 \begin{itemize}
-    \item $\displaystyle x_{1} = y_{1}$
-    \item $\displaystyle x_{2} = y_{1} + y_{2}$
-    \item $\displaystyle x_{3} = y_{1} + y_{2} + 1 + y_{3}$
-    \item $\displaystyle x_{4} = y_{1} + y_{2} + 1 + y_{3} + y_{4}$
+    \item $x_{1} = y_{1}$
+    \item $x_{2} = y_{1} + y_{2}$
+    \item $x_{3} = y_{1} + y_{2} + 1 + y_{3}$
+    \item $x_{4} = y_{1} + y_{2} + 1 + y_{3} + y_{4}$
 \end{itemize}
 Summing the four expressions gives:
 \begin{equation}
@@ -354,14 +336,14 @@ Summing the four expressions gives:
 \end{equation}
 The OGF for this violation is therefore:
 \begin{equation}
-    V\left(z\right) = \frac{z^{2}}{\left(1 - z^{4}\right)\left(1 - z^{3}\right)\left(1 - z^{2}\right)\left(1 - z\right)}
+    V(z) = \frac{z^{2}}{(1 - z^{4})(1 - z^{3})(1 - z^{2})(1 - z)}
 \end{equation}
-The OGF for the zigzag constraint is the OGF for the two independent pairs minus the OGF for the cases where the peak at $\displaystyle x_{2}$ fails:
+The OGF for the zigzag constraint is the OGF for the two independent pairs minus the OGF for the cases where the peak at $x_{2}$ fails:
 \begin{equation}
     \begin{aligned}
-        F\left(z\right)
-        &= \frac{1}{\left(1 - z^{2}\right)^{2}\left(1 - z\right)^{2}} - \frac{z^{2}}{\left(1 - z^{4}\right)\left(1 - z^{3}\right)\left(1 - z^{2}\right)\left(1 - z\right)} \\
-        &= \frac{1}{\left(1 - z\right)\left(1 - z^{2}\right)}\left[\frac{1}{\left(1 - z\right)\left(1 - z^{2}\right)} - \frac{z^{2}}{\left(1 - z^{3}\right)\left(1 - z^{4}\right)}\right]
+        F(z)
+        &= \frac{1}{(1 - z^{2})^{2}(1 - z)^{2}} - \frac{z^{2}}{(1 - z^{4})(1 - z^{3})(1 - z^{2})(1 - z)} \\
+        &= \frac{1}{(1 - z)(1 - z^{2})}\left[\frac{1}{(1 - z)(1 - z^{2})} - \frac{z^{2}}{(1 - z^{3})(1 - z^{4})}\right]
     \end{aligned}
 \end{equation}
 
@@ -374,15 +356,15 @@ We establish a one-to-one correspondence between partitions into odd parts and p
     \item Odd $\rightarrow$ Distinct
         \begin{enumerate}
             \item Group identical odd parts together.
-            \item If an odd part $\displaystyle k$ appears $\displaystyle m$ times, write $\displaystyle m$ in binary:
-                    $\displaystyle m = 2^{a_{1}} + 2^{a_{2}} + \cdots$ with distinct powers of two.
-            \item Replace the $\displaystyle m$ copies of $\displaystyle k$ by $\displaystyle 2^{a_{1}}\cdot k,\;
-                    2^{a_{2}}\cdot k,\; \cdots$
+            \item If an odd part $k$ appears $m$ times, write $m$ in binary:
+                    $m = 2^{a_{1}} + 2^{a_{2}} + \cdots$ with distinct powers of two.
+            \item Replace the $m$ copies of $k$ by $2^{a_{1}} \cdot k,\;
+                    2^{a_{2}} \cdot k,\; \cdots$
         \end{enumerate}
     \item Distinct $\rightarrow$ Odd
         \begin{enumerate}
-            \item Factor each part as $\displaystyle 2^{a}\times \text{odd}$.
-            \item Split it into $\displaystyle 2^{a}$ copies of that odd factor.
+            \item Factor each part as $2^{a}\times \text{odd}$.
+            \item Split it into $2^{a}$ copies of that odd factor.
             \item Do this for all parts; now all parts are odd.
             \item Sort the resulting parts to obtain a partition into odd parts.
         \end{enumerate}
@@ -392,7 +374,7 @@ As an example:
     \begin{aligned}
         3 + 3 + 3 + 3 + 3 + 1 + 1
         &= 5\times 3 + 2\times 1 \\
-        &= \left(2^{2} + 2^{0}\right)\times 3 + 2^{1}\times 1 \\
+        &= (2^{2} + 2^{0})\times 3 + 2^{1}\times 1 \\
         &= 4\times 3 + 1\times 3 + 2\times 1 \\
         &= 12 + 3 + 2
     \end{aligned}
@@ -401,7 +383,7 @@ As an example:
     \begin{aligned}
         12 + 3 + 2
         &= 4\times 3 + 3 + 2\times 1 \\
-        &= \left(3 + 3 + 3 + 3\right) + 3 + \left(1 + 1\right) \\
+        &= (3 + 3 + 3 + 3) + 3 + (1 + 1) \\
         &= 3 + 3 + 3 + 3 + 3 + 1 + 1
     \end{aligned}
 \end{equation}
@@ -410,30 +392,27 @@ As an example:
 \vspace{\baselineskip}
 \noindent
 $\rhd$ \textbf{I.19.} \textit{Euler’s pentagonal number theorem}.
-To find a recurrence for the partition numbers, we consider the reciprocal of the generating function $\displaystyle P\left(z\right)$:
+To find a recurrence for the partition numbers, we consider the reciprocal of the generating function $P(z)$:
 \begin{equation}
-    A\left(z\right) = \prod_{n = 1}^{\infty}\left(1 - z^{n}\right)
+    A(z) = \prod_{n = 1}^{\infty}(1 - z^{n})
 \end{equation}
 Euler's Pentagonal Number Theorem states that this product expands into the following sparse power series:
 \begin{equation}
     \begin{aligned}
-        A\left(z\right)
-            &= \sum_{k = -\infty}^{\infty}\left(-1\right)^{k}z^{k\left(3k + 1\right)/2} \\
-            &= \sum_{k = -\infty}^{\infty}\left(-1\right)^{k}z^{k\left(3k - 1\right)/2} \\
+        A(z)
+            &= \sum_{k = -\infty}^{\infty}(-1)^{k}z^{k(3k + 1)/2} \\
+            &= \sum_{k = -\infty}^{\infty}(-1)^{k}z^{k(3k - 1)/2} \\
             &= 1 - z^{1} - z^{2} + z^{5} + z^{7} - z^{12} - z^{15} + \cdots
     \end{aligned}
 \end{equation}
-The exponents $\displaystyle g_{k} = \frac{k\left(3k - 1\right)}{2}$ are the generalized pentagonal numbers.
-The product of $\displaystyle P\left(z\right)$ and $\displaystyle A\left(z\right)$ must equal $\displaystyle 1$:
+The exponents $g_{k} = \frac{k(3k - 1)}{2}$ are the generalized pentagonal numbers.
+The product of $P(z)$ and $A(z)$ must equal $1$:
 \begin{equation}
-    \left(\sum_{n = 0}^{\infty}p\left(n\right)z^{n}\right)
-        \left(\sum_{k = -\infty}^{\infty}\left(-1\right)^{k}z^{g_{k}}\right) = 1
+    \sum_{n = 0}^{\infty}p(n)z^{n} \cdot \sum_{k = -\infty}^{\infty}(-1)^{k}z^{g_{k}} = 1
 \end{equation}
-Comparing the coefficient of $\displaystyle z^{n}$ on both sides yields the algorithmically useful recurrence:
+Comparing the coefficient of $z^{n}$ on both sides yields the algorithmically useful recurrence:
 \begin{equation}
-    p\left(n\right) = p\left(n - 1\right) + p\left(n - 2\right)
-        - p\left(n - 5\right) - p\left(n - 7\right)
-        + p\left(n - 12\right) + p\left(n - 15\right)\cdots
+    p(n) = p(n - 1) + p(n - 2) - p(n - 5) - p(n - 7) + p(n - 12) + p(n - 15) \cdots
 \end{equation}
 A Python implementation is provided below:
 \newpage
@@ -476,22 +455,22 @@ $\rhd$ \textbf{I.20.} \textit{A digital surprise}.
 \begin{equation}
     \begin{aligned}
         \varphi
-            &= \left(1 - 10^{-1}\right)\left(1 - 10^{-2}\right)\left(1 - 10^{-3}\right)\left(1 - 10^{-4}\right)\cdots \\
-            &= \prod_{n = 1}^{\infty}\left(1 - z^{n}\right)|_{z = .1} \\
-            &= 1 - z^{1} - z^{2} + z^{5} + z^{7} - z^{12} - z^{15} + z^{22} + z^{26} - \cdots |_{z = .1} \\
-            &= .\dot{9} - .1 - .01 + .00001 + .0000001 - .000000000001 -\cdots
+            &= (1 - 10^{-1})(1 - 10^{-2})(1 - 10^{-3})(1 - 10^{-4}) \cdots \\
+            &= \left[\prod_{n = 1}^{\infty}(1 - z^{n})\right]_{z = .1} \\
+            &= \left[1 - z^{1} - z^{2} + z^{5} + z^{7} - z^{12} - z^{15} + z^{22} + z^{26} - \cdots \right]_{z = .1} \\
+            &= .\dot{9} - .1 - .01 + .00001 + .0000001 - .000000000001 - \cdots
     \end{aligned}
 \end{equation}
 The partial sums are:
 \begin{itemize}
-    \item $\displaystyle \varphi_{1} = .99999 99999 99999 99999 99999$
-    \item $\displaystyle \varphi_{2} = .89999 99999 99999 99999 99999$
-    \item $\displaystyle \varphi_{3} = .88999 99999 99999 99999 99999$
-    \item $\displaystyle \varphi_{4} = .89000 99999 99999 99999 99999$
-    \item $\displaystyle \varphi_{5} = .89001 00999 99999 99999 99999$
-    \item $\displaystyle \varphi_{6} = .89001 00999 98999 99999 99999$
-    \item $\displaystyle \varphi_{7} = .89001 00999 98998 99999 99999$
-    \item $\displaystyle \varphi_{8} = .89001 00999 98999 00000 00999$
+    \item $\varphi_{1} = .99999 99999 99999 99999 99999$
+    \item $\varphi_{2} = .89999 99999 99999 99999 99999$
+    \item $\varphi_{3} = .88999 99999 99999 99999 99999$
+    \item $\varphi_{4} = .89000 99999 99999 99999 99999$
+    \item $\varphi_{5} = .89001 00999 99999 99999 99999$
+    \item $\varphi_{6} = .89001 00999 98999 99999 99999$
+    \item $\varphi_{7} = .89001 00999 98998 99999 99999$
+    \item $\varphi_{8} = .89001 00999 98999 00000 00999$
 \end{itemize}
 
 
@@ -503,29 +482,29 @@ The partial sums are:
 \section{Tree structures}
 $\rhd$ \textbf{I.42.} \textit{Faster determination of Schröder numbers}.
 \begin{equation}
-    S\left(z\right) = \frac{1}{4}\left(1 + z - \sqrt{1 - 6z + z^{2}}\right)
+    S(z) = \frac{1}{4}(1 + z - \sqrt{1 - 6z + z^{2}})
 \end{equation}
 Consider in general
 \begin{equation}
-    p\left(z\right)S\left(z\right) + q\left(z\right) = \sqrt[k]{r\left(z\right)}
+    p(z)S(z) + q(z) = \sqrt[k]{r(z)}
 \end{equation}
-where $\displaystyle p\left(z\right)$, $\displaystyle q\left(z\right)$, and $\displaystyle r\left(z\right)$ are functions of $\displaystyle z$.
-Taking the derivative with respect to $\displaystyle z$,
+where $p(z)$, $q(z)$, and $r(z)$ are functions of $z$.
+Taking the derivative with respect to $z$,
 \begin{equation}
-    p'S + pS' + q' = \frac{1}{k}{r}^{\frac{1}{k}-1}r'
+    p'(z)S(z) + p(z)S'(z) + q'(z) = \frac{1}{k}{r(z)}^{\frac{1}{k}-1}r'(z)
 \end{equation}
-Multiplying both sides by $\displaystyle r\left(z\right)$,
+Multiplying both sides by $r(z)$,
 \begin{equation}
-    p'rS + prS' + q'r = \frac{1}{k}{r}^{\frac{1}{k}}r' = \frac{1}{k}\left(pS + q\right)r'
+    p'(z)r(z)S(z) + p(z)r(z)S'(z) + q'(z)r(z) = \frac{1}{k}(p(z)S(z) + q(z))r'(z)
 \end{equation}
 Rearranging,
 \begin{equation}
-    prS' + \left(p'r - \frac{1}{k}pr'\right)S = \frac{1}{k}qr' - q'r
+    p(z)r(z)S'(z) + (p'(z)r(z) - \frac{1}{k}p(z)r'(z))S(z) = \frac{1}{k}q(z)r'(z) - q'(z)r(z)
 \end{equation}
-Plugging $\displaystyle p\left(z\right) = -4$, $\displaystyle q\left(z\right) = 1 + z$, $\displaystyle k = 2$,
-and $\displaystyle r\left(z\right) = 1 - 6z + z^{2}$ into the equation and simplifying yields
+Plugging $p(z) = -4$, $q(z) = 1 + z$, $k = 2$,
+and $r(z) = 1 - 6z + z^{2}$ into the equation and simplifying yields
 \begin{equation}
-    \left(z^{2} - 6z + 1\right)S' + \left(3 - z\right)S = 1 - z
+    (z^{2} - 6z + 1)S'(z) + (3 - z)S(z) = 1 - z
 \end{equation}
 from which the recurrence follows.
 
