@@ -348,7 +348,7 @@ We establish a one-to-one correspondence between partitions into odd parts and p
             \item If an odd part $k$ appears $m$ times, write $m$ in binary:
                     $m = 2^{a_{1}} + 2^{a_{2}} + \cdots$ with distinct powers of two.
             \item Replace the $m$ copies of $k$ by $2^{a_{1}} \cdot k,\;
-                    2^{a_{2}} \cdot k,\; \cdots$
+                    2^{a_{2}} \cdot k,\; \dots$
         \end{enumerate}
     \item Distinct $\rightarrow$ Odd
         \begin{enumerate}
@@ -472,7 +472,7 @@ The generating function for the possible values of a single coordinate, where th
 \begin{equation*}
     \Theta(z) = \sum_{x \in \mathbb{Z}}z^{x^{2}} = 1 + 2\sum_{n = 1}^{\infty} z^{n^{2}}
 \end{equation*}
-Since each coordinate $x_{1}, \cdots, x_{d}$ is chosen independently, the generating function for the sum of squares
+Since each coordinate $x_{1}, \cdot, x_{d}$ is chosen independently, the generating function for the sum of squares
 $\sum x_{i}^{2}$ is the $d$-th power of the individual generating function:
 \begin{equation*}
     S(z) = (\Theta(z))^{d} = \sum_{k = 0}^{\infty}r_{d}(k)z^{k}
@@ -502,25 +502,72 @@ Following Proposition I.4, the class $\mathcal{C}$ of binary strings avoiding th
 \begin{equation*}
     C(z) = \frac{1 + z}{1 - z - z^{2}}
 \end{equation*}
-To account for a variable-length coding scheme where codewords are selected from $\bigcup_{j=0}^{L} \mathcal{C}_j$,
+To account for a variable-length coding scheme where codewords are selected from $\bigcup_{j = 0}^{L} \mathcal{C}_{j}$,
 we consider the sum of the first $L + 1$ coefficients. This is represented by the OGF:
 \begin{equation*}
     S(z) = \frac{C(z)}{1 - z} = \frac{1 + z}{(1 - z)(1 - z - z^{2})}
 \end{equation*}
 The asymptotic growth of the sum $\sum_{j = 0}^{L}C_{j}$ is governed by the smallest singularity of $S(z)$.
-Since the pole at $z = 1/\varphi$ (where $\varphi = \frac{1+\sqrt{5}}{2}$) is closer to the origin than the pole at $z=1$,
+Since the pole at $z = 1/\varphi$ (where $\varphi = \frac{1+\sqrt{5}}{2}$) is closer to the origin than the pole at $z = 1$,
 the exponential growth is dominated by $C(z)$. Specifically, as $L \to \infty$:
 \begin{equation*}
     \sum_{j = 0}^{L}C_{j} \sim A \cdot \varphi^{L}
 \end{equation*}
 for some constant $A$. To find the required code length $L(n)$ for $n$ bits of information,
-we solve for $2^n \leq \sum_{j=0}^L C_j$ by taking the base-2 logarithm:
+we solve for $2^{n} \leq \sum_{j = 0}^{L} C_{j}$ by taking the base-2 logarithm:
 \begin{equation*}
-    n \leq \log_2\left(\sum_{j = 0}^{L}C_{j}\right) = L \log_2\varphi + O(1)
+    n \leq \log_{2}\left(\sum_{j = 0}^{L}C_{j}\right) = L \log_{2}\varphi + O(1)
 \end{equation*}
 Rearranging for $L$, we obtain the lower bound:
 \begin{equation*}
-    L \geq \frac{n}{\log_2\varphi} + O(1) \approx 1.440420n + O(1)
+    L \geq \frac{n}{\log_{2}\varphi} + O(1) \approx 1.440420n + O(1)
+\end{equation*}
+
+% Note I.27
+\noindent
+$\rhd$ \textbf{I.27.} \textit{Congruence languages}.
+The DFA $\mathcal{A}$ for binary strings congruent to $2 \pmod{7}$ is structured as follows:
+\begin{itemize}
+    \item \textbf{States}: A set $\mathcal{Q} = \{S_{0}, \dots, S_{6}\}$, where each state $S_{r}$ represents the current remainder $r$ modulo 7.
+    \item \textbf{Initial State}: $S_{0}$ (representing the value 0).
+    \item \textbf{Accepting State}: $\overline{Q} = \{S_{2}\}$.
+    \item \textbf{Alphabet}: $\mathcal{A} = \{0, 1\}$.
+\end{itemize}
+Each transition follows the rule $q_{r} \circ b = q_{(2r + b) \pmod{7}}$:
+\begin{table}[h]
+    \centering
+    \caption{State Transition}
+    \label{tab:flexible}
+    \begin{tabularx}{\textwidth}{XXX}  % All center-aligned
+        \toprule
+        Current State (Remainder) & Input 0 ($2r \pmod{7}$) & Input 1 ($2r + 1 \pmod{7}$) \\
+        \midrule
+        $S_{0}$ & $S_{0}$ & $S_{1}$ \\
+        $S_{1}$ & $S_{2}$ & $S_{3}$ \\
+        $S_{2}$ & $S_{4}$ & $S_{5}$ \\
+        $S_{3}$ & $S_{6}$ & $S_{0}$ \\
+        $S_{4}$ & $S_{1}$ & $S_{2}$ \\
+        $S_{5}$ & $S_{3}$ & $S_{4}$ \\
+        $S_{6}$ & $S_{5}$ & $S_{6}$ \\
+        \bottomrule
+    \end{tabularx}
+\end{table}
+
+% Note I.29
+\noindent
+$\rhd$ \textbf{I.29.} \textit{The forward equations}.
+By a ``last-letter decomposition,'' the set $\mathcal{M}_{k}$ of words leading to state $q_{k}$ from the initial state $q_{0}$ satisfies the combinatorial relation:
+\begin{equation*}
+    \mathcal{M}_{k} \cong \llbracket k = 0 \rrbracket \cdot \{\epsilon\} +
+        \sum_{j, \alpha: q_{j} \circ \alpha = q_{k}} (\mathcal{M}_{j} \times \{\alpha\})
+\end{equation*}
+where $\llbracket \cdot \rrbracket$ is the Iverson bracket. This translates to a linear system of OGFs:
+\begin{equation*}
+    M_{k}(z) = \delta_{k, 0} + z \sum_{j} M_{j}(z) T_{j, k}
+\end{equation*}
+In vector notation, with $\mathbf{M}(z)$ as a column vector and $\mathbf{e}_{0}$ the first basis vector, the system is a transposed version of the backward equations:
+\begin{equation*}
+    \mathbf{M}(z)^{T} = \mathbf{e}_{0}^{T} + z\mathbf{M}(z)^{T}T
 \end{equation*}
 
 
