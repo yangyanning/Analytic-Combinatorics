@@ -593,6 +593,19 @@ one word of length 2 and one word of length 3. Let $\hat{\mathcal{L}} = \{aa, bb
         \end{itemize}
 \end{enumerate}
 
+% Note I.34.
+\noindent
+$\rhd$ \textbf{I.34.} \textit{A probabilistic paradox on strings}.
+Consider a binary pattern of length $k$. The generating function $T(z)$ for the first occurrence of this pattern is given by:
+\begin{equation*}
+    T(z) = \frac{z^{k}}{z^{k} + (1 - mz)c(z)} = \frac{z^{k}}{z^{k} + (1 - 2z)c(z)}
+\end{equation*}
+The average waiting time (or expected occurrence time) can be derived directly from $T(z)$
+by evaluating its derivative at the point of the alphabet's inverse size ($z = 1/2$):
+\begin{equation*}
+    \left[ z \frac{d}{dz} T(z) \right]_{z = 1/2} = 2^{k} c(1/2)
+\end{equation*}
+
 
 
 \section{Tree structures}
