@@ -6,6 +6,7 @@
 
 \section{Symbolic enumeration methods}
 % Note I.2
+\vspace{\baselineskip}
 \noindent
 $\rhd$ \textbf{I.2.} \textit{Unimodal permutations}.
 A unimodal permutation can be viewed as a sequence of elements increasing to a peak and then decreasing. This structure is represented by:
@@ -33,9 +34,10 @@ where $k$ is the position of $n$ in the permutation.
 
 \section{Integer compositions and partitions}
 % Note I.16
+\vspace{\baselineskip}
 \noindent
-$\rhd$ \textbf{I.16.} \textit{Partitions with summands bounded in number and size}. The number of partitions
-of size $n$ with at most $k$ summands, each at most $l$, is
+$\rhd$ \textbf{I.16.} \textit{Partitions with summands bounded in number and size}.
+The number of partitions of size $n$ with at most $k$ summands, each at most $l$, is
 \begin{equation} \label{eq:I.16.1}
     [z^{n}]\frac{(1 - z)(1 - z^{2}) \cdots (1 - z^{k + l})}{((1 - z)(1 - z^{2}) \cdots (1 - z^{k})) \cdot ((1 - z)(1 - z^{2}) \cdots (1 - z^{l}))}
 \end{equation}
@@ -496,6 +498,7 @@ To find the total count up to $k = n^{2}$, we simply extract the coefficient of 
 
 \section{Words and regular languages}
 % Note I.21
+\vspace{\baselineskip}
 \noindent
 $\rhd$ \textbf{I.23.} \textit{Alice, Bob, and coding bounds}.
 Following Proposition I.4, the class $\mathcal{C}$ of binary strings avoiding the pattern $11$ has the OGF:
@@ -524,6 +527,7 @@ Rearranging for $L$, we obtain the lower bound:
 \end{equation*}
 
 % Note I.27
+\vspace{\baselineskip}
 \noindent
 $\rhd$ \textbf{I.27.} \textit{Congruence languages}.
 The DFA $\mathcal{A}$ for binary strings congruent to $2 \pmod{7}$ is structured as follows:
@@ -554,6 +558,7 @@ Each transition follows the rule $q_{r} \circ b = q_{(2r + b) \pmod{7}}$:
 \end{table}
 
 % Note I.29
+\vspace{\baselineskip}
 \noindent
 $\rhd$ \textbf{I.29.} \textit{The forward equations}.
 By a ``last-letter decomposition'', the set $\mathcal{M}_{k}$ of words leading to state $q_{k}$ from the initial state $q_{0}$ satisfies the combinatorial relation:
@@ -571,6 +576,7 @@ In vector notation, with $\mathbf{M}(z)$ as a column vector and $\mathbf{e}_{0}$
 \end{equation*}
 
 % Note I.33.
+\vspace{\baselineskip}
 \noindent
 $\rhd$ \textbf{I.33.} \textit{Waiting times in strings}.
 To illustrate the formulas, let's define a prefix language $\hat{\mathcal{L}}$ containing
@@ -594,6 +600,7 @@ one word of length 2 and one word of length 3. Let $\hat{\mathcal{L}} = \{aa, bb
 \end{enumerate}
 
 % Note I.34.
+\vspace{\baselineskip}
 \noindent
 $\rhd$ \textbf{I.34.} \textit{A probabilistic paradox on strings}.
 Consider a binary pattern of length $k$. The generating function $T(z)$ for the first occurrence of this pattern is given by:
@@ -609,6 +616,29 @@ by evaluating its derivative at the point of the alphabet's inverse size ($z = 1
 
 
 \section{Tree structures}
+% Note I.39.
+\vspace{\baselineskip}
+\noindent
+$\rhd$ \textbf{I.39.} \textit{Unary–binary trees and Motzkin numbers}.
+We identify the characteristic polynomial as $\phi(u) = 1 + u + u^{2}$.
+To find the number of trees with $n$ nodes, $M_{n} = [z^{n}]M(z)$, we apply the Lagrange Inversion Theorem:
+\begin{equation*}
+    \begin{aligned}
+        M_{n}
+        &= \frac{1}{n}[u^{n - 1}]\phi(u)^{n} \\
+        &= \frac{1}{n}[u^{n - 1}](1 + u + u^{2})^{n} \\
+        &= \frac{1}{n}[u^{n - 1}]\sum_{j}\binom{n}{j}(u + u^{2})^{j} \\
+        &= \frac{1}{n}\sum_{j}\binom{n}{j}[u^{n - 1}]u^{j}(1 + u)^{j} \\
+        &= \frac{1}{n}\sum_{j}\binom{n}{j}[u^{n - j - 1}]\sum_{l}\binom{j}{l}u^{l} \\
+        &= \frac{1}{n}\sum_{j}\binom{n}{j}\binom{j}{n - j - 1} \\
+        &= \frac{1}{n}\sum_{k}\binom{n}{n - k}\binom{n - k}{n - (n - k) - 1} \\
+        &= \frac{1}{n}\sum_{k}\binom{n}{k}\binom{n - k}{k - 1}
+    \end{aligned}
+\end{equation*}
+
+% Note I.42.
+\vspace{\baselineskip}
+\noindent
 $\rhd$ \textbf{I.42.} \textit{Faster determination of Schröder numbers}.
 \begin{equation*}
     S(z) = \frac{1}{4}(1 + z - \sqrt{1 - 6z + z^{2}})
