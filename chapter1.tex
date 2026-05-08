@@ -636,6 +636,102 @@ To find the number of trees with $n$ nodes, $M_{n} = [z^{n}]M(z)$, we apply the 
     \end{aligned}
 \end{equation*}
 
+% Note I.41.
+\vspace{\baselineskip}
+\noindent
+$\rhd$ \textbf{I.41.} \textit{The Lagrangean form of Schröder’s GF}.
+We want to prove the last equality
+\begin{equation*}
+    \frac{(-1)^{n - 1}}{n}\sum_{k}(-2)^{k}\binom{n}{k + 1}\binom{n + k - 1}{k} =
+        \frac{1}{n}\sum_{k = 0}^{n - 2}\binom{2n - k - 2}{n - 1}\binom{n - 2}{k}
+\end{equation*}
+Multiplying by nn, the statement is equivalent to
+\begin{equation*}
+    (-1)^{n - 1}\sum_{k = 0}^{n - 1}(-2)^{k}\binom{n}{k + 1}\binom{n + k - 1}{k} = \sum_{k = 0}^{n - 2}\binom{2n - k - 2}{n - 1}\binom{n - 2}{k}
+\end{equation*}
+
+\noindent
+\textbf{Step 1. Re-index the left sum.}
+Using $\binom{n}{k + 1} = \binom{n}{n - 1 - k}$ and $\binom{n + k - 1}{k} = \binom{n + k - 1}{n - 1}$, set $j = n - 1 - k$:
+\begin{equation*}
+    L = (-1)^{n - 1}\sum_{j = 0}^{n - 1}(-2)^{n - 1 - j}\binom{n}{j}\binom{2n - 2 - j}{n - 1} =
+        2^{n - 1}\sum_{j = 0}^{n - 1}\left(-\frac{1}{2}\right)^{j}\binom{n}{j}\binom{2n - 2 - j}{n - 1}
+\end{equation*}
+
+\noindent
+\textbf{Step 2. Express as a coefficient extraction.}
+Since $\binom{2n - 2 - j}{n - 1} = [z^{n - 1}](1 + z)^{2n - 2 - j}$, we have
+\begin{equation*}
+    \begin{aligned}
+        L
+        &= 2^{n - 1}\sum_{j = 0}^{n - 1}\left(-\frac{1}{2}\right)^{j}\binom{n}{j}\binom{2n - 2 - j}{n - 1} \\
+        &= 2^{n - 1}\sum_{j = 0}^{n - 1}\left(-\frac{1}{2}\right)^{j}\binom{n}{j}[z^{n - 1}](1 + z)^{2n - 2 - j} \\
+        &= 2^{n - 1}[z^{n - 1}]\sum_{j = 0}^{n - 1}\left(-\frac{1}{2}\right)^{j}\binom{n}{j}(1 + z)^{2n - 2 - j} \\
+        &= 2^{n - 1}[z^{n - 1}](1 + z)^{2n - 2}\sum_{j = 0}^{n - 1}\binom{n}{j}\left(-\frac{1}{2(1 + z)}\right)^{j} \\
+        &= 2^{n - 1}[z^{n - 1}](1 + z)^{2n - 2}\left(1 - \frac{1}{2(1 + z)}\right)^{n} \\
+        &= 2^{n - 1}[z^{n - 1}](1 + z)^{2n - 2}\frac{(1 + 2z)^{n}}{2^{n}(1 + z)^{n}} \\
+        &= \frac{1}{2}[z^{n - 1}](1 + z)^{n - 2}(1 + 2z)^{n}
+    \end{aligned}
+\end{equation*}
+
+\noindent
+\textbf{Step 3. Reverse the polynomial.}
+Let $P(z) = (1 + z)^{n - 2}(1 + 2z)^{n}$, of degree $2n - 2$.
+The coefficient of $z^{n - 1}$ in $P(z)$ equals the coefficient of $z^{n - 1}$ in its reversed polynomial $z^{2n - 2}P(1/z)$:
+\begin{equation*}
+    z^{2n - 2}P(1/z) = z^{2n - 2}(1 + \frac{1}{z})^{n - 2}(1 + \frac{2}{z})^{n} = (z + 1)^{n - 2}(z + 2)^{n}
+\end{equation*}
+Hence
+\begin{equation*}
+    L = \frac{1}{2}[z^{n - 1}](1 + z)^{n - 2}(2 + z)^{n}
+\end{equation*}
+
+\noindent
+\textbf{Step 4. Express the right sum as a coefficient.}
+Similarly, $\binom{2n - k - 2}{n - 1} = [z^{n - 1}](1 + z)^{2n - k - 2}$, so
+\begin{equation*}
+    \begin{aligned}
+        R
+        &= \sum_{k = 0}^{n - 2}\binom{2n - k - 2}{n - 1}\binom{n - 2}{k} \\
+        &= \sum_{k = 0}^{n - 2}[z^{n - 1}](1 + z)^{2n - k - 2}\binom{n - 2}{k} \\
+        &= [z^{n - 1}]\sum_{k = 0}^{n - 2}(1 + z)^{2n - k - 2}\binom{n - 2}{k} \\
+        &= [z^{n - 1}](1 + z)^{2n - 2}\sum_{k = 0}^{n - 2}\binom{n - 2}{k}(1 + z)^{-k} \\
+        &= [z^{n - 1}](1 + z)^{2n - 2}\left(1 + \frac{1}{1 + z}\right)^{n - 2} \\
+        &= [z^{n - 1}](1 + z)^{2n - 2}\frac{(2 + z)^{n - 2}}{(1 + z)^{n - 2}} \\
+        &= [z^{n - 1}](1 + z)^{n}(2 + z)^{n - 2}
+    \end{aligned}
+\end{equation*}
+
+\noindent
+\textbf{Step 5. Show equality of the two coefficient expressions.}
+We need to show $\frac{1}{2}(1 + z)^{n - 2}(2 + z)^{n}$ and $(1 + z)^{n}(2 + z)^{n - 2}$
+have the same coefficient of $z^{n - 1}$. Their difference is
+\begin{equation*}
+    \begin{aligned}
+        \Delta
+        &= \frac{1}{2}[z^{n - 1}](1 + z)^{n - 2}(2 + z)^{n} - [z^{n - 1}](1 + z)^{n}(2 + z)^{n - 2} \\
+        &= \frac{1}{2}[z^{n - 1}](1 + z)^{n - 2}(2 + z)^{n - 2}[(2 + z)^{2} - 2(1 + z)^{2}] \\
+        &= \frac{1}{2}[z^{n - 1}](1 + z)^{n - 2}(2 + z)^{n - 2}(2 - z^{2}) \\
+        &= \frac{1}{2}[z^{n - 1}]f(z)
+    \end{aligned}
+\end{equation*}
+Set $f(z) = (1 + z)^{n - 2}(2 + z)^{n - 2}(2 - z^{2})$. We must prove $[z^{n - 1}]f(z) = 0$.
+
+\noindent
+\textbf{Step 6. A symmetry argument.}
+$f(z)$ is a polynomial of degree $2n - 2$. Compute $f(2 / z)$:
+\begin{equation*}
+    \begin{aligned}
+        f(2/z)
+        &= (1 + 2/z)^{n - 2}(2 + 2/z)^{n - 2}(2 - (2/z)^{2}) \\
+        &= \left(\frac{2 + z}{z}\right)^{n - 2}\left(\frac{2(1 + z)}{z}\right)^{n - 2}\left(2 - \frac{4}{z^{2}}\right) \\
+        &= \frac{(2 + z)^{n - 2}(1 + z)^{n - 2}2^{n - 2}}{z^{2n - 4}} \cdot \frac{-2(2 - z^{2})}{z^{2}} \\
+        &= -2^{n - 1}\frac{f(z)}{z^{2n - 2}}
+    \end{aligned}
+\end{equation*}
+Hence $z^{2n - 2}f(2/z) = -2^{n - 1}f(z)$. Writing $f(z) = \sum_{k = 0}^{2n - 2}a_{k}z^{k}$, the coefficient of $z^{n - 1}$ corresponds to
+$k = n - 1$. Equating coefficients gives $a_{n - 1}2^{n - 1} = -2^{n - 1}a_{n - 1} \implies a_{n - 1} = 0$.
+
 % Note I.42.
 \vspace{\baselineskip}
 \noindent
