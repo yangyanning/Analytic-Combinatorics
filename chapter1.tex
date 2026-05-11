@@ -180,6 +180,7 @@ Plugging the coefficients back into the sum, we obtain:
 \end{equation*}
 This completes the proof.
 
+
 % Note I.17
 \vspace{\baselineskip}
 \noindent
@@ -338,6 +339,7 @@ The OGF for the zigzag constraint is the OGF for the two independent pairs minus
     \end{aligned}
 \end{equation*}
 
+
 % Note I.18
 \vspace{\baselineskip}
 \noindent
@@ -378,6 +380,7 @@ As an example:
         &= 3 + 3 + 3 + 3 + 3 + 1 + 1
     \end{aligned}
 \end{equation*}
+
 
 % Note I.19
 \vspace{\baselineskip}
@@ -439,6 +442,7 @@ A Python implementation is provided below:
     return P
 \end{lstlisting}
 
+
 % Note I.20
 \vspace{\baselineskip}
 \noindent
@@ -463,6 +467,7 @@ The partial sums are:
     \item $\varphi_{7} = .89001 00999 98998 99999 99999$
     \item $\varphi_{8} = .89001 00999 98999 00000 00999$
 \end{itemize}
+
 
 % Note I.21
 \vspace{\baselineskip}
@@ -526,6 +531,7 @@ Rearranging for $L$, we obtain the lower bound:
     L \geq \frac{n}{\log_{2}\varphi} + O(1) \approx 1.440420n + O(1)
 \end{equation*}
 
+
 % Note I.27
 \vspace{\baselineskip}
 \noindent
@@ -557,6 +563,7 @@ Each transition follows the rule $q_{r} \circ b = q_{(2r + b) \pmod{7}}$:
     \end{tabularx}
 \end{table}
 
+
 % Note I.29
 \vspace{\baselineskip}
 \noindent
@@ -574,6 +581,7 @@ In vector notation, with $\mathbf{M}(z)$ as a column vector and $\mathbf{e}_{0}$
 \begin{equation*}
     \mathbf{M}(z)^{T} = \mathbf{e}_{0}^{T} + z\mathbf{M}(z)^{T}T
 \end{equation*}
+
 
 % Note I.33.
 \vspace{\baselineskip}
@@ -598,6 +606,7 @@ one word of length 2 and one word of length 3. Let $\hat{\mathcal{L}} = \{aa, bb
             \item No Match: Probability $5/8$ of length 0 $\rightarrow$ Contribution: $0 \times 0.625 = 0$.
         \end{itemize}
 \end{enumerate}
+
 
 % Note I.34.
 \vspace{\baselineskip}
@@ -635,6 +644,7 @@ To find the number of trees with $n$ nodes, $M_{n} = [z^{n}]M(z)$, we apply the 
         &= \frac{1}{n}\sum_{k}\binom{n}{k}\binom{n - k}{k - 1}
     \end{aligned}
 \end{equation*}
+
 
 % Note I.41.
 \vspace{\baselineskip}
@@ -733,6 +743,7 @@ $f(z)$ is a polynomial of degree $2n - 2$. Compute $f(2 / z)$:
 Hence $z^{2n - 2}f(2/z) = -2^{n - 1}f(z)$. Writing $f(z) = \sum_{k = 0}^{2n - 2}a_{k}z^{k}$, the coefficient of $z^{n - 1}$ corresponds to
 $k = n - 1$. Equating coefficients gives $a_{n - 1}2^{n - 1} = -2^{n - 1}a_{n - 1} \implies a_{n - 1} = 0$.
 
+
 % Note I.42.
 \vspace{\baselineskip}
 \noindent
@@ -763,6 +774,7 @@ and $r(z) = 1 - 6z + z^{2}$ into the equation and simplifying yields
     (z^{2} - 6z + 1)S'(z) + (3 - z)S(z) = 1 - z
 \end{equation*}
 from which the recurrence follows.
+
 
 % Note I.43.
 \vspace{\baselineskip}
@@ -831,6 +843,47 @@ representing the root of the tree.
     \item For $H_{4}$, the summation runs for $l = 1, 2, 3$. The divisors of $3$ are $1$ and $3$.
         $a_{3} = \sum_{d|3}d H_{d} = 1 \cdot H_{1} + 3 \cdot H_{3} = 7 \implies
         H_{4} = \frac{1}{4 - 1}(H_{4 - 1} \cdot a_{1} + H_{4 - 2} \cdot a_{2} + H_{4 - 3} \cdot a_{3}) = 4$.
+\end{itemize}
+
+
+% Note I.50.
+\vspace{\baselineskip}
+\noindent
+$\rhd$ \textbf{I.50.} \textit{Excursions, bridges, and meanders}.
+A meander of final altitude $k$ consists of k "up-steps" ($\mathcal{Z}$) that lead to new "floors",
+with Dyck paths (excursions $\mathcal{D}$) occurring between them and at the very end.
+\begin{equation*}
+    \mathcal{M}
+        = \mathcal{D}
+            + (\mathcal{D} \times \mathcal{Z} \times \mathcal{D})
+            + (\mathcal{D} \times \mathcal{Z} \times \mathcal{D} \times \mathcal{Z} \times \mathcal{D})
+            + \cdots
+        = \mathcal{D} \times \sum_{k = 0}^{\infty}(\mathcal{Z} \times \mathcal{D})^{k}
+\end{equation*}
+A bridge is a sequence of primitive excursions. A primitive excursion starts at 0, takes one step (up or down),
+wanders without returning to 0, and then takes one step back to 0.
+\begin{itemize}
+    \item \textbf{Going Above:} Starts with +1, ends with -1, with a Dyck path in between: $\mathcal{Z} \times \mathcal{D} \times \mathcal{Z}$
+    \item \textbf{Going Down:} Starts with -1, ends with 1, with mirrored a Dyck path in between: $\mathcal{Z} \times \mathcal{D} \times \mathcal{Z}$
+\end{itemize}
+\begin{equation*}
+    \mathcal{B}
+        = \mathrm{S}\textsc{eq}(\mathcal{Z} \times \mathcal{D} \times \mathcal{Z} + \mathcal{Z} \times \mathcal{D} \times \mathcal{Z})
+        = \mathrm{S}\textsc{eq}(2 \times \mathcal{Z}^{2} \times \mathcal{D})
+\end{equation*}
+We want to show $M_{n} = \binom{n}{\lfloor n/2 \rfloor}$. A meander represents a path that stays in the first quadrant.
+Let $N(n, k)$ be the number of paths of length $n$ ending at altitude $k$. By the reflection principle, the number of paths
+that hit $-1$ and end at $k \geq 0$ is exactly the same as the number of unrestricted paths
+that end at $-k - 2 < -1$. Thus, Meanders end at $k$ = (Paths that end at $k$) $-$ (Paths that hit $-1$ and end at $k$)
+= (Paths that end at $k$) $-$ (Paths end at $-k - 2$). Summing over all possible final altitudes $k \geq 0$, we get a telescoping sum:
+\begin{equation*}
+    M_{n} = \sum_{k \geq 0}[N(n, k) - N(n, k + 2)]
+\end{equation*}
+\begin{itemize}
+    \item $n$ is even ($n = 2m$):
+        $M_{n} = N(n, 0) = N(2m, 0) = \binom{2m}{\frac{2m + 0}{2}} = \binom{2m}{m} = \binom{n}{\lfloor n/2 \rfloor}$
+    \item $n$ is odd ($n = 2m + 1$):
+        $M_{n} = N(n, 1) = N(2m + 1, 1) = \binom{2m + 1}{\frac{2m + 1 + 1}{2}} = \binom{2m + 1}{m} = \binom{n}{\lfloor n/2 \rfloor}$
 \end{itemize}
 
 
