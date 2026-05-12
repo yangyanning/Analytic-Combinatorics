@@ -886,6 +886,73 @@ that end at $-k - 2 < -1$. Thus, Meanders end at $k$ = (Paths that end at $k$) $
         $M_{n} = N(n, 1) = N(2m + 1, 1) = \binom{2m + 1}{\frac{2m + 1 + 1}{2}} = \binom{2m + 1}{m} = \binom{n}{\lfloor n/2 \rfloor}$
 \end{itemize}
 
+% Example I.17.
+\vspace{\baselineskip}
+\noindent
+$\rhd$ \textbf{I.17.} \textit{The complexity of boolean functions}.
+\begin{equation*}
+    D_{n} = O(16^{n}m^{n}n^{-3/2}) \implies \sum_{j = 0}^{v}D_{j} = O(16^{v}m^{v}v^{-3/2})
+\end{equation*}
+We prove the following general statement. \\
+Let $c > 0$ and $\alpha > 0$. Define $a_{n} = c^{n}n^{-\alpha}$ for $n \geq 1$ and let $a_{0} > 0$ be a constant.
+If $D_{n} = O(a_{n})$, then $\sum_{j = 0}^{v}D_{j} = O(c^{v}v^{-\alpha})$ as $v \rightarrow \infty$. \\
+Proof. Because $D_{n} = O(a_{n})$, there exists $M > 0$ and $N \geq 1$ such that $D_{n} \leq Mc^{n}n^{-\alpha}$ for all $n \geq N$.
+For $v \geq N$ we split
+\begin{equation*}
+    \sum_{j = 0}^{v}D_{j} \leq \underbrace{\sum_{j = 0}^{N - 1}D_{j}}_{C_{0}} + M\sum_{j = N}^{v}c^{j}j^{-\alpha}
+\end{equation*}
+Focus on $S(v) = \sum_{j = N}^{v}c^{j}j^{-\alpha}$. Split at $j = \lfloor v/2 \rfloor$:
+\begin{equation*}
+    S(v) = \underbrace{\sum_{j = N}^{\lfloor v/2 \rfloor}c^{j}j^{-\alpha}}_{\text{early}}
+        + \underbrace{\sum_{j = \lfloor v/2 \rfloor + 1}^{v}c^{j}j^{-\alpha}}_{\text{tail}}
+\end{equation*}
+\textbf{Early terms.} For $j \leq v/2$ we have $c^{j} \leq c^{v/2}$. Also since $\alpha > 0$, the factor $j^{-\alpha}$ is decreasing;
+its maximum is at $j = N$, so $j^{-\alpha} \leq N^{-\alpha}$. Thus
+\begin{equation*}
+    \sum_{j = N}^{\lfloor v/2 \rfloor}c^{j}j^{-\alpha}
+        \leq N^{-\alpha}\sum_{j = N}^{\lfloor v/2 \rfloor}c^{j}
+        \leq N^{-\alpha}\frac{c^{v/2 + 1}}{c - 1} = O(c^{v/2})
+\end{equation*}
+Because $c > 1$, $c^{v/2}$ is exponentially smaller than $c^{v}$, so this part is $o(c^{v}v^{-\alpha})$. \\
+\textbf{Tail terms.} For $j \geq v/2$, $j^{-\alpha} \leq (v/2)^{-\alpha} = 2^{\alpha}v^{-\alpha}$. Consequently
+\begin{equation*}
+    \sum_{j = \lfloor v/2 \rfloor + 1}^{v}c^{j}j^{-\alpha}
+        \leq 2^{\alpha}v^{-\alpha}\sum_{j = \lfloor v/2 \rfloor + 1}^{v}c^{j}
+        \leq 2^{\alpha}v^{-\alpha}\frac{c^{v + 1}}{c - 1} = O(c^{v}v^{-\alpha})
+\end{equation*}
+Putting it together, $S(v) = o(c^{v}v^{-\alpha}) + O(c^{v}v^{-\alpha}) = O(c^{v}v^{-\alpha})$. Hence
+\begin{equation*}
+    \sum_{j = 0}^{v}D_{j} = C_{0} + MS(v) = O(1) + O(c^{v}v^{-\alpha}) = O(c^{v}v^{-\alpha})
+\end{equation*}
+
+\noindent
+Now we show
+\begin{equation*}
+    \sum_{j = 0}^{v}D_{j} = O(16^{v}m^{v}v^{-3/2}) = o(\lVert \Omega \rVert)
+\end{equation*}
+by taking for $v$ the value
+\begin{equation*}
+    v = \frac{2^{m}}{4 + \log_2{m}}
+\end{equation*}
+Note that
+\begin{equation*}
+    v\log_2{16m} = \frac{2^{m}}{4 + \log_2{m}}(4 + \log_2{m}) = 2^{m} \implies 16^{v}m^{v} = 2^{2^{m}}
+\end{equation*}
+Hence the whole bound becomes
+\begin{equation*}
+    \sum_{j = 0}^{v}D_{j} = O(2^{2^{m}}v^{-3/2})
+\end{equation*}
+Dividing by $\lVert \Omega \rVert$,
+\begin{equation*}
+    \frac{\sum_{j = 0}^{v}D_{j}}{\lVert \Omega \rVert} = O(v^{-3/2})
+\end{equation*}
+As $m \rightarrow \infty$, $v \rightarrow \infty$, so $v^{-3/2} \rightarrow 0$; therefore
+\begin{equation*}
+    \frac{\sum_{j = 0}^{v}D_{j}}{\lVert \Omega \rVert} \rightarrow 0
+\end{equation*}
+which is exactly $\sum_{j = 0}^{v}D_{j} = o(\lVert \Omega \rVert)$.
+
+
 
 
 \section{Additional constructions}
