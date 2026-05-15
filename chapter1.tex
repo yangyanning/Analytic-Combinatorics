@@ -954,9 +954,36 @@ which is exactly $\sum_{j = 0}^{v}D_{j} = o(\lVert \Omega \rVert)$.
 
 
 
-
 \section{Additional constructions}
-
-
+% Note I.62.
+\vspace{\baselineskip}
+\noindent
+$\rhd$ \textbf{I.62.} \textit{Sequences without repeated components}.
+A sequence without repeated components is essentially an ordered arrangement of a subset of distinct elements from a base class $\mathcal{B}$.
+To derive its generating function, we first consider the construction of a set of distinct elements (the power set), then account for the ordering.
+The generating function for the power set construction $\mathrm{PS}\textsc{et}(\mathcal{B})$ is given by:
+\begin{equation*}
+    A(z, u)
+        = \prod_{\beta \in \mathcal{B}}\left(1 + uz^{|\beta|}\right)
+        = \exp\left(\sum_{j \geq 1}(-1)^{j - 1}\frac{u^{j}}{j}B(z^{j})\right)
+\end{equation*}
+Here, the coefficient $[u^{k}]A(z, u) = f^{\langle k \rangle}(z)$ represents the generating function for sets containing exactly $k$ distinct components.
+While the power set construction satisfies the "no-repeat" constraint, it treats the collection as unordered.
+To transform these sets into sequences, we multiply the generating function for sets of size $k$ by $k!$ to account for all possible permutations.
+Using the Eulerian integral representation $k! = \int_{0}^{\infty}e^{-u}u^{k}du$, we can express the generating function for distinct sequences,
+$\mathcal{S}_{\text{distinct}}(z)$, as follows:
+\begin{equation*}
+    \begin{aligned}
+        \mathcal{S}_{\text{distinct}}(z)
+            &= \sum_{k \geq 0}(\text{Sets of size k}) \cdot k! \\
+            &= \sum_{k \geq 0}f^{\langle k \rangle}(z) \cdot k! \\
+            &= \sum_{k \geq 0}f^{\langle k \rangle}(z) \cdot \int_{0}^{\infty}e^{-u}u^{k}du \\
+            &= \sum_{k \geq 0}\int_{0}^{\infty}f^{\langle k \rangle}(z)e^{-u}u^{k}du \\
+            &= \int_{0}^{\infty}\sum_{k \geq 0}f^{\langle k \rangle}(z)e^{-u}u^{k}du \\
+            &= \int_{0}^{\infty}\sum_{k \geq 0}f^{\langle k \rangle}(z)u^{k} \cdot e^{-u}du \\
+            &= \int_{0}^{\infty}A(z, u) \cdot e^{-u}du \\
+            &= \int_{0}^{\infty}\exp\left(\sum_{j \geq 1}(-1)^{j - 1}\frac{u^{j}}{j}B(z^{j})\right)e^{-u}du
+    \end{aligned}
+\end{equation*}
 
 \section{Perspective}
