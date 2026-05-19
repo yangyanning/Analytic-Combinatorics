@@ -13,6 +13,73 @@
 \section{Alignments, permutations, and related structures}
 
 \section{Labelled trees, mappings, and graphs}
+% Note II.19.
+\vspace{\baselineskip}
+\noindent
+$\rhd$ \textbf{II.19.} \textit{Labelled hierarchies}.
+\begin{equation*}
+    L = z + e^{L} - 1 - L \implies L(z) = T\left(\frac{1}{2}e^{z/2 - 1/2}\right) + \frac{z}{2} - \frac{1}{2}
+\end{equation*}
+
+\noindent
+\textbf{Step 1. Re-arranging the target equation.}
+We start with the given equation, moving all terms involving $L$ to the left side and constant/independent terms to the right:
+\begin{equation*}
+    2L + 1 - e^{L} = z
+\end{equation*}
+This form does not immediately match $T(z) = ze^{T(z)}$. To make them compatible, we should attempt to isolate an exponential term
+that mirrors the functional form of the tree function.
+
+\noindent
+\textbf{Step 2. Utilizing the Lambert W identity.}
+The Cayley tree function $T(z)$ is related to the \textbf{Lambert W function} (specifically $W(-z)$). The identity $T(z) = ze^{T(z)}$ can be rewritten as:
+\begin{equation*}
+    -T(z)e^{-T(z)} = -z
+\end{equation*}
+Which implies $T(z) = -W(-z)$.
+
+\noindent
+\textbf{Step 3. Substitution and Solving.}
+Let's rearrange the original equation to isolate the exponential:
+\begin{equation*}
+    e^{L} = 2L - z + 1
+\end{equation*}
+For equations where a variable appears both linearly and in the exponent, the solution is typically logarithmic or involves the $W$ function. 
+Let's rewrite the equation for $L$ in the form $f(L)e^{f(L)} = \text{something}$:
+\begin{equation*}
+    1 = (2L - z + 1)e^{-L}
+\end{equation*}
+Now, we want the term inside the parentheses to match the exponent. Let $u$ be the linear part related to $L$.
+If we aim for $u = \frac{z - 1}{2} - L$, then:
+\begin{equation*}
+    2u = z - 1 - 2L
+\end{equation*}
+Substituting this back into our equation:
+\begin{equation*}
+    1 = (-2u)e^{-L}
+\end{equation*}
+Since $u = \frac{z - 1}{2} - L$, we have $-L = u - \frac{z - 1}{2}$. Substituting this into the exponent:
+\begin{equation*}
+    1 = -2u \cdot e^{u - \frac{z - 1}{2}} = -2u \cdot e^{u} \cdot e^{\frac{1 - z}{2}}
+\end{equation*} 
+Now, isolate $ue^{u}$:
+\begin{equation*}
+    ue^{u} = -\frac{1}{2}e^{\frac{z - 1}{2}}
+\end{equation*}
+Since $ue^{u} = v$ implies $u = W(v)$, and we know $W(v) = -T(-v)$:
+\begin{equation*}
+    u = W\left(-\frac{1}{2}e^{\frac{z - 1}{2}}\right) = -T\left(\frac{1}{2} e^{\frac{z - 1}{2}}\right)
+\end{equation*}
+Substituting $u$ back in:
+\begin{equation*}
+    \frac{z - 1}{2} - L = -T\left(\frac{1}{2} e^{\frac{z - 1}{2}}\right)
+\end{equation*}
+Solving for $L$:
+\begin{equation*}
+    L = T\left(\frac{1}{2} e^{\frac{z - 1}{2}}\right) + \frac{z - 1}{2}
+\end{equation*}
+
+
 
 \section{Additional constructions}
 
