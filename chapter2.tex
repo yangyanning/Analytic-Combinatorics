@@ -83,7 +83,7 @@ Solving for $L$:
 % II.5.2.
 \vspace{\baselineskip}
 \noindent
-\textbf{II.5.2.} \textbf{Mappings and functional graphs}. Let $\mathcal{T}$ be the class of all Cayley trees. Then
+\textbf{II.5.2.} \textit{\textbf{Mappings and associated graphs}}. Let $\mathcal{T}$ be the class of all Cayley trees. Then
 \begin{equation*}
     F = (1 - T)^{-1} \implies F_{n} = n^{n}
 \end{equation*}
@@ -100,7 +100,7 @@ Substituting $H(w) = (1 - w)^{-1}$ and $\phi(w) = e^{w}$ yields
     \begin{aligned}
         F_{n}
         &= n![z^{n}]F(z) \\
-        &= n!\frac{1}{n}[w^{n - 1}]\left(\frac{1}{1 - w}\right)'(e{w})^{n} \\
+        &= n!\frac{1}{n}[w^{n - 1}]\left(\frac{1}{1 - w}\right)'(e^{w})^{n} \\
         &= (n - 1)![w^{n - 1}]\frac{e^{nw}}{(1- w)^{2}} \\
         &= (n - 1)![w^{n - 1}]\sum_{k = 0}^{\infty}(k + 1)w^{k} \cdot \sum_{j = 0}^{\infty}\frac{n^{j}}{j!}w^{j} \\
         &= (n - 1)!\sum_{j = 0}^{n - 1}((n - 1 - j) + 1)\frac{n^{j}}{j!} \\
@@ -138,6 +138,32 @@ Consequently,
         &= \sum_{j = 1}^{\infty}\frac{(n - 1)!}{(n - j)!}n^{n - j} \\
         &= n^{n - 1}\sum_{j = 1}^{\infty}\frac{(n - 1)!}{(n - j)!n^{j - 1}} \\
         &= n^{n - 1}\left(1 + \frac{n - 1}{n} + \frac{(n - 1)(n - 2)}{n^{2}} + \cdots\right)
+    \end{aligned}
+\end{equation*}
+
+\vspace{\baselineskip}
+\noindent
+\textbf{II.5.2.} \textit{\textbf{Constrained mappings}}. The class of all maps without fixed points has EGF
+\begin{equation*}
+    \frac{e^{-T(z)}}{1 - T(z)}
+\end{equation*}
+We aim to show that
+\begin{equation*}
+    n![z^{n}]\frac{e^{-T(z)}}{1 - T(z)} = (n - 1)^{n}
+\end{equation*}
+Substituting $H(w) = \frac{e^{-w}}{1 - w}$ and $\phi(w) = e^{w}$ into Lagrange inversion yields
+\begin{equation*}
+    \begin{aligned}
+        n![z^{n}]\frac{e^{-T(z)}}{1 - T(z)}
+        &= n!\frac{1}{n}[w^{n - 1}]\left(\frac{e^{-w}}{1 - w}\right)'(e^{w})^{n} \\
+        &= (n - 1)![w^{n - 1}]\frac{we^{(n - 1)w}}{(1 - w)^{2}} \\
+        &= (n - 1)![w^{n - 2}]\frac{e^{(n - 1)w}}{(1 - w)^{2}} \\
+        &= (n - 1)![w^{n - 2}]\sum_{k = 0}^{\infty}(k + 1)w^{k} \cdot \sum_{j = 0}^{\infty}\frac{(n - 1)^{j}}{j!}w^{j} \\
+        &= (n - 1)!\sum_{j = 0}^{n - 2}((n - 2 - j) + 1)\frac{(n - 1)^{j}}{j!} \\
+        &= (n - 1)!\sum_{j = 0}^{m - 1}(m - j)\frac{m^{j}}{j!} \\
+        &= (n - 1)!\frac{m^{m}}{(m - 1)!} \\
+        &= (n - 1)!\frac{(n - 1)^{n - 1}}{(n - 2)!} \\
+        &= (n - 1)^{n}
     \end{aligned}
 \end{equation*}
 
