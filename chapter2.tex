@@ -80,6 +80,67 @@ Solving for $L$:
 \end{equation*}
 
 
+% II.5.2.
+\vspace{\baselineskip}
+\noindent
+\textbf{II.5.2.} \textbf{Mappings and functional graphs}. Let $\mathcal{T}$ be the class of all Cayley trees. Then
+\begin{equation*}
+    F = (1 - T)^{-1} \implies F_{n} = n^{n}
+\end{equation*}
+This result follows from Lagrange inversion. The standard formulation states that
+\begin{equation*}
+    z = T / \phi(T) \implies [z^{n}]T(z) = \frac{1}{n}[w^{n - 1}]\phi(w)^{n}
+\end{equation*}
+More generally,
+\begin{equation*}
+    [z^{n}]H(T(z)) = \frac{1}{n}[w^{n - 1}]H'(w)\phi(w)^{n}
+\end{equation*}
+Substituting $H(w) = (1 - w)^{-1}$ and $\phi(w) = e^{w}$ yields
+\begin{equation*}
+    \begin{aligned}
+        F_{n}
+        &= n![z^{n}]F(z) \\
+        &= n!\frac{1}{n}[w^{n - 1}]\left(\frac{1}{1 - w}\right)'(e{w})^{n} \\
+        &= (n - 1)![w^{n - 1}]\frac{e^{nw}}{(1- w)^{2}} \\
+        &= (n - 1)![w^{n - 1}]\sum_{k = 0}^{\infty}(k + 1)w^{k} \cdot \sum_{j = 0}^{\infty}\frac{n^{j}}{j!}w^{j} \\
+        &= (n - 1)!\sum_{j = 0}^{n - 1}((n - 1 - j) + 1)\frac{n^{j}}{j!} \\
+        &= (n - 1)!\sum_{j = 0}^{n - 1}(n - j)\frac{n^{j}}{j!}  \\
+        &= (n - 1)!\left(\sum_{j = 0}^{n - 1}n\frac{n^{j}}{j!} - \sum_{j = 0}^{n - 1}j\frac{n^{j}}{j!}\right) \\
+        &= (n - 1)!\left(\sum_{j = 0}^{n - 1}\frac{n^{j + 1}}{j!} - \sum_{j = 1}^{n - 1}\frac{n^{j}}{(j - 1)!}\right) \\
+        &= (n - 1)!\left(\sum_{j = 0}^{n - 1}\frac{n^{j + 1}}{j!} - \sum_{j = 0}^{n - 2}\frac{n^{j + 1}}{j!}\right) \\
+        &= (n - 1)!\frac{n^{n}}{(n - 1)!} \\
+        &= n^{n}
+    \end{aligned}
+\end{equation*}
+
+\vspace{\baselineskip}
+\noindent
+Now consider $K = \log(1 - T)^{-1}$. Then
+\begin{equation*}
+     K_{n} = n^{n - 1}Q(n)
+\end{equation*}
+where
+\begin{equation*}
+    Q_{n} = 1 + \frac{n - 1}{n} + \frac{(n - 1)(n - 2)}{n^{2}} + \cdots
+\end{equation*}
+From Note II.18 we have
+\begin{equation*}
+    n![z^{n}]\frac{T(z)^{k}}{k!} = \binom{n - 1}{k - 1}n^{n - k} \implies
+        [z^{n}]\frac{T(z)^{k}}{k} = (k - 1)!\binom{n - 1}{k - 1}n^{n - k} = \frac{(n - 1)!}{(n - k)!}n^{n - k}
+\end{equation*}
+Consequently,
+\begin{equation*}
+    \begin{aligned}
+        K_{n}
+        &= n![z^{n}]K(z) \\
+        &= n![z^{n}]\sum_{j = 1}^{\infty}\frac{T(z)^{j}}{j} \\
+        &= \sum_{j = 1}^{\infty}n![z^{n}]\frac{T(z)^{j}}{j} \\
+        &= \sum_{j = 1}^{\infty}\frac{(n - 1)!}{(n - j)!}n^{n - j} \\
+        &= n^{n - 1}\sum_{j = 1}^{\infty}\frac{(n - 1)!}{(n - j)!n^{j - 1}} \\
+        &= n^{n - 1}\left(1 + \frac{n - 1}{n} + \frac{(n - 1)(n - 2)}{n^{2}} + \cdots\right)
+    \end{aligned}
+\end{equation*}
+
 
 \section{Additional constructions}
 
