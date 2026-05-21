@@ -168,6 +168,41 @@ Substituting $H(w) = \frac{e^{-w}}{1 - w}$ and $\phi(w) = e^{w}$ into Lagrange i
 \end{equation*}
 
 
+% II.5.3.
+\vspace{\baselineskip}
+\noindent
+\textbf{II.5.3.} \textit{\textbf{Unrooted trees and acyclic graphs}}. To understand why $U(z) = \int_{0}^{z}T(w)\frac{dw}{w}$,
+we begin with the exponential generating functions:
+\begin{equation*}
+    T(z) = \sum_{n \geq 0}T_{n}\frac{z^{n}}{n!}, \quad
+    U(z) = \sum_{n \geq 0}U_{n}\frac{z^{n}}{n!}
+\end{equation*}
+Differentiate $U(z)$ and then multiply by $z$ (noting that $T_{0} = 0$) gives:
+\begin{equation*}
+    z\frac{d}{dz}U(z) = z\frac{d}{dz}\sum_{n \geq 0}U_{n}\frac{z^{n}}{n!} = z\sum_{n \geq 1}nU_{n}\frac{z^{n - 1}}{n!}
+        = \sum_{n \geq 1}T_{n}\frac{z^{n}}{n!} = T(z)
+\end{equation*}
+Rearranging yields $\frac{d}{dz}U(z) = \frac{T(z)}{z}$. Integrating both sides with respect to $z$ and using $w$ as a
+dummy variable for the integration from $0$ to $z$, we obtain:
+\begin{equation*}
+    U(z) - U(0) = \int_{0}^{z}\frac{T(w)}{w}dw
+\end{equation*}
+The EGF for rooted trees, $T(z)$, satisfies the functional equation:
+\begin{equation*}
+    T(z) = ze^{T(z)}
+\end{equation*}
+which can be rearranged to $z = Te^{-T}$. Differentiating with respect to $T$ gives
+\begin{equation*}
+    dz = \left(e^{-T} - Te^{-T}\right)dT = e^{-T}(1 - T)dT
+\end{equation*}
+Substituting $z = Te^{-T}$ and $dz$ into the integral $U(z) = \int\frac{T(z)}{z}dz$ yields
+\begin{equation*}
+    U(z) = \int \frac{T}{Te^{-T}} \cdot e^{-T}(1 - T)dT = \int (1 - T)dT = T - \frac{T^{2}}{2} + C
+\end{equation*}
+Since $U(0) = 0$ and $T(0) = 0$, the constant $C = 0$.
+
+
+
 \section{Additional constructions}
 
 \section{Perspective}
