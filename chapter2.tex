@@ -2,8 +2,6 @@
 \chapter{LABELLED STRUCTURES AND EXPONENTIAL GENERATING FUNCTIONS}
 \label{chap:labelled structures and exponential generating functions}
 
-% In this chapter, we refer back to the sum rule in Equation \ref{eq:sum_rule} from Chapter \ref{chap:combinatorial structures and ordinary generating functions}.
-
 \section{Labelled classes}
 
 \section{Admissible labelled constructions}
@@ -218,11 +216,92 @@ Equality $\sum_{i = 1}^{n}n_{i} = 2n$ forces $n_{i} = 2$ for every $i$, i.e. eve
 
 \vspace{\baselineskip}
 \noindent
-Conversely, if every vertex has degree 2, then $n_{i} = 2$ for all $i$, so each line contains exactly two intersection points —  hence no three collinear.
+Conversely, if every vertex has degree 2, then $n_{i} = 2$ for all $i$, so each line contains exactly two intersection points — hence no three collinear.
 
 \vspace{\baselineskip}
 \noindent
 Thus the cloud condition and the 2-regular graph condition are equivalent. 
+
+
+% Note II.23.
+\vspace{\baselineskip}
+\noindent
+$\rhd$ \textbf{II.23.} \textit{Wright’s surgery}.
+
+\vspace{\baselineskip}
+\noindent
+\textbf{The Surgery in Forward Direction: Deconstruction}
+
+\noindent
+We start with a connected graph $G$ of excess $k+1$. Pick an edge of $G$ and an orientation (a direction) for it.
+This gives us a starting vertex $A$ and an ending vertex $B$. Remove this directed edge from the graph.
+Depending on the role that edge played in the connectivity of $G$, one of two mutually exclusive cases occurs:
+\begin{itemize}
+    \item \textbf{Case 1 (Connected)}: The removed edge was part of a cycle. The graph remains connected. Because we lost an edge but kept all vertices, 
+        the excess drops to $k$. The graph now possesses two designated, ordered, pointed vertices: a "source" point at $A$ and a "target" point at $B$.
+    \item \textbf{Case 2 (Disconnected)}: The removed edge was a bridge. The graph splits into two separate connected components, $G_{1}$ and $G_{2}$.
+        If $G_{1}$ takes on an excess of $h$, then $G_{2}$ must take on the remaining excess of $k - h$. Furthermore, $G_{1}$ contains exactly one
+        pointed vertex (where $A$ used to connect), and $G_{2}$ contains exactly one pointed vertex (where $B$ used to connect).
+\end{itemize}
+
+\vspace{\baselineskip}
+\noindent
+\textbf{The Surgery in Backward Direction: Reconstruction}
+
+\noindent
+We want to reverse this process to build all possible directed-edge-pointed graphs of excess $k+1$. We do this by reversing both cases:
+\begin{itemize}
+    \item \textbf{Reversing Case 1}: Take a single connected graph of excess $k$. Pick any two distinct vertices in an ordered fashion, call them $A$ and $B$,
+        and draw a directed edge from $A$ to $B$. If $A$ and $B$ already had an edge between them, adding a new one creates an illegal multi-edge.
+        We must forbid picking pairs of vertices that are already directly connected.
+    \item \textbf{Reversing Case 2}: Take two completely independent connected components — one of excess $h$ and one of excess $k - h$.
+        Pick one vertex in the first component ($A$) and one vertex in the second component ($B$). Draw a directed edge from $A$ to $B$,
+        merging them into a single connected graph of excess $k + 1$.
+\end{itemize}
+
+\noindent
+Now let's align these actions with the differential recurrence:
+\begin{equation*}
+    2\partial_{y}w_{k + 1} = \left(z^{2}\partial_{z}^{2}w_{k} - 2y\partial_{y}w_{k}\right) +
+        \sum_{h = -1}^{k + 1}\left(z\partial_{z}w_{h}\right) \cdot \left(z\partial_{z}w_{k - h}\right)
+\end{equation*}
+
+\noindent
+Left-Hand Side: The Initial Pool
+\begin{itemize}
+    \item $w_{k + 1}$: Represents the universe of connected graphs of excess $k + 1$.
+    \item $\partial_{y}$: Differentiates with respect to the edge-marker $y$. Combinatorially, $\frac{\partial}{\partial y}(y^{E}) = E \cdot y^{E - 1}$,
+        which means "choose one of the $E$ edges and remove it."
+    \item $2$: Accounts for the orientation of the removed edge. Since an unoriented edge has 2 endpoints, choosing a direction means deciding
+        which endpoint is the source ($A$) and which is the target ($B$).
+    \item Together ($2\partial_{y}w_{k + 1}$): Represents a graph of excess $k + 1$ with one structurally deleted, but memory-tracked, directed edge.
+\end{itemize}
+
+\noindent
+Right-Hand Side, Term 1: The Connected Outcome (Case 1)
+\begin{itemize}
+    \item $w_{k}$: The base graph of excess $k$.
+    \item $\partial_{z}^{2}$: Differentiates with respect to the vertex-marker $z$ twice. This selects an ordered pair of distinct vertices ($A$ and $B$).
+    \item $z^{2}$: Multiplies $z^{2}$ back in, ensuring that the total vertex count of the graph remains unchanged after the selection.
+    \item $-2y\partial_{y}w_{k}$: The exclusion rule. $y\partial_{y}w_{k}$ selects an existing edge in the excess-$k$ graph.
+        That existing edge has 2 possible orientations (endpoints ordered as $(A,B)$ or $(B,A)$). We subtract this out to prevent
+        the $z^{2}\partial_{z}^{2}$ operator from choosing an existing edge's endpoints and accidentally creating a double-edge.
+\end{itemize}
+
+\noindent
+Right-Hand Side, Term 2: The Disconnected Outcome (Case 2)
+\begin{itemize}
+    \item $w_{h}$ and $w_{k - h}$: The two separate, independent components. Their generating functions are multiplied together because
+        the components are combinatorially disjoint.
+    \item $z\partial_{z}$: The pointing operator for vertices ($z\frac{\partial}{\partial z}(z^{V}) = V \cdot z^{V}$).
+        \begin{itemize}
+            \item Applied to the first component ($z\partial_{z}w_{h}$), it selects exactly one vertex ($A$) to act as the source bridgehead.
+            \item Applied to the second component ($z\partial_{z}w_{k - h}$), it selects exactly one vertex ($B$) to act as the target bridgehead.
+        \end{itemize}
+    \item $\sum_{h = -1}^{k + 1}$: Sums over all valid ways the total remaining excess $k$ can be distributed between the two components.
+        Because the simplest possible connected graph is a tree (which has an excess of $E - V = -1$), the lowest possible excess a component can hold is $-1$.
+\end{itemize}
+
 
 
 \section{Additional constructions}
