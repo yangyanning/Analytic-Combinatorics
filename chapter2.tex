@@ -202,6 +202,28 @@ Substituting $z = Te^{-T}$ and $dz$ into the integral $U(z) = \int\frac{T(z)}{z}
 Since $U(0) = 0$ and $T(0) = 0$, the constant $C = 0$.
 
 
+% Note II.22.
+\vspace{\baselineskip}
+\noindent
+$\rhd$ \textbf{II.22.} \textit{2–Regular graphs}.
+We establish a bijection between clouds and 2-regular graphs on $n$ labeled vertices. Number the lines $1, 2, ..., n$.
+\begin{itemize}
+    \item Line $i$ in the cloud $\leftrightarrow$ vertex $i$ in the graph.
+    \item Intersection point $\{i,\; j\}$ in the cloud $\leftrightarrow$ edge $i - j$ in the graph.
+\end{itemize}
+Let $n_{i}$ be the number of chosen intersection points on line $i$.
+Since each point lies on two lines, $\sum_{i = 1}^{n}n_{i} = 2n$.
+\textit{If no three points are collinear}, then $n_{i} \leq 2$ for all $i$, so $\sum_{i = 1}^{n}n_{i} \leq 2n$.
+Equality $\sum_{i = 1}^{n}n_{i} = 2n$ forces $n_{i} = 2$ for every $i$, i.e. every vertex has degree 2 in the graph.
+
+\vspace{\baselineskip}
+\noindent
+Conversely, if every vertex has degree 2, then $n_{i} = 2$ for all $i$, so each line contains exactly two intersection points —  hence no three collinear.
+
+\vspace{\baselineskip}
+\noindent
+Thus the cloud condition and the 2-regular graph condition are equivalent. 
+
 
 \section{Additional constructions}
 
