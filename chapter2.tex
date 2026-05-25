@@ -305,5 +305,81 @@ Right-Hand Side, Term 2: The Disconnected Outcome (Case 2)
 
 
 \section{Additional constructions}
+% Note II.28.
+\vspace{\baselineskip}
+\noindent
+$\rhd$ \textbf{II.28.} \textit{Do two permutations generate the symmetric group}?
+We want to show
+\begin{equation*}
+    n!^{2}\pi_{n} = (n - 1)!I_{n}
+\end{equation*}
+The EGF of pairs of permutations $\sum_{n \geq 0}n!^{2}\frac{z^{n}}{n!} = \sum_{n \geq 0}n!z^{n}$ happens to be the OGF $P(z)$ of all permutations.
+By the exponential formula, the EGF $C(z)$ of connected graphs satisfies:
+\begin{equation*}
+    C(z) = \log P(z) = \log\left(\sum_{n \geq 0}n!z^{n}\right)
+\end{equation*}
+Since every permutation can be uniquely decomposed into a sequence of indecomposable components, the OGF $I(z)$ of indecomposable permutations satisfies:
+\begin{equation*}
+    I(z) = 1 - \frac{1}{P(z)}
+\end{equation*}
+Let's find a differential relationship. Take the derivative of $C(z)$ with respect to $z$:
+\begin{equation*}
+    C'(z) = \frac{P'(z)}{P(z)} = P'(z)(1 - I(z)) = P'(z) - P'(z)I(z)
+\end{equation*}
+Now, let's extract the coefficient of $z^{n - 1}$ from both sides of this derivative equation.
+
+\vspace{\baselineskip}
+\noindent
+\textbf{Left-Hand Side}:
+Since $C(z) = \sum_{n \geq 1}(n!^{2}\pi_{n})\frac{z^{n}}{n!}$, its derivative is:
+\begin{equation*}
+    C'(z) = \sum_{n \geq 1}(n!^{2}\pi_{n})\frac{z^{n - 1}}{(n - 1)!}
+\end{equation*}
+Thus, the coefficient of $z^{n - 1}$ is:
+\begin{equation*}
+    [z^{n - 1}]C'(z) = \frac{n!^{2}\pi_{n}}{(n - 1)!} = n \cdot n!\pi_{n}
+\end{equation*}
+
+\vspace{\baselineskip}
+\noindent
+\textbf{Right-Hand Side}:
+Differentiate both sides of $P(z)(1 - I(z)) = 1$ with respect to $z$:
+\begin{equation*}
+    P'(z)(1 - I(z)) - P(z)I'(z) = 0 \implies P'(z) - P'(z)I(z) = P(z)I'(z)
+\end{equation*}
+Now we just need to extract the coefficient of $z^{n - 1}$ from $P(z)I'(z)$:
+\begin{equation*}
+    [z^{n - 1}](P'(z) - P'(z)I(z)) = [z^{n - 1}]P(z)I'(z) = \sum_{k = 1}^{n}kI_{k}(n - k)!
+\end{equation*}
+Let's denote this sum by $S_{n}$. We will show $S_{n} = I_{n + 1}$.
+Extracting the coefficient of $z^{N}$ from $P(z) = 1 + I(z)P(z)$ for $N \geq 1$ yields the recurrence (noting that $I_{0} = 0$)
+\begin{equation} \label{eq:II.28.1}
+    \sum_{k = 1}^{N}I_{k}(N - k)! = N!
+\end{equation}
+Use \ref{eq:II.28.1} with $N = n + 1$:
+\begin{equation} \label{eq:II.28.2}
+    \sum_{k = 1}^{n + 1}I_{k}(n + 1 - k)! = (n + 1)! \implies \sum_{k = 1}^{n}I_{k}(n + 1 - k)! = (n + 1)! - I_{n + 1}
+\end{equation}
+Expand the left hand side of \ref{eq:II.28.2}
+\begin{equation*}
+    \begin{aligned}
+        \sum_{k = 1}^{n}I_{k}(n + 1 - k)!
+        &= \sum_{k = 1}^{n}I_{k}(n + 1 - k)(n - k)! \\
+        &= (n + 1)\sum_{k = 1}^{n}I_{k}(n - k)! - \sum_{k = 1}^{n}kI_{k}(n - k)! \\
+    \end{aligned}
+\end{equation*}
+By \ref{eq:II.28.1} with $N = n$:
+\begin{equation*}
+    \sum_{k = 1}^{n}I_{k}(n - k)! = n!
+\end{equation*}
+Hence the left hand side of \ref{eq:II.28.2} equals
+\begin{equation*}
+    \sum_{k = 1}^{n}I_{k}(n + 1 - k)! = (n + 1)n! - S_{n} = (n + 1)! - S_{n}
+\end{equation*}
+Substituting into \ref{eq:II.28.2} gives $S_{n} = I_{n + 1}$.
+
+\vspace{\baselineskip}
+\noindent
+Finally $n \cdot n!\pi_{n} = S_{n} \implies n!^{2}\pi_{n} = (n - 1)!I_{n}$.
 
 \section{Perspective}
