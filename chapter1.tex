@@ -524,11 +524,11 @@ the exponential growth is dominated by $C(z)$. Specifically, as $L \to \infty$:
 for some constant $A$. To find the required code length $L(n)$ for $n$ bits of information,
 we solve for $2^{n} \leq \sum_{j = 0}^{L} C_{j}$ by taking the base-2 logarithm:
 \begin{equation*}
-    n \leq \log_{2}\left(\sum_{j = 0}^{L}C_{j}\right) = L \log_{2}\varphi + O(1)
+    n \leq \log_{2}{\left(\sum_{j = 0}^{L}C_{j}\right)} = L \log_{2}{\varphi} + O(1)
 \end{equation*}
 Rearranging for $L$, we obtain the lower bound:
 \begin{equation*}
-    L \geq \frac{n}{\log_{2}\varphi} + O(1) \approx 1.440420n + O(1)
+    L \geq \frac{n}{\log_{2}{\varphi}} + O(1) \approx 1.440420n + O(1)
 \end{equation*}
 
 
@@ -895,7 +895,7 @@ $\rhd$ \textbf{I.17.} \textit{The complexity of boolean functions}.
 \end{equation*}
 We prove the following general statement. \\
 Let $c > 0$ and $\alpha > 0$. Define $a_{n} = c^{n}n^{-\alpha}$ for $n \geq 1$ and let $a_{0} > 0$ be a constant.
-If $D_{n} = O(a_{n})$, then $\sum_{j = 0}^{v}D_{j} = O(c^{v}v^{-\alpha})$ as $v \rightarrow \infty$. \\
+If $D_{n} = O(a_{n})$, then $\sum_{j = 0}^{v}D_{j} = O(c^{v}v^{-\alpha})$ as $v \to \infty$. \\
 Proof. Because $D_{n} = O(a_{n})$, there exists $M > 0$ and $N \geq 1$ such that $D_{n} \leq Mc^{n}n^{-\alpha}$ for all $n \geq N$.
 For $v \geq N$ we split
 \begin{equation*}
@@ -932,11 +932,11 @@ Now we show
 \end{equation*}
 by taking for $v$ the value
 \begin{equation*}
-    v = \frac{2^{m}}{4 + \log_2{m}}
+    v = \frac{2^{m}}{4 + \log_{2}{m}}
 \end{equation*}
 Note that
 \begin{equation*}
-    v\log_2{16m} = \frac{2^{m}}{4 + \log_2{m}}(4 + \log_2{m}) = 2^{m} \implies 16^{v}m^{v} = 2^{2^{m}}
+    v\log_{2}{16m} = \frac{2^{m}}{4 + \log_{2}{m}}(4 + \log_{2}{m}) = 2^{m} \implies 16^{v}m^{v} = 2^{2^{m}}
 \end{equation*}
 Hence the whole bound becomes
 \begin{equation*}
@@ -946,9 +946,9 @@ Dividing by $\lVert \Omega \rVert$,
 \begin{equation*}
     \frac{\sum_{j = 0}^{v}D_{j}}{\lVert \Omega \rVert} = O(v^{-3/2})
 \end{equation*}
-As $m \rightarrow \infty$, $v \rightarrow \infty$, so $v^{-3/2} \rightarrow 0$; therefore
+As $m \to \infty$, $v \to \infty$, so $v^{-3/2} \to 0$; therefore
 \begin{equation*}
-    \frac{\sum_{j = 0}^{v}D_{j}}{\lVert \Omega \rVert} \rightarrow 0
+    \frac{\sum_{j = 0}^{v}D_{j}}{\lVert \Omega \rVert} \to 0
 \end{equation*}
 which is exactly $\sum_{j = 0}^{v}D_{j} = o(\lVert \Omega \rVert)$.
 
@@ -985,5 +985,7 @@ $\mathcal{S}_{\text{distinct}}(z)$, as follows:
             &= \int_{0}^{\infty}\exp\left(\sum_{j \geq 1}(-1)^{j - 1}\frac{u^{j}}{j}B(z^{j})\right)e^{-u}du
     \end{aligned}
 \end{equation*}
+
+
 
 \section{Perspective}

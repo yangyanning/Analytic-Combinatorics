@@ -2,22 +2,134 @@
 \chapter{COMBINATORIAL PARAMETERS AND MULTIVARIATE GENERATING FUNCTIONS}
 \label{chap:combinatorial parameters and multivariate generating functions}
 
-Content for chapter 3 goes here...
+
 
 \section{An introduction to bivariate generating functions (BGFs)}
 
+
+
 \section{Bivariate generating functions and probability distributions}
 
+
+
 \section{Inherited parameters and ordinary MGFs}
+% Note III.7.
+\vspace{\baselineskip}
+\noindent
+$\rhd$ \textbf{III.7.} \textit{Largest summands in compositions}.
+Let $M$ be the largest summand in a random composition. We want to show that for any $\epsilon > 0$, as $n \to \infty$,
+\begin{equation*}
+    \mathbb{P}\left((1 - \epsilon)\log_{2}{n} \leq M \leq (1 + \epsilon)\log_{2}{n}\right) \to 1
+\end{equation*}
+
+\noindent
+\textbf{Upper bound: first moment method}
+
+\vspace{\baselineskip}
+\noindent
+Let $r_{+} = \lceil(1 + \epsilon)\log_{2}{n}\rceil$. If $M \geq r_{+}$, then there exists at least one summand of size $\geq r_{+}$.
+The number of such summands is $S = \sum_{k = r_{+}}^{\infty}X_{k}$ where $X_{k}$ is the number of summands of size exactly $k$. By Markov's inequality,
+\begin{equation*}
+    \mathbb{P}(M \geq r_{+}) = \mathbb{P}(S \geq 1) \leq \frac{\mathbb{E}[S]}{1} = \sum_{k = r_{+}}^{\infty}\mathbb{E}[X_{k}]
+\end{equation*}
+Proposition III.4 gives $E[X_{k}] = \frac{n - k + 3}{2^{k + 1}} \leq \frac{n}{2^{k}}$. Then (noting that $X_{k} = 0$ for $k > n$)
+\begin{equation*}
+    \mathbb{E}[S] \leq \sum_{k = r_{+}}^{n}\frac{n}{2^{k}} < \frac{n}{2^{r_{+} - 1}}
+        \leq \frac{n}{2^{(1 + \epsilon)\log_{2}{n} - 1}} = 2n^{-\epsilon} \to 0
+\end{equation*}
+Hence $\mathbb{P}(M > (1 + \epsilon)\log_{2}{n}) \to 0 \implies \mathbb{P}(M \leq (1 + \epsilon)\log_{2}{n}) \to 1$.
+
+\vspace{\baselineskip}
+\noindent
+\textbf{Lower bound: second moment method}
+
+\vspace{\baselineskip}
+\noindent
+We have a random composition of $n$, given by $n - 1$ independent gaps, each a "cut" with probability $1/2$.
+Fix $\epsilon > 0$ and set $r_{-} = \lfloor (1 - \epsilon)\log_{2}{n} \rfloor$. We want to prove $\mathbb{P}(M > r_{-}) \to 1$.
+To get a strict inequality we simply look for a summand of size at least $r = r_{-} + 1$. If we can show that with high probability
+there is a run of $r$ consecutive $1$'s, then $M \geq r > r_{-}$.
+
+\vspace{\baselineskip}
+\noindent
+Cut the $n$ ones into $m = \lfloor \frac{n}{r} \rfloor$ disjoint blocks of length $r$, ignoring leftover $1$'s. Inside a block of length $r$
+there are $r - 1$ internal gaps. The block contains \textbf{no cut} internally with probability $p = \left(\frac{1}{2}\right)^{r - 1}$, independently
+for each block (the gaps of different blocks are disjoint and independent).
+
+\vspace{\baselineskip}
+\noindent
+Define the indicator random variables
+\begin{equation*}
+    I_{i} = \begin{cases}
+        1 & \text{if block} \; $i$ \; \text{has no internal cuts} \\
+        0 & \text{otherwise}
+    \end{cases}
+\end{equation*}
+for $i = 1, \cdots, m$. Let $Y = \sum_{i = 1}^{m}I_{i}$ which is the number of blocks that are completely uncut internally. If $Y \geq 1$ then
+at least one block is a single summand of size at least $r$; hence $M \geq r > r_{-}$. Therefore $\mathbb{P}(M > r_{-}) \geq \mathbb{P}(Y > 0)$.
+
+\vspace{\baselineskip}
+\noindent
+By Paley-Zygmund inequality (we'll give a short proof later)
+\begin{equation*}
+    \mathbb{P}(Y > 0) \geq \frac{(\mathbb{E}[Y])^{2}}{\mathbb{E}[Y^{2}]}
+\end{equation*}
+Now $Y \sim \text{Binomial}(m,p)$. The first moment $\mathbb{E}[Y] = mp = \lfloor \frac{n}{r} \rfloor \left(\frac{1}{2}\right)^{r - 1}$.
+Since $r = \lfloor (1 - \epsilon)\log_{2}{n} \rfloor + 1 \leq (1 - \epsilon)\log_{2}{n} + 1$, we have
+\begin{equation*}
+    \left(\frac{1}{2}\right)^{r - 1} \geq \left(\frac{1}{2}\right)^{(1 - \epsilon)\log_{2}{n}} = n^{-(1 - \epsilon)}
+\end{equation*}
+Since $r \sim (1 - \epsilon)\log_{2}{n}$,
+\begin{equation*}
+    \mathbb{E}[Y] = mp \geq \lfloor \frac{n}{r} \rfloor n^{-(1 - \epsilon)} \sim \frac{n^{\epsilon}}{(1 - \epsilon)\log_{2}{n}} \to \infty
+\end{equation*}
+The second moment $\mathbb{E}[Y^{2}] = Var(Y) + (\mathbb{E}[Y])^{2}$, $Var(Y) = mp(1 - p) \leq mp = \mathbb{E}[Y]$.
+Plugging into Paley-Zygmund:
+\begin{equation*}
+    \mathbb{P}(Y > 0) \geq \frac{(\mathbb{E}[Y])^{2}}{\mathbb{E}[Y^{2}]} = \frac{(\mathbb{E}[Y])^{2}}{Var(Y) + (\mathbb{E}[Y])^{2}}
+            \geq \frac{(\mathbb{E}[Y])^{2}}{\mathbb{E}[Y] + (\mathbb{E}[Y])^{2}} = \frac{1}{1 + \frac{1}{\mathbb{E}[Y]}} \to 1
+\end{equation*}
+Therefore $\mathbb{P}(M > r_{-}) \to 1 \implies \mathbb{P}(M \geq (1 - \epsilon)\log_{2}{n}) \to 1$.
+
+\vspace{\baselineskip}
+\noindent
+\textbf{Direct Proof of}
+\begin{equation*}
+    \mathbb{P}(Y > 0) \geq \frac{(\mathbb{E}[Y])^{2}}{\mathbb{E}[Y^{2}]}
+\end{equation*}
+Start with the expectation of $Y$ and split it according to whether $Y > 0$:
+\begin{equation*}
+    \mathbb{E}[Y] = \mathbb{E}[Y \cdot \textbf{1}_{Y > 0}] + \mathbb{E}[Y \cdot \textbf{1}_{Y = 0}] = \mathbb{E}[Y \cdot \textbf{1}_{Y > 0}]
+\end{equation*}
+Apply the Cauchy-Schwarz inequality:
+\begin{equation*}
+    \mathbb{E}[Y] \leq \sqrt{\mathbb{E}[Y^{2}]} \sqrt{\mathbb{E}[\textbf{1}_{Y > 0}]} = \sqrt{\mathbb{E}[Y^{2}]} \sqrt{\mathbb{P}(Y > 0)}
+\end{equation*}
+Because all terms are nonnegative, we can square both sides to obtain
+\begin{equation*}
+    (\mathbb{E}[Y])^{2} \leq \mathbb{E}[Y^{2}] \cdot \mathbb{P}(Y > 0) \implies \mathbb{P}(Y > 0) \geq \frac{(\mathbb{E}[Y])^{2}}{\mathbb{E}[Y^{2}]}
+\end{equation*}
+
+
 
 \section{Inherited parameters and exponential MGFs}
 
+
+
 \section{Recursive parameters}
+
+
 
 \section{Complete generating functions and discrete models}
 
+
+
 \section{Additional constructions}
 
+
+
 \section{Extremal parameters}
+
+
 
 \section{Perspective}
