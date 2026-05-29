@@ -17,7 +17,7 @@
 \vspace{\baselineskip}
 \noindent
 $\rhd$ \textbf{III.7.} \textit{Largest summands in compositions}.
-Let $M$ be the largest summand in a random composition. We want to show that for any $\epsilon > 0$, as $n \to \infty$,
+Let $M$ be the largest summand in a random composition. We want to show that for any $\epsilon \in (0, 1)$, as $n \to \infty$,
 \begin{equation*}
     \mathbb{P}\left((1 - \epsilon)\log_{2}{n} \leq M \leq (1 + \epsilon)\log_{2}{n}\right) \to 1
 \end{equation*}
@@ -27,7 +27,7 @@ Let $M$ be the largest summand in a random composition. We want to show that for
 
 \vspace{\baselineskip}
 \noindent
-Let $r_{+} = \lceil(1 + \epsilon)\log_{2}{n}\rceil$. If $M \geq r_{+}$, then there exists at least one summand of size $\geq r_{+}$.
+Let $r_{+} = \lfloor(1 + \epsilon)\log_{2}{n}\rfloor$. If $M \geq r_{+}$ then there exists at least one summand of size $\geq r_{+}$.
 The number of such summands is $S = \sum_{k = r_{+}}^{\infty}X_{k}$ where $X_{k}$ is the number of summands of size exactly $k$. By Markov's inequality,
 \begin{equation*}
     \mathbb{P}(M \geq r_{+}) = \mathbb{P}(S \geq 1) \leq \frac{\mathbb{E}[S]}{1} = \sum_{k = r_{+}}^{\infty}\mathbb{E}[X_{k}]
@@ -35,9 +35,10 @@ The number of such summands is $S = \sum_{k = r_{+}}^{\infty}X_{k}$ where $X_{k}
 Proposition III.4 gives $E[X_{k}] = \frac{n - k + 3}{2^{k + 1}} \leq \frac{n}{2^{k}}$. Then (noting that $X_{k} = 0$ for $k > n$)
 \begin{equation*}
     \mathbb{E}[S] \leq \sum_{k = r_{+}}^{n}\frac{n}{2^{k}} < \frac{n}{2^{r_{+} - 1}}
-        \leq \frac{n}{2^{(1 + \epsilon)\log_{2}{n} - 1}} = 2n^{-\epsilon} \to 0
+        < \frac{n}{2^{(1 + \epsilon)\log_{2}{n} - 2}} = 4n^{-\epsilon} \to 0
 \end{equation*}
-Hence $\mathbb{P}(M > (1 + \epsilon)\log_{2}{n}) \to 0 \implies \mathbb{P}(M \leq (1 + \epsilon)\log_{2}{n}) \to 1$.
+Since $M > (1 + \epsilon)\log_{2}{n}$ implies $M \geq \lfloor (1 + \epsilon)\log_{2}{n} \rfloor = r_{+}$, we have
+$\mathbb{P}(M > (1 + \epsilon)\log_{2}{n}) \leq \mathbb{P}(M \geq r_{+}) \to 0$.
 
 \vspace{\baselineskip}
 \noindent
@@ -46,15 +47,9 @@ Hence $\mathbb{P}(M > (1 + \epsilon)\log_{2}{n}) \to 0 \implies \mathbb{P}(M \le
 \vspace{\baselineskip}
 \noindent
 We have a random composition of $n$, given by $n - 1$ independent gaps, each a "cut" with probability $1/2$.
-Fix $\epsilon > 0$ and set $r_{-} = \lfloor (1 - \epsilon)\log_{2}{n} \rfloor$. We want to prove $\mathbb{P}(M > r_{-}) \to 1$.
-To get a strict inequality we simply look for a summand of size at least $r = r_{-} + 1$. If we can show that with high probability
-there is a run of $r$ consecutive $1$'s, then $M \geq r > r_{-}$.
-
-\vspace{\baselineskip}
-\noindent
-Cut the $n$ ones into $m = \lfloor \frac{n}{r} \rfloor$ disjoint blocks of length $r$, ignoring leftover $1$'s. Inside a block of length $r$
-there are $r - 1$ internal gaps. The block contains \textbf{no cut} internally with probability $p = \left(\frac{1}{2}\right)^{r - 1}$, independently
-for each block (the gaps of different blocks are disjoint and independent).
+Let $r_{-} = \lceil (1 - \epsilon)\log_{2}{n} \rceil$. Cut the $n$ ones into $m = \lfloor \frac{n}{r_{-}} \rfloor$ disjoint blocks
+of length $r_{-}$, ignoring leftover $1$'s. Inside a block of length $r_{-}$ there are $r_{-} - 1$ internal gaps. The block contains \textbf{no cut} internally
+with probability $p = \left(\frac{1}{2}\right)^{r_{-} - 1}$, independently for each block (the gaps of different blocks are disjoint and independent).
 
 \vspace{\baselineskip}
 \noindent
@@ -66,7 +61,7 @@ Define the indicator random variables
     \end{cases}
 \end{equation*}
 for $i = 1, \cdots, m$. Let $Y = \sum_{i = 1}^{m}I_{i}$ which is the number of blocks that are completely uncut internally. If $Y \geq 1$ then
-at least one block is a single summand of size at least $r$; hence $M \geq r > r_{-}$. Therefore $\mathbb{P}(M > r_{-}) \geq \mathbb{P}(Y > 0)$.
+at least one block is a single summand of size at least $r_{-}$. Therefore $\mathbb{P}(M \geq r_{-}) \geq \mathbb{P}(Y \geq 1) = \mathbb{P}(Y > 0)$.
 
 \vspace{\baselineskip}
 \noindent
@@ -74,22 +69,26 @@ By Paley-Zygmund inequality (we'll give a short proof later)
 \begin{equation*}
     \mathbb{P}(Y > 0) \geq \frac{(\mathbb{E}[Y])^{2}}{\mathbb{E}[Y^{2}]}
 \end{equation*}
-Now $Y \sim \text{Binomial}(m,p)$. The first moment $\mathbb{E}[Y] = mp = \lfloor \frac{n}{r} \rfloor \left(\frac{1}{2}\right)^{r - 1}$.
-Since $r = \lfloor (1 - \epsilon)\log_{2}{n} \rfloor + 1 \leq (1 - \epsilon)\log_{2}{n} + 1$, we have
+Now $Y \sim \text{Binomial}(m,p)$. The first moment
 \begin{equation*}
-    \left(\frac{1}{2}\right)^{r - 1} \geq \left(\frac{1}{2}\right)^{(1 - \epsilon)\log_{2}{n}} = n^{-(1 - \epsilon)}
+    \mathbb{E}[Y] = mp = \lfloor \frac{n}{r_{-}} \rfloor \left(\frac{1}{2}\right)^{r_{-} - 1}
+        > \left( \frac{n}{(1 - \epsilon)\log_{2}{n} + 1} - 1 \right) \left( \frac{1}{2} \right)^{(1 - \epsilon)\log_{2}{n}}
+        \sim \frac{n^{\epsilon}}{(1 - \epsilon)\log_{2}{n}} \to \infty
 \end{equation*}
-Since $r \sim (1 - \epsilon)\log_{2}{n}$,
-\begin{equation*}
-    \mathbb{E}[Y] = mp \geq \lfloor \frac{n}{r} \rfloor n^{-(1 - \epsilon)} \sim \frac{n^{\epsilon}}{(1 - \epsilon)\log_{2}{n}} \to \infty
-\end{equation*}
+
 The second moment $\mathbb{E}[Y^{2}] = Var(Y) + (\mathbb{E}[Y])^{2}$, $Var(Y) = mp(1 - p) \leq mp = \mathbb{E}[Y]$.
 Plugging into Paley-Zygmund:
 \begin{equation*}
     \mathbb{P}(Y > 0) \geq \frac{(\mathbb{E}[Y])^{2}}{\mathbb{E}[Y^{2}]} = \frac{(\mathbb{E}[Y])^{2}}{Var(Y) + (\mathbb{E}[Y])^{2}}
             \geq \frac{(\mathbb{E}[Y])^{2}}{\mathbb{E}[Y] + (\mathbb{E}[Y])^{2}} = \frac{1}{1 + \frac{1}{\mathbb{E}[Y]}} \to 1
 \end{equation*}
-Therefore $\mathbb{P}(M > r_{-}) \to 1 \implies \mathbb{P}(M \geq (1 - \epsilon)\log_{2}{n}) \to 1$.
+Since $M \geq r_{-} = \lceil (1 - \epsilon)\log_{2}{n} \rceil$ implies $M \geq (1 - \epsilon)\log_{2}{n}$, we have
+$\mathbb{P}(M \geq (1 - \epsilon)\log_{2}{n}) \geq \mathbb{P}(M \geq r_{-}) \geq \mathbb{P}(Y > 0) \to 1$.
+
+\vspace{\baselineskip}
+\noindent
+Finally $\mathbb{P}\left((1 - \epsilon)\log_{2}{n} \leq M \leq (1 + \epsilon)\log_{2}{n}\right) =
+    \mathbb{P}(M \geq (1 - \epsilon)\log_{2}{n}) - \mathbb{P}(M > (1 + \epsilon)\log_{2}{n}) \to 1 - 0 = 1$.
 
 \vspace{\baselineskip}
 \noindent
@@ -113,6 +112,75 @@ Because all terms are nonnegative, we can square both sides to obtain
 
 
 \section{Inherited parameters and exponential MGFs}
+% Note III.10.
+\vspace{\baselineskip}
+\noindent
+$\rhd$ \textbf{III.10.} \textit{A hundred prisoners II}.
+We show the "randomization" trick with an example. Imagine there are 10 drawers sitting in a row. The director maliciously arranged them in one giant
+cycle $1 \rightarrow 2 \rightarrow 3 \rightarrow \cdots \rightarrow 10 \rightarrow 1$ to ensure that if any prisoner opens only 5 drawers, they will
+never find their own number: Prisoner 1 opens Drawer 1, finds "2", goes to Drawer 2, finds "3", and so on. He won't find "1" until the 10th drawer.
+Since he can only open 5, he fails.
+
+\vspace{\baselineskip}
+\noindent
+Before the game, the prisoners agree on a random remapping. Let's say their secret permutation is: "Draw 1 is 7, 2 is 3, 3 is 9, 4 is 1, 5 is 8,
+6 is 2, 7 is 10, 8 is 4, 9 is 6, 10 is 5". Now when a prisoner thinks "I am opening Drawer $n$", they actually go to the physical drawer assigned to
+$n$ in their secret code. Each prisoner now follows the cycle strategy using their secret map:
+\begin{itemize}
+    \item Prisoner 1
+    \begin{itemize}
+        \item Starts at "Drawer 1" $\rightarrow$ goes to Physical Drawer 7.
+        \item Finds Card 8.
+        \item Goes to "Drawer 8" $\rightarrow$ goes to Physical Drawer 4.
+        \item Finds Card 5.
+        \item Goes to "Drawer 5" $\rightarrow$ goes to Physical Drawer 8.
+        \item Finds Card 9.
+        \item Goes to "Drawer 9" $\rightarrow$ goes to Physical Drawer 6.
+        \item Finds Card 7.
+        \item Goes to "Drawer 7" $\rightarrow$ goes to Physical Drawer 10.
+        \item Finds Card 1. Success! Prisoner 1 found his number in 5 steps.
+    \end{itemize}
+
+    \item Prisoner 2
+    \begin{itemize}
+        \item Starts at "Drawer 2" $\rightarrow$ goes to Physical Drawer 3.
+        \item Finds Card 4.
+        \item Goes to "Drawer 4" $\rightarrow$ goes to Physical Drawer 1.
+        \item Finds Card 2. Success! Prisoner 2 found his number in 2 steps.
+    \end{itemize}
+
+    \item Prisoner 3
+    \begin{itemize}
+        \item Starts at "Drawer 3" $\rightarrow$ goes to Physical Drawer 9.
+        \item Finds Card 10.
+        \item Goes to "Drawer 10" $\rightarrow$ goes to Physical Drawer 5.
+        \item Finds Card 6.
+        \item Goes to "Drawer 6" $\rightarrow$ goes to Physical Drawer 2.
+        \item Finds Card 3. Success! Prisoner 3 found his number in 3 steps.
+    \end{itemize}
+
+    \item Prisoner 4
+    \begin{itemize}
+        \item Starts at "Drawer 4" $\rightarrow$ goes to Physical Drawer 1.
+        \item Finds Card 2.
+        \item Goes to "Drawer 2" $\rightarrow$ goes to Physical Drawer 3.
+        \item Finds Card 4. Success! Prisoner 4 found his number in 2 steps.
+    \end{itemize}
+
+    \item Prisoner 5
+    \begin{itemize}
+        \item Starts at "Drawer 5" $\rightarrow$ goes to Physical Drawer 8.
+        \item Finds Card 9.
+        \item Goes to "Drawer 9" $\rightarrow$ goes to Physical Drawer 6.
+        \item Finds Card 7.
+        \item Goes to "Drawer 7" $\rightarrow$ goes to Physical Drawer 10.
+        \item Finds Card 1.
+        \item Goes to "Drawer 1" $\rightarrow$ goes to Physical Drawer 7.
+        \item Finds Card 8.
+        \item Goes to "Drawer 8" $\rightarrow$ goes to Physical Drawer 4.
+        \item Finds Card 5. Success! Prisoner 5 found his number in 5 steps.
+    \end{itemize}
+\end{itemize}
 
 
 
