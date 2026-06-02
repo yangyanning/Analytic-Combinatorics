@@ -183,6 +183,23 @@ $n$ in their secret code. Each prisoner now follows the cycle strategy using the
 \end{itemize}
 
 
+% Note III.15.
+\vspace{\baselineskip}
+\noindent
+$\rhd$ \textbf{III.15.} \textit{Distinct component sizes in set partitions}.
+\begin{itemize}
+    \item Number of distinct block sizes in set partitions
+        \begin{equation*}
+            \prod_{n = 1}^{\infty}\mathcal{E} + u\mathrm{S}\textsc{et}_{\geq 1}(\mathrm{S}\textsc{et}_{n}(\mathcal{Z}))
+        \end{equation*}
+    
+    \item Number of distinct cycle sizes in permutations
+        \begin{equation*}
+            \prod_{n = 1}^{\infty}\mathcal{E} + u\mathrm{S}\textsc{et}_{\geq 1}(\mathrm{C}\textsc{yc}_{n}(\mathcal{Z}))
+        \end{equation*}
+\end{itemize}
+
+
 
 \section{Recursive parameters}
 % Example III.14.
@@ -203,14 +220,14 @@ where $C(z)$ is the OGF for the Catalan numbers: $C(z) = 1 + zC(z)^{2}$.
 \textbf{Leaves}
 \begin{equation*}
     \hat{B}(z, u) = zu + 2z\hat{B}(z, u) + z\hat{B}(z, u)^{2} \implies
-        \frac{\partial \hat{B}}{\partial u} = z + 2z\frac{\partial \hat{B}}{\partial u} + 2zB\frac{\partial \hat{B}}{\partial u} \implies
+        \frac{\partial \hat{B}}{\partial u} = z + 2z\frac{\partial \hat{B}}{\partial u} + 2z\hat{B}\frac{\partial \hat{B}}{\partial u} \implies
 \end{equation*}
 \begin{equation*}
     \frac{\partial \hat{B}}{\partial u} = \frac{z}{1 - 2z - 2z\hat{B}} \implies
-        \frac{\partial \hat{B}}{\partial u}\big|_{u = 1} = \frac{1}{1 - 2z - 2z\hat{B}(z)} = \frac{1}{\sqrt{1 - 4z}} \implies
+        \frac{\partial \hat{B}}{\partial u}\big|_{u = 1} = \frac{z}{1 - 2z - 2z\hat{B}(z)} = \frac{z}{\sqrt{1 - 4z}} \implies
 \end{equation*}
 \begin{equation*}
-    [z^{n}]\frac{\partial \hat{B}}{\partial u}\big|_{u = 1} = [z^{n}](1 - 4z)^{-3/2} = \frac{(2n + 1)!}{(n!)^{2}}
+    [z^{n}]\frac{\partial \hat{B}}{\partial u}\big|_{u = 1} = [z^{n - 1}](1 - 4z)^{-1/2} = \binom{2n - 2}{n - 1} = \frac{(2n - 2)!}{(n - 1)!^{2}}
 \end{equation*}
 
 \vspace{\baselineskip}
@@ -225,13 +242,8 @@ where $C(z)$ is the OGF for the Catalan numbers: $C(z) = 1 + zC(z)^{2}$.
         \frac{\partial \hat{B}}{\partial u}\big|_{u = 1} = \frac{2z\hat{B}(z)}{1 - 2z - 2z\hat{B}(z)} = \frac{1 - 2z}{\sqrt{1 - 4z}} - 1 \implies
 \end{equation*}
 \begin{equation*}
-    \begin{aligned}
-        [z^{n}]\frac{\partial \hat{B}}{\partial u}\big|_{u = 1}
-        &= [z^{n}]((1 - 2z)(1 - 4z)^{-1/2} - 1) \\
-        &= [z^{n}]\left(\sum_{k = 0}^{\infty}\binom{2k}{k}z^{k} - 2\sum_{k = 0}^{\infty}\binom{2k}{k}z^{k + 1} - 1\right) \\
-        &= [z^{n}]\left(\sum_{k = 1}^{\infty}\binom{2k}{k}z^{k} - 2\sum_{k = 1}^{\infty}\binom{2k - 2}{k - 1}z^{k}\right) \\
-        &= \binom{2n}{n} - 2\binom{2n - 2}{n - 1}
-    \end{aligned}
+    [z^{n}]\frac{\partial \hat{B}}{\partial u}\big|_{u = 1} = [z^{n}]\left((1 - 4z)^{-1/2} - 2\frac{z}{\sqrt{1 - 4z}}\right)
+        = \binom{2n}{n} - 2\binom{2n - 2}{n - 1}
 \end{equation*}
 
 \vspace{\baselineskip}
