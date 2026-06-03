@@ -281,6 +281,50 @@ Now
     \end{aligned}
 \end{equation*}
 
+\vspace{\baselineskip}
+\noindent
+Consequently, number of \textbf{Leaves} + number of \textbf{1-nodes} + number of \textbf{2-nodes} is:
+\begin{equation*}
+    \binom{2n - 2}{n - 1} + \binom{2n}{n} - 2\binom{2n - 2}{n - 1} + \binom{2n - 2}{n - 3} = \frac{n}{n + 1}\binom{2n}{n}    
+\end{equation*}
+as expected.
+
+
+% Note III.18.
+\vspace{\baselineskip}
+\noindent
+$\rhd$ \textbf{III.18.} \textit{Node-degree profile in simple varieties of trees}.
+\begin{equation*}
+    T(z, u) = z\left(\phi(T(z, u)) + \phi_{k}(u - 1)T(z, u)^{k}\right)
+\end{equation*}
+Differentiating with respect to $u$ gives
+\begin{equation*}
+    \frac{\partial T}{\partial u} =
+        z\left(\phi'(T)\frac{\partial T}{\partial u} + \phi_{k}T^{k} + k\phi_{k}(u - 1)T^{k - 1}\frac{\partial T}{\partial u}\right) \implies
+\end{equation*}
+\begin{equation*}
+    \Omega(z) =  z\left(\phi'(T(z))\Omega(z) + \phi_{k}T(z)^{k}\right) = z\frac{\phi_{k}T(z)^{k}}{1 - z\phi'(T(z))}
+\end{equation*}
+Since $T(z) = z\phi(T(z))$, differentiating with respect to $z$ yields
+\begin{equation*}
+    T'(z) = \phi(T(z)) + z\phi'(T(z))T'(z) \implies 1 = \frac{\phi(T(z))}{T'(z)} + z\phi'(T(z))
+\end{equation*}
+Hence
+\begin{equation*}
+    \Omega(z) = \phi_{k}zT(z)^{k} \cdot \frac{T'(z)}{\phi(T(z))} = \phi_{k}zT(z)^{k} \cdot \frac{T'(z)}{T(z)/z} = \phi_{k}z^{2}T(z)^{k - 1}T'(z)
+\end{equation*}
+For Cayley trees
+\begin{equation*}
+    \begin{aligned}
+        n![z^{n}]\Omega(z)
+        &= n![z^{n}]\frac{1}{k!}z^{2}\frac{d}{dz}\frac{T(z)^{k}}{k} \\
+        &= \frac{n!}{k \cdot k!}[z^{n - 2}]\frac{d}{dz}T(z)^{k} \\
+        &= \frac{n!}{k \cdot k!}(n - 1)[z^{n - 1}]T(z)^{k} \\
+        &= \frac{n(n - 1)}{k} \cdot (n - 1)![z^{n - 1}]\frac{T(z)^{k}}{k!} \\
+        &= \frac{n(n - 1)}{k}\binom{n - 2}{k - 1}(n - 1)^{n - 1 - k} \\
+        &= (n - k)\binom{n}{k}(n - 1)^{n - 1 - k}
+    \end{aligned}
+\end{equation*}
 
 
 
