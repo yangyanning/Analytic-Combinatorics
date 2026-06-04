@@ -327,6 +327,38 @@ For Cayley trees
 \end{equation*}
 
 
+% Example III.15.
+\vspace{\baselineskip}
+\noindent
+\textbf{\textit{Example} III.15.} \textit{Path length in trees}.
+
+\vspace{\baselineskip}
+\noindent
+We want to show
+\begin{equation*}
+    z^{2}\frac{G'(z)}{(1 - G(z))^{2} - z} = \frac{z}{2(1 - 4z)} - \frac{z}{2\sqrt{1 - 4z}}
+\end{equation*}
+Express $z$ and $G'$ in terms of $G$:
+\begin{equation*}
+    G = \frac{z}{1 - G} \implies z = G(1 - G) = G - G^{2}
+\end{equation*}
+\begin{equation*}
+    z = G - G^{2} \implies 1 = G' - 2GG' \implies G' = \frac{1}{1 - 2G}
+\end{equation*}
+Hence
+\begin{equation*}
+    \begin{aligned}
+        z^{2}\frac{G'(z)}{(1 - G(z))^{2} - z}
+        &= (G(1 - G))^{2}\frac{1/(1 - 2G)}{1 - 2G + G^{2} - (G - G^{2})} \\
+        &= \frac{G^{2}(1 - G)^{2}}{(1 - 2G)(1 - 3G + 2G^{2})} \\
+        &= \frac{G^{2}(1 - G)}{(1 - 2G)^{2}} \\
+        &= \frac{(G - G^{2}) \cdot G}{1 - 4(G - G^{2})} \\
+        &= \frac{zG}{1 - 4z} \\
+        &= \frac{z}{1 - 4z} \cdot \frac{1 - \sqrt{1 - 4z}}{2} \\
+        &= \frac{z}{2}\left(\frac{1}{1 - 4z} - \frac{1}{\sqrt{1 - 4z}}\right)
+    \end{aligned}
+\end{equation*}
+
 
 \section{Complete generating functions and discrete models}
 
