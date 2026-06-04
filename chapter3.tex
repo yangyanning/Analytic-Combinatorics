@@ -360,6 +360,36 @@ Hence
 \end{equation*}
 
 
+% Note III.20.
+\vspace{\baselineskip}
+\noindent
+$\rhd$ \textbf{III.20.} \textit{Path length in simple varieties of trees}.
+We start with the functional equations:
+\begin{equation*}
+    T(z) = z\phi(T(z)) \; \text{where} \; T(z) = T(z, 1); \quad
+    T(z, u) = z\phi(T(zu, u))
+\end{equation*}
+Differentiating the second equation with respect to $u$ using the chain rule:
+\begin{equation*}
+    \frac{\partial}{\partial u}T(z, u)
+        = z\phi'(T(zu, u)) \cdot \frac{d}{du}T(zu, u) = z\phi'(T(zu, u))[T_z(zu, u)z + T_u(zu, u)]
+\end{equation*}
+At $u = 1$, the expression becomes:
+\begin{equation} \label{eq:III.20.1}
+    T_u(z, 1) = z\phi'(T(z))[zT'(z) + T_u(z, 1)] \implies T_u(z, 1) = \frac{z^{2}\phi'(T(z))T'(z)}{1 - z\phi'(T(z))}
+\end{equation}
+Differentiating the first equation with respect to $z$ gives:
+\begin{equation*}
+    T'(z) = \phi(T(z)) + z\phi'(T(z))T'(z) \implies \frac{1}{1 - z\phi'(T(z))} = \frac{T'(z)}{\phi(T(z))}
+\end{equation*}
+Plugging this fraction into \ref{eq:III.20.1}:
+\begin{equation*}
+    T_u(z, 1) = z^{2}\phi'(T(z))T'(z) \cdot \left(\frac{T'(z)}{\phi(T(z))}\right)
+        = \frac{\phi'(T(z))}{\phi(T(z))}(zT'(z))^{2}
+\end{equation*}
+
+
+
 \section{Complete generating functions and discrete models}
 
 
