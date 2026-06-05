@@ -391,6 +391,26 @@ Plugging this fraction into \ref{eq:III.20.1}:
 
 
 \section{Complete generating functions and discrete models}
+% Example III.16.
+\vspace{\baselineskip}
+\noindent
+\textbf{\textit{Example} III.16.} \textit{Words and records}.
+\begin{equation*}
+    \begin{aligned}
+        [z^{n}]\frac{z}{1 - rz}\sum_{j = 1}^{r}\frac{1}{1 - (j - 1)z}
+        &= [z^{n}]\frac{z}{1 - rz}\sum_{k = 0}^{r - 1}\frac{1}{1 - kz} \\
+        &= [z^{n}]\sum_{k = 0}^{r - 1}\frac{z}{(1 - rz)(1 - kz)} \\
+        &= [z^{n}]\sum_{k = 0}^{r - 1}\frac{1}{r - k}\left(\frac{rz}{1 - rz} - \frac{kz}{1 - kz}\right) \\
+        &= \sum_{k = 0}^{r - 1}\frac{1}{r - k}\left([z^{n}]\frac{rz}{1 - rz} - [z^{n}]\frac{kz}{1 - kz}\right) \\
+        &= \sum_{k = 0}^{r - 1}\frac{r^{n} - k^{n}}{r - k}
+    \end{aligned}
+\end{equation*}
+\begin{equation*}
+    \mathbb{E}_{\mathcal{W}_{n}}(\#\text{records})
+    = \sum_{k = 0}^{r - 1}\frac{1 - (k/r)^{n}}{r - k}
+    = \sum_{k = 0}^{r - 1}\frac{1}{r - k} - \sum_{k = 0}^{r - 1}\frac{(k/r)^{n}}{r - k}
+    = H_{r} - \sum_{k = 1}^{r - 1}\frac{(k/r)^{n}}{r - k}
+\end{equation*}
 
 
 
