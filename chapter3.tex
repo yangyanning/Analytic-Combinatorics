@@ -413,6 +413,53 @@ Plugging this fraction into \ref{eq:III.20.1}:
 \end{equation*}
 
 
+% Example III.19.
+\vspace{\baselineskip}
+\noindent
+\textbf{\textit{Example} III.19.} \textit{Rises in Bernoulli trials: Simon Newcomb's problem}.
+
+\vspace{\baselineskip}
+\noindent
+Recurrence for $W$
+\begin{equation} \label{eq:III.19.1}
+    W_{j} = z_{j} + z_{j}\sum_{k = 1}^{j - 1}W_{k} + vz_{j}\sum_{k = j}^{r}W_{k}
+\end{equation}
+implies recurrence for $X$:
+\begin{equation} \label{eq:III.19.2}
+    X_{j} = 1 + \sum_{k = 1}^{j - 1}W_{k} + v\sum_{k = j}^{r}W_{k} = 1 + \sum_{k = 1}^{j - 1}z_{k}X_{k} + v\sum_{k = j}^{r}z_{k}X_{k}
+\end{equation}
+Consequently
+\begin{equation*}
+    X_{j + 1} - X_{j} = W_{j} - vW_{j} = z_{j}X_{j}(1 - v) \implies X_{j + 1} = X_{j}(1 + z_{j}(1 - v))
+\end{equation*}
+By induction (unfolding the recurrence), we can express any $X_{j}$ in terms of $X_{1}$:
+\begin{equation} \label{eq:III.19.3}
+    X_{j} = X_{1}\prod_{k = 1}^{j - 1}(1 + (1 - v)z_{k})
+\end{equation}
+To find $X_{1}$, we look back at \ref{eq:III.19.1} specifically for the case $j = 1$:
+\begin{equation*}
+    W_{1} = z_{1} + z_{1} \cdot 0 + vz_{1}\sum_{k = 1}^{r}W_{k} \implies z_{1}X_{1} = z_{1} + vz_{1}\sum_{k = 1}^{r}z_{k}X_{k}
+    \implies X_{1} = 1 + v\sum_{k = 1}^{r}z_{k}X_{k}
+\end{equation*}
+If we set $j = r + 1$ in \ref{eq:III.19.2} (introduce $X_{r + 1}$ such that \ref{eq:III.19.2} holds), the second sum vanishes, giving us:
+\begin{equation*}
+    X_{r + 1} = 1 + \sum_{k = 1}^{r}z_{k}X_{k} \implies \sum_{k = 1}^{r}z_{k}X_{k} = X_{r + 1} - 1 \implies X_{1} = 1 + v(X_{r + 1} - 1)
+\end{equation*}
+The total generating function is
+\begin{equation*}
+    W = 1 + \sum_{k = 1}^{r}W_{k} = 1 + \sum_{k = 1}^{r}z_{k}X_{k} = X_{r + 1}
+\end{equation*}
+We also know from \ref{eq:III.19.3} that:
+\begin{equation*}
+    X_{r + 1} = X_{1}\prod_{j = 1}^{r}(1 + (1 - v)z_{j}) = X_{1}P
+\end{equation*}
+Finally
+\begin{equation*}
+    X_{1} = 1 + v(X_{r + 1} - 1) = 1 + v(X_{1}P - 1) \implies X_{1} = \frac{1 - v}{1 - vP} \implies
+        W = \frac{P(1 - v)}{1 - vP}
+\end{equation*}
+
+
 
 \section{Additional constructions}
 
