@@ -550,6 +550,35 @@ The 3rd term in \ref{eq:III.22.2}
 \end{itemize}
 
 
+\vspace{\baselineskip}
+\noindent
+\begin{equation*}
+    \mathcal{R}_{2} = \{(x, y)|1 \leq y \leq 2x\}
+\end{equation*}
+Now
+\begin{equation*}
+    \begin{aligned}
+        f(z) &= z \\
+        \mathcal{L}[F(z, u)]
+            &= \sum_{j}f^{\langle k \rangle}(z)\mathcal{L}[u^{j}] = \sum_{j}f^{\langle k \rangle}(z)u\frac{1 - u^{2j}}{1 - u}
+                = \frac{u}{1 - u}\sum_{j}f^{\langle k \rangle}(z)(1 - u^{2j}) \\
+            &= \frac{u}{1 - u}\left(\sum_{j}f^{\langle k \rangle}(z) - \sum_{j}f^{\langle k \rangle}(z)(u^{2})^{j}\right)
+                = \frac{u}{1 - u}\left(F(z, 1) - F(z, u^{2})\right)
+    \end{aligned}
+\end{equation*}
+Hence
+\begin{equation*}
+    F(z, u) = f(zu) + (\mathcal{L}[F(z, u)])_{u \mapsto zu} = zu + \frac{zu}{1 - zu}\left(F(z, 1) - F(z, z^{2}u^{2})\right)
+\end{equation*}
+By repeated substitution
+\begin{equation*}
+    F(z, u) = \alpha(u) - \frac{zu}{1 - zu}\alpha(z^{2}u^{2}) + \frac{zu}{1 - zu}\frac{z^{3}u^{2}}{1 - z^{3}u^{2}}\alpha(z^{6}u^{4}) - \cdots
+\end{equation*}
+where
+\begin{equation*}
+    \alpha(u) = zu + \frac{zu}{1 - zu}F(z, 1), \quad \beta(u) = -\frac{zu}{1 - zu}, \quad \sigma(u) = z^{2}u^{2}
+\end{equation*}
+
 
 \section{Extremal parameters}
 
