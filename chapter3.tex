@@ -462,6 +462,92 @@ Finally
 
 
 \section{Additional constructions}
+% Example III.22.
+\vspace{\baselineskip}
+\noindent
+\textbf{\textit{Example} III.22.} \textit{Constrained integer compositions and “slicing”}.
+
+\vspace{\baselineskip}
+\noindent
+\begin{equation*}
+    \mathcal{R}_{1} = \{(x, y)|1 \leq x \leq y\}
+\end{equation*}
+To derive the functional equation, note that
+\begin{equation*}
+    \begin{aligned}
+        f(z) &= z + z^{2} + \cdots = \frac{z}{1 - z} \\
+        \mathcal{L}[F(z, u)] &= \mathcal{L}[\sum_{j}f^{\langle k \rangle}(z)u^{j}] = \sum_{j}f^{\langle k \rangle}(z)\mathcal{L}[u^{j}]
+            = \sum_{j}f^{\langle k \rangle}(z)\frac{u^{j}}{1 - u} = \frac{1}{1 - u}F(z, u)
+    \end{aligned}
+\end{equation*}
+Hence
+\begin{equation*}
+    F(z, u) = f(zu) + (\mathcal{L}[F(z, u)])_{u \mapsto zu} = \frac{zu}{1 - zu} + \frac{1}{1 - zu}F(z, zu)
+\end{equation*}
+
+\vspace{\baselineskip}
+\noindent
+Now we demonstrate the equivalence of the two alternative forms of $F(z, u)$:
+\begin{equation} \label{eq:III.22.1}
+    F(z, u) = \frac{zu}{1 - zu} + \frac{z^{2}u}{(1 - zu)(1 - z^{2}u)} + \frac{z^{3}u}{(1 - zu)(1 - z^{2}u)(1 - z^{3}u)} + \cdots
+\end{equation}
+\begin{equation} \label{eq:III.22.2}
+    F(z, u) = \frac{zu}{1 - z} + \frac{z^{2}u^{2}}{(1 - z)(1 - z^{2})} + \frac{z^{3}u^{3}}{(1 - z)(1 - z^{2})(1 - z^{3})} + \cdots
+\end{equation}
+\ref{eq:III.22.1} is obtained by repeated substitution. While \ref{eq:III.22.2} can be verified via Taylor expansion, it is a bit mechanical.
+Let's try a purely algebraic approach. Assume $F(z, u) = \sum_{k \geq 1}A_{k}(z)u^{k}$ and plug it into the rearranged functional equation:
+\begin{equation*}
+    (1 - zu)F(z, u) = zu + F(z, zu)
+\end{equation*}
+Expand both sides:
+\begin{equation*}
+    \sum_{k \geq 1}A_{k}(z)u^{k} - zu\left(\sum_{k \geq 1}A_{k}(z)u^{k}\right) = zu + \sum_{k \geq 1}A_{k}(z)(zu)^{k}
+\end{equation*}
+Align the powers of $u$:
+\begin{equation*}
+    \sum_{k \geq 1}A_{k}(z)u^{k} - \sum_{k \geq 1}A_{k}(z)zu^{k + 1} = zu + \sum_{k \geq 1}A_{k}(z)z^{k}u^{k}
+\end{equation*}
+Extract the coefficients of $u^{k}$ (for $k > 1$):
+\begin{equation*}
+    A_{k}(z) - zA_{k - 1}(z) = z^{k}A_{k}(z) \implies A_{k}(z) = \frac{z}{1 - z^{k}}A_{k - 1}(z)
+\end{equation*}
+Starting from the base case $A_{1}(z) = z + z^{2} + \cdots = \frac{z}{1 - z}$ (\ref{eq:III.22.1}), the telescoping product gives:
+\begin{equation*}
+    A_{k}(z) = \frac{z}{1 - z^{k}}\frac{z}{1 - z^{k - 1}} \cdots \frac{z}{1 - z^{2}}\frac{z}{1 - z} 
+        = \frac{z^{k}}{(1 - z)(1 - z^{2}) \cdots (1 -z^{k})}
+\end{equation*}
+This confirms the $k$-th term of \ref{eq:III.22.2} is exactly $A_{k}(z)u^{k}$.
+
+\vspace{\baselineskip}
+\noindent
+There is a combinatorial interpretation: the $k$-th term of \ref{eq:III.22.1} represents a partition with \textbf{exactly $k$ summands}; while
+the $k$-th term of \ref{eq:III.22.2} represents a partition where the \textbf{largest summand is exactly $k$}.
+We illustrate the idea with the case $k = 3$.
+
+\vspace{\baselineskip}
+\noindent
+The 3rd term in \ref{eq:III.22.1}
+\begin{equation*}
+    \frac{z^{3}u}{(1 - zu)(1 - z^{2}u)(1 - z^{3}u)} = (zzzu)\sum_{j}(zu)^{j} \sum_{k}z^{k}(zu)^{k} \sum_{l}z^{l}z^{l}(zu)^{l}
+\end{equation*}
+\begin{itemize}
+    \item $z^{1} \cdot z^{1} \cdot (zu)^{1}$ places $1$ cell on all three columns
+    \item $z^{0} \cdot z^{0} \cdot (zu)^{j}$ places $j \geq 0$ cells on the rightmost column
+    \item $z^{0} \cdot z^{k} \cdot (zu)^{k}$ places $k \geq 0$ cells on the rightmost two columns
+    \item $z^{l} \cdot z^{l} \cdot (zu)^{l}$ places $l \geq 0$ cells on all three columns
+\end{itemize}
+This "lifting" mechanism ensures the summands remain weakly increasing.
+
+\vspace{\baselineskip}
+\noindent
+The 3rd term in \ref{eq:III.22.2}
+\begin{equation*}
+    \frac{z^{3}u^{3}}{(1 - z)(1 - z^{2})(1 - z^{3})}
+\end{equation*}
+\begin{itemize}
+    \item $z^{3}u^{3}$ ensures there is at least one part of size $3$ (which also marks the last column height $3$).
+    \item $\frac{1}{(1 - z)(1 - z^{2})(1 - z^{3})}$ is the standard generating function for partitions using parts of size $\{1, 2, 3\}$.
+\end{itemize}
 
 
 
