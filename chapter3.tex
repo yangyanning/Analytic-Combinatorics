@@ -476,8 +476,11 @@ To derive the functional equation, note that
 \begin{equation*}
     \begin{aligned}
         f(z) &= z + z^{2} + \cdots = \frac{z}{1 - z} \\
-        \mathcal{L}[F(z, u)] &= \mathcal{L}[\sum_{j}f^{\langle k \rangle}(z)u^{j}] = \sum_{j}f^{\langle k \rangle}(z)\mathcal{L}[u^{j}]
-            = \sum_{j}f^{\langle k \rangle}(z)\frac{u^{j}}{1 - u} = \frac{1}{1 - u}F(z, u)
+        \mathcal{L}[F(z, u)]
+            &= \mathcal{L}[\sum_{j}f^{\langle j \rangle}(z)u^{j}] \\
+            &= \sum_{j}f^{\langle j \rangle}(z)\mathcal{L}[u^{j}] \\
+            &= \sum_{j}f^{\langle j \rangle}(z)\frac{u^{j}}{1 - u} \\
+            &= \frac{1}{1 - u}F(z, u)
     \end{aligned}
 \end{equation*}
 Hence
@@ -560,10 +563,11 @@ Now
     \begin{aligned}
         f(z) &= z \\
         \mathcal{L}[F(z, u)]
-            &= \sum_{j}f^{\langle k \rangle}(z)\mathcal{L}[u^{j}] = \sum_{j}f^{\langle k \rangle}(z)u\frac{1 - u^{2j}}{1 - u}
-                = \frac{u}{1 - u}\sum_{j}f^{\langle k \rangle}(z)(1 - u^{2j}) \\
-            &= \frac{u}{1 - u}\left(\sum_{j}f^{\langle k \rangle}(z) - \sum_{j}f^{\langle k \rangle}(z)(u^{2})^{j}\right)
-                = \frac{u}{1 - u}\left(F(z, 1) - F(z, u^{2})\right)
+            &= \sum_{j}f^{\langle j \rangle}(z)\mathcal{L}[u^{j}] \\
+            &= \sum_{j}f^{\langle j \rangle}(z)u\frac{1 - u^{2j}}{1 - u} \\
+            &= \frac{u}{1 - u}\sum_{j}f^{\langle j \rangle}(z)(1 - u^{2j}) \\
+            &= \frac{u}{1 - u}\left(\sum_{j}f^{\langle j \rangle}(z) - \sum_{j}f^{\langle j \rangle}(z)(u^{2})^{j}\right) \\
+            &= \frac{u}{1 - u}\left(F(z, 1) - F(z, u^{2})\right)
     \end{aligned}
 \end{equation*}
 Hence
@@ -630,6 +634,52 @@ $\frac{1}{2}, \frac{1}{4}, \frac{1}{8}, \cdots$: there is \textbf{1} way to repr
         1 &= \frac{1}{2} + \frac{1}{4} + \frac{1}{16} + \frac{1}{16} + \frac{1}{16} + \frac{1}{16} \\
         1 &= \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \frac{1}{16} + \frac{1}{32} + \frac{1}{32}
     \end{aligned}
+\end{equation*}
+
+
+% Note III.32.
+\vspace{\baselineskip}
+\noindent
+$\rhd$ \textbf{III.32.} \textit{Carlitz compositions I}.
+To derive the functional equation, note that
+\begin{equation*}
+    \begin{aligned}
+        k(z) &= z + z^{2} + \cdots = \frac{z}{1 - z} \\
+        \mathcal{L}[K(z, u)]
+            &= \sum_{j}k^{\langle j \rangle}(z)\mathcal{L}[u^{j}] \\
+            &= \sum_{j}k^{\langle j \rangle}(z)\left(\frac{u}{1 - u} - u^{j}\right) \\
+            &= \frac{u}{1 - u}\sum_{j}k^{\langle j \rangle}(z) - \sum_{j}k^{\langle j \rangle}(z)u^{j} \\
+            &= \frac{u}{1 - u}K(z, 1) - K(z, u)
+    \end{aligned}
+\end{equation*}
+Hence
+\begin{equation*}
+    K(z, u) = k(zu) + (\mathcal{L}[K(z, u)])_{u \mapsto zu} = \frac{zu}{1 - zu} + \frac{zu}{1 - zu}K(z, 1) - K(z, zu)
+\end{equation*}
+To solve for $K(z, 1)$, let $K(z, 1) = X$.
+\begin{equation*}
+    K(z, u) = \frac{zu}{1 - zu}(1 + X) - K(z, zu)
+\end{equation*}
+Iterate once:
+\begin{equation*}
+    K(z, u) = \frac{zu}{1 - zu}(1 + X) - \left(\frac{z^{2}u}{1 - z^{2}u}(1 + X) - K(z, z^{2}u)\right)
+\end{equation*}
+Iterate infinitely:
+\begin{equation*}
+    \begin{aligned}
+        K(z, u)
+        &= \frac{zu}{1 - zu}(1 + X) - \frac{z^{2}u}{1 - z^{2}u}(1 + X) + \frac{z^{3}u}{1 - z^{3}u}(1 + X) - \cdots \\
+        &= (1 + X)\sum_{j \geq 1}(-1)^{j - 1}\frac{z^{j}u}{1 - z^{j}u}
+    \end{aligned}
+\end{equation*}
+Now set $u = 1$ so that $K(z, 1) = X$:
+\begin{equation*}
+    X = (1 + X)\sum_{j \geq 1}\frac{(-1)^{j - 1}z^{j}}{1 - z^{j}}
+\end{equation*}
+Let the sum be $S$:
+\begin{equation*}
+    X = (1 + X)S \implies 1 + X = \frac{1}{1 - S} = \left(1 - \sum_{j \geq 1}\frac{(-1)^{j - 1}z^{j}}{1 - z^{j}}\right)^{-1}
+        = \left(1 + \sum_{j \geq 1}\frac{(-z)^{j}}{1 - z^{j}}\right)^{-1}
 \end{equation*}
 
 
