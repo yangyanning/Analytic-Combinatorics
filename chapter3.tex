@@ -578,6 +578,60 @@ where
 \begin{equation*}
     \alpha(u) = zu + \frac{zu}{1 - zu}F(z, 1), \quad \beta(u) = -\frac{zu}{1 - zu}, \quad \sigma(u) = z^{2}u^{2}
 \end{equation*}
+Substitute $u = 1$ and solve for $F(z, 1) \coloneqq X$
+\begin{equation*}
+    \begin{aligned}
+        X
+        &= \alpha(1) - \frac{z}{1 - z}\alpha(z^{2}) + \frac{z}{1 - z}\frac{z^{3}}{1 - z^{3}}\alpha(z^{6}) - \cdots \\
+        &= \left[z + \frac{z}{1 - z}X\right]
+            - \frac{z}{1 - z}\left[z^{3} + \frac{z^{3}}{1 - z^{3}}X\right]
+            + \frac{z}{1 - z}\frac{z^{3}}{1 - z^{3}}\left[z^{7} + \frac{z^{7}}{1 - z^{7}}X\right] - \cdots
+    \end{aligned}
+\end{equation*}
+This is a linear equation in $X$:
+\begin{equation*}
+    X = \text{Series A involving z} + X \cdot \text{Series B involving z}
+\end{equation*}
+where
+\begin{equation*}
+    \begin{aligned}
+        \text{Series A}
+        &= z - \frac{z}{1 - z}z^{3} + \frac{z}{1 - z}\frac{z^{3}}{1 - z^{3}}z^{7} - \cdots \\
+        &= z - \frac{z^{1 + 3}}{1 - z} + \frac{z^{1 + 3 + 7}}{(1 - z)(1 - z^{3})} - \cdots \\
+        &= \sum_{j \geq 1}(-1)^{j - 1}z^{2^{j + 1} - j - 2}/\left((1 - z)(1 - z^{3}) \cdots (1 - z^{2^{j - 1} - 1})\right)
+    \end{aligned}
+\end{equation*}
+\begin{equation*}
+    \begin{aligned}
+        1 - \text{Series B}
+        &= 1 - \frac{z}{1 - z} + \frac{z}{1 - z}\frac{z^{3}}{1 - z^{3}} - \frac{z}{1 - z}\frac{z^{3}}{1 - z^{3}}\frac{z^{7}}{1 - z^{7}} + \cdots \\
+        &= 1 - \frac{z}{1 - z} + \frac{z^{1 + 3}}{(1 - z)(1 - z^{3})} - \frac{z^{1 + 3 + 7}}{(1 - z)(1 - z^{3})(1 - z^{7})} + \cdots \\
+        &= \sum_{j \geq 0}(-1)^{j}z^{2^{j + 1} - j - 2}/\left((1 - z)(1 - z^{3}) \cdots (1 - z^{2^{j} - 1})\right)
+    \end{aligned}
+\end{equation*}
+
+\vspace{\baselineskip}
+\noindent
+The sequence starts as 1, 1, 2, 3, 5, 9, 16, 28, 50 and is \textit{EIS} \textbf{A002572}. It represents the number of partitions of 1 into summands of the form
+$\frac{1}{2}, \frac{1}{4}, \frac{1}{8}, \cdots$: there is \textbf{1} way to represent 1 as \textit{2} summands; \textbf{1} way as \textit{3} summands;
+\textbf{2} ways as \textit{4} summands; \textbf{3} ways as \textit{5} summands; \textbf{5} ways as \textit{6} summands $\cdots$
+\begin{equation*}
+    \begin{aligned}
+        1 &= \frac{1}{2} + \frac{1}{2} \\
+        1 &= \frac{1}{2} + \frac{1}{4} + \frac{1}{4} \\
+        1 &= \frac{1}{4} + \frac{1}{4} + \frac{1}{4} + \frac{1}{4} \\
+        1 &= \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \frac{1}{8} \\
+        1 &= \frac{1}{4} + \frac{1}{4} + \frac{1}{4} + \frac{1}{8} + \frac{1}{8} \\
+        1 &= \frac{1}{2} + \frac{1}{8} + \frac{1}{8} + \frac{1}{8} + \frac{1}{8} \\
+        1 &= \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \frac{1}{16} + \frac{1}{16} \\
+        1 &= \frac{1}{4} + \frac{1}{4} + \frac{1}{8} + \frac{1}{8} + \frac{1}{8} + \frac{1}{8} \\
+        1 &= \frac{1}{4} + \frac{1}{4} + \frac{1}{4} + \frac{1}{8} + \frac{1}{16} + \frac{1}{16} \\
+        1 &= \frac{1}{2} + \frac{1}{8} + \frac{1}{8} + \frac{1}{8} + \frac{1}{16} + \frac{1}{16} \\
+        1 &= \frac{1}{2} + \frac{1}{4} + \frac{1}{16} + \frac{1}{16} + \frac{1}{16} + \frac{1}{16} \\
+        1 &= \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \frac{1}{16} + \frac{1}{32} + \frac{1}{32}
+    \end{aligned}
+\end{equation*}
+
 
 
 \section{Extremal parameters}
