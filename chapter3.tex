@@ -224,10 +224,10 @@ where $C(z)$ is the OGF for the Catalan numbers: $C(z) = 1 + zC(z)^{2}$.
 \end{equation*}
 \begin{equation*}
     \frac{\partial \hat{B}}{\partial u} = \frac{z}{1 - 2z - 2z\hat{B}} \implies
-        \frac{\partial \hat{B}}{\partial u}\big|_{u = 1} = \frac{z}{1 - 2z - 2z\hat{B}(z)} = \frac{z}{\sqrt{1 - 4z}} \implies
+        \left.\frac{\partial \hat{B}}{\partial u}\right|_{u = 1} = \frac{z}{1 - 2z - 2z\hat{B}(z)} = \frac{z}{\sqrt{1 - 4z}} \implies
 \end{equation*}
 \begin{equation*}
-    [z^{n}]\frac{\partial \hat{B}}{\partial u}\big|_{u = 1} = [z^{n - 1}](1 - 4z)^{-1/2} = \binom{2n - 2}{n - 1} = \frac{(2n - 2)!}{(n - 1)!^{2}}
+    [z^{n}]\left.\frac{\partial \hat{B}}{\partial u}\right|_{u = 1} = [z^{n - 1}](1 - 4z)^{-1/2} = \binom{2n - 2}{n - 1} = \frac{(2n - 2)!}{(n - 1)!^{2}}
 \end{equation*}
 
 \vspace{\baselineskip}
@@ -239,10 +239,10 @@ where $C(z)$ is the OGF for the Catalan numbers: $C(z) = 1 + zC(z)^{2}$.
 \end{equation*}
 \begin{equation*}
     \frac{\partial \hat{B}}{\partial u} = \frac{2z\hat{B}}{1 - 2zu - 2z\hat{B}} \implies
-        \frac{\partial \hat{B}}{\partial u}\big|_{u = 1} = \frac{2z\hat{B}(z)}{1 - 2z - 2z\hat{B}(z)} = \frac{1 - 2z}{\sqrt{1 - 4z}} - 1 \implies
+        \left.\frac{\partial \hat{B}}{\partial u}\right|_{u = 1} = \frac{2z\hat{B}(z)}{1 - 2z - 2z\hat{B}(z)} = \frac{1 - 2z}{\sqrt{1 - 4z}} - 1 \implies
 \end{equation*}
 \begin{equation*}
-    [z^{n}]\frac{\partial \hat{B}}{\partial u}\big|_{u = 1} = [z^{n}]\left((1 - 4z)^{-1/2} - 2\frac{z}{\sqrt{1 - 4z}}\right)
+    [z^{n}]\left.\frac{\partial \hat{B}}{\partial u}\right|_{u = 1} = [z^{n}]\left((1 - 4z)^{-1/2} - 2\frac{z}{\sqrt{1 - 4z}}\right)
         = \binom{2n}{n} - 2\binom{2n - 2}{n - 1}
 \end{equation*}
 
@@ -255,7 +255,7 @@ where $C(z)$ is the OGF for the Catalan numbers: $C(z) = 1 + zC(z)^{2}$.
 \end{equation*}
 \begin{equation*}
     \frac{\partial \hat{B}}{\partial u} = \frac{z\hat{B}^{2}}{1 - 2z - 2zu\hat{B}} \implies
-        \frac{\partial \hat{B}}{\partial u}\big|_{u = 1} = \frac{z\hat{B}(z)^{2}}{1 - 2z - 2z\hat{B}(z)}
+        \left.\frac{\partial \hat{B}}{\partial u}\right|_{u = 1} = \frac{z\hat{B}(z)^{2}}{1 - 2z - 2z\hat{B}(z)}
         = \frac{z\hat{B}(z)^{2}}{\sqrt{1 - 4z}} = \frac{z^{3}C(z)^{4}}{\sqrt{1 - 4z}}
 \end{equation*}
 Since $C'(z)$ satisfies $C'(z) = C(z)^{2} + 2zC(z)C'(z)$, we have:
@@ -264,14 +264,14 @@ Since $C'(z)$ satisfies $C'(z) = C(z)^{2} + 2zC(z)C'(z)$, we have:
 \end{equation*}
 Plugging this into our equation
 \begin{equation*}
-    \frac{\partial \hat{B}}{\partial u}\big|_{u = 1} = z^{3}C(z)^{2} \cdot \frac{C(z)^{2}}{\sqrt{1 - 4z}}
+    \left.\frac{\partial \hat{B}}{\partial u}\right|_{u = 1} = z^{3}C(z)^{2} \cdot \frac{C(z)^{2}}{\sqrt{1 - 4z}}
         = z^{3}C(z)^{2}C'(z) = \frac{z^{3}}{3}\frac{d}{dz}C(z)^{3} = z^{3}\frac{d}{dz}F(z)
 \end{equation*}
 where $F(z) = \frac{1}{3}C(z)^{3}$.
 Now
 \begin{equation*}
     \begin{aligned}
-        [z^{n}]\frac{\partial \hat{B}}{\partial u}\big|_{u = 1}
+        [z^{n}]\left.\frac{\partial \hat{B}}{\partial u}\right|_{u = 1}
         &= [z^{n}]z^{3}\frac{d}{dz}F(z) \\
         &= [z^{n - 3}]\frac{d}{dz}F(z) \\
         &= (n - 2)F_{n - 2} \\
@@ -285,7 +285,7 @@ Now
 \noindent
 Consequently, number of \textbf{Leaves} + number of \textbf{1-nodes} + number of \textbf{2-nodes} is:
 \begin{equation*}
-    \binom{2n - 2}{n - 1} + \binom{2n}{n} - 2\binom{2n - 2}{n - 1} + \binom{2n - 2}{n - 3} = \frac{n}{n + 1}\binom{2n}{n}    
+    \binom{2n - 2}{n - 1} + \binom{2n}{n} - 2\binom{2n - 2}{n - 1} + \binom{2n - 2}{n - 3} = \frac{n}{n + 1}\binom{2n}{n}
 \end{equation*}
 as expected.
 
@@ -681,6 +681,199 @@ Let the sum be $S$:
     X = (1 + X)S \implies 1 + X = \frac{1}{1 - S} = \left(1 - \sum_{j \geq 1}\frac{(-1)^{j - 1}z^{j}}{1 - z^{j}}\right)^{-1}
         = \left(1 + \sum_{j \geq 1}\frac{(-z)^{j}}{1 - z^{j}}\right)^{-1}
 \end{equation*}
+
+
+% Example III.23.
+\vspace{\baselineskip}
+\noindent
+\textbf{\textit{Example} III.23.} \textit{Local order patterns in permutations}.
+
+\vspace{\baselineskip}
+\noindent
+For simplicity, let's denote $\hat{I}(z, \textbf{u})$ by $I$. The differential equation becomes:
+\begin{equation*}
+    \frac{dI}{dz} = u_{0} + (u_{1} + u_{1}')I + u_{2}I^{2} = u_{0} + 2v_{1}I + u_{2}I^{2}
+\end{equation*}
+Separating variables yields
+\begin{equation*}
+    \frac{dI}{u_{0} + 2v_{1}I + u_{2}I^{2}} = dz
+\end{equation*}
+which we integrate from the initial condition $I(0) = 0$ to a general $z$:
+\begin{equation*}
+    \int_{\xi = I(0)}^{\xi = I(z)}\frac{d\xi}{u_{0} + 2v_{1}\xi + u_{2}\xi^{2}} = \int_{\zeta = 0}^{\zeta = z}d\zeta
+\end{equation*}
+Inserting $I(0) = 0$ and writing $I(z)$ simply as $I$ for brevity,
+\begin{equation*}
+    \int_{0}^{I}\frac{d\xi}{u_{0} + 2v_{1}\xi + u_{2}\xi^{2}} = \int_{0}^{z}d\zeta = z
+\end{equation*}
+Completing the square in the denominator,
+\begin{equation*}
+    u_{0} + 2v_{1}\xi + u_{2}\xi^{2}
+    = u_{2}\left[\left(\xi + \frac{v_{1}}{u_{2}}\right)^{2} + \frac{\delta^{2}}{u_{2}^{2}}\right]
+\end{equation*}
+and substituting this into the integral gives
+\begin{equation*}
+    \int_{0}^{I}\frac{d\xi}{u_{2}\left[\left(\xi + \frac{v_{1}}{u_{2}}\right)^{2} + \left(\frac{\delta}{u_{2}}\right)^{2}\right]} = z
+\end{equation*}
+Using the standard integral $\int\frac{dx}{x^{2} +a^{2}} = \frac{1}{a}\text{arctan}\frac{x}{a}$,
+\begin{equation*}
+    z = \frac{1}{u_{2}}\frac{1}{\frac{\delta}{u_{2}}}
+        \text{arctan}\left.\frac{\xi + \frac{v_{1}}{u_{2}}}{\frac{\delta}{u_{2}}}\right|_{\xi = 0}^{\xi = I}
+      = \frac{1}{\delta}\left[
+            \text{arctan}\left(\frac{u_{2}I + v_{1}}{\delta}\right) - \text{arctan}\left(\frac{v_{1}}{\delta}\right)
+        \right]
+\end{equation*}
+Rearranging and taking the tangent of both sides, we obtain
+\begin{equation*}
+    \frac{u_{2}I + v_{1}}{\delta} = \text{tan}\left[\text{arctan}\left(\frac{v_{1}}{\delta}\right) + z\delta\right]
+        = \frac{\frac{v_{1}}{\delta} + \text{tan}(z\delta)}{1 - \frac{v_{1}}{\delta}\text{tan}(z\delta)}
+        = \frac{v_{1} + \delta\text{tan}(z\delta)}{\delta - v_{1}\text{tan}(z\delta)}
+\end{equation*}
+Solving for $I$ yields the final expression
+\begin{equation*}
+    I = \frac{\delta}{u_{2}}\frac{v_{1} + \delta\text{tan}(z\delta)}{\delta - v_{1}\text{tan}(z\delta)} - \frac{v_{1}}{u_{2}}
+\end{equation*}
+
+\vspace{\baselineskip}
+\noindent
+We now expand $I$ as a power series. Starting from the closed-form expression,
+\begin{equation*}
+    \begin{aligned}
+        I
+        &= \frac{v_{1}}{u_{2}}\frac{1 + \frac{\delta}{v_{1}}\text{tan}(z\delta)}{1 - \frac{v_{1}}{\delta}\text{tan}(z\delta)} - \frac{v_{1}}{u_{2}} \\
+        &= \frac{v_{1}}{u_{2}}\left[1 + \frac{\delta}{v_{1}}\text{tan}(z\delta)\right]
+            \left[1 + \frac{v_{1}}{\delta}\text{tan}(z\delta)
+                + \left(\frac{v_{1}}{\delta}\text{tan}(z\delta)\right)^{2}
+                + \left(\frac{v_{1}}{\delta}\text{tan}(z\delta)\right)^{3} + \cdots \right]
+             - \frac{v_{1}}{u_{2}} \\
+        &= \frac{v_{1}}{u_{2}}\left[1 + \frac{\delta}{v_{1}}\left(z\delta + \frac{(z\delta)^{3}}{3} + \cdots \right)\right]
+            \left[1 + \frac{v_{1}}{\delta}\left(z\delta + \frac{(z\delta)^{3}}{3}\right)
+                + \left(\frac{v_{1}}{\delta}(z\delta)\right)^{2}
+                + \left(\frac{v_{1}}{\delta}(z\delta)\right)^{3} + \cdots \right] - \frac{v_{1}}{u_{2}} \\
+        &= \frac{v_{1}}{u_{2}}\left[1 + \frac{\delta^{2}}{v_{1}}z + \frac{\delta^{4}}{3v_{1}}z^{3} + \cdots \right]
+            \left[1 + v_{1}z + v_{1}^{2}z^{2} + \left(\frac{v_{1}\delta^{2}}{3} + v_{1}^{3}\right)z^{3} + \cdots \right] - \frac{v_{1}}{u_{2}} \\
+        &= u_{0}z + u_{0}(u_{1} + u_{1}')\frac{z^{2}}{2!} + u_{0}((u_{1} + u_{1}')^{2} + 2u_{0}u_{2})\frac{z^{3}}{3!} + \cdots
+    \end{aligned}
+\end{equation*}
+Alternatively, this result may be obtained directly by Taylor series expansion, computing successive derivatives of $I$ with respect to $z$
+from the differential equation itself.
+
+\vspace{\baselineskip}
+\noindent
+Alternatively, the series can also be obtained by simply listing the elements for each $n \geq 1$.
+\begin{equation*}
+    \begin{aligned}
+        \mathcal{P}_{1} &= \{ \cnum{1} \} \implies \\
+        f_{1}(\textbf{u}) &= u_{0} \\[10pt]
+        \mathcal{P}_{2} &= \{ \cnum{1}\text{-}\cnum{2}, \cnum{2}\text{-}\cnum{1} \} \implies \\
+        f_{2}(\textbf{u}) &= u_{1}u_{0} + u_{0}u_{1}' = u_{0}(u_{1} + u_{1}') \\[10pt]
+        \mathcal{P}_{3} &= \{ \cnum{1}\text{-}\cnum{2}\text{-}\cnum{3}, \cnum{1}\text{-}\cnum{3}\text{-}\cnum{2},
+            \cnum{2}\text{-}\cnum{1}\text{-}\cnum{3}, \cnum{2}\text{-}\cnum{3}\text{-}\cnum{1},
+            \cnum{3}\text{-}\cnum{1}\text{-}\cnum{2}, \cnum{3}\text{-}\cnum{2}\text{-}\cnum{1} \} \implies \\
+        f_{3}(\textbf{u}) &= u_{1}u_{1}u_{0} + u_{1}u_{0}u_{1}' + u_{0}u_{2}u_{0} + u_{1}u_{0}u_{1}' + u_{0}u_{2}u_{0} + u_{0}u_{1}'u_{1}' \\
+            &= u_{0}(u_{1}^{2} + u_{1}u_{1}' + u_{0}u_{2} + u_{1}u_{1}' + u_{0}u_{2} + u_{1}'^{2}) \\
+            &= u_{0}((u_{1} + u_{1}')^{2} + 2u_{0}u_{2}) \\[10pt]
+        \mathcal{P}_{4} &= \{ \cdots \} \\
+        f_{4}(\textbf{u}) &= u_{0}(u_{1} + u_{1}')((u_{1} + u_{1}')^{2} + 8u_{0}u_{2})
+    \end{aligned}
+\end{equation*}
+
+\vspace{\baselineskip}
+\noindent
+Let us find the mean number of nodes of nullary, unary, and binary type from the closed-form solution.
+
+\vspace{\baselineskip}
+\noindent
+\textbf{Nullary type}. Set $u_{1} = u_{1}' = u_{2} = 1$. Then $v_{1} = 1$ and $\delta = \sqrt{u_{0} - 1}$. We have
+\begin{equation*}
+    \hat{I}(z, u_{0}) = \delta\frac{1 + \delta\text{tan}(z\delta)}{\delta - \text{tan}(z\delta)} - 1 = (1 + \delta^{2})\frac{w}{1 - w}
+\end{equation*}
+where $w \coloneqq \frac{\text{tan}(z\delta)}{\delta} = z + \frac{z^{3}}{3}\delta^{2} + O(\delta^{4})$.
+Write $w = w_{0} + w_{2}\delta^{2} + O(\delta^{4})$ with $w_{0} = z$ and $w_{2} = z^{3}/3$. Then
+\begin{equation*}
+    1 - w = 1 - w_{0} - w_{2}\delta^{2} + O(\delta^{4}) = (1 - w_{0})\left[1 - \frac{w_{2}}{1 - w_{0}}\delta^{2} + O(\delta^{4})\right]
+\end{equation*}
+Hence
+\begin{equation*}
+    \frac{1}{1 - w} = \frac{1}{1 - w_{0}}\frac{1}{1 - \frac{w_{2}}{1 - w_{0}}\delta^{2} + \cdots}
+        = \frac{1}{1 - w_{0}}\left[1 + \frac{w_{2}}{1 - w_{0}}\delta^{2} + O(\delta^{4})\right]
+\end{equation*}
+Multiplying by $w = w_{0} + w_{2}\delta^{2} + O(\delta^{4})$ yields
+\begin{equation*}
+    \frac{w}{1 - w} = \frac{w_{0}}{1 - w_{0}} + \frac{w_{2}}{(1 - w_{0})^{2}}\delta^{2} + O(\delta^{4})
+\end{equation*}
+Substituting $w_{0} = z$ and $w_{2} = z^{3}/3$, we obtain
+\begin{equation} \label{eq:III.23.1}
+    \frac{w}{1 - w} = \frac{z}{1 - z} + \frac{z^{3}}{3(1 - z)^{2}}\delta^{2} + O(\delta^{4})
+\end{equation}
+Since $\delta^{2} = u_{0} - 1$, the first-order Taylor term in $u_{0}$ is exactly the coefficient of $\delta^{2}$. Hence
+\begin{equation*}
+    \left.\frac{\partial I}{\partial u_{0}}\right|_{u_{0} = 1}
+        = [\delta^{2}]\left((1 + \delta^{2})\frac{w}{1 - w}\right)
+        = \frac{z}{1 - z} + \frac{z^{3}}{3(1 - z)^{2}}
+\end{equation*}
+The coefficient of $z^{n}$ in $\left.\frac{\partial I}{\partial u_{0}}\right|_{u_{0} = 1}$ is $(n + 1)/3$.
+
+\vspace{\baselineskip}
+\noindent
+\textbf{Unary type}. We consider both unary types simultaneously. Note that $\hat{I}$ depends on $u_{0}, u_{1}$ only through
+$v_{1} = (u_{0} + u_{1})/2$. Set $u_{0} = u_{2} = 1$. Then $\delta = \sqrt{1 - v_{1}^{2}}$ and
+\begin{equation*}
+    \hat{I}(z, v_{1}) = \delta\frac{v_{1} + \delta\text{tan}(z\delta)}{\delta - v_{1}\text{tan}(z\delta)} - v_{1}
+        = \frac{v_{1} + \delta^{2}w}{1 - v_{1}w} - v_{1} = \frac{w}{1 - v_{1}w}
+\end{equation*}
+where $w \coloneqq \frac{\text{tan}(z\delta)}{\delta} = z + \frac{z^{3}}{3}\delta^{2} + O(\delta^{4})$.
+We have
+\begin{equation*}
+    \frac{\partial I}{\partial u_{1}} = \frac{\partial I}{\partial u_{1}'} = \frac{1}{2}\frac{\partial I}{\partial v_{1}}
+\end{equation*}
+We compute $\frac{\partial I}{\partial v_{1}}$ at $v_{1} = (1 + 1)/2 = 1$. First, $w$ depends on $v_{1}$ via $s = \delta^{2} = 1 - v_{1}^{2}$:
+\begin{equation*}
+    \frac{\partial w}{\partial v_{1}} = \frac{\partial w}{\partial s} \cdot (-2v_{1})
+\end{equation*}
+From the series $\left.\frac{\partial w}{\partial s}\right|_{s = 0} = \frac{z^{3}}{3}$, so at $v_{1} = 1$
+\begin{equation*}
+    \left.\frac{\partial w}{\partial v_{1}}\right|_{v_{1} = 1} = -\frac{2z^{3}}{3}
+\end{equation*}
+Now differentiate $\hat{I}(z, v_{1})$
+\begin{equation*}
+    \frac{\partial \hat{I}}{\partial v_{1}}
+        = \frac{\frac{\partial w}{\partial v_{1}}(1 - v_{1}w) + w(w + v_{1}\frac{\partial w}{\partial v_{1}})}{(1 - v_{1}w)^{2}}
+\end{equation*}
+Substituting $v_{1} = 1, w = z$ and $\frac{\partial w}{\partial v_{1}} = -\frac{2z^{3}}{3}$, we obtain
+\begin{equation*}
+    \left.\frac{\partial \hat{I}}{\partial v_{1}}\right|_{v_{1} = 1} = \frac{z^{2}\left(1 - \frac{2}{3}z\right)}{(1 - z)^{2}}
+\end{equation*}
+Consequently
+\begin{equation*}
+    \left.\frac{\partial \hat{I}}{\partial u_{1}}\right|_{u_{1} = 1} = \left.\frac{\partial \hat{I}}{\partial u_{1}'}\right|_{u_{1}' = 1}
+        = \frac{z^{2}\left(1 - \frac{2}{3}z\right)}{2(1 - z)^{2}}
+\end{equation*}
+The coefficient of $z^{n}$ in $\left.\frac{\partial \hat{I}}{\partial u_{1}}\right|_{u_{1} = 1}$ and
+$\left.\frac{\partial \hat{I}}{\partial u_{1}'}\right|_{u_{1}' = 1}$ is $(n + 1)/6$.
+
+\vspace{\baselineskip}
+\noindent
+\textbf{Binary type}. Set $u_{0} = 1$, $v_{1} = (1 + 1)/2 = 1$. Then $\delta = \sqrt{u_{2} - 1}$ and
+\begin{equation*}
+    \hat{I}(z, u_{2}) = \frac{\delta}{u_{2}}\frac{1 + \delta\text{tan}(z\delta)}{\delta - \text{tan}(z\delta)} - \frac{1}{u_{2}} = \frac{w}{1 - w}
+\end{equation*}
+where $w \coloneqq \frac{\text{tan}(z\delta)}{\delta} = z + \frac{z^{3}}{3}\delta^{2} + O(\delta^{4})$.
+This is similar to the nullary case. From \ref{eq:III.23.1} we have
+\begin{equation*}
+    \left.\frac{\partial \hat{I}}{\partial u_{2}}\right|_{u_{2} = 1}
+    = [\delta^{2}]\frac{w}{1 - w}
+    = \frac{z^{3}}{3(1 - z)^{2}}
+\end{equation*}
+The coefficient of $z^{n}$ in $\left.\frac{\partial \hat{I}}{\partial u_{2}}\right|_{u_{2} = 1}$ is $\frac{n - 2}{3}$.
+
+\vspace{\baselineskip}
+\noindent
+Summing the contributions of all node types:
+\begin{equation*}
+    \frac{n + 1}{3} + \frac{n + 1}{6} + \frac{n + 1}{6} + \frac{n - 2}{3} = n
+\end{equation*}
+as expected.
 
 
 
