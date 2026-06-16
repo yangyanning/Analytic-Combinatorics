@@ -17,7 +17,7 @@
 \vspace{\baselineskip}
 \noindent
 $\rhd$ \textbf{III.7.} \textit{Largest summands in compositions}.
-Let $M$ be the largest summand in a random composition. We want to show that for any $\epsilon \in (0, 1)$, as $n \to \infty$,
+Let $M$ be the largest summand in a random composition. We want to show that for any $\epsilon \in (0, 1)$, as $n \to \infty$:
 \begin{equation*}
     \mathbb{P}\left((1 - \epsilon)\log_{2}{n} \leq M \leq (1 + \epsilon)\log_{2}{n}\right) \to 1
 \end{equation*}
@@ -28,7 +28,7 @@ Let $M$ be the largest summand in a random composition. We want to show that for
 \vspace{\baselineskip}
 \noindent
 Let $r_{+} = \lfloor(1 + \epsilon)\log_{2}{n}\rfloor$. If $M \geq r_{+}$ then there exists at least one summand of size $\geq r_{+}$.
-The number of such summands is $S = \sum_{k = r_{+}}^{\infty}X_{k}$ where $X_{k}$ is the number of summands of size exactly $k$. By Markov's inequality,
+The number of such summands is $S = \sum_{k = r_{+}}^{\infty}X_{k}$ where $X_{k}$ is the number of summands of size exactly $k$. By Markov's inequality:
 \begin{equation*}
     \mathbb{P}(M \geq r_{+}) = \mathbb{P}(S \geq 1) \leq \frac{\mathbb{E}[S]}{1} = \sum_{k = r_{+}}^{\infty}\mathbb{E}[X_{k}]
 \end{equation*}
@@ -65,13 +65,13 @@ at least one block is a single summand of size at least $r_{-}$. Therefore $\mat
 
 \vspace{\baselineskip}
 \noindent
-By Paley-Zygmund inequality (we'll give a short proof later)
+By Paley-Zygmund inequality (we'll give a short proof later):
 \begin{equation*}
     \mathbb{P}(Y > 0) \geq \frac{(\mathbb{E}[Y])^{2}}{\mathbb{E}[Y^{2}]}
 \end{equation*}
-Now $Y \sim \text{Binomial}(m,p)$. The first moment
+Now $Y \sim \text{Binomial}(m,p)$. The first moment:
 \begin{equation*}
-    \mathbb{E}[Y] = mp = \lfloor \frac{n}{r_{-}} \rfloor \left(\frac{1}{2}\right)^{r_{-} - 1}
+    \mathbb{E}[Y] = mp = \left\lfloor \frac{n}{r_{-}} \right\rfloor \left(\frac{1}{2}\right)^{r_{-} - 1}
         > \left( \frac{n}{(1 - \epsilon)\log_{2}{n} + 1} - 1 \right) \left( \frac{1}{2} \right)^{(1 - \epsilon)\log_{2}{n}}
         \sim \frac{n^{\epsilon}}{(1 - \epsilon)\log_{2}{n}} \to \infty
 \end{equation*}
@@ -125,7 +125,7 @@ Since he can only open 5, he fails.
 \noindent
 Before the game, the prisoners agree on a random remapping. Let's say their secret permutation is: "Draw 1 is 7, 2 is 3, 3 is 9, 4 is 1, 5 is 8,
 6 is 2, 7 is 10, 8 is 4, 9 is 6, 10 is 5". Now when a prisoner thinks "I am opening Drawer $n$", they actually go to the physical drawer assigned to
-$n$ in their secret code. Each prisoner now follows the cycle strategy using their secret map:
+$n$ in their secret code. Each prisoner now follows the cycle strategy using their secret map
 \begin{itemize}
     \item Prisoner 1
     \begin{itemize}
@@ -209,7 +209,7 @@ $\rhd$ \textbf{III.15.} \textit{Distinct component sizes in set partitions}.
 
 \vspace{\baselineskip}
 \noindent
-Actually we are dealing with the class $\bar{\mathcal{B}}$  of $\textit{pruned binary trees}$ (see \textbf{\textit{Example} I.13.}):
+Actually we are dealing with the class $\bar{\mathcal{B}}$ of $\textit{pruned binary trees}$ (see \textbf{\textit{Example} I.13.}):
 \begin{equation*}
     \hat{B}(z) = C(z) - 1 = \frac{1 - \sqrt{1 - 4z}}{2z} - 1 = \frac{1 - 2z - \sqrt{1 - 4z}}{2z}
 \end{equation*}
@@ -258,11 +258,11 @@ where $C(z)$ is the OGF for the Catalan numbers: $C(z) = 1 + zC(z)^{2}$.
         \left.\frac{\partial \hat{B}}{\partial u}\right|_{u = 1} = \frac{z\hat{B}(z)^{2}}{1 - 2z - 2z\hat{B}(z)}
         = \frac{z\hat{B}(z)^{2}}{\sqrt{1 - 4z}} = \frac{z^{3}C(z)^{4}}{\sqrt{1 - 4z}}
 \end{equation*}
-Since $C'(z)$ satisfies $C'(z) = C(z)^{2} + 2zC(z)C'(z)$, we have:
+Since $C'(z)$ satisfies $C'(z) = C(z)^{2} + 2zC(z)C'(z)$, we have
 \begin{equation*}
     C'(z) = \frac{C(z)^{2}}{1 - 2zC(z)} = \frac{C(z)^{2}}{\sqrt{1 - 4z}}
 \end{equation*}
-Plugging this into our equation
+Plugging this into our equation:
 \begin{equation*}
     \left.\frac{\partial \hat{B}}{\partial u}\right|_{u = 1} = z^{3}C(z)^{2} \cdot \frac{C(z)^{2}}{\sqrt{1 - 4z}}
         = z^{3}C(z)^{2}C'(z) = \frac{z^{3}}{3}\frac{d}{dz}C(z)^{3} = z^{3}\frac{d}{dz}F(z)
@@ -283,7 +283,7 @@ Now
 
 \vspace{\baselineskip}
 \noindent
-Consequently, number of \textbf{Leaves} + number of \textbf{1-nodes} + number of \textbf{2-nodes} is:
+Consequently, number of \textbf{Leaves} + number of \textbf{1-nodes} + number of \textbf{2-nodes} is
 \begin{equation*}
     \binom{2n - 2}{n - 1} + \binom{2n}{n} - 2\binom{2n - 2}{n - 1} + \binom{2n - 2}{n - 3} = \frac{n}{n + 1}\binom{2n}{n}
 \end{equation*}
@@ -303,7 +303,7 @@ Differentiating with respect to $u$ gives
         z\left(\phi'(T)\frac{\partial T}{\partial u} + \phi_{k}T^{k} + k\phi_{k}(u - 1)T^{k - 1}\frac{\partial T}{\partial u}\right) \implies
 \end{equation*}
 \begin{equation*}
-    \Omega(z) =  z\left(\phi'(T(z))\Omega(z) + \phi_{k}T(z)^{k}\right) = z\frac{\phi_{k}T(z)^{k}}{1 - z\phi'(T(z))}
+    \Omega(z) = z\left(\phi'(T(z))\Omega(z) + \phi_{k}T(z)^{k}\right) = z\frac{\phi_{k}T(z)^{k}}{1 - z\phi'(T(z))}
 \end{equation*}
 Since $T(z) = z\phi(T(z))$, differentiating with respect to $z$ yields
 \begin{equation*}
@@ -313,7 +313,7 @@ Hence
 \begin{equation*}
     \Omega(z) = \phi_{k}zT(z)^{k} \cdot \frac{T'(z)}{\phi(T(z))} = \phi_{k}zT(z)^{k} \cdot \frac{T'(z)}{T(z)/z} = \phi_{k}z^{2}T(z)^{k - 1}T'(z)
 \end{equation*}
-For Cayley trees
+For Cayley trees:
 \begin{equation*}
     \begin{aligned}
         n![z^{n}]\Omega(z)
@@ -374,11 +374,11 @@ Differentiating the second equation with respect to $u$ using the chain rule:
     \frac{\partial}{\partial u}T(z, u)
         = z\phi'(T(zu, u)) \cdot \frac{d}{du}T(zu, u) = z\phi'(T(zu, u))[T_z(zu, u)z + T_u(zu, u)]
 \end{equation*}
-At $u = 1$, the expression becomes:
+At $u = 1$, the expression becomes
 \begin{equation} \label{eq:III.20.1}
     T_u(z, 1) = z\phi'(T(z))[zT'(z) + T_u(z, 1)] \implies T_u(z, 1) = \frac{z^{2}\phi'(T(z))T'(z)}{1 - z\phi'(T(z))}
 \end{equation}
-Differentiating the first equation with respect to $z$ gives:
+Differentiating the first equation with respect to $z$ gives
 \begin{equation*}
     T'(z) = \phi(T(z)) + z\phi'(T(z))T'(z) \implies \frac{1}{1 - z\phi'(T(z))} = \frac{T'(z)}{\phi(T(z))}
 \end{equation*}
@@ -424,7 +424,7 @@ Recurrence for $W$
 \begin{equation} \label{eq:III.19.1}
     W_{j} = z_{j} + z_{j}\sum_{k = 1}^{j - 1}W_{k} + vz_{j}\sum_{k = j}^{r}W_{k}
 \end{equation}
-implies recurrence for $X$:
+implies recurrence for $X$
 \begin{equation} \label{eq:III.19.2}
     X_{j} = 1 + \sum_{k = 1}^{j - 1}W_{k} + v\sum_{k = j}^{r}W_{k} = 1 + \sum_{k = 1}^{j - 1}z_{k}X_{k} + v\sum_{k = j}^{r}z_{k}X_{k}
 \end{equation}
@@ -441,7 +441,7 @@ To find $X_{1}$, we look back at \ref{eq:III.19.1} specifically for the case $j 
     W_{1} = z_{1} + z_{1} \cdot 0 + vz_{1}\sum_{k = 1}^{r}W_{k} \implies z_{1}X_{1} = z_{1} + vz_{1}\sum_{k = 1}^{r}z_{k}X_{k}
     \implies X_{1} = 1 + v\sum_{k = 1}^{r}z_{k}X_{k}
 \end{equation*}
-If we set $j = r + 1$ in \ref{eq:III.19.2} (introduce $X_{r + 1}$ such that \ref{eq:III.19.2} holds), the second sum vanishes, giving us:
+If we set $j = r + 1$ in \ref{eq:III.19.2} (introduce $X_{r + 1}$ such that \ref{eq:III.19.2} holds), the second sum vanishes, giving us
 \begin{equation*}
     X_{r + 1} = 1 + \sum_{k = 1}^{r}z_{k}X_{k} \implies \sum_{k = 1}^{r}z_{k}X_{k} = X_{r + 1} - 1 \implies X_{1} = 1 + v(X_{r + 1} - 1)
 \end{equation*}
@@ -449,7 +449,7 @@ The total generating function is
 \begin{equation*}
     W = 1 + \sum_{k = 1}^{r}W_{k} = 1 + \sum_{k = 1}^{r}z_{k}X_{k} = X_{r + 1}
 \end{equation*}
-We also know from \ref{eq:III.19.3} that:
+We also know from \ref{eq:III.19.3} that
 \begin{equation*}
     X_{r + 1} = X_{1}\prod_{j = 1}^{r}(1 + (1 - v)z_{j}) = X_{1}P
 \end{equation*}
@@ -514,7 +514,7 @@ Extract the coefficients of $u^{k}$ (for $k > 1$):
 \begin{equation*}
     A_{k}(z) - zA_{k - 1}(z) = z^{k}A_{k}(z) \implies A_{k}(z) = \frac{z}{1 - z^{k}}A_{k - 1}(z)
 \end{equation*}
-Starting from the base case $A_{1}(z) = z + z^{2} + \cdots = \frac{z}{1 - z}$ (\ref{eq:III.22.1}), the telescoping product gives:
+Starting from the base case $A_{1}(z) = z + z^{2} + \cdots = \frac{z}{1 - z}$ (\ref{eq:III.22.1}), the telescoping product gives
 \begin{equation*}
     A_{k}(z) = \frac{z}{1 - z^{k}}\frac{z}{1 - z^{k - 1}} \cdots \frac{z}{1 - z^{2}}\frac{z}{1 - z} 
         = \frac{z^{k}}{(1 - z)(1 - z^{2}) \cdots (1 -z^{k})}
@@ -529,7 +529,7 @@ We illustrate the idea with the case $k = 3$.
 
 \vspace{\baselineskip}
 \noindent
-The 3rd term in \ref{eq:III.22.1}
+The 3rd term in \ref{eq:III.22.1}:
 \begin{equation*}
     \frac{z^{3}u}{(1 - zu)(1 - z^{2}u)(1 - z^{3}u)} = (zzzu)\sum_{j}(zu)^{j} \sum_{k}z^{k}(zu)^{k} \sum_{l}z^{l}z^{l}(zu)^{l}
 \end{equation*}
@@ -543,7 +543,7 @@ This "lifting" mechanism ensures the summands remain weakly increasing.
 
 \vspace{\baselineskip}
 \noindent
-The 3rd term in \ref{eq:III.22.2}
+The 3rd term in \ref{eq:III.22.2}:
 \begin{equation*}
     \frac{z^{3}u^{3}}{(1 - z)(1 - z^{2})(1 - z^{3})}
 \end{equation*}
@@ -574,7 +574,7 @@ Hence
 \begin{equation*}
     F(z, u) = f(zu) + (\mathcal{L}[F(z, u)])_{u \mapsto zu} = zu + \frac{zu}{1 - zu}\left(F(z, 1) - F(z, z^{2}u^{2})\right)
 \end{equation*}
-By repeated substitution
+By repeated substitution:
 \begin{equation*}
     F(z, u) = \alpha(u) - \frac{zu}{1 - zu}\alpha(z^{2}u^{2}) + \frac{zu}{1 - zu}\frac{z^{3}u^{2}}{1 - z^{3}u^{2}}\alpha(z^{6}u^{4}) - \cdots
 \end{equation*}
@@ -582,7 +582,7 @@ where
 \begin{equation*}
     \alpha(u) = zu + \frac{zu}{1 - zu}F(z, 1), \quad \beta(u) = -\frac{zu}{1 - zu}, \quad \sigma(u) = z^{2}u^{2}
 \end{equation*}
-Substitute $u = 1$ and solve for $F(z, 1) \coloneqq X$
+Substitute $u = 1$ and solve for $F(z, 1) \coloneqq X$:
 \begin{equation*}
     \begin{aligned}
         X
@@ -656,7 +656,7 @@ Hence
 \begin{equation*}
     K(z, u) = k(zu) + (\mathcal{L}[K(z, u)])_{u \mapsto zu} = \frac{zu}{1 - zu} + \frac{zu}{1 - zu}K(z, 1) - K(z, zu)
 \end{equation*}
-To solve for $K(z, 1)$, let $K(z, 1) = X$.
+To solve for $K(z, 1)$, let $K(z, 1) = X$:
 \begin{equation*}
     K(z, u) = \frac{zu}{1 - zu}(1 + X) - K(z, zu)
 \end{equation*}
@@ -690,7 +690,7 @@ Let the sum be $S$:
 
 \vspace{\baselineskip}
 \noindent
-For simplicity, let's denote $\hat{I}(z, \textbf{u})$ by $I$. The differential equation becomes:
+For simplicity, let's denote $\hat{I}(z, \textbf{u})$ by $I$. The differential equation becomes
 \begin{equation*}
     \frac{dI}{dz} = u_{0} + (u_{1} + u_{1}')I + u_{2}I^{2} = u_{0} + 2v_{1}I + u_{2}I^{2}
 \end{equation*}
@@ -702,11 +702,11 @@ which we integrate from the initial condition $I(0) = 0$ to a general $z$:
 \begin{equation*}
     \int_{\xi = I(0)}^{\xi = I(z)}\frac{d\xi}{u_{0} + 2v_{1}\xi + u_{2}\xi^{2}} = \int_{\zeta = 0}^{\zeta = z}d\zeta
 \end{equation*}
-Inserting $I(0) = 0$ and writing $I(z)$ simply as $I$ for brevity,
+Inserting $I(0) = 0$ and writing $I(z)$ simply as $I$ for brevity:
 \begin{equation*}
     \int_{0}^{I}\frac{d\xi}{u_{0} + 2v_{1}\xi + u_{2}\xi^{2}} = \int_{0}^{z}d\zeta = z
 \end{equation*}
-Completing the square in the denominator,
+Completing the square in the denominator:
 \begin{equation*}
     u_{0} + 2v_{1}\xi + u_{2}\xi^{2}
     = u_{2}\left[\left(\xi + \frac{v_{1}}{u_{2}}\right)^{2} + \frac{\delta^{2}}{u_{2}^{2}}\right]
@@ -715,7 +715,7 @@ and substituting this into the integral gives
 \begin{equation*}
     \int_{0}^{I}\frac{d\xi}{u_{2}\left[\left(\xi + \frac{v_{1}}{u_{2}}\right)^{2} + \left(\frac{\delta}{u_{2}}\right)^{2}\right]} = z
 \end{equation*}
-Using the standard integral $\int\frac{dx}{x^{2} +a^{2}} = \frac{1}{a}\text{arctan}\frac{x}{a}$,
+Using the standard integral $\int\frac{dx}{x^{2} +a^{2}} = \frac{1}{a}\text{arctan}\frac{x}{a}$:
 \begin{equation*}
     z = \frac{1}{u_{2}}\frac{1}{\frac{\delta}{u_{2}}}
         \text{arctan}\left.\frac{\xi + \frac{v_{1}}{u_{2}}}{\frac{\delta}{u_{2}}}\right|_{\xi = 0}^{\xi = I}
@@ -729,14 +729,14 @@ Rearranging and taking the tangent of both sides, we obtain
         = \frac{\frac{v_{1}}{\delta} + \text{tan}(z\delta)}{1 - \frac{v_{1}}{\delta}\text{tan}(z\delta)}
         = \frac{v_{1} + \delta\text{tan}(z\delta)}{\delta - v_{1}\text{tan}(z\delta)}
 \end{equation*}
-Solving for $I$ yields the final expression
+Solving for $I$ yields the final expression:
 \begin{equation*}
     I = \frac{\delta}{u_{2}}\frac{v_{1} + \delta\text{tan}(z\delta)}{\delta - v_{1}\text{tan}(z\delta)} - \frac{v_{1}}{u_{2}}
 \end{equation*}
 
 \vspace{\baselineskip}
 \noindent
-We now expand $I$ as a power series. Starting from the closed-form expression,
+We now expand $I$ as a power series. Starting from the closed-form expression:
 \begin{equation*}
     \begin{aligned}
         I
@@ -827,15 +827,15 @@ We have
 \begin{equation*}
     \frac{\partial I}{\partial u_{1}} = \frac{\partial I}{\partial u_{1}'} = \frac{1}{2}\frac{\partial I}{\partial v_{1}}
 \end{equation*}
-We compute $\frac{\partial I}{\partial v_{1}}$ at $v_{1} = (1 + 1)/2 = 1$. First, $w$ depends on $v_{1}$ via $s = \delta^{2} = 1 - v_{1}^{2}$:
+We compute $\frac{\partial I}{\partial v_{1}}$ at $v_{1} = (1 + 1)/2 = 1$. First, $w$ depends on $v_{1}$ via $s \coloneqq \delta^{2} = 1 - v_{1}^{2}$:
 \begin{equation*}
     \frac{\partial w}{\partial v_{1}} = \frac{\partial w}{\partial s} \cdot (-2v_{1})
 \end{equation*}
-From the series $\left.\frac{\partial w}{\partial s}\right|_{s = 0} = \frac{z^{3}}{3}$, so at $v_{1} = 1$
+From the series $\left.\frac{\partial w}{\partial s}\right|_{s = 0} = \frac{z^{3}}{3}$, so at $v_{1} = 1$:
 \begin{equation*}
     \left.\frac{\partial w}{\partial v_{1}}\right|_{v_{1} = 1} = -\frac{2z^{3}}{3}
 \end{equation*}
-Now differentiate $\hat{I}(z, v_{1})$
+Now differentiate $\hat{I}(z, v_{1})$:
 \begin{equation*}
     \frac{\partial \hat{I}}{\partial v_{1}}
         = \frac{\frac{\partial w}{\partial v_{1}}(1 - v_{1}w) + w(w + v_{1}\frac{\partial w}{\partial v_{1}})}{(1 - v_{1}w)^{2}}
