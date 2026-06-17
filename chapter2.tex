@@ -91,7 +91,11 @@ Solving for $L$:
 % II.5.2.
 \vspace{\baselineskip}
 \noindent
-\textbf{II.5.2.} \textit{\textbf{Mappings and associated graphs}}. Let $\mathcal{T}$ be the class of all Cayley trees. Then
+\textbf{II.5.2.} \textit{\textbf{Mappings and associated graphs}}.
+
+\vspace{\baselineskip}
+\noindent
+Let $\mathcal{T}$ be the class of all Cayley trees. Then
 \begin{equation*}
     F = (1 - T)^{-1} \implies F_{n} = n^{n}
 \end{equation*}
@@ -151,7 +155,11 @@ Consequently
 
 \vspace{\baselineskip}
 \noindent
-\textbf{II.5.2.} \textit{\textbf{Constrained mappings}}. The class of all maps without fixed points has EGF:
+\textbf{II.5.2.} \textit{\textbf{Constrained mappings}}.
+
+\vspace{\baselineskip}
+\noindent
+The class of all maps without fixed points has EGF:
 \begin{equation*}
     \frac{e^{-T(z)}}{1 - T(z)}
 \end{equation*}
@@ -179,8 +187,11 @@ Substituting $H(w) = \frac{e^{-w}}{1 - w}$ and $\phi(w) = e^{w}$ into Lagrange i
 % II.5.3.
 \vspace{\baselineskip}
 \noindent
-\textbf{II.5.3.} \textit{\textbf{Unrooted trees and acyclic graphs}}. To understand why $U(z) = \int_{0}^{z}T(w)\frac{dw}{w}$,
-we begin with the exponential generating functions:
+\textbf{II.5.3.} \textit{\textbf{Unrooted trees and acyclic graphs}}.
+
+\vspace{\baselineskip}
+\noindent
+To understand why $U(z) = \int_{0}^{z}T(w)\frac{dw}{w}$, we begin with the exponential generating functions:
 \begin{equation*}
     T(z) = \sum_{n \geq 0}T_{n}\frac{z^{n}}{n!}, \quad
     U(z) = \sum_{n \geq 0}U_{n}\frac{z^{n}}{n!}
@@ -214,6 +225,9 @@ Since $U(0) = 0$ and $T(0) = 0$, the constant $C = 0$.
 \vspace{\baselineskip}
 \noindent
 $\rhd$ \textbf{II.22.} \textit{2–Regular graphs}.
+
+\vspace{\baselineskip}
+\noindent
 We establish a bijection between clouds and 2-regular graphs on $n$ labeled vertices. Number the lines $1, 2, ..., n$.
 \begin{itemize}
     \item Line $i$ in the cloud $\leftrightarrow$ vertex $i$ in the graph.
@@ -248,7 +262,7 @@ This gives us a starting vertex $A$ and an ending vertex $B$. Remove this direct
 Depending on the role that edge played in the connectivity of $G$, one of two mutually exclusive cases occurs
 \begin{itemize}
     \item \textbf{Case 1 (Connected)}: The removed edge was part of a cycle. The graph remains connected. Because we lost an edge but kept all vertices, 
-        the excess drops to $k$. The graph now possesses two designated, ordered, pointed vertices: a "source" point at $A$ and a "target" point at $B$.
+        the excess drops to $k$. The graph now possesses two designated, ordered, pointed vertices: a ``source'' point at $A$ and a ``target'' point at $B$.
     \item \textbf{Case 2 (Disconnected)}: The removed edge was a bridge. The graph splits into two separate connected components, $G_{1}$ and $G_{2}$.
         If $G_{1}$ takes on an excess of $h$, then $G_{2}$ must take on the remaining excess of $k - h$. Furthermore, $G_{1}$ contains exactly one
         pointed vertex (where $A$ used to connect), and $G_{2}$ contains exactly one pointed vertex (where $B$ used to connect).
@@ -281,7 +295,7 @@ Left-Hand Side: The Initial Pool
 \begin{itemize}
     \item $w_{k + 1}$: Represents the universe of connected graphs of excess $k + 1$.
     \item $\partial_{y}$: Differentiates with respect to the edge-marker $y$. Combinatorially, $\frac{\partial}{\partial y}(y^{E}) = E \cdot y^{E - 1}$,
-        which means "choose one of the $E$ edges and remove it."
+        which means ``choose one of the $E$ edges and remove it''.
     \item $2$: Accounts for the orientation of the removed edge. Since an unoriented edge has 2 endpoints, choosing a direction means deciding
         which endpoint is the source ($A$) and which is the target ($B$).
     \item Together ($2\partial_{y}w_{k + 1}$): Represents a graph of excess $k + 1$ with one structurally deleted, but memory-tracked, directed edge.
@@ -319,6 +333,9 @@ Right-Hand Side, Term 2: The Disconnected Outcome (Case 2)
 \vspace{\baselineskip}
 \noindent
 $\rhd$ \textbf{II.28.} \textit{Do two permutations generate the symmetric group}?
+
+\vspace{\baselineskip}
+\noindent
 We want to show
 \begin{equation*}
     n!^{2}\pi_{n} = (n - 1)!I_{n}

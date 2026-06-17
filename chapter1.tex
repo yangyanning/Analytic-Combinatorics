@@ -9,6 +9,9 @@
 \vspace{\baselineskip}
 \noindent
 $\rhd$ \textbf{I.2.} \textit{Unimodal permutations}.
+
+\vspace{\baselineskip}
+\noindent
 A unimodal permutation can be viewed as a sequence of elements increasing to a peak and then decreasing. This structure is represented by
 \begin{equation*}
     \mathcal{P}^{\mathcal{U}} = \mathrm{S}\textsc{et}(\mathcal{Z}) \star \mathcal{Z}^{\blacksquare} \star \mathrm{S}\textsc{et}(\mathcal{Z})
@@ -37,6 +40,9 @@ where $k$ is the position of $n$ in the permutation.
 \vspace{\baselineskip}
 \noindent
 $\rhd$ \textbf{I.16.} \textit{Partitions with summands bounded in number and size}.
+
+\vspace{\baselineskip}
+\noindent
 The number of partitions of size $n$ with at most $k$ summands, each at most $l$, is
 \begin{equation} \label{eq:I.16.1}
     [z^{n}]\frac{(1 - z)(1 - z^{2}) \cdots (1 - z^{k + l})}{((1 - z)(1 - z^{2}) \cdots (1 - z^{k})) \cdot ((1 - z)(1 - z^{2}) \cdots (1 - z^{l}))}
@@ -342,6 +348,9 @@ The OGF for the zigzag constraint is the OGF for the two independent pairs minus
 \vspace{\baselineskip}
 \noindent
 $\rhd$ \textbf{I.18.} \textit{Odd versus distinct summands}.
+
+\vspace{\baselineskip}
+\noindent
 We establish a one-to-one correspondence between partitions into odd parts and partitions into distinct parts.
 \begin{itemize}
     \item Odd $\rightarrow$ Distinct
@@ -384,6 +393,9 @@ As an example:
 \vspace{\baselineskip}
 \noindent
 $\rhd$ \textbf{I.19.} \textit{Euler’s pentagonal number theorem}.
+
+\vspace{\baselineskip}
+\noindent
 To find a recurrence for the partition numbers, we consider the reciprocal of the generating function $P(z)$:
 \begin{equation*}
     A(z) = \prod_{n = 1}^{\infty}(1 - z^{n})
@@ -471,6 +483,9 @@ The partial sums are
 \vspace{\baselineskip}
 \noindent
 $\rhd$ \textbf{I.21.} \textit{Lattice points}.
+
+\vspace{\baselineskip}
+\noindent
 We are interested in the number of integer solutions to the inequality $\sum_{i = 1}^{d}x_{i}^{2} \le n^{2}$.
 First, consider a single coordinate $x_{i} \in \mathbb{Z}$. The ``size'' contributed by this coordinate to the sum of squares is $x_{i}^{2}$.
 The generating function for the possible values of a single coordinate, where the exponent of $z$ represents the square of the coordinate, is
@@ -504,6 +519,9 @@ To find the total count up to $k = n^{2}$, we simply extract the coefficient of 
 \vspace{\baselineskip}
 \noindent
 $\rhd$ \textbf{I.23.} \textit{Alice, Bob, and coding bounds}.
+
+\vspace{\baselineskip}
+\noindent
 Following Proposition I.4, the class $\mathcal{C}$ of binary strings avoiding the pattern $11$ has the OGF:
 \begin{equation*}
     C(z) = \frac{1 + z}{1 - z - z^{2}}
@@ -534,6 +552,9 @@ Rearranging for $L$, we obtain the lower bound:
 \vspace{\baselineskip}
 \noindent
 $\rhd$ \textbf{I.27.} \textit{Congruence languages}.
+
+\vspace{\baselineskip}
+\noindent
 The DFA $\mathcal{A}$ for binary strings congruent to $2 \pmod{7}$ is structured as follows
 \begin{itemize}
     \item \textbf{States}: A set $\mathcal{Q} = \{S_{0}, \dots, S_{6}\}$, where each state $S_{r}$ represents the current remainder $r$ modulo 7.
@@ -542,7 +563,7 @@ The DFA $\mathcal{A}$ for binary strings congruent to $2 \pmod{7}$ is structured
     \item \textbf{Alphabet}: $\mathcal{A} = \{0, 1\}$.
 \end{itemize}
 Each transition follows the rule $q_{r} \circ b = q_{(2r + b) \pmod{7}}$
-\begin{table}[h]
+\begin{table}[H]
     \centering
     \caption{State Transition}
     \label{tab:flexible}
@@ -566,6 +587,9 @@ Each transition follows the rule $q_{r} \circ b = q_{(2r + b) \pmod{7}}$
 \vspace{\baselineskip}
 \noindent
 $\rhd$ \textbf{I.29.} \textit{The forward equations}.
+
+\vspace{\baselineskip}
+\noindent
 By a ``last-letter decomposition'', the set $\mathcal{M}_{k}$ of words leading to state $q_{k}$ from the initial state $q_{0}$ satisfies the combinatorial relation:
 \begin{equation*}
     \mathcal{M}_{k} \cong \llbracket k = 0 \rrbracket \cdot \{\epsilon\} +
@@ -610,6 +634,9 @@ one word of length 2 and one word of length 3. Let $\hat{\mathcal{L}} = \{aa, bb
 \vspace{\baselineskip}
 \noindent
 $\rhd$ \textbf{I.34.} \textit{A probabilistic paradox on strings}.
+
+\vspace{\baselineskip}
+\noindent
 Consider a binary pattern of length $k$. The generating function $T(z)$ for the first occurrence of this pattern is given by
 \begin{equation*}
     T(z) = \frac{z^{k}}{z^{k} + (1 - mz)c(z)} = \frac{z^{k}}{z^{k} + (1 - 2z)c(z)}
@@ -627,6 +654,9 @@ by evaluating its derivative at the point of the alphabet's inverse size ($z = 1
 \vspace{\baselineskip}
 \noindent
 $\rhd$ \textbf{I.39.} \textit{Unary–binary trees and Motzkin numbers}.
+
+\vspace{\baselineskip}
+\noindent
 We identify the characteristic polynomial as $\phi(u) = 1 + u + u^{2}$.
 To find the number of trees with $n$ nodes, $M_{n} = [z^{n}]M(z)$, we apply the Lagrange Inversion Theorem:
 \begin{equation*}
@@ -648,6 +678,9 @@ To find the number of trees with $n$ nodes, $M_{n} = [z^{n}]M(z)$, we apply the 
 \vspace{\baselineskip}
 \noindent
 $\rhd$ \textbf{I.41.} \textit{The Lagrangean form of Schröder’s GF}.
+
+\vspace{\baselineskip}
+\noindent
 We want to prove the last equality:
 \begin{equation*}
     \frac{(-1)^{n - 1}}{n}\sum_{k}(-2)^{k}\binom{n}{k + 1}\binom{n + k - 1}{k} =
@@ -847,7 +880,10 @@ representing the root of the tree.
 \vspace{\baselineskip}
 \noindent
 $\rhd$ \textbf{I.50.} \textit{Excursions, bridges, and meanders}.
-A meander of final altitude $k$ consists of k "up-steps" ($\mathcal{Z}$) that lead to new "floors",
+
+\vspace{\baselineskip}
+\noindent
+A meander of final altitude $k$ consists of k ``up-steps'' ($\mathcal{Z}$) that lead to new ``floors'',
 with Dyck paths (excursions $\mathcal{D}$) occurring between them and at the very end.
 \begin{equation*}
     \mathcal{M}
@@ -956,6 +992,9 @@ which is exactly $\sum_{j = 0}^{v}D_{j} = o(\lVert \Omega \rVert)$.
 \vspace{\baselineskip}
 \noindent
 $\rhd$ \textbf{I.62.} \textit{Sequences without repeated components}.
+
+\vspace{\baselineskip}
+\noindent
 A sequence without repeated components is essentially an ordered arrangement of a subset of distinct elements from a base class $\mathcal{B}$.
 To derive its generating function, we first consider the construction of a set of distinct elements (the power set), then account for the ordering.
 The generating function for the power set construction $\mathrm{PS}\textsc{et}(\mathcal{B})$ is given by
@@ -965,7 +1004,7 @@ The generating function for the power set construction $\mathrm{PS}\textsc{et}(\
         = \exp\left(\sum_{j \geq 1}(-1)^{j - 1}\frac{u^{j}}{j}B(z^{j})\right)
 \end{equation*}
 Here, the coefficient $[u^{k}]A(z, u) = f^{\langle k \rangle}(z)$ represents the generating function for sets containing exactly $k$ distinct components.
-While the power set construction satisfies the "no-repeat" constraint, it treats the collection as unordered.
+While the power set construction satisfies the ``no-repeat'' constraint, it treats the collection as unordered.
 To transform these sets into sequences, we multiply the generating function for sets of size $k$ by $k!$ to account for all possible permutations.
 Using the Eulerian integral representation $k! = \int_{0}^{\infty}e^{-u}u^{k}du$, we can express the generating function for distinct sequences,
 $\mathcal{S}_{\text{distinct}}(z)$, as follows:
