@@ -1156,6 +1156,44 @@ For example, there're 17 permutations in $\mathcal{P}_4$ without ascending runs 
 2413, 2431, 3142, 3214, 3241, 3412, 3421, 4132, 4213, 4231, 4312, 4321.
 
 
+% Note III.41.
+\vspace{\baselineskip}
+\noindent
+$\rhd$ \textbf{III.41.} \textit{Patterns in trees II}.
+
+\vspace{\baselineskip}
+\noindent
+We want to show
+\begin{equation*}
+    u^{\llbracket \tau = \mathfrak{t} \rrbracket}u^{\omega[\tau_{0}]}u^{\omega[\tau_{1}]}
+        = u^{\omega[\tau_{0}]}u^{\omega[\tau_{1}]} + \llbracket \tau = \mathfrak{t} \rrbracket \cdot (u - 1)
+\end{equation*}
+\begin{itemize}
+    \item $\tau \neq \mathfrak{t}$:
+        $\text{LHS} = u^{0}u^{\omega[\tau_{0}]}u^{\omega[\tau_{1}]} = u^{\omega[\tau_{0}]}u^{\omega[\tau_{1}]}$;
+        $\text{RHS} = u^{\omega[\tau_{0}]}u^{\omega[\tau_{1}]} + 0 \cdot (u - 1) = u^{\omega[\tau_{0}]}u^{\omega[\tau_{1}]}$
+    \item $\tau = \mathfrak{t}$:
+        $\text{LHS} = u^{1}u^{0}u^{0} = u$;
+        $\text{RHS} = u^{0}u^{0} + 1 \cdot (u - 1) = u$
+\end{itemize}
+The bivariate generating function is defined by summing over all possible binary trees $\tau$:
+\begin{equation*}
+    \begin{aligned}
+        B(z, u)
+        &= \sum_{\tau}z^{|\tau|}u^{\omega[\tau]} \\
+        &= z^{|\emptyset|}u^{\omega[\emptyset]} + \sum_{\tau \neq \emptyset}z^{|\tau|}u^{\omega[\tau]} \\
+        &= z^{0}u^{0} + \sum_{\tau \neq \emptyset}z^{|\tau|}u^{\omega[\tau]} \\
+        &= 1 + \sum_{\tau \neq \emptyset}z^{|\tau|}
+            \left(u^{\omega[\tau_{0}]}u^{\omega[\tau_{1}]} + \llbracket \tau = \mathfrak{t} \rrbracket \cdot (u - 1)\right) \\
+        &= 1 + \sum_{\tau_{0}, \tau_{1}}z^{1 + |\tau_{0}| + |\tau_{1}|}u^{\omega[\tau_{0}]}u^{\omega[\tau_{1}]}
+            + \sum_{\tau \neq \emptyset}z^{|\tau|}\llbracket \tau = \mathfrak{t} \rrbracket \cdot (u - 1) \\
+        &= 1 + z\sum_{\tau_{0}, \tau_{1}}z^{|\tau_{0}|}u^{\omega[\tau_{0}]} \cdot z^{|\tau_{1}|}u^{\omega[\tau_{1}]}
+            + z^{|\mathfrak{t}|} \cdot (u - 1) \\
+        &= 1 + zB(z, u)^{2} + z^{m}(u - 1)
+    \end{aligned}
+\end{equation*}
+
+
 
 \section{Extremal parameters}
 
