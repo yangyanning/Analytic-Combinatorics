@@ -1083,38 +1083,77 @@ By polynomial long division and standard partial fraction decomposition, $I(z, v
 \begin{equation*}
     I(z, v) = 1 - z + \sum_{j = 1}^{l}\frac{c_{j}}{1 - \omega_{j}z}
 \end{equation*}
-which doesn't depend on $v$. Why does the formula have $(1 - z)(v + 1)$?
+The polynomial part is $1 - z$ (or more precisely, $-z - \frac{1}{v}$ for the $l = 1$ case). Why does the formula have $(1 - z)(v + 1)$?
+The factor $v + 1$ might be a typographical error.
 
 \vspace{\baselineskip}
 \noindent
-It is not hard to see that low-order polynomial terms ($1$ and $z$) are not present in the $I(z, v)$ expansion ($l \geq 1$) because $I(0, v) = 0$ and 
-$\left.\frac{\partial}{\partial z}I(z, v)\right|_{z = 0} = 0$. Now let's expand the partial fraction using the geometric series
-$(1 - \omega_{j}z)^{-1} = 1 + \omega_{j}z + \cdots$:
+The mean number of ascending runs of length $l - 1$ is $\frac{n - l + 1}{l!} \sim \frac{n}{l!}$; the variance is $\sim \frac{n}{l!}$.
+Concentration of distribution holds if
 \begin{equation*}
-    I(z, v) = 1 - z + \sum_{j = 1}^{l}c_{j}(1 + \omega_{j}z + O(z^{2}))
-        = \left(1 + \sum_{j = 1}^{l}c_{j}\right) + \left(-1 + \sum_{j = 1}^{l}c_{j}\omega_{j}\right)z + O(z^{2})
+    lim_{n \to \infty}\frac{\sigma_{n}}{\mu_{n}} = 0
 \end{equation*}
-Matching the coefficients of $1$ and $z$, we have
+Now
 \begin{equation*}
-    \sum_{j = 1}^{l}c_{j} = -1, \quad \sum_{j = 1}^{l}c_{j}\omega_{j} = 1
+    \left(\frac{\sigma_{n}}{\mu_{n}}\right)^{2} = \frac{\sigma_{n}^{2}}{\mu_{n}^{2}}
+        = \frac{\frac{n}{l!}}{\left(\frac{n}{l!}\right)^{2}} = \frac{l!}{n}
 \end{equation*}
-The shift from 1 and -1 to $(v + 1)$ and $-(v + 1)$ happens when we transition from $I(z, v)$ to $\hat{I}(z, v)$:
+which tends to 0 if $l! = o(n)$. The text writes $(l + 1)! = o(n)$, which might be a strict sufficient condition, or a typographical error.
+
+
+% Note III.36.
+\vspace{\baselineskip}
+\noindent
+$\rhd$ \textbf{III.36.} \textit{Permutations without l-ascending runs}.
+
+\vspace{\baselineskip}
+\noindent
+Consider the denominator of $\left.A(z, u)\right|_{u = 0}$ before the transformation:
 \begin{equation*}
-    \frac{1}{1 - \omega_{j}z} \mapsto e^{\omega_{j}z}
+    1 - z - I(z, -1) = \frac{1}{1 + z + \cdots + z^{l}} = \frac{1 - z}{1 - z^{l + 1}} = \frac{1 - z}{1 - z^{m}}
 \end{equation*}
-If we expand the exponential terms in the definition of $\hat{I}(z, v)$, we get
+where $m \coloneqq l + 1$. To prepare for the transform $(1 - \omega z)^{-1} \mapsto e^{\omega z}$, we decompose
+$\frac{1 - z}{1 - z^{m}}$ using the $m$-th root of unity. Let $\omega_{k} = e^{2\pi ik/m}$ for $k = 0, 1, \cdots, m - 1$ be
+the roots of $z^{m} = 1$.
+Standard partial fraction expansion of $\frac{1}{1 - z^{m}}$ gives:
 \begin{equation*}
-    \sum_{j = 1}^{l}c_{j}e^{\omega_{j}z} = \sum_{j = 1}^{l}c_{j}(1 + \omega_{j}z + O(z^{2})) = -1 + z + O(z^{2})
+    \frac{1}{1 - z^{m}} = \frac{1}{m}\sum_{k = 0}^{m - 1}\frac{1}{1 - \omega_{k}z}
 \end{equation*}
-Now look at Flajolet's full expression for $\hat{I}(z, v)$:
+Now apply the transform:
 \begin{equation*}
-    \hat{I}(z, v) = (1 - z)(v + 1) + \sum_{j = 1}^{l}c_{j}e^{\omega_{j}z}
+    \begin{aligned}
+        \text{EGF Denominator}
+        &= \widehat{(1 - z)\frac{1}{1 - z^{m}}} \\
+        &= \widehat{\frac{1}{1 - z^{m}}} - \widehat{\frac{z}{1 - z^{m}}} \\
+        &= \widehat{\frac{1}{1 - z^{m}}} - \int_{0}^{z}\widehat{\frac{1}{1 - t^{m}}}dt \\
+        &= \frac{1}{m}\sum_{k = 0}^{m - 1}e^{\omega_{k}z} - \int_{0}^{z}\frac{1}{m}\sum_{k = 0}^{m - 1}e^{\omega_{k}t}dt \\
+        &= \frac{1}{m}\sum_{k = 0}^{m - 1}\sum_{n \geq 0}\omega_{k}^{n}\frac{z^{n}}{n!}
+            - \int_{0}^{z}\frac{1}{m}\sum_{k = 0}^{m - 1}\sum_{n \geq 0}\omega_{k}^{n}\frac{t^{n}}{n!}dt \\
+        &= \frac{1}{m}\sum_{n \geq 0}\left(\sum_{k = 0}^{m - 1}\omega_{k}^{n}\right)\frac{z^{n}}{n!}
+            - \int_{0}^{z}\frac{1}{m}\sum_{n \geq 0}\left(\sum_{k = 0}^{m - 1}\omega_{k}^{n}\right)\frac{t^{n}}{n!}dt \\
+        &= \sum_{i \geq 0}\frac{z^{m \cdot i}}{(m \cdot i)!} - \int_{0}^{z}\sum_{i \geq 0}\frac{t^{m \cdot i}}{(m \cdot i)!}dt \\
+        &= \sum_{i \geq 0}\frac{z^{m \cdot i}}{(m \cdot i)!} - \frac{z^{m \cdot i + 1}}{(m \cdot i + 1)!}
+    \end{aligned}
 \end{equation*}
-Let's check low-order terms by plugging in our expression:
+The third equality holds because the true operator mapping from the OGF domain to the EGF domain for a function multiplied by $z$
+involves a differential shift. The second-to-last equality holds because $\sum_{k = 0}^{m - 1}\omega_{k}^{n}$ is zero unless $n$
+is a multiple of $m$, in which case the sum is $m$.
+
+\vspace{\baselineskip}
+\noindent
+Let's expand the EGF for $m = 2, 3, 4$:
 \begin{equation*}
-    \hat{I}(z, v) = v + 1 - zv - z + (-1 + z + O(z^{2})) = v - vz + O(z^{2})
+    \begin{aligned}
+        \left(\sum_{i \geq 0}\frac{z^{2i}}{(2i)!} - \frac{z^{2i + 1}}{(2i + 1)!}\right)^{-1}
+            &= 1 + z + \frac{z^{2}}{2!} + \frac{z^{3}}{3!} + \frac{z^{4}}{4!} + O(z^{5}) \\
+        \left(\sum_{i \geq 0}\frac{z^{3i}}{(3i)!} - \frac{z^{3i + 1}}{(3i + 1)!}\right)^{-1}
+            &= 1 + z + 2\frac{z^{2}}{2!} + 5\frac{z^{3}}{3!} + 17\frac{z^{4}}{4!} + O(z^{5}) \\
+        \left(\sum_{i \geq 0}\frac{z^{4i}}{(4i)!} - \frac{z^{4i + 1}}{(4i + 1)!}\right)^{-1}
+            &= 1 + z + \frac{z^{2}}{2!} + \frac{z^{3}}{3!} + 23\frac{z^{4}}{4!} + O(z^{5})
+    \end{aligned}
 \end{equation*}
-I can't see why $I_{0, 1} = v$ and $I_{1, 1} = -1$ \frownie.
+For example, there're 17 permutations in $\mathcal{P}_4$ without ascending runs of length 2: 1324, 1423, 1432, 2143, 2314,
+2413, 2431, 3142, 3214, 3241, 3412, 3421, 4132, 4213, 4231, 4312, 4321.
 
 
 
