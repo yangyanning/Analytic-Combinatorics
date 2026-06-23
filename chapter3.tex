@@ -1196,6 +1196,47 @@ The bivariate generating function is defined by summing over all possible binary
 
 
 \section{Extremal parameters}
+% Note III.8.3.
+\vspace{\baselineskip}
+\noindent
+\textbf{III.8.3.} \textbf{Averages and moments}.
+To see how the first sum rearranges into the second, we use a discrete version of summation by parts.
+We can express the linear factor $h$ as a sum of ones:
+\begin{equation*}
+    h = \sum_{j = 1}^{h}1
+\end{equation*}
+Substituting this into the original expression gives a double summation:
+\begin{equation*}
+    \Xi(z) = \sum_{h = 0}^{\infty}\left(\sum_{j = 1}^{h}1\right)\left[f^{[h]}(z) - f^{[h-1]}(z)\right]
+        = \sum_{h = 1}^{\infty}\sum_{j = 1}^{h}\left[f^{[h]}(z) - f^{[h - 1]}(z)\right]
+\end{equation*}
+The region of summation is defined by $1 \leq j \leq h < \infty$. Flipping the order of summation so that we sum over $h$ first
+means $h$ ranges from $j$ to $\infty$, and $j$ ranges from $1$ to $\infty$:
+\begin{equation*}
+    \Xi(z) = \sum_{j = 1}^{\infty}\sum_{h = j}^{\infty}\left[f^{[h]}(z) - f^{[h - 1]}(z)\right]
+\end{equation*}
+Now, the inner sum over $h$ is a classic telescoping sum:
+\begin{equation*}
+    \sum_{h = j}^{\infty}\left[f^{[h]}(z) - f^{[h - 1]}(z)\right] = \lim_{N \to \infty}\sum_{h = j}^{N}\left[ f^{[h]}(z) - f^{[h - 1]}(z)\right]
+\end{equation*}
+Expanding the terms shows that everything cancels out except the upper limit and the lower limit:
+\begin{equation*}
+    \lim_{N \to \infty}\left(\left[f^{[j]} - f^{[j - 1]}\right] + \left[f^{[j + 1]} - f^{[j]}\right] + \dots + \left[f^{[N]} - f^{[N - 1]}\right]\right)
+        = \lim_{N \to \infty} \left(f^{[N]}(z) - f^{[j - 1]}(z)\right)
+\end{equation*}
+Because $f^{[N]}(z)$ represents objects with parameter at most $N$, taking the limit as $N \to \infty$ simply yields the unconstrained generating function,
+$f(z)$. Thus, the inner sum collapses to:
+\begin{equation*}
+    f(z) - f^{[j - 1]}(z)
+\end{equation*}
+Plugging this back into our outer sum:
+\begin{equation*}
+    \Xi(z) = \sum_{j = 1}^{\infty}\left[f(z) - f^{[j - 1]}(z)\right]
+\end{equation*}
+Finally, shift the index by letting $h = j - 1$. As $j$ runs from $1$ to $\infty$, $h$ runs from $0$ to $\infty$:
+\begin{equation*}
+    \Xi(z) = \sum_{h = 0}^{\infty}\left[f(z) - f^{[h]}(z)\right]
+\end{equation*}
 
 
 
