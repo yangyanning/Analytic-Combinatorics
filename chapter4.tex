@@ -1,0 +1,96 @@
+% !TEX root = main.tex
+\chapter{COMPLEX ANALYSIS, RATIONAL AND MEROMORPHIC ASYMPTOTICS}
+\label{chap:complex analysis, rational and meromorphic asymptotics}
+
+
+
+\section{Generating functions as analytic objects}
+% Note IV.6.
+\vspace{\baselineskip}
+\noindent
+$\rhd$ \textbf{IV.6.} \textit{Integrals of rational fractions.}
+
+\vspace{\baselineskip}
+\noindent
+\begin{equation*}
+    J_{m} = \int_{-\infty}^{\infty}\frac{dx}{(1 + x^{2})^{m}}
+\end{equation*}
+Define $f(z) = \frac{1}{(1 + z^{2})^{m}} = \frac{1}{(z - i)^{m}(z + i)^{m}}$. We integrate over the contour $\Gamma_{R}$ consisting of the real
+interval $[-R, R]$ and the upper semicircle $C_{R} = \{ z = Re^{i\theta}: 0 \leq \theta \leq \pi \}$.
+
+\vspace{\baselineskip}
+\noindent
+For $z \in C_{R}$ and $R > 1$, $|z^{2} + 1| \geq |z^{2}| - 1 = R^{2} - 1$. Thus
+\begin{equation*}
+    |f(z)| \leq \frac{1}{(R^{2} - 1)^{m}}
+\end{equation*}
+The length of $C_{R}$ is $\pi R$, so
+\begin{equation*}
+    \left|\int_{C_{R}}f(z)dz\right| \leq \frac{\pi R}{(R^{2} - 1)^{m}} \to 0 \; \text{as} \; R \to \infty
+\end{equation*}
+Hence
+\begin{equation*}
+    \lim_{R \to \infty}\int_{\Gamma_{R}}f(z)dz = \int_{-\infty}^{\infty}\frac{dx}{(1 + x^{2})^{m}} = J_{m}
+\end{equation*}
+For $R > 1$, the only singularity inside $\Gamma_{R}$ is the pole of order $m$ at $z = i$. By the residue theorem,
+\begin{equation*}
+    \int_{\Gamma_{R}}f(z)dz = 2\pi i\text{Res}(f; i)
+\end{equation*}
+Compute the residue at $z = i$:
+\begin{equation*}
+    \text{Res}(f; i) = \frac{1}{(m - 1)!}\lim_{z \to i}\frac{d^{m - 1}}{dz^{m - 1}}[(z - i)^{m}f(z)]
+        = \frac{1}{(m - 1)!}\lim_{z \to i}\frac{d^{m - 1}}{dz^{m - 1}}(z + i)^{-m}
+\end{equation*}
+The $k$-th derivative of $g(z) \coloneqq (z + i)^{-m}$ is
+\begin{equation*}
+    g^{(k)}(z) = (-1)^{k}\frac{(m + k - 1)!}{(m - 1)!}(z + i)^{-m - k}
+\end{equation*}
+For $k = m - 1$:
+\begin{equation*}
+    g^{(m - 1)}(z) = (-1)^{m - 1}\frac{(2m - 2)!}{(m - 1)!}(z + i)^{-2m + 1}
+\end{equation*}
+Evaluating at $z = i$ gives
+\begin{equation*}
+    g^{(m - 1)}(i) = (-1)^{m - 1}\frac{(2m - 2)!}{(m - 1)!}(2i)^{-2m + 1}
+\end{equation*}
+Hence
+\begin{equation*}
+    \begin{aligned}
+        \text{Res}(f; i)
+        &= \frac{1}{(m - 1)!}(-1)^{m - 1}\frac{(2m - 2)!}{(m - 1)!}(2i)^{-2m + 1} \\
+        &= (-1)^{m - 1}\frac{(2m - 2)!}{[(m - 1)!]^{2}}\frac{(-1)^{m}i}{2^{2m - 1}} \\
+        &= -i\frac{(2m - 2)!}{[(m - 1)!]^{2}2^{2m - 1}} \\
+    \end{aligned}
+\end{equation*}
+\begin{equation*}
+    J_{m} = 2\pi i\left(-i\frac{(2m - 2)!}{[(m - 1)!]^{2}2^{2m - 1}}\right) = \frac{\pi}{2^{2m - 2}}\binom{2m - 2}{m - 1}
+        = \frac{\pi}{4^{m - 1}}\binom{2m - 2}{m - 1}
+\end{equation*}
+
+
+
+\section{Analytic functions and meromorphic functions}
+
+
+
+\section{Singularities and exponential growth of coefficients}
+
+
+
+\section{Closure properties and computable bounds}
+
+
+
+\section{Rational and meromorphic functions}
+
+
+
+\section{Localization of singularities}
+
+
+
+\section{Singularities and functional equations}
+
+
+
+\section{Perspective}
