@@ -67,6 +67,86 @@ Hence
         = \frac{\pi}{4^{m - 1}}\binom{2m - 2}{m - 1}
 \end{equation*}
 
+\vspace{2\baselineskip}
+\noindent
+\begin{equation*}
+    K_{m} = \int_{-\infty}^{\infty}\frac{dx}{(1^{2} + x^{2})(2^{2} + x^{2}) \cdots (m^{2} + x^{2})}
+\end{equation*}
+Define $f(z) = \frac{1}{\prod_{k = 1}^{m}(z^{2} + k^{2})}$. We integrate over the contour $\Gamma_{R}$ consisting of the real
+interval $[-R, R]$ and the upper semicircle $C_{R} = \{ z = Re^{i\theta}: 0 \leq \theta \leq \pi \}$.
+
+\vspace{\baselineskip}
+\noindent
+For $R > m$, the poles inside $\Gamma_{R}$ are $z_{k} = ik, k = 1, \cdots m$. On $C_{R}$, $|z^{2} + k^{2}| \geq R^{2} - k^{2} \geq (R/2)^{2}$ eventually,
+so $|f(z)| \leq \text{const}/R^{2m}$ and the length of $C_{R}$ is $\pi R$. Hence
+\begin{equation*}
+    \lim_{R \to \infty}\int_{C_{R}}f(z)dz = 0
+\end{equation*}
+and by the residue theorem
+\begin{equation*}
+    K_{m} = 2\pi i\sum_{k = 1}^{m}\text{Res}(f; ik)
+\end{equation*}
+Since the poles are simple
+\begin{equation*}
+    \text{Res}(f; ik) = \lim_{z \to ik}(z - ik)f(z) = \frac{1}{2ik}\prod_{j \neq k}\frac{1}{(ik)^{2} + j^{2}}
+        = \frac{1}{2ik}\prod_{j \neq k}\frac{1}{j^{2} - k^{2}}
+\end{equation*}
+Thus
+\begin{equation*}
+    K_{m} = 2\pi i\sum_{k = 1}^{m}\frac{1}{2ik}\prod_{j \neq k}\frac{1}{j^{2} - k^{2}} 
+        = \pi\sum_{k = 1}^{m}\frac{1}{k}\prod_{j \neq k}\frac{1}{j^{2} - k^{2}}
+\end{equation*}
+Factor the product:
+\begin{equation*}
+    \prod_{j \neq k}j^{2} - k^{2} = \prod_{j \neq k}(j - k)\prod_{j \neq k}(j + k)
+\end{equation*}
+For fixed $k$,
+\begin{equation*}
+    \prod_{j \neq k}(j - k) = (1 - k)(2 - k) \cdots ((k - 1) - k)(1)(2) \cdots (m - k) = (-1)^{k - 1}(k - 1)!(m - k)!
+\end{equation*}
+\begin{equation*}
+    \prod_{j \neq k}(j + k) = (1 + k)(2 + k) \cdots ((k - 1) + k)(2k + 1)(2k + 2) \cdots (m + k) = \frac{(m + k)!}{k!(2k)}
+\end{equation*}
+Therefore
+\begin{equation*}
+    \frac{1}{k}\prod_{j \neq k}\frac{1}{j^{2} - k^{2}} = \frac{1}{k}\left((-1)^{k - 1}(k - 1)!(m - k)! \cdot \frac{(m + k)!}{k!(2k)}\right)^{-1}
+        = \frac{(-1)^{k - 1}2k}{(m - k)!(m + k)!}
+\end{equation*}
+and
+\begin{equation*}
+    K_{m} = \pi\sum_{k = 1}^{m}\frac{(-1)^{k - 1}2k}{(m - k)!(m + k)!} = \frac{2\pi}{(2m)!}\sum_{k = 1}^{m}(-1)^{k - 1}k\binom{2m}{m - k}
+\end{equation*}
+
+\vspace{\baselineskip}
+\noindent
+To simplify the sum $S \coloneqq \sum_{k = 1}^{m}(-1)^{k - 1}k\binom{2m}{m + k}$, we can use the method of generating functions (what else?).
+Recall the coefficient of $z^{m}$ in the product of two polynomials $A(z) = \sum a_{k}z^{k}$ and $B(z) = \sum b_{j}z^{j}$ is given by
+\begin{equation*}
+    [z^{m}]A(z)B(z) = \sum_{k}a_{k}b_{m - k}
+\end{equation*}
+Let's choose $A(z) = \sum_{k = 1}^{m}(-1)^{k - 1}kz^{k}$ and $B(z) = (1 + z)^{2m} = \sum_{j = 0}^{2m}\binom{2m}{j}z^{j}$. Then, the coefficient
+of $z^{m}$ in the product $A(z)B(z)$ is precisely our sum $S$:
+\begin{equation*}
+    S = [z^{m}]\sum_{k = 1}^{m}(-1)^{k - 1}kz^{k}(1 + z)^{2m}
+\end{equation*}
+Since we only care about the coefficient of $z^{m}$, any terms in $A(z)$ with powers of $z$ strictly greater than $m$ will not contribute to the $z^{m}$ term
+when multiplied by $B(z)$ (as $B(z)$ contains only non-negative powers of $z$). Therefore, we can extend the upper limit of the sum in $A(z)$ to infinity
+without changing the coefficient of $z^{m}$:
+\begin{equation*}
+    A(z) \equiv \sum_{k = 1}^{\infty}(-1)^{k - 1}kz^{k} = \frac{z}{(1 + z)^{2}} \mod z^{m + 1}
+\end{equation*}
+Hence
+\begin{equation*}
+    S = [z^{m}]\frac{z}{(1 + z)^{2}} \cdot (1 + z)^{2m} = [z^{m}]z(1 + z)^{2m - 2} = \binom{2m - 2}{m - 1}
+\end{equation*}
+
+\vspace{\baselineskip}
+\noindent
+Finally
+\begin{equation*}
+    K_{m} = \frac{2\pi}{(2m)!}\binom{2m - 2}{m - 1} = \frac{\pi}{m(2m - 1)[(m - 1)!]^{2}}
+\end{equation*}
+
 
 
 \section{Analytic functions and meromorphic functions}
