@@ -68,30 +68,57 @@ at least one block is a single summand of size at least $r_{-}$. Therefore $\mat
 
 \vspace{\baselineskip}
 \noindent
-By Paley-Zygmund inequality (we'll give a short proof later):
+By the Paley–Zygmund inequality (a short proof of which is provided later), any non-negative random variable with finite variance satisfies:
 \begin{equation*}
     \mathbb{P}(Y > 0) \geq \frac{(\mathbb{E}[Y])^{2}}{\mathbb{E}[Y^{2}]}
 \end{equation*}
-Now $Y \sim \text{Binomial}(m,p)$. The first moment:
-\begin{equation*}
-    \mathbb{E}[Y] = mp = \left\lfloor \frac{n}{r_{-}} \right\rfloor \left(\frac{1}{2}\right)^{r_{-} - 1}
-        > \left( \frac{n}{(1 - \epsilon)\log_{2}n + 1} - 1 \right) \left( \frac{1}{2} \right)^{(1 - \epsilon)\log_{2}n}
-        \sim \frac{n^{\epsilon}}{(1 - \epsilon)\log_{2}n} \to \infty
-\end{equation*}
-
-The second moment $\mathbb{E}[Y^{2}] = Var(Y) + (\mathbb{E}[Y])^{2}$, $Var(Y) = mp(1 - p) \leq mp = \mathbb{E}[Y]$.
-Plugging into Paley-Zygmund:
-\begin{equation*}
-    \mathbb{P}(Y > 0) \geq \frac{(\mathbb{E}[Y])^{2}}{\mathbb{E}[Y^{2}]} = \frac{(\mathbb{E}[Y])^{2}}{Var(Y) + (\mathbb{E}[Y])^{2}}
-            \geq \frac{(\mathbb{E}[Y])^{2}}{\mathbb{E}[Y] + (\mathbb{E}[Y])^{2}} = \frac{1}{1 + \frac{1}{\mathbb{E}[Y]}} \to 1
-\end{equation*}
-Since $M \geq r_{-} = \lceil (1 - \epsilon)\log_{2}n \rceil$ implies $M \geq (1 - \epsilon)\log_{2}n$, we have
-$\mathbb{P}(M \geq (1 - \epsilon)\log_{2}n) \geq \mathbb{P}(M \geq r_{-}) \geq \mathbb{P}(Y > 0) \to 1$.
+In our setting, $Y \sim \text{Binomial}(m, p)$.
 
 \vspace{\baselineskip}
 \noindent
-Finally $\mathbb{P}\left((1 - \epsilon)\log_{2}n \leq M \leq (1 + \epsilon)\log_{2}n\right) =
-    \mathbb{P}(M \geq (1 - \epsilon)\log_{2}n) - \mathbb{P}(M > (1 + \epsilon)\log_{2}n) \to 1 - 0 = 1$.
+First, we analyze the expectation (the first moment), given by:
+\begin{equation*}
+    \mathbb{E}[Y] = mp = \left\lfloor \frac{n}{r_{-}} \right\rfloor \left(\frac{1}{2}\right)^{r_{-} - 1}
+\end{equation*}
+We bound each factor individually as follows:
+\begin{itemize}
+    \item For the floor term $\lfloor n/r_{-} \rfloor$:
+        \begin{equation*}
+            \left\lfloor \frac{n}{r_{-}} \right\rfloor > \frac{n}{r_{-}} - 1
+                = \frac{n}{\lceil (1 - \epsilon)\log_{2}n \rceil} - 1 > \frac{n}{(1 - \epsilon)\log_{2}n + 1} - 1
+        \end{equation*}
+        For sufficiently large $n$, this can be further simplified to:
+        \begin{equation*}
+            \frac{n}{(1 - \epsilon)\log_{2}n + 1} - 1 > \frac{n}{2(1 - \epsilon)\log_{2}n} - 1 > \frac{n}{4(1 - \epsilon)\log_{2}n}
+        \end{equation*}
+    \item For the exponential term $(1/2)^{r_{-} - 1}$:
+        \begin{equation*}
+            \left(\frac{1}{2}\right)^{r_{-} - 1} > \left(\frac{1}{2}\right)^{(1 - \epsilon)\log_{2}n} = n^{-(1 - \epsilon)}
+        \end{equation*}
+\end{itemize}
+Combining these two bounds yields:
+\begin{equation*}
+    \mathbb{E}[Y] > \frac{n^{\epsilon}}{4(1 - \epsilon)\log_{2}n} \to \infty \quad \text{as } n \to \infty
+\end{equation*}
+
+\vspace{\baselineskip}
+\noindent
+Next, we bound the second moment. Recall that $\mathbb{E}[Y^{2}] = \text{Var}(Y) + (\mathbb{E}[Y])^{2}$. Since $Y$ is binomial, its variance satisfies:
+\begin{equation*}
+    \text{Var}(Y) = mp(1 - p) \leq mp = \mathbb{E}[Y]
+\end{equation*}
+
+\vspace{\baselineskip}
+\noindent
+Substituting these results back into the Paley–Zygmund inequality, we obtain:
+\begin{equation*}
+    \mathbb{P}(Y > 0) \geq \frac{(\mathbb{E}[Y])^{2}}{\mathbb{E}[Y^{2}]} = \frac{(\mathbb{E}[Y])^{2}}{\text{Var}(Y) + (\mathbb{E}[Y])^{2}}
+            \geq \frac{(\mathbb{E}[Y])^{2}}{\mathbb{E}[Y] + (\mathbb{E}[Y])^{2}} = \frac{1}{1 + \frac{1}{\mathbb{E}[Y]}} \to 1
+\end{equation*}
+Finally, because the event $M \geq r_{-}$ implies $M \geq (1 - \epsilon)\log_{2}n$, we conclude that:
+\begin{equation*}
+    \mathbb{P}(M \geq (1 - \epsilon)\log_{2}n) \geq \mathbb{P}(M \geq r_{-}) \geq \mathbb{P}(Y > 0) \to 1
+\end{equation*}
 
 \vspace{\baselineskip}
 \noindent
@@ -309,7 +336,8 @@ Differentiating with respect to $u$ gives
         z\left(\phi'(T)\frac{\partial T}{\partial u} + \phi_{k}T^{k} + k\phi_{k}(u - 1)T^{k - 1}\frac{\partial T}{\partial u}\right) \implies
 \end{equation*}
 \begin{equation*}
-    \Omega(z) = z\left(\phi'(T(z))\Omega(z) + \phi_{k}T(z)^{k}\right) = z\frac{\phi_{k}T(z)^{k}}{1 - z\phi'(T(z))}
+    \Omega(z) = z\left(\phi'(T(z))\Omega(z) + \phi_{k}T(z)^{k}\right) \implies
+        \Omega(z) = z\frac{\phi_{k}T(z)^{k}}{1 - z\phi'(T(z))}
 \end{equation*}
 Since $T(z) = z\phi(T(z))$, differentiating with respect to $z$ yields
 \begin{equation*}
@@ -393,8 +421,7 @@ Differentiating the first equation with respect to $z$ gives
 \end{equation*}
 Plugging this fraction into \ref{eq:III.20.1}:
 \begin{equation*}
-    T_u(z, 1) = z^{2}\phi'(T(z))T'(z) \cdot \left(\frac{T'(z)}{\phi(T(z))}\right)
-        = \frac{\phi'(T(z))}{\phi(T(z))}(zT'(z))^{2}
+    T_u(z, 1) = z^{2}\phi'(T(z))T'(z) \cdot \frac{T'(z)}{\phi(T(z))} = \frac{\phi'(T(z))}{\phi(T(z))}(zT'(z))^{2}
 \end{equation*}
 
 
@@ -591,7 +618,7 @@ where
 \begin{equation*}
     \alpha(u) = zu + \frac{zu}{1 - zu}F(z, 1), \quad \beta(u) = -\frac{zu}{1 - zu}, \quad \sigma(u) = z^{2}u^{2}
 \end{equation*}
-Substitute $u = 1$ and solve for $F(z, 1) \coloneqq X$:
+Substitute $u = 1$ and solve for $X \coloneqq F(z, 1)$:
 \begin{equation*}
     \begin{aligned}
         X
@@ -625,18 +652,18 @@ where
 
 \vspace{\baselineskip}
 \noindent
-The sequence starts as 1, 1, 2, 3, 5, 9, 16, 28, 50 and is \textit{EIS} \textbf{A002572}. It represents the number of partitions of 1 into summands of the form
+The sequence starts as \textbf{1, 1, 2, 3, 5,} 9, 16, 28, 50 and is \textit{EIS} \textbf{A002572}. It represents the number of partitions of 1 into summands of the form
 $\frac{1}{2}, \frac{1}{4}, \frac{1}{8}, \cdots$: there is \textbf{1} way to represent 1 as \textit{2} summands; \textbf{1} way as \textit{3} summands;
 \textbf{2} ways as \textit{4} summands; \textbf{3} ways as \textit{5} summands; \textbf{5} ways as \textit{6} summands $\cdots$
 \begin{equation*}
     \begin{aligned}
-        1 &= \frac{1}{2} + \frac{1}{2} \\
-        1 &= \frac{1}{2} + \frac{1}{4} + \frac{1}{4} \\
+        1 &= \frac{1}{2} + \frac{1}{2} \\[20pt]
+        1 &= \frac{1}{2} + \frac{1}{4} + \frac{1}{4} \\[20pt]
         1 &= \frac{1}{4} + \frac{1}{4} + \frac{1}{4} + \frac{1}{4} \\
-        1 &= \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \frac{1}{8} \\
+        1 &= \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \frac{1}{8} \\[20pt]
         1 &= \frac{1}{4} + \frac{1}{4} + \frac{1}{4} + \frac{1}{8} + \frac{1}{8} \\
         1 &= \frac{1}{2} + \frac{1}{8} + \frac{1}{8} + \frac{1}{8} + \frac{1}{8} \\
-        1 &= \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \frac{1}{16} + \frac{1}{16} \\
+        1 &= \frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \frac{1}{16} + \frac{1}{16} \\[20pt]
         1 &= \frac{1}{4} + \frac{1}{4} + \frac{1}{8} + \frac{1}{8} + \frac{1}{8} + \frac{1}{8} \\
         1 &= \frac{1}{4} + \frac{1}{4} + \frac{1}{4} + \frac{1}{8} + \frac{1}{16} + \frac{1}{16} \\
         1 &= \frac{1}{2} + \frac{1}{8} + \frac{1}{8} + \frac{1}{8} + \frac{1}{16} + \frac{1}{16} \\
@@ -668,7 +695,7 @@ Hence
 \begin{equation*}
     K(z, u) = k(zu) + (\mathcal{L}[K(z, u)])_{u \mapsto zu} = \frac{zu}{1 - zu} + \frac{zu}{1 - zu}K(z, 1) - K(z, zu)
 \end{equation*}
-To solve for $K(z, 1)$, let $K(z, 1) = X$:
+To solve for $K(z, 1)$, let $X = K(z, 1)$:
 \begin{equation*}
     K(z, u) = \frac{zu}{1 - zu}(1 + X) - K(z, zu)
 \end{equation*}
@@ -693,6 +720,7 @@ Let the sum be $S$:
     X = (1 + X)S \implies 1 + X = \frac{1}{1 - S} = \left(1 - \sum_{j \geq 1}\frac{(-1)^{j - 1}z^{j}}{1 - z^{j}}\right)^{-1}
         = \left(1 + \sum_{j \geq 1}\frac{(-z)^{j}}{1 - z^{j}}\right)^{-1}
 \end{equation*}
+Note that the last expression is $1 + X$, not $X$.
 
 
 % Example III.23.
@@ -1144,11 +1172,11 @@ is a multiple of $m$, in which case the sum is $m$.
 Let's expand the EGF for $m = 2, 3, 4$:
 \begin{equation*}
     \begin{aligned}
-        \left(\sum_{i \geq 0}\frac{z^{2i}}{(2i)!} - \frac{z^{2i + 1}}{(2i + 1)!}\right)^{-1}
+        \text{A.R. of length 1} \quad \left(\sum_{i \geq 0}\frac{z^{2i}}{(2i)!} - \frac{z^{2i + 1}}{(2i + 1)!}\right)^{-1}
             &= 1 + z + \frac{z^{2}}{2!} + \frac{z^{3}}{3!} + \frac{z^{4}}{4!} + O(z^{5}) \\
-        \left(\sum_{i \geq 0}\frac{z^{3i}}{(3i)!} - \frac{z^{3i + 1}}{(3i + 1)!}\right)^{-1}
+        \text{A.R. of length 2} \quad \left(\sum_{i \geq 0}\frac{z^{3i}}{(3i)!} - \frac{z^{3i + 1}}{(3i + 1)!}\right)^{-1}
             &= 1 + z + 2\frac{z^{2}}{2!} + 5\frac{z^{3}}{3!} + 17\frac{z^{4}}{4!} + O(z^{5}) \\
-        \left(\sum_{i \geq 0}\frac{z^{4i}}{(4i)!} - \frac{z^{4i + 1}}{(4i + 1)!}\right)^{-1}
+        \text{A.R. of length 3} \quad \left(\sum_{i \geq 0}\frac{z^{4i}}{(4i)!} - \frac{z^{4i + 1}}{(4i + 1)!}\right)^{-1}
             &= 1 + z + \frac{z^{2}}{2!} + \frac{z^{3}}{3!} + 23\frac{z^{4}}{4!} + O(z^{5})
     \end{aligned}
 \end{equation*}
