@@ -48,7 +48,7 @@ The number of partitions of size $n$ with at most $k$ summands, each at most $l$
     [z^{n}]\frac{(1 - z)(1 - z^{2}) \cdots (1 - z^{k + l})}{((1 - z)(1 - z^{2}) \cdots (1 - z^{k})) \cdot ((1 - z)(1 - z^{2}) \cdots (1 - z^{l}))}
 \end{equation}
 Let $f(k, l)$ denote the generating function where the coefficient of $z^{n}$ represents the number of such partitions.
-To derive a functional equation, consider the value of the largest part. There are two mutually exclusive possibilities
+To derive a functional equation, consider the value of the largest part. There are two mutually exclusive possibilities:
 the largest part is strictly less than $l$, or it is exactly $l$. This distinction yields
 \begin{equation} \label{eq:I.16.2}
     f(k, l) = f(k, l - 1) + z^{l}f(k - 1, l)
@@ -194,12 +194,12 @@ $\rhd$ \textbf{I.17.} \textit{Systems of linear Diophantine inequalities.}
     \left\{x_{1}\geq 0,\; x_{2}\geq 2x_{1},\; x_{3}\geq 2x_{2},\; x_{4}\geq 2x_{3}\right\}
 \end{equation*}
 We introduce non-negative slack variables $y_{j} \in \mathbb{Z}_{\geq 0}$ to quantify the ``excess'' of each term relative to its lower bound.
-\begin{align}
+\begin{align*}
     x_{1} &= y_{1} \\
     x_{2} &= 2x_{1} + y_{2} = 2y_{1} + y_{2} \\
     x_{3} &= 2x_{2} + y_{3} = 4y_{1} + 2y_{2} + y_{3} \\
     x_{4} &= 2x_{3} + y_{4} = 8y_{1} + 4y_{2} + 2y_{3} + y_{4}
-\end{align}
+\end{align*}
 The total weight is $S = x_{1} + x_{2} + x_{3} + x_{4} = 15y_{1} + 7y_{2} + 3y_{3} + y_{4}$.
 Since $y_{j}$ are independent and range freely over non-negative integers, the OGF $F(z)$ is the product of the individual generating functions for each $y_{j}$:
 \begin{itemize}
@@ -461,8 +461,8 @@ $\rhd$ \textbf{I.20.} \textit{A digital surprise.}
     \begin{aligned}
         \varphi
             &= (1 - 10^{-1})(1 - 10^{-2})(1 - 10^{-3})(1 - 10^{-4}) \cdots \\
-            &= \left[\prod_{n = 1}^{\infty}(1 - z^{n})\right]_{z = .1} \\
-            &= \left[1 - z^{1} - z^{2} + z^{5} + z^{7} - z^{12} - z^{15} + z^{22} + z^{26} - \cdots \right]_{z = .1} \\
+            &= \left.\prod_{n = 1}^{\infty}(1 - z^{n})\right|_{z = .1} \\
+            &= \left.1 - z^{1} - z^{2} + z^{5} + z^{7} - z^{12} - z^{15} + z^{22} + z^{26} - \cdots \right|_{z = .1} \\
             &= .\dot{9} - .1 - .01 + .00001 + .0000001 - .000000000001 - \cdots
     \end{aligned}
 \end{equation*}
@@ -492,7 +492,7 @@ The generating function for the possible values of a single coordinate, where th
 \begin{equation*}
     \Theta(z) = \sum_{x \in \mathbb{Z}}z^{x^{2}} = 1 + 2\sum_{n = 1}^{\infty} z^{n^{2}}
 \end{equation*}
-Since each coordinate $x_{1}, \cdot, x_{d}$ is chosen independently, the generating function for the sum of squares
+Since each coordinate $x_{1}, \cdots, x_{d}$ is chosen independently, the generating function for the sum of squares
 $\sum x_{i}^{2}$ is the $d$-th power of the individual generating function:
 \begin{equation*}
     S(z) = (\Theta(z))^{d} = \sum_{k = 0}^{\infty}r_{d}(k)z^{k}
@@ -540,11 +540,11 @@ the exponential growth is dominated by $C(z)$. Specifically, as $L \to \infty$:
 for some constant $A$. To find the required code length $L(n)$ for $n$ bits of information,
 we solve for $2^{n} \leq \sum_{j = 0}^{L} C_{j}$ by taking the base-2 logarithm:
 \begin{equation*}
-    n \leq \log_{2}{\left(\sum_{j = 0}^{L}C_{j}\right)} = L \log_{2}{\varphi} + O(1)
+    n \leq \log_{2}\left(\sum_{j = 0}^{L}C_{j}\right) = L \log_{2}\varphi + O(1)
 \end{equation*}
 Rearranging for $L$, we obtain the lower bound:
 \begin{equation*}
-    L \geq \frac{n}{\log_{2}{\varphi}} + O(1) \approx 1.440420n + O(1)
+    L \geq \frac{n}{\log_{2}\varphi} + O(1) \approx 1.440420n + O(1)
 \end{equation*}
 
 
@@ -616,12 +616,12 @@ one word of length 2 and one word of length 3. Let $\hat{\mathcal{L}} = \{aa, bb
         Since no word is a strict prefix of another, this is a valid prefix language $\hat{\mathcal{L}}$.
     \item The Generating Function $\hat{L}(z)$: The OGF is the sum of $z$ raised to the power of each word's length
         $\hat{L}(z) = z^{2} + z^{3}$.
-    \item Probability: $\hat{L}(1/2)$: This represents the probability that a random infinite string starts with a word in $\mathcal{L}$
+    \item Probability: $\hat{L}(1/2)$: This represents the probability that a random infinite string starts with a word in $\mathcal{L}$:
         $\hat{L}(1/2) = (1/2)^{2} + (1/2)^{3} = 1/4 + 1/8 = 3/8$. This means there is a 37.5\% chance
         that a random string begins with a word from this language.
-    \item Expected Time: $\frac{1}{2}\hat{L}'(1/2)$. To find the expected time (or more precisely, the expected ``matched length'') at which a word
+    \item Expected Time: $\frac{1}{2}\hat{L}'(1/2)$. To find the expected time (or more precisely, the \textbf{expected matched length}) at which a word
         in $\mathcal{L}$ is first encountered: $\hat{L}'(z) = 2z + 3z^{2} \implies \hat{L}'(1/2) = 1.75 \implies E = 0.875$.
-    \item Breakdown of the Result: The total expected value of 0.875 is formed as follows
+    \item Breakdown of the Result: The total expected value of 0.875 is formed as follows:
         \begin{itemize}
             \item Word ``aa'': Probability $1/4$ of length 2 $\rightarrow$ Contribution: $2 \times 0.25 = 0.5$.
             \item Word ``bbb'': Probability $1/8$ of length 3 $\rightarrow$ Contribution: $3 \times 0.125 = 0.375$.
@@ -644,7 +644,7 @@ Consider a binary pattern of length $k$. The generating function $T(z)$ for the 
 The average waiting time (or expected occurrence time) can be derived directly from $T(z)$
 by evaluating its derivative at the point of the alphabet's inverse size ($z = 1/2$):
 \begin{equation*}
-    \left[ z \frac{d}{dz} T(z) \right]_{z = 1/2} = 2^{k} c(1/2)
+    \left.z \frac{d}{dz} T(z)\right|_{z = 1/2} = 2^{k} c(1/2)
 \end{equation*}
 
 
@@ -707,7 +707,7 @@ Since $\binom{2n - 2 - j}{n - 1} = [z^{n - 1}](1 + z)^{2n - 2 - j}$, we have
         L
         &= 2^{n - 1}\sum_{j = 0}^{n - 1}\left(-\frac{1}{2}\right)^{j}\binom{n}{j}[z^{n - 1}](1 + z)^{2n - 2 - j} \\
         &= 2^{n - 1}[z^{n - 1}]\sum_{j = 0}^{n - 1}\left(-\frac{1}{2}\right)^{j}\binom{n}{j}(1 + z)^{2n - 2 - j} \\
-        &= 2^{n - 1}[z^{n - 1}](1 + z)^{2n - 2}\sum_{j = 0}^{n - 1}\binom{n}{j}\left(-\frac{1}{2(1 + z)}\right)^{j} \\
+        &= 2^{n - 1}[z^{n - 1}](1 + z)^{2n - 2}\sum_{j = 0}^{n - 1}\binom{n}{j}\left(-\frac{1}{2(1 + z)}\right)^{j} \; \text{safe to add} \; j = n \\
         &= 2^{n - 1}[z^{n - 1}](1 + z)^{2n - 2}\left(1 - \frac{1}{2(1 + z)}\right)^{n} \\
         &= 2^{n - 1}[z^{n - 1}](1 + z)^{2n - 2}\frac{(1 + 2z)^{n}}{2^{n}(1 + z)^{n}} \\
         &= \frac{1}{2}[z^{n - 1}](1 + z)^{n - 2}(1 + 2z)^{n}
@@ -924,12 +924,23 @@ that end at $-k - 2 < -1$. Thus, Meanders end at $k$ = (Paths that end at $k$) $
 \vspace{\baselineskip}
 \noindent
 \textbf{\textit{Example} I.17.} \textit{The complexity of boolean functions.}
+
+\vspace{\baselineskip}
+\noindent
+We want to show that
 \begin{equation*}
-    D_{n} = O(16^{n}m^{n}n^{-3/2}) \implies \sum_{j = 0}^{v}D_{j} = O(16^{v}m^{v}v^{-3/2})
+    D_{n} = O(16^{n}m^{n}n^{-3/2})
 \end{equation*}
-We prove the following general statement. \\
-Let $c > 0$ and $\alpha > 0$. Define $a_{n} = c^{n}n^{-\alpha}$ for $n \geq 1$ and let $a_{0} > 0$ be a constant.
+implies
+\begin{equation*}
+    \sum_{j = 0}^{v}D_{j} = O(16^{v}m^{v}v^{-3/2})
+\end{equation*}
+We prove the following general statement: \\
+Let $c > 1$ and $\alpha > 0$. Define $a_{n} = c^{n}n^{-\alpha}$ for $n \geq 1$ and let $a_{0} > 0$ be a constant.
 If $D_{n} = O(a_{n})$, then $\sum_{j = 0}^{v}D_{j} = O(c^{v}v^{-\alpha})$ as $v \to \infty$. \\
+
+\vspace{\baselineskip}
+\noindent
 Proof. Because $D_{n} = O(a_{n})$, there exists $M > 0$ and $N \geq 1$ such that $D_{n} \leq Mc^{n}n^{-\alpha}$ for all $n \geq N$.
 For $v \geq N$ we split:
 \begin{equation*}
@@ -959,6 +970,7 @@ Putting it together, $S(v) = o(c^{v}v^{-\alpha}) + O(c^{v}v^{-\alpha}) = O(c^{v}
     \sum_{j = 0}^{v}D_{j} = C_{0} + MS(v) = O(1) + O(c^{v}v^{-\alpha}) = O(c^{v}v^{-\alpha})
 \end{equation*}
 
+\vspace{\baselineskip}
 \noindent
 Now we show
 \begin{equation*}
@@ -966,11 +978,11 @@ Now we show
 \end{equation*}
 by taking for $v$ the value
 \begin{equation*}
-    v = \frac{2^{m}}{4 + \log_{2}{m}}
+    v = \frac{2^{m}}{4 + \log_{2}m}
 \end{equation*}
 Note that
 \begin{equation*}
-    v\log_{2}{16m} = \frac{2^{m}}{4 + \log_{2}{m}}(4 + \log_{2}{m}) = 2^{m} \implies 16^{v}m^{v} = 2^{2^{m}}
+    v\log_{2}(16m) = \frac{2^{m}}{4 + \log_{2}m}(4 + \log_{2}m) = 2^{m} \implies 16^{v}m^{v} = 2^{2^{m}}
 \end{equation*}
 Hence the whole bound becomes
 \begin{equation*}

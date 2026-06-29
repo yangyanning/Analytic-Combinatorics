@@ -22,7 +22,7 @@ $\rhd$ \textbf{III.7.} \textit{Largest summands in compositions.}
 \noindent
 Let $M$ be the largest summand in a random composition. We want to show that for any $\epsilon \in (0, 1)$, as $n \to \infty$:
 \begin{equation*}
-    \mathbb{P}\left((1 - \epsilon)\log_{2}{n} \leq M \leq (1 + \epsilon)\log_{2}{n}\right) \to 1
+    \mathbb{P}\left((1 - \epsilon)\log_{2}n \leq M \leq (1 + \epsilon)\log_{2}n\right) \to 1
 \end{equation*}
 
 \noindent
@@ -30,7 +30,7 @@ Let $M$ be the largest summand in a random composition. We want to show that for
 
 \vspace{\baselineskip}
 \noindent
-Let $r_{+} = \lfloor(1 + \epsilon)\log_{2}{n}\rfloor$. If $M \geq r_{+}$ then there exists at least one summand of size $\geq r_{+}$.
+Let $r_{+} = \lfloor(1 + \epsilon)\log_{2}n\rfloor$. If $M \geq r_{+}$ then there exists at least one summand of size $\geq r_{+}$.
 The number of such summands is $S = \sum_{k = r_{+}}^{\infty}X_{k}$ where $X_{k}$ is the number of summands of size exactly $k$. By Markov's inequality:
 \begin{equation*}
     \mathbb{P}(M \geq r_{+}) = \mathbb{P}(S \geq 1) \leq \frac{\mathbb{E}[S]}{1} = \sum_{k = r_{+}}^{\infty}\mathbb{E}[X_{k}]
@@ -38,10 +38,10 @@ The number of such summands is $S = \sum_{k = r_{+}}^{\infty}X_{k}$ where $X_{k}
 Proposition III.4 gives $E[X_{k}] = \frac{n - k + 3}{2^{k + 1}} \leq \frac{n}{2^{k}}$. Then (noting that $X_{k} = 0$ for $k > n$)
 \begin{equation*}
     \mathbb{E}[S] \leq \sum_{k = r_{+}}^{n}\frac{n}{2^{k}} < \frac{n}{2^{r_{+} - 1}}
-        < \frac{n}{2^{(1 + \epsilon)\log_{2}{n} - 2}} = 4n^{-\epsilon} \to 0
+        < \frac{n}{2^{(1 + \epsilon)\log_{2}n - 2}} = 4n^{-\epsilon} \to 0
 \end{equation*}
-Since $M > (1 + \epsilon)\log_{2}{n}$ implies $M \geq \lfloor (1 + \epsilon)\log_{2}{n} \rfloor = r_{+}$, we have
-$\mathbb{P}(M > (1 + \epsilon)\log_{2}{n}) \leq \mathbb{P}(M \geq r_{+}) \to 0$.
+Since $M > (1 + \epsilon)\log_{2}n$ implies $M \geq \lfloor (1 + \epsilon)\log_{2}n \rfloor = r_{+}$, we have
+$\mathbb{P}(M > (1 + \epsilon)\log_{2}n) \leq \mathbb{P}(M \geq r_{+}) \to 0$.
 
 \vspace{\baselineskip}
 \noindent
@@ -50,7 +50,7 @@ $\mathbb{P}(M > (1 + \epsilon)\log_{2}{n}) \leq \mathbb{P}(M \geq r_{+}) \to 0$.
 \vspace{\baselineskip}
 \noindent
 We have a random composition of $n$, given by $n - 1$ independent gaps, each a ``cut'' with probability $1/2$.
-Let $r_{-} = \lceil (1 - \epsilon)\log_{2}{n} \rceil$. Cut the $n$ ones into $m = \left\lfloor \frac{n}{r_{-}} \right\rfloor$ disjoint blocks
+Let $r_{-} = \lceil (1 - \epsilon)\log_{2}n \rceil$. Cut the $n$ ones into $m = \left\lfloor \frac{n}{r_{-}} \right\rfloor$ disjoint blocks
 of length $r_{-}$, ignoring leftover $1$'s. Inside a block of length $r_{-}$ there are $r_{-} - 1$ internal gaps. The block contains \textbf{no cut} internally
 with probability $p = \left(\frac{1}{2}\right)^{r_{-} - 1}$, independently for each block (the gaps of different blocks are disjoint and independent).
 
@@ -75,8 +75,8 @@ By Paley-Zygmund inequality (we'll give a short proof later):
 Now $Y \sim \text{Binomial}(m,p)$. The first moment:
 \begin{equation*}
     \mathbb{E}[Y] = mp = \left\lfloor \frac{n}{r_{-}} \right\rfloor \left(\frac{1}{2}\right)^{r_{-} - 1}
-        > \left( \frac{n}{(1 - \epsilon)\log_{2}{n} + 1} - 1 \right) \left( \frac{1}{2} \right)^{(1 - \epsilon)\log_{2}{n}}
-        \sim \frac{n^{\epsilon}}{(1 - \epsilon)\log_{2}{n}} \to \infty
+        > \left( \frac{n}{(1 - \epsilon)\log_{2}n + 1} - 1 \right) \left( \frac{1}{2} \right)^{(1 - \epsilon)\log_{2}n}
+        \sim \frac{n^{\epsilon}}{(1 - \epsilon)\log_{2}n} \to \infty
 \end{equation*}
 
 The second moment $\mathbb{E}[Y^{2}] = Var(Y) + (\mathbb{E}[Y])^{2}$, $Var(Y) = mp(1 - p) \leq mp = \mathbb{E}[Y]$.
@@ -85,13 +85,13 @@ Plugging into Paley-Zygmund:
     \mathbb{P}(Y > 0) \geq \frac{(\mathbb{E}[Y])^{2}}{\mathbb{E}[Y^{2}]} = \frac{(\mathbb{E}[Y])^{2}}{Var(Y) + (\mathbb{E}[Y])^{2}}
             \geq \frac{(\mathbb{E}[Y])^{2}}{\mathbb{E}[Y] + (\mathbb{E}[Y])^{2}} = \frac{1}{1 + \frac{1}{\mathbb{E}[Y]}} \to 1
 \end{equation*}
-Since $M \geq r_{-} = \lceil (1 - \epsilon)\log_{2}{n} \rceil$ implies $M \geq (1 - \epsilon)\log_{2}{n}$, we have
-$\mathbb{P}(M \geq (1 - \epsilon)\log_{2}{n}) \geq \mathbb{P}(M \geq r_{-}) \geq \mathbb{P}(Y > 0) \to 1$.
+Since $M \geq r_{-} = \lceil (1 - \epsilon)\log_{2}n \rceil$ implies $M \geq (1 - \epsilon)\log_{2}n$, we have
+$\mathbb{P}(M \geq (1 - \epsilon)\log_{2}n) \geq \mathbb{P}(M \geq r_{-}) \geq \mathbb{P}(Y > 0) \to 1$.
 
 \vspace{\baselineskip}
 \noindent
-Finally $\mathbb{P}\left((1 - \epsilon)\log_{2}{n} \leq M \leq (1 + \epsilon)\log_{2}{n}\right) =
-    \mathbb{P}(M \geq (1 - \epsilon)\log_{2}{n}) - \mathbb{P}(M > (1 + \epsilon)\log_{2}{n}) \to 1 - 0 = 1$.
+Finally $\mathbb{P}\left((1 - \epsilon)\log_{2}n \leq M \leq (1 + \epsilon)\log_{2}n\right) =
+    \mathbb{P}(M \geq (1 - \epsilon)\log_{2}n) - \mathbb{P}(M > (1 + \epsilon)\log_{2}n) \to 1 - 0 = 1$.
 
 \vspace{\baselineskip}
 \noindent

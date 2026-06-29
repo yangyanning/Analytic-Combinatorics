@@ -25,10 +25,19 @@
 \vspace{\baselineskip}
 \noindent
 $\rhd$ \textbf{II.19.} \textit{Labelled hierarchies.}
+
+\vspace{\baselineskip}
+\noindent
+We want to derive
 \begin{equation*}
-    L = z + e^{L} - 1 - L \implies L(z) = T\left(\frac{1}{2}e^{z/2 - 1/2}\right) + \frac{z}{2} - \frac{1}{2}
+    L(z) = T\left(\frac{1}{2}e^{z/2 - 1/2}\right) + \frac{z}{2} - \frac{1}{2}
+\end{equation*}
+from
+\begin{equation*}
+    L = z + e^{L} - 1 - L
 \end{equation*}
 
+\vspace{\baselineskip}
 \noindent
 \textbf{Step 1. Re-arranging the target equation.}
 We start with the given equation, moving all terms involving $L$ to the left side and constant/independent terms to the right:
@@ -38,14 +47,16 @@ We start with the given equation, moving all terms involving $L$ to the left sid
 This form does not immediately match $T(z) = ze^{T(z)}$. To make them compatible, we should attempt to isolate an exponential term
 that mirrors the functional form of the tree function.
 
+\vspace{\baselineskip}
 \noindent
 \textbf{Step 2. Utilizing the Lambert W identity.}
 The Cayley tree function $T(z)$ is related to the \textbf{Lambert W function} (specifically $W(-z)$). The identity $T(z) = ze^{T(z)}$ can be rewritten as
 \begin{equation*}
-    -T(z)e^{-T(z)} = -z
+    -T(z)e^{-T(z)} = -z \leftrightarrow z = -T(-z)e^{-T(-z)}
 \end{equation*}
-Which implies $T(z) = -W(-z)$.
+Which implies $W(z) = -T(-z) \leftrightarrow T(z) = -W(-z)$.
 
+\vspace{\baselineskip}
 \noindent
 \textbf{Step 3. Substitution and Solving.}
 Let's rearrange the original equation to isolate the exponential:
@@ -60,7 +71,7 @@ Let's rewrite the equation for $L$ in the form $f(L)e^{f(L)} = \text{something}$
 Now, we want the term inside the parentheses to match the exponent. Let $u$ be the linear part related to $L$.
 If we aim for $u = \frac{z - 1}{2} - L$, then
 \begin{equation*}
-    2u = z - 1 - 2L
+    2u = z - 1 - 2L = -(2L - z + 1)
 \end{equation*}
 Substituting this back into our equation:
 \begin{equation*}
@@ -68,7 +79,7 @@ Substituting this back into our equation:
 \end{equation*}
 Since $u = \frac{z - 1}{2} - L$, we have $-L = u - \frac{z - 1}{2}$. Substituting this into the exponent:
 \begin{equation*}
-    1 = -2u \cdot e^{u - \frac{z - 1}{2}} = -2u \cdot e^{u} \cdot e^{\frac{1 - z}{2}}
+    1 = -2u \cdot e^{u - \frac{z - 1}{2}} = -2u \cdot e^{u} \cdot e^{-\frac{z - 1}{2}}
 \end{equation*} 
 Now, isolate $ue^{u}$:
 \begin{equation*}
@@ -138,7 +149,7 @@ where
 From Note II.18 we have
 \begin{equation*}
     n![z^{n}]\frac{T(z)^{k}}{k!} = \binom{n - 1}{k - 1}n^{n - k} \implies
-        [z^{n}]\frac{T(z)^{k}}{k} = (k - 1)!\binom{n - 1}{k - 1}n^{n - k} = \frac{(n - 1)!}{(n - k)!}n^{n - k}
+        n![z^{n}]\frac{T(z)^{k}}{k} = (k - 1)!\binom{n - 1}{k - 1}n^{n - k} = \frac{(n - 1)!}{(n - k)!}n^{n - k}
 \end{equation*}
 Consequently
 \begin{equation*}
@@ -338,7 +349,7 @@ $\rhd$ \textbf{II.28.} \textit{Do two permutations generate the symmetric group?
 \noindent
 We want to show
 \begin{equation*}
-    n!^{2}\pi_{n} = (n - 1)!I_{n}
+    n!^{2}\pi_{n} = (n - 1)!I_{n + 1}
 \end{equation*}
 The EGF of pairs of permutations $\sum_{n \geq 0}n!^{2}\frac{z^{n}}{n!} = \sum_{n \geq 0}n!z^{n}$ happens to be the OGF $P(z)$ of all permutations.
 By the exponential formula, the EGF $C(z)$ of connected graphs satisfies
@@ -407,7 +418,7 @@ Substituting into \ref{eq:II.28.2} gives $S_{n} = I_{n + 1}$.
 
 \vspace{\baselineskip}
 \noindent
-Finally $n \cdot n!\pi_{n} = S_{n} \implies n!^{2}\pi_{n} = (n - 1)!I_{n}$.
+Finally $n \cdot n!\pi_{n} = S_{n} \implies n!^{2}\pi_{n} = (n - 1)!I_{n + 1}$.
 
 
 
