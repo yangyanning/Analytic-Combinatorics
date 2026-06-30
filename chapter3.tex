@@ -481,13 +481,13 @@ If we set $j = r + 1$ in \ref{eq:III.19.2} (introduce $X_{r + 1}$ such that \ref
 \begin{equation*}
     X_{r + 1} = 1 + \sum_{k = 1}^{r}z_{k}X_{k} \implies \sum_{k = 1}^{r}z_{k}X_{k} = X_{r + 1} - 1 \implies X_{1} = 1 + v(X_{r + 1} - 1)
 \end{equation*}
-The total generating function is
-\begin{equation*}
-    W = 1 + \sum_{k = 1}^{r}W_{k} = 1 + \sum_{k = 1}^{r}z_{k}X_{k} = X_{r + 1}
-\end{equation*}
 We also know from \ref{eq:III.19.3} that
 \begin{equation*}
     X_{r + 1} = X_{1}\prod_{j = 1}^{r}(1 + (1 - v)z_{j}) = X_{1}P
+\end{equation*}
+The total generating function is
+\begin{equation*}
+    W = 1 + \sum_{k = 1}^{r}W_{k} = 1 + \sum_{k = 1}^{r}z_{k}X_{k} = X_{r + 1}
 \end{equation*}
 Finally
 \begin{equation*}
@@ -856,8 +856,8 @@ The coefficient of $z^{n}$ in $\left.\frac{\partial I}{\partial u_{0}}\right|_{u
 
 \vspace{\baselineskip}
 \noindent
-\textbf{Unary type}. We consider both unary types simultaneously. Note that $\hat{I}$ depends on $u_{0}, u_{1}$ only through
-$v_{1} = (u_{0} + u_{1})/2$. Set $u_{0} = u_{2} = 1$. Then $\delta = \sqrt{1 - v_{1}^{2}}$ and
+\textbf{Unary type}. We consider both unary types simultaneously. Note that $\hat{I}$ depends on $u_{1}, u_{1}'$ only through
+$v_{1} = (u_{1} + u_{1}')/2$. Set $u_{0} = u_{2} = 1$. Then $\delta = \sqrt{1 - v_{1}^{2}}$ and
 \begin{equation*}
     \hat{I}(z, v_{1}) = \delta\frac{v_{1} + \delta\text{tan}(z\delta)}{\delta - v_{1}\text{tan}(z\delta)} - v_{1}
         = \frac{v_{1} + \delta^{2}w}{1 - v_{1}w} - v_{1} = \frac{w}{1 - v_{1}w}
