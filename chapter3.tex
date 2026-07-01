@@ -456,43 +456,55 @@ Plugging this fraction into \ref{eq:III.20.1}:
 
 \vspace{\baselineskip}
 \noindent
-Recurrence for $W$
+The recurrence relation for $W_j$, given by
 \begin{equation} \label{eq:III.19.1}
-    W_{j} = z_{j} + z_{j}\sum_{k = 1}^{j - 1}W_{k} + vz_{j}\sum_{k = j}^{r}W_{k}
+    W_{j} = z_{j} + z_{j}\sum_{k = 1}^{j - 1}W_{k} + vz_{j}\sum_{k = j}^{r}W_{k},
 \end{equation}
-implies recurrence for $X$
+implies a corresponding recurrence for $X_j$:
 \begin{equation} \label{eq:III.19.2}
-    X_{j} = 1 + \sum_{k = 1}^{j - 1}W_{k} + v\sum_{k = j}^{r}W_{k} = 1 + \sum_{k = 1}^{j - 1}z_{k}X_{k} + v\sum_{k = j}^{r}z_{k}X_{k}
+    X_{j} = 1 + \sum_{k = 1}^{j - 1}W_{k} + v\sum_{k = j}^{r}W_{k} = 1 + \sum_{k = 1}^{j - 1}z_{k}X_{k} + v\sum_{k = j}^{r}z_{k}X_{k}.
 \end{equation}
-Consequently
+Taking the forward difference of $X_j$, we find that
 \begin{equation*}
-    X_{j + 1} - X_{j} = W_{j} - vW_{j} = z_{j}X_{j}(1 - v) \implies X_{j + 1} = X_{j}(1 + z_{j}(1 - v))
+    X_{j + 1} - X_{j} = W_{j} - vW_{j} = z_{j}X_{j}(1 - v),
 \end{equation*}
-By induction (unfolding the recurrence), we can express any $X_{j}$ in terms of $X_{1}$:
+which yields the first-order linear recurrence
+\begin{equation*}
+    X_{j + 1} = X_{j}(1 + z_{j}(1 - v)).
+\end{equation*}
+By unfolding this recurrence inductively, we can express any $X_{j}$ in terms of the initial term $X_{1}$:
 \begin{equation} \label{eq:III.19.3}
-    X_{j} = X_{1}\prod_{k = 1}^{j - 1}(1 + (1 - v)z_{k})
+    X_{j} = X_{1}\prod_{k = 1}^{j - 1}(1 + (1 - v)z_{k}).
 \end{equation}
-To find $X_{1}$, we look back at \ref{eq:III.19.1} specifically for the case $j = 1$:
+To determine $X_{1}$, we evaluate \eqref{eq:III.19.1} at the boundary case $j = 1$:
 \begin{equation*}
-    W_{1} = z_{1} + z_{1} \cdot 0 + vz_{1}\sum_{k = 1}^{r}W_{k} \implies z_{1}X_{1} = z_{1} + vz_{1}\sum_{k = 1}^{r}z_{k}X_{k}
-    \implies X_{1} = 1 + v\sum_{k = 1}^{r}z_{k}X_{k}
+    W_{1} = z_{1} + vz_{1}\sum_{k = 1}^{r}W_{k} \implies z_{1}X_{1} = z_{1} + vz_{1}\sum_{k = 1}^{r}z_{k}X_{k}.
 \end{equation*}
-If we set $j = r + 1$ in \ref{eq:III.19.2} (introduce $X_{r + 1}$ such that \ref{eq:III.19.2} holds), the second sum vanishes, giving us
+Canceling $z_{1}$ gives
 \begin{equation*}
-    X_{r + 1} = 1 + \sum_{k = 1}^{r}z_{k}X_{k} \implies \sum_{k = 1}^{r}z_{k}X_{k} = X_{r + 1} - 1 \implies X_{1} = 1 + v(X_{r + 1} - 1)
+    X_{1} = 1 + v\sum_{k = 1}^{r}z_{k}X_{k}.
 \end{equation*}
-We also know from \ref{eq:III.19.3} that
+To evaluate the remaining sum, we extend the definition in \eqref{eq:III.19.2} to a boundary term $X_{r + 1}$ by setting $j = r + 1$.
+This causes the second summation to vanish, leaving
 \begin{equation*}
-    X_{r + 1} = X_{1}\prod_{j = 1}^{r}(1 + (1 - v)z_{j}) = X_{1}P
+    X_{r + 1} = 1 + \sum_{k = 1}^{r}z_{k}X_{k} \implies \sum_{k = 1}^{r}z_{k}X_{k} = X_{r + 1} - 1.
 \end{equation*}
-The total generating function is
+Substituting this back into the expression for $X_1$ yields
 \begin{equation*}
-    W = 1 + \sum_{k = 1}^{r}W_{k} = 1 + \sum_{k = 1}^{r}z_{k}X_{k} = X_{r + 1}
+    X_{1} = 1 + v(X_{r + 1} - 1).
 \end{equation*}
-Finally
+On the other hand, applying the product formula \eqref{eq:III.19.3} at $j = r + 1$ reveals that $X_{r + 1} = X_{1}P$, where we define the product
+$P = \prod_{j = 1}^{r}(1 + (1 - v)z_{j})$. Substituting $X_{r+1} = X_1 P$ into our equation for $X_1$, we have
 \begin{equation*}
-    X_{1} = 1 + v(X_{r + 1} - 1) = 1 + v(X_{1}P - 1) \implies X_{1} = \frac{1 - v}{1 - vP} \implies
-        W = \frac{P(1 - v)}{1 - vP}
+    X_{1} = 1 + v(X_{1}P - 1),
+\end{equation*}
+which can be solved explicitly for $X_1$ to obtain
+\begin{equation*}
+    X_{1} = \frac{1 - v}{1 - vP}.
+\end{equation*}
+Finally, the total generating function $W$ can be summed and simplified as follows:
+\begin{equation*}
+    W = 1 + \sum_{k = 1}^{r}W_{k} = 1 + \sum_{k = 1}^{r}z_{k}X_{k} = X_{r + 1} = \frac{P(1 - v)}{1 - vP}.
 \end{equation*}
 
 
@@ -638,7 +650,18 @@ where
         \text{Series A}
         &= z - \frac{z}{1 - z}z^{3} + \frac{z}{1 - z}\frac{z^{3}}{1 - z^{3}}z^{7} - \cdots \\
         &= z - \frac{z^{1 + 3}}{1 - z} + \frac{z^{1 + 3 + 7}}{(1 - z)(1 - z^{3})} - \cdots \\
-        &= \sum_{j \geq 1}(-1)^{j - 1}z^{2^{j + 1} - j - 2}/\left((1 - z)(1 - z^{3}) \cdots (1 - z^{2^{j - 1} - 1})\right)
+        &= \sum_{j \geq 1}(-1)^{j - 1}z^{2^{j + 1} - j - 2}/\left((1 - z)(1 - z^{3}) \cdots (1 - z^{2^{j - 1} - 1})\right) \\
+        &= \sum_{j \geq 1}(-1)^{j - 1}z^{2^{j + 1} - j - 2}/Q_{j - 1}(z)
+    \end{aligned}
+\end{equation*}
+The exponent
+\begin{equation*}
+    \begin{aligned}
+        1 + 3 + 7 + \cdots + (2^{j} - 1)
+        &= (2 - 1) + (2^{2} - 1) + (2^{3} - 1) + \cdots + (2^{j} - 1) \\
+        &= 2 + 2^{2} + 2^{3} + \cdots + 2^{j} - j \\
+        &= \frac{2 - 2^{j + 1}}{1 - 2} - j \\
+        &= 2^{j + 1} - j - 2
     \end{aligned}
 \end{equation*}
 \begin{equation*}
@@ -646,8 +669,13 @@ where
         1 - \text{Series B}
         &= 1 - \frac{z}{1 - z} + \frac{z}{1 - z}\frac{z^{3}}{1 - z^{3}} - \frac{z}{1 - z}\frac{z^{3}}{1 - z^{3}}\frac{z^{7}}{1 - z^{7}} + \cdots \\
         &= 1 - \frac{z}{1 - z} + \frac{z^{1 + 3}}{(1 - z)(1 - z^{3})} - \frac{z^{1 + 3 + 7}}{(1 - z)(1 - z^{3})(1 - z^{7})} + \cdots \\
-        &= \sum_{j \geq 0}(-1)^{j}z^{2^{j + 1} - j - 2}/\left((1 - z)(1 - z^{3}) \cdots (1 - z^{2^{j} - 1})\right)
+        &= \sum_{j \geq 0}(-1)^{j}z^{2^{j + 1} - j - 2}/\left((1 - z)(1 - z^{3}) \cdots (1 - z^{2^{j} - 1})\right) \\
+        &= \sum_{j \geq 0}(-1)^{j}z^{2^{j + 1} - j - 2}/Q_{j}(z)
     \end{aligned}
+\end{equation*}
+Finally
+\begin{equation*}
+    F(z, 1) = X = \frac{\sum_{j \geq 1}(-1)^{j - 1}z^{2^{j + 1} - j - 2}/Q_{j - 1}(z)}{\sum_{j \geq 0}(-1)^{j}z^{2^{j + 1} - j - 2}/Q_{j}(z)}
 \end{equation*}
 
 \vspace{\baselineskip}
