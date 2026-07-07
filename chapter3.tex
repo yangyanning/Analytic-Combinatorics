@@ -24,7 +24,7 @@ The number of such summands is $S = \sum_{k = r_{+}}^{\infty}X_{k}$ where $X_{k}
 \end{equation*}
 Proposition III.4 gives $E[X_{k}] = \frac{n - k + 3}{2^{k + 1}} \leq \frac{n}{2^{k}}$. Then (noting that $X_{k} = 0$ for $k > n$)
 \begin{equation*}
-    \mathbb{E}[S] \leq \sum_{k = r_{+}}^{n}\frac{n}{2^{k}} < \frac{n}{2^{r_{+} - 1}}
+    \mathbb{E}[S] \leq \sum_{k = r_{+}}^{n} \frac{n}{2^{k}} < \frac{n}{2^{r_{+} - 1}}
         < \frac{n}{2^{(1 + \epsilon)\log_{2}n - 2}} = 4n^{-\epsilon} \to 0
 \end{equation*}
 Since $M > (1 + \epsilon)\log_{2}n$ implies $M \geq \lfloor (1 + \epsilon)\log_{2}n \rfloor = r_{+}$, we have
@@ -35,7 +35,7 @@ $\mathbb{P}(M > (1 + \epsilon)\log_{2}n) \leq \mathbb{P}(M \geq r_{+}) \to 0$.
 We have a random composition of $n$, given by $n - 1$ independent gaps, each a ``cut'' with probability $1/2$.
 Let $r_{-} = \lceil (1 - \epsilon)\log_{2}n \rceil$. Cut the $n$ ones into $m = \left\lfloor \frac{n}{r_{-}} \right\rfloor$ disjoint blocks
 of length $r_{-}$, ignoring leftover $1$'s. Inside a block of length $r_{-}$ there are $r_{-} - 1$ internal gaps. The block contains \textbf{no cut} internally
-with probability $p = \left(\frac{1}{2}\right)^{r_{-} - 1}$, independently for each block (the gaps of different blocks are disjoint and independent).
+with probability $p = \left(\frac{1}{2} \right)^{r_{-} - 1}$, independently for each block (the gaps of different blocks are disjoint and independent).
 
 Define the indicator random variables
 \begin{equation*}
@@ -44,7 +44,7 @@ Define the indicator random variables
         0 & \text{otherwise}
     \end{cases}
 \end{equation*}
-for $i = 1, \cdots, m$. Let $Y = \sum_{i = 1}^{m}I_{i}$ which is the number of blocks that are completely uncut internally. If $Y \geq 1$ then
+for $i = 1, \cdots, m$. Let $Y = \sum_{i = 1}^{m} I_{i}$ which is the number of blocks that are completely uncut internally. If $Y \geq 1$ then
 at least one block is a single summand of size at least $r_{-}$. Therefore $\mathbb{P}(M \geq r_{-}) \geq \mathbb{P}(Y \geq 1) = \mathbb{P}(Y > 0)$.
 
 By the Paley–Zygmund inequality (a short proof of which is provided later), any non-negative random variable with finite variance satisfies:
@@ -55,7 +55,7 @@ In our setting, $Y \sim \text{Binomial}(m, p)$.
 
 First, we analyze the expectation (the first moment), given by:
 \begin{equation*}
-    \mathbb{E}[Y] = mp = \left\lfloor \frac{n}{r_{-}} \right\rfloor \left(\frac{1}{2}\right)^{r_{-} - 1}
+    \mathbb{E}[Y] = mp = \left\lfloor \frac{n}{r_{-}} \right\rfloor \left(\frac{1}{2} \right)^{r_{-} - 1}
 \end{equation*}
 We bound each factor individually as follows:
 \begin{itemize}
@@ -70,7 +70,7 @@ We bound each factor individually as follows:
         \end{equation*}
     \item For the exponential term $(1/2)^{r_{-} - 1}$:
         \begin{equation*}
-            \left(\frac{1}{2}\right)^{r_{-} - 1} > \left(\frac{1}{2}\right)^{(1 - \epsilon)\log_{2}n} = n^{-(1 - \epsilon)}
+            \left(\frac{1}{2} \right)^{r_{-} - 1} > \left(\frac{1}{2} \right)^{(1 - \epsilon)\log_{2}n} = n^{-(1 - \epsilon)}
         \end{equation*}
 \end{itemize}
 Combining these two bounds yields:
@@ -183,12 +183,12 @@ $n$ in their secret code. Each prisoner now follows the cycle strategy using the
 \begin{itemize}
     \item Number of distinct block sizes in set partitions:
         \begin{equation*}
-            \prod_{n = 1}^{\infty}\mathcal{E} + u\mathrm{S}\textsc{et}_{\geq 1}(\mathrm{S}\textsc{et}_{n}(\mathcal{Z}))
+            \prod_{n = 1}^{\infty} \mathcal{E} + u\mathrm{S}\textsc{et}_{\geq 1}(\mathrm{S}\textsc{et}_{n}(\mathcal{Z}))
         \end{equation*}
 
     \item Number of distinct cycle sizes in permutations:
         \begin{equation*}
-            \prod_{n = 1}^{\infty}\mathcal{E} + u\mathrm{S}\textsc{et}_{\geq 1}(\mathrm{C}\textsc{yc}_{n}(\mathcal{Z}))
+            \prod_{n = 1}^{\infty} \mathcal{E} + u\mathrm{S}\textsc{et}_{\geq 1}(\mathrm{C}\textsc{yc}_{n}(\mathcal{Z}))
         \end{equation*}
 \end{itemize}
 
@@ -205,34 +205,34 @@ where $C(z)$ is the OGF for the Catalan numbers: $C(z) = 1 + zC(z)^{2}$.
 \subhead{Leaves}
 \begin{equation*}
     \hat{B}(z, u) = zu + 2z\hat{B}(z, u) + z\hat{B}(z, u)^{2} \implies
-        \frac{\partial \hat{B}}{\partial u} = z + 2z\frac{\partial \hat{B}}{\partial u} + 2z\hat{B}\frac{\partial \hat{B}}{\partial u} \implies
+        \frac{\partial \hat{B}}{\partial u} = z + 2z \frac{\partial \hat{B}}{\partial u} + 2z\hat{B} \frac{\partial \hat{B}}{\partial u} \implies
 \end{equation*}
 \begin{equation*}
     \frac{\partial \hat{B}}{\partial u} = \frac{z}{1 - 2z - 2z\hat{B}} \implies
         \left.\frac{\partial \hat{B}}{\partial u}\right|_{u = 1} = \frac{z}{1 - 2z - 2z\hat{B}(z)} = \frac{z}{\sqrt{1 - 4z}} \implies
 \end{equation*}
 \begin{equation*}
-    [z^{n}]\left.\frac{\partial \hat{B}}{\partial u}\right|_{u = 1} = [z^{n - 1}](1 - 4z)^{-1/2} = \binom{2n - 2}{n - 1} = \frac{(2n - 2)!}{(n - 1)!^{2}}
+    [z^{n}] \left.\frac{\partial \hat{B}}{\partial u}\right|_{u = 1} = [z^{n - 1}] (1 - 4z)^{-1/2} = \binom{2n - 2}{n - 1} = \frac{(2n - 2)!}{(n - 1)!^{2}}
 \end{equation*}
 
 \subhead{1-nodes}
 \begin{equation*}
     \hat{B}(z, u) = z + 2zu\hat{B}(z, u) + z\hat{B}(z, u)^{2} \implies
-        \frac{\partial \hat{B}}{\partial u} = 2z\hat{B} + 2zu\frac{\partial \hat{B}}{\partial u} + 2z\hat{B}\frac{\partial \hat{B}}{\partial u} \implies
+        \frac{\partial \hat{B}}{\partial u} = 2z\hat{B} + 2zu \frac{\partial \hat{B}}{\partial u} + 2z\hat{B} \frac{\partial \hat{B}}{\partial u} \implies
 \end{equation*}
 \begin{equation*}
     \frac{\partial \hat{B}}{\partial u} = \frac{2z\hat{B}}{1 - 2zu - 2z\hat{B}} \implies
         \left.\frac{\partial \hat{B}}{\partial u}\right|_{u = 1} = \frac{2z\hat{B}(z)}{1 - 2z - 2z\hat{B}(z)} = \frac{1 - 2z}{\sqrt{1 - 4z}} - 1 \implies
 \end{equation*}
 \begin{equation*}
-    [z^{n}]\left.\frac{\partial \hat{B}}{\partial u}\right|_{u = 1} = [z^{n}]\left((1 - 4z)^{-1/2} - 2\frac{z}{\sqrt{1 - 4z}}\right)
-        = \binom{2n}{n} - 2\binom{2n - 2}{n - 1}
+    [z^{n}] \left.\frac{\partial \hat{B}}{\partial u}\right|_{u = 1} = [z^{n}] \left((1 - 4z)^{-1/2} - 2 \frac{z}{\sqrt{1 - 4z}}\right)
+        = \binom{2n}{n} - 2 \binom{2n - 2}{n - 1}
 \end{equation*}
 
 \subhead{2-nodes}
 \begin{equation*}
     \hat{B}(z, u) = z + 2z\hat{B}(z, u) + zu\hat{B}(z, u)^{2} \implies
-        \frac{\partial \hat{B}}{\partial u} = 2z\frac{\partial \hat{B}}{\partial u} + z\hat{B}^{2} + 2zu\hat{B}\frac{\partial \hat{B}}{\partial u} \implies
+        \frac{\partial \hat{B}}{\partial u} = 2z \frac{\partial \hat{B}}{\partial u} + z\hat{B}^{2} + 2zu\hat{B} \frac{\partial \hat{B}}{\partial u} \implies
 \end{equation*}
 \begin{equation*}
     \frac{\partial \hat{B}}{\partial u} = \frac{z\hat{B}^{2}}{1 - 2z - 2zu\hat{B}} \implies
@@ -246,25 +246,25 @@ Since $C'(z)$ satisfies $C'(z) = C(z)^{2} + 2zC(z)C'(z)$, we have
 Plugging this into our equation:
 \begin{equation*}
     \left.\frac{\partial \hat{B}}{\partial u}\right|_{u = 1} = z^{3}C(z)^{2} \cdot \frac{C(z)^{2}}{\sqrt{1 - 4z}}
-        = z^{3}C(z)^{2}C'(z) = \frac{z^{3}}{3}\frac{d}{dz}C(z)^{3} = z^{3}\frac{d}{dz}F(z)
+        = z^{3}C(z)^{2}C'(z) = \frac{z^{3}}{3} \frac{\dd}{\dd z} C(z)^{3} = z^{3} \frac{\dd}{\dd z} F(z)
 \end{equation*}
-where $F(z) = \frac{1}{3}C(z)^{3}$.
+where $F(z) = \frac{1}{3} C(z)^{3}$.
 Now
 \begin{equation*}
     \begin{aligned}
-        [z^{n}]\left.\frac{\partial \hat{B}}{\partial u}\right|_{u = 1}
-        &= [z^{n}]z^{3}\frac{d}{dz}F(z) \\
-        &= [z^{n - 3}]\frac{d}{dz}F(z) \\
+        [z^{n}] \left.\frac{\partial \hat{B}}{\partial u}\right|_{u = 1}
+        &= [z^{n}] z^{3} \frac{\dd}{\dd z} F(z) \\
+        &= [z^{n - 3}] \frac{\dd}{\dd z} F(z) \\
         &= (n - 2)F_{n - 2} \\
-        &= \frac{n - 2}{3}[z^{n - 2}]C(z)^{3} \\
-        &= \frac{n - 2}{3} \cdot \frac{3}{n + 1}\binom{2n - 2}{n - 2} \\
+        &= \frac{n - 2}{3} [z^{n - 2}] C(z)^{3} \\
+        &= \frac{n - 2}{3} \cdot \frac{3}{n + 1} \binom{2n - 2}{n - 2} \\
         &= \binom{2n - 2}{n - 3}
     \end{aligned}
 \end{equation*}
 
 Consequently, number of \textbf{Leaves} + number of \textbf{1-nodes} + number of \textbf{2-nodes} is
 \begin{equation*}
-    \binom{2n - 2}{n - 1} + \binom{2n}{n} - 2\binom{2n - 2}{n - 1} + \binom{2n - 2}{n - 3} = \frac{n}{n + 1}\binom{2n}{n}
+    \binom{2n - 2}{n - 1} + \binom{2n}{n} - 2 \binom{2n - 2}{n - 1} + \binom{2n - 2}{n - 3} = \frac{n}{n + 1} \binom{2n}{n}
 \end{equation*}
 as expected.
 
@@ -276,11 +276,11 @@ as expected.
 Differentiating with respect to $u$ gives
 \begin{equation*}
     \frac{\partial T}{\partial u} =
-        z\left(\phi'(T)\frac{\partial T}{\partial u} + \phi_{k}T^{k} + k\phi_{k}(u - 1)T^{k - 1}\frac{\partial T}{\partial u}\right) \implies
+        z\left(\phi'(T)\frac{\partial T}{\partial u} + \phi_{k}T^{k} + k\phi_{k}(u - 1)T^{k - 1} \frac{\partial T}{\partial u} \right) \implies
 \end{equation*}
 \begin{equation*}
     \Omega(z) = z\left(\phi'(T(z))\Omega(z) + \phi_{k}T(z)^{k}\right) \implies
-        \Omega(z) = z\frac{\phi_{k}T(z)^{k}}{1 - z\phi'(T(z))}
+        \Omega(z) = z \frac{\phi_{k}T(z)^{k}}{1 - z\phi'(T(z))}
 \end{equation*}
 Since $T(z) = z\phi(T(z))$, differentiating with respect to $z$ yields
 \begin{equation*}
@@ -293,12 +293,12 @@ Hence
 For Cayley trees:
 \begin{equation*}
     \begin{aligned}
-        n![z^{n}]\Omega(z)
-        &= n![z^{n}]\frac{1}{k!}z^{2}\frac{d}{dz}\frac{T(z)^{k}}{k} \\
-        &= \frac{n!}{k \cdot k!}[z^{n - 2}]\frac{d}{dz}T(z)^{k} \\
-        &= \frac{n!}{k \cdot k!}(n - 1)[z^{n - 1}]T(z)^{k} \\
-        &= \frac{n(n - 1)}{k} \cdot (n - 1)![z^{n - 1}]\frac{T(z)^{k}}{k!} \\
-        &= \frac{n(n - 1)}{k}\binom{n - 2}{k - 1}(n - 1)^{n - 1 - k} \\
+        n![z^{n}] \Omega(z)
+        &= n![z^{n}] \frac{1}{k!} z^{2} \frac{\dd}{\dd z} \frac{T(z)^{k}}{k} \\
+        &= \frac{n!}{k \cdot k!} [z^{n - 2}] \frac{\dd}{\dd z} T(z)^{k} \\
+        &= \frac{n!}{k \cdot k!}(n - 1)[z^{n - 1}] T(z)^{k} \\
+        &= \frac{n(n - 1)}{k} \cdot (n - 1)![z^{n - 1}] \frac{T(z)^{k}}{k!} \\
+        &= \frac{n(n - 1)}{k} \binom{n - 2}{k - 1}(n - 1)^{n - 1 - k} \\
         &= (n - k)\binom{n}{k}(n - 1)^{n - 1 - k}
     \end{aligned}
 \end{equation*}
@@ -308,7 +308,7 @@ For Cayley trees:
 
 We want to show
 \begin{equation*}
-    z^{2}\frac{G'(z)}{(1 - G(z))^{2} - z} = \frac{z}{2(1 - 4z)} - \frac{z}{2\sqrt{1 - 4z}}
+    z^{2} \frac{G'(z)}{(1 - G(z))^{2} - z} = \frac{z}{2(1 - 4z)} - \frac{z}{2\sqrt{1 - 4z}}
 \end{equation*}
 Express $z$ and $G'$ in terms of $G$:
 \begin{equation*}
@@ -320,14 +320,14 @@ Express $z$ and $G'$ in terms of $G$:
 Hence
 \begin{equation*}
     \begin{aligned}
-        z^{2}\frac{G'(z)}{(1 - G(z))^{2} - z}
-        &= (G(1 - G))^{2}\frac{1/(1 - 2G)}{1 - 2G + G^{2} - (G - G^{2})} \\
+        z^{2} \frac{G'(z)}{(1 - G(z))^{2} - z}
+        &= (G(1 - G))^{2} \frac{1/(1 - 2G)}{1 - 2G + G^{2} - (G - G^{2})} \\
         &= \frac{G^{2}(1 - G)^{2}}{(1 - 2G)(1 - 3G + 2G^{2})} \\
         &= \frac{G^{2}(1 - G)}{(1 - 2G)^{2}} \\
         &= \frac{(G - G^{2}) \cdot G}{1 - 4(G - G^{2})} \\
         &= \frac{zG}{1 - 4z} \\
         &= \frac{z}{1 - 4z} \cdot \frac{1 - \sqrt{1 - 4z}}{2} \\
-        &= \frac{z}{2}\left(\frac{1}{1 - 4z} - \frac{1}{\sqrt{1 - 4z}}\right)
+        &= \frac{z}{2} \left(\frac{1}{1 - 4z} - \frac{1}{\sqrt{1 - 4z}}\right)
     \end{aligned}
 \end{equation*}
 
@@ -341,8 +341,8 @@ We start with the functional equations:
 \end{equation*}
 Differentiating the second equation with respect to $u$ using the chain rule:
 \begin{equation*}
-    \frac{\partial}{\partial u}T(z, u)
-        = z\phi'(T(zu, u)) \cdot \frac{d}{du}T(zu, u) = z\phi'(T(zu, u))[T_z(zu, u)z + T_u(zu, u)]
+    \frac{\partial}{\partial u} T(z, u)
+        = z\phi'(T(zu, u)) \cdot \frac{\dd}{\dd u} T(zu, u) = z\phi'(T(zu, u))[T_z(zu, u)z + T_u(zu, u)]
 \end{equation*}
 At $u = 1$, the expression becomes
 \begin{equation} \label{eq:III.20.1}
@@ -362,19 +362,19 @@ Plugging this fraction into \ref{eq:III.20.1}:
 \exampleblock{III.16}{Words and records.}
 \begin{equation*}
     \begin{aligned}
-        [z^{n}]\frac{z}{1 - rz}\sum_{j = 1}^{r}\frac{1}{1 - (j - 1)z}
-        &= [z^{n}]\frac{z}{1 - rz}\sum_{k = 0}^{r - 1}\frac{1}{1 - kz} \\
-        &= [z^{n}]\sum_{k = 0}^{r - 1}\frac{z}{(1 - rz)(1 - kz)} \\
-        &= [z^{n}]\sum_{k = 0}^{r - 1}\frac{1}{r - k}\left(\frac{rz}{1 - rz} - \frac{kz}{1 - kz}\right) \\
-        &= \sum_{k = 0}^{r - 1}\frac{1}{r - k}\left([z^{n}]\frac{rz}{1 - rz} - [z^{n}]\frac{kz}{1 - kz}\right) \\
-        &= \sum_{k = 0}^{r - 1}\frac{r^{n} - k^{n}}{r - k}
+        [z^{n}] \frac{z}{1 - rz} \sum_{j = 1}^{r} \frac{1}{1 - (j - 1)z}
+        &= [z^{n}] \frac{z}{1 - rz} \sum_{k = 0}^{r - 1} \frac{1}{1 - kz} \\
+        &= [z^{n}] \sum_{k = 0}^{r - 1} \frac{z}{(1 - rz)(1 - kz)} \\
+        &= [z^{n}] \sum_{k = 0}^{r - 1} \frac{1}{r - k} \left(\frac{rz}{1 - rz} - \frac{kz}{1 - kz} \right) \\
+        &= \sum_{k = 0}^{r - 1} \frac{1}{r - k} \left([z^{n}] \frac{rz}{1 - rz} - [z^{n}] \frac{kz}{1 - kz} \right) \\
+        &= \sum_{k = 0}^{r - 1} \frac{r^{n} - k^{n}}{r - k}
     \end{aligned}
 \end{equation*}
 \begin{equation*}
     \mathbb{E}_{\mathcal{W}_{n}}(\#\text{records})
-    = \sum_{k = 0}^{r - 1}\frac{1 - (k/r)^{n}}{r - k}
-    = \sum_{k = 0}^{r - 1}\frac{1}{r - k} - \sum_{k = 0}^{r - 1}\frac{(k/r)^{n}}{r - k}
-    = H_{r} - \sum_{k = 1}^{r - 1}\frac{(k/r)^{n}}{r - k}
+    = \sum_{k = 0}^{r - 1} \frac{1 - (k/r)^{n}}{r - k}
+    = \sum_{k = 0}^{r - 1} \frac{1}{r - k} - \sum_{k = 0}^{r - 1} \frac{(k/r)^{n}}{r - k}
+    = H_{r} - \sum_{k = 1}^{r - 1} \frac{(k/r)^{n}}{r - k}
 \end{equation*}
 
 % Example III.19.
@@ -382,11 +382,11 @@ Plugging this fraction into \ref{eq:III.20.1}:
 
 The recurrence relation for $W_j$, given by
 \begin{equation} \label{eq:III.19.1}
-    W_{j} = z_{j} + z_{j}\sum_{k = 1}^{j - 1}W_{k} + vz_{j}\sum_{k = j}^{r}W_{k},
+    W_{j} = z_{j} + z_{j} \sum_{k = 1}^{j - 1} W_{k} + vz_{j} \sum_{k = j}^{r} W_{k},
 \end{equation}
 implies a corresponding recurrence for $X_j$:
 \begin{equation} \label{eq:III.19.2}
-    X_{j} = 1 + \sum_{k = 1}^{j - 1}W_{k} + v\sum_{k = j}^{r}W_{k} = 1 + \sum_{k = 1}^{j - 1}z_{k}X_{k} + v\sum_{k = j}^{r}z_{k}X_{k}.
+    X_{j} = 1 + \sum_{k = 1}^{j - 1} W_{k} + v \sum_{k = j}^{r} W_{k} = 1 + \sum_{k = 1}^{j - 1} z_{k}X_{k} + v \sum_{k = j}^{r} z_{k}X_{k}.
 \end{equation}
 Taking the forward difference of $X_j$, we find that
 \begin{equation*}
@@ -398,20 +398,20 @@ which yields the first-order linear recurrence
 \end{equation*}
 By unfolding this recurrence inductively, we can express any $X_{j}$ in terms of the initial term $X_{1}$:
 \begin{equation} \label{eq:III.19.3}
-    X_{j} = X_{1}\prod_{k = 1}^{j - 1}(1 + (1 - v)z_{k}).
+    X_{j} = X_{1} \prod_{k = 1}^{j - 1}(1 + (1 - v)z_{k}).
 \end{equation}
 To determine $X_{1}$, we evaluate \eqref{eq:III.19.1} at the boundary case $j = 1$:
 \begin{equation*}
-    W_{1} = z_{1} + vz_{1}\sum_{k = 1}^{r}W_{k} \implies z_{1}X_{1} = z_{1} + vz_{1}\sum_{k = 1}^{r}z_{k}X_{k}.
+    W_{1} = z_{1} + vz_{1} \sum_{k = 1}^{r} W_{k} \implies z_{1}X_{1} = z_{1} + vz_{1} \sum_{k = 1}^{r} z_{k}X_{k}.
 \end{equation*}
 Canceling $z_{1}$ gives
 \begin{equation*}
-    X_{1} = 1 + v\sum_{k = 1}^{r}z_{k}X_{k}.
+    X_{1} = 1 + v \sum_{k = 1}^{r} z_{k}X_{k}.
 \end{equation*}
 To evaluate the remaining sum, we extend the definition in \eqref{eq:III.19.2} to a boundary term $X_{r + 1}$ by setting $j = r + 1$.
 This causes the second summation to vanish, leaving
 \begin{equation*}
-    X_{r + 1} = 1 + \sum_{k = 1}^{r}z_{k}X_{k} \implies \sum_{k = 1}^{r}z_{k}X_{k} = X_{r + 1} - 1.
+    X_{r + 1} = 1 + \sum_{k = 1}^{r} z_{k}X_{k} \implies \sum_{k = 1}^{r} z_{k}X_{k} = X_{r + 1} - 1.
 \end{equation*}
 Substituting this back into the expression for $X_1$ yields
 \begin{equation*}
@@ -428,7 +428,7 @@ which can be solved explicitly for $X_1$ to obtain
 \end{equation*}
 Finally, the total generating function $W$ can be summed and simplified as follows:
 \begin{equation*}
-    W = 1 + \sum_{k = 1}^{r}W_{k} = 1 + \sum_{k = 1}^{r}z_{k}X_{k} = X_{r + 1} = \frac{P(1 - v)}{1 - vP}.
+    W = 1 + \sum_{k = 1}^{r} W_{k} = 1 + \sum_{k = 1}^{r} z_{k}X_{k} = X_{r + 1} = \frac{P(1 - v)}{1 - vP}.
 \end{equation*}
 
 \section{Additional constructions}
@@ -443,15 +443,15 @@ To derive the functional equation, note that
     \begin{aligned}
         f(z) &= z + z^{2} + \cdots = \frac{z}{1 - z} \\
         \mathcal{L}[F(z, u)]
-            &= \mathcal{L}[\sum_{j}f^{\langle j \rangle}(z)u^{j}] \\
-            &= \sum_{j}f^{\langle j \rangle}(z)\mathcal{L}[u^{j}] \\
-            &= \sum_{j}f^{\langle j \rangle}(z)\frac{u^{j}}{1 - u} \\
-            &= \frac{1}{1 - u}F(z, u)
+            &= \mathcal{L}[\sum_{j} f^{\langle j \rangle}(z)u^{j}] \\
+            &= \sum_{j} f^{\langle j \rangle}(z)\mathcal{L}[u^{j}] \\
+            &= \sum_{j} f^{\langle j \rangle}(z)\frac{u^{j}}{1 - u} \\
+            &= \frac{1}{1 - u} F(z, u)
     \end{aligned}
 \end{equation*}
 Hence
 \begin{equation*}
-    F(z, u) = f(zu) + (\mathcal{L}[F(z, u)])_{u \mapsto zu} = \frac{zu}{1 - zu} + \frac{1}{1 - zu}F(z, zu)
+    F(z, u) = f(zu) + (\mathcal{L}[F(z, u)])_{u \mapsto zu} = \frac{zu}{1 - zu} + \frac{1}{1 - zu} F(z, zu)
 \end{equation*}
 
 Now we demonstrate the equivalence of the two alternative forms of $F(z, u)$:
@@ -462,17 +462,17 @@ Now we demonstrate the equivalence of the two alternative forms of $F(z, u)$:
     F(z, u) = \frac{zu}{1 - z} + \frac{z^{2}u^{2}}{(1 - z)(1 - z^{2})} + \frac{z^{3}u^{3}}{(1 - z)(1 - z^{2})(1 - z^{3})} + \cdots
 \end{equation}
 \ref{eq:III.22.1} is obtained by repeated substitution. While \ref{eq:III.22.2} can be verified via Taylor expansion, it is a bit mechanical.
-Let's try a purely algebraic approach. Assume $F(z, u) = \sum_{k \geq 1}A_{k}(z)u^{k}$ and plug it into the rearranged functional equation:
+Let's try a purely algebraic approach. Assume $F(z, u) = \sum_{k \geq 1} A_{k}(z)u^{k}$ and plug it into the rearranged functional equation:
 \begin{equation*}
     (1 - zu)F(z, u) = zu + F(z, zu)
 \end{equation*}
 Expand both sides:
 \begin{equation*}
-    \sum_{k \geq 1}A_{k}(z)u^{k} - zu\left(\sum_{k \geq 1}A_{k}(z)u^{k}\right) = zu + \sum_{k \geq 1}A_{k}(z)(zu)^{k}
+    \sum_{k \geq 1} A_{k}(z)u^{k} - zu\left(\sum_{k \geq 1} A_{k}(z)u^{k}\right) = zu + \sum_{k \geq 1} A_{k}(z)(zu)^{k}
 \end{equation*}
 Align the powers of $u$:
 \begin{equation*}
-    \sum_{k \geq 1}A_{k}(z)u^{k} - \sum_{k \geq 1}A_{k}(z)zu^{k + 1} = zu + \sum_{k \geq 1}A_{k}(z)z^{k}u^{k}
+    \sum_{k \geq 1} A_{k}(z)u^{k} - \sum_{k \geq 1} A_{k}(z)zu^{k + 1} = zu + \sum_{k \geq 1} A_{k}(z)z^{k}u^{k}
 \end{equation*}
 Extract the coefficients of $u^{k}$ (for $k > 1$):
 \begin{equation*}
@@ -480,7 +480,7 @@ Extract the coefficients of $u^{k}$ (for $k > 1$):
 \end{equation*}
 Starting from the base case $A_{1}(z) = z + z^{2} + \cdots = \frac{z}{1 - z}$ (\ref{eq:III.22.1}), the telescoping product gives
 \begin{equation*}
-    A_{k}(z) = \frac{z}{1 - z^{k}}\frac{z}{1 - z^{k - 1}} \cdots \frac{z}{1 - z^{2}}\frac{z}{1 - z}
+    A_{k}(z) = \frac{z}{1 - z^{k}} \frac{z}{1 - z^{k - 1}} \cdots \frac{z}{1 - z^{2}} \frac{z}{1 - z}
         = \frac{z^{k}}{(1 - z)(1 - z^{2}) \cdots (1 -z^{k})}
 \end{equation*}
 This confirms the $k$-th term of \ref{eq:III.22.2} is exactly $A_{k}(z)u^{k}$.
@@ -491,7 +491,7 @@ We illustrate the idea with the case $k = 3$.
 
 The 3rd term in \ref{eq:III.22.1}:
 \begin{equation*}
-    \frac{z^{3}u}{(1 - zu)(1 - z^{2}u)(1 - z^{3}u)} = (zzzu)\sum_{j}(zu)^{j} \sum_{k}z^{k}(zu)^{k} \sum_{l}z^{l}z^{l}(zu)^{l}
+    \frac{z^{3}u}{(1 - zu)(1 - z^{2}u)(1 - z^{3}u)} = (zzzu)\sum_{j}(zu)^{j} \sum_{k} z^{k}(zu)^{k} \sum_{l} z^{l}z^{l}(zu)^{l}
 \end{equation*}
 \begin{itemize}
     \item $z^{1} \cdot z^{1} \cdot (zu)^{1}$ places $1$ cell on all three columns
@@ -518,33 +518,33 @@ Now
     \begin{aligned}
         f(z) &= z \\
         \mathcal{L}[F(z, u)]
-            &= \sum_{j}f^{\langle j \rangle}(z)\mathcal{L}[u^{j}] \\
-            &= \sum_{j}f^{\langle j \rangle}(z)u\frac{1 - u^{2j}}{1 - u} \\
-            &= \frac{u}{1 - u}\sum_{j}f^{\langle j \rangle}(z)(1 - u^{2j}) \\
-            &= \frac{u}{1 - u}\left(\sum_{j}f^{\langle j \rangle}(z) - \sum_{j}f^{\langle j \rangle}(z)(u^{2})^{j}\right) \\
-            &= \frac{u}{1 - u}\left(F(z, 1) - F(z, u^{2})\right)
+            &= \sum_{j} f^{\langle j \rangle}(z)\mathcal{L}[u^{j}] \\
+            &= \sum_{j} f^{\langle j \rangle}(z)u \frac{1 - u^{2j}}{1 - u} \\
+            &= \frac{u}{1 - u} \sum_{j} f^{\langle j \rangle}(z)(1 - u^{2j}) \\
+            &= \frac{u}{1 - u} \left(\sum_{j} f^{\langle j \rangle}(z) - \sum_{j} f^{\langle j \rangle}(z)(u^{2})^{j}\right) \\
+            &= \frac{u}{1 - u} \left(F(z, 1) - F(z, u^{2})\right)
     \end{aligned}
 \end{equation*}
 Hence
 \begin{equation*}
-    F(z, u) = f(zu) + (\mathcal{L}[F(z, u)])_{u \mapsto zu} = zu + \frac{zu}{1 - zu}\left(F(z, 1) - F(z, z^{2}u^{2})\right)
+    F(z, u) = f(zu) + (\mathcal{L}[F(z, u)])_{u \mapsto zu} = zu + \frac{zu}{1 - zu} \left(F(z, 1) - F(z, z^{2}u^{2})\right)
 \end{equation*}
 By repeated substitution:
 \begin{equation*}
-    F(z, u) = \alpha(u) - \frac{zu}{1 - zu}\alpha(z^{2}u^{2}) + \frac{zu}{1 - zu}\frac{z^{3}u^{2}}{1 - z^{3}u^{2}}\alpha(z^{6}u^{4}) - \cdots
+    F(z, u) = \alpha(u) - \frac{zu}{1 - zu} \alpha(z^{2}u^{2}) + \frac{zu}{1 - zu} \frac{z^{3}u^{2}}{1 - z^{3}u^{2}}\alpha(z^{6}u^{4}) - \cdots
 \end{equation*}
 where
 \begin{equation*}
-    \alpha(u) = zu + \frac{zu}{1 - zu}F(z, 1), \quad \beta(u) = -\frac{zu}{1 - zu}, \quad \sigma(u) = z^{2}u^{2}
+    \alpha(u) = zu + \frac{zu}{1 - zu} F(z, 1), \quad \beta(u) = -\frac{zu}{1 - zu}, \quad \sigma(u) = z^{2}u^{2}
 \end{equation*}
 Substitute $u = 1$ and solve for $X \coloneqq F(z, 1)$:
 \begin{equation*}
     \begin{aligned}
         X
-        &= \alpha(1) - \frac{z}{1 - z}\alpha(z^{2}) + \frac{z}{1 - z}\frac{z^{3}}{1 - z^{3}}\alpha(z^{6}) - \cdots \\
-        &= \left[z + \frac{z}{1 - z}X\right]
-            - \frac{z}{1 - z}\left[z^{3} + \frac{z^{3}}{1 - z^{3}}X\right]
-            + \frac{z}{1 - z}\frac{z^{3}}{1 - z^{3}}\left[z^{7} + \frac{z^{7}}{1 - z^{7}}X\right] - \cdots
+        &= \alpha(1) - \frac{z}{1 - z} \alpha(z^{2}) + \frac{z}{1 - z} \frac{z^{3}}{1 - z^{3}}\alpha(z^{6}) - \cdots \\
+        &= \left[z + \frac{z}{1 - z} X\right]
+            - \frac{z}{1 - z} \left[z^{3} + \frac{z^{3}}{1 - z^{3}}X\right]
+            + \frac{z}{1 - z} \frac{z^{3}}{1 - z^{3}}\left[z^{7} + \frac{z^{7}}{1 - z^{7}}X\right] - \cdots
     \end{aligned}
 \end{equation*}
 This is a linear equation in $X$:
@@ -555,7 +555,7 @@ where
 \begin{equation*}
     \begin{aligned}
         \text{Series A}
-        &= z - \frac{z}{1 - z}z^{3} + \frac{z}{1 - z}\frac{z^{3}}{1 - z^{3}}z^{7} - \cdots \\
+        &= z - \frac{z}{1 - z} z^{3} + \frac{z}{1 - z} \frac{z^{3}}{1 - z^{3}}z^{7} - \cdots \\
         &= z - \frac{z^{1 + 3}}{1 - z} + \frac{z^{1 + 3 + 7}}{(1 - z)(1 - z^{3})} - \cdots \\
         &= \sum_{j \geq 1}(-1)^{j - 1}z^{2^{j + 1} - j - 2}/\left((1 - z)(1 - z^{3}) \cdots (1 - z^{2^{j - 1} - 1})\right) \\
         &= \sum_{j \geq 1}(-1)^{j - 1}z^{2^{j + 1} - j - 2}/Q_{j - 1}(z)
@@ -574,7 +574,7 @@ The exponent
 \begin{equation*}
     \begin{aligned}
         1 - \text{Series B}
-        &= 1 - \frac{z}{1 - z} + \frac{z}{1 - z}\frac{z^{3}}{1 - z^{3}} - \frac{z}{1 - z}\frac{z^{3}}{1 - z^{3}}\frac{z^{7}}{1 - z^{7}} + \cdots \\
+        &= 1 - \frac{z}{1 - z} + \frac{z}{1 - z} \frac{z^{3}}{1 - z^{3}} - \frac{z}{1 - z} \frac{z^{3}}{1 - z^{3}} \frac{z^{7}}{1 - z^{7}} + \cdots \\
         &= 1 - \frac{z}{1 - z} + \frac{z^{1 + 3}}{(1 - z)(1 - z^{3})} - \frac{z^{1 + 3 + 7}}{(1 - z)(1 - z^{3})(1 - z^{7})} + \cdots \\
         &= \sum_{j \geq 0}(-1)^{j}z^{2^{j + 1} - j - 2}/\left((1 - z)(1 - z^{3}) \cdots (1 - z^{2^{j} - 1})\right) \\
         &= \sum_{j \geq 0}(-1)^{j}z^{2^{j + 1} - j - 2}/Q_{j}(z)
@@ -613,15 +613,15 @@ To derive the functional equation, note that
     \begin{aligned}
         k(z) &= z + z^{2} + \cdots = \frac{z}{1 - z} \\
         \mathcal{L}[K(z, u)]
-            &= \sum_{j}k^{\langle j \rangle}(z)\mathcal{L}[u^{j}] \\
-            &= \sum_{j}k^{\langle j \rangle}(z)\left(\frac{u}{1 - u} - u^{j}\right) \\
-            &= \frac{u}{1 - u}\sum_{j}k^{\langle j \rangle}(z) - \sum_{j}k^{\langle j \rangle}(z)u^{j} \\
-            &= \frac{u}{1 - u}K(z, 1) - K(z, u)
+            &= \sum_{j} k^{\langle j \rangle}(z)\mathcal{L}[u^{j}] \\
+            &= \sum_{j} k^{\langle j \rangle}(z)\left(\frac{u}{1 - u} - u^{j}\right) \\
+            &= \frac{u}{1 - u} \sum_{j} k^{\langle j \rangle}(z) - \sum_{j} k^{\langle j \rangle}(z)u^{j} \\
+            &= \frac{u}{1 - u} K(z, 1) - K(z, u)
     \end{aligned}
 \end{equation*}
 Hence
 \begin{equation*}
-    K(z, u) = k(zu) + (\mathcal{L}[K(z, u)])_{u \mapsto zu} = \frac{zu}{1 - zu} + \frac{zu}{1 - zu}K(z, 1) - K(z, zu)
+    K(z, u) = k(zu) + (\mathcal{L}[K(z, u)])_{u \mapsto zu} = \frac{zu}{1 - zu} + \frac{zu}{1 - zu} K(z, 1) - K(z, zu)
 \end{equation*}
 To solve for $K(z, 1)$, let $X = K(z, 1)$:
 \begin{equation*}
@@ -636,17 +636,17 @@ Iterate infinitely:
     \begin{aligned}
         K(z, u)
         &= \frac{zu}{1 - zu}(1 + X) - \frac{z^{2}u}{1 - z^{2}u}(1 + X) + \frac{z^{3}u}{1 - z^{3}u}(1 + X) - \cdots \\
-        &= (1 + X)\sum_{j \geq 1}(-1)^{j - 1}\frac{z^{j}u}{1 - z^{j}u}
+        &= (1 + X)\sum_{j \geq 1}(-1)^{j - 1} \frac{z^{j}u}{1 - z^{j}u}
     \end{aligned}
 \end{equation*}
 Now set $u = 1$ so that $K(z, 1) = X$:
 \begin{equation*}
-    X = (1 + X)\sum_{j \geq 1}\frac{(-1)^{j - 1}z^{j}}{1 - z^{j}}
+    X = (1 + X)\sum_{j \geq 1} \frac{(-1)^{j - 1}z^{j}}{1 - z^{j}}
 \end{equation*}
 Let the sum be $S$:
 \begin{equation*}
-    X = (1 + X)S \implies 1 + X = \frac{1}{1 - S} = \left(1 - \sum_{j \geq 1}\frac{(-1)^{j - 1}z^{j}}{1 - z^{j}}\right)^{-1}
-        = \left(1 + \sum_{j \geq 1}\frac{(-z)^{j}}{1 - z^{j}}\right)^{-1}
+    X = (1 + X)S \implies 1 + X = \frac{1}{1 - S} = \left(1 - \sum_{j \geq 1} \frac{(-1)^{j - 1}z^{j}}{1 - z^{j}}\right)^{-1}
+        = \left(1 + \sum_{j \geq 1} \frac{(-z)^{j}}{1 - z^{j}}\right)^{-1}
 \end{equation*}
 Note that the last expression is $1 + X$, not $X$.
 
@@ -655,19 +655,19 @@ Note that the last expression is $1 + X$, not $X$.
 
 For simplicity, let's denote $\hat{I}(z, \textbf{u})$ by $I$. The differential equation becomes
 \begin{equation*}
-    \frac{dI}{dz} = u_{0} + (u_{1} + u_{1}')I + u_{2}I^{2} = u_{0} + 2v_{1}I + u_{2}I^{2}
+    \frac{\dd I}{\dd z} = u_{0} + (u_{1} + u_{1}')I + u_{2}I^{2} = u_{0} + 2v_{1}I + u_{2}I^{2}
 \end{equation*}
 Separating variables yields
 \begin{equation*}
-    \frac{dI}{u_{0} + 2v_{1}I + u_{2}I^{2}} = dz
+    \frac{\dd I}{u_{0} + 2v_{1}I + u_{2}I^{2}} = \dd z
 \end{equation*}
 which we integrate from the initial condition $I(0) = 0$ to a general $z$:
 \begin{equation*}
-    \int_{\xi = I(0)}^{\xi = I(z)}\frac{d\xi}{u_{0} + 2v_{1}\xi + u_{2}\xi^{2}} = \int_{\zeta = 0}^{\zeta = z}d\zeta
+    \int_{\xi = I(0)}^{\xi = I(z)} \frac{\dd \xi}{u_{0} + 2v_{1}\xi + u_{2}\xi^{2}} = \int_{\zeta = 0}^{\zeta = z} \dd \zeta
 \end{equation*}
 Inserting $I(0) = 0$ and writing $I(z)$ simply as $I$ for brevity:
 \begin{equation*}
-    \int_{0}^{I}\frac{d\xi}{u_{0} + 2v_{1}\xi + u_{2}\xi^{2}} = \int_{0}^{z}d\zeta = z
+    \int_{0}^{I} \frac{\dd \xi}{u_{0} + 2v_{1}\xi + u_{2}\xi^{2}} = \int_{0}^{z} \dd \zeta = z
 \end{equation*}
 Completing the square in the denominator:
 \begin{equation*}
@@ -676,36 +676,36 @@ Completing the square in the denominator:
 \end{equation*}
 and substituting this into the integral gives
 \begin{equation*}
-    \int_{0}^{I}\frac{d\xi}{u_{2}\left[\left(\xi + \frac{v_{1}}{u_{2}}\right)^{2} + \left(\frac{\delta}{u_{2}}\right)^{2}\right]} = z
+    \int_{0}^{I} \frac{\dd \xi}{u_{2}\left[\left(\xi + \frac{v_{1}}{u_{2}}\right)^{2} + \left(\frac{\delta}{u_{2}}\right)^{2}\right]} = z
 \end{equation*}
-Using the standard integral $\int\frac{dx}{x^{2} +a^{2}} = \frac{1}{a}\text{arctan}\frac{x}{a}$:
+Using the standard integral $\int \frac{\dd x}{x^{2} +a^{2}} = \frac{1}{a} \arctan \frac{x}{a}$:
 \begin{equation*}
-    z = \frac{1}{u_{2}}\frac{1}{\frac{\delta}{u_{2}}}
-        \text{arctan}\left.\frac{\xi + \frac{v_{1}}{u_{2}}}{\frac{\delta}{u_{2}}}\right|_{\xi = 0}^{\xi = I}
-      = \frac{1}{\delta}\left[
-            \text{arctan}\left(\frac{u_{2}I + v_{1}}{\delta}\right) - \text{arctan}\left(\frac{v_{1}}{\delta}\right)
+    z = \frac{1}{u_{2}} \frac{1}{\frac{\delta}{u_{2}}}
+        \arctan\left.\frac{\xi + \frac{v_{1}}{u_{2}}}{\frac{\delta}{u_{2}}}\right|_{\xi = 0}^{\xi = I}
+      = \frac{1}{\delta} \left[
+            \arctan\left(\frac{u_{2}I + v_{1}}{\delta}\right) - \arctan\left(\frac{v_{1}}{\delta}\right)
         \right]
 \end{equation*}
 Rearranging and taking the tangent of both sides, we obtain
 \begin{equation*}
-    \frac{u_{2}I + v_{1}}{\delta} = \text{tan}\left[\text{arctan}\left(\frac{v_{1}}{\delta}\right) + z\delta\right]
-        = \frac{\frac{v_{1}}{\delta} + \text{tan}(z\delta)}{1 - \frac{v_{1}}{\delta}\text{tan}(z\delta)}
-        = \frac{v_{1} + \delta\text{tan}(z\delta)}{\delta - v_{1}\text{tan}(z\delta)}
+    \frac{u_{2}I + v_{1}}{\delta} = \tan\left[\arctan\left(\frac{v_{1}}{\delta}\right) + z\delta\right]
+        = \frac{\frac{v_{1}}{\delta} + \tan(z\delta)}{1 - \frac{v_{1}}{\delta}\tan(z\delta)}
+        = \frac{v_{1} + \delta\tan(z\delta)}{\delta - v_{1}\tan(z\delta)}
 \end{equation*}
 Solving for $I$ yields the final expression:
 \begin{equation*}
-    I = \frac{\delta}{u_{2}}\frac{v_{1} + \delta\text{tan}(z\delta)}{\delta - v_{1}\text{tan}(z\delta)} - \frac{v_{1}}{u_{2}}
+    I = \frac{\delta}{u_{2}} \frac{v_{1} + \delta\tan(z\delta)}{\delta - v_{1}\tan(z\delta)} - \frac{v_{1}}{u_{2}}
 \end{equation*}
 
 We now expand $I$ as a power series. Starting from the closed-form expression:
 \begin{equation*}
     \begin{aligned}
         I
-        &= \frac{v_{1}}{u_{2}}\frac{1 + \frac{\delta}{v_{1}}\text{tan}(z\delta)}{1 - \frac{v_{1}}{\delta}\text{tan}(z\delta)} - \frac{v_{1}}{u_{2}} \\
-        &= \frac{v_{1}}{u_{2}}\left[1 + \frac{\delta}{v_{1}}\text{tan}(z\delta)\right]
-            \left[1 + \frac{v_{1}}{\delta}\text{tan}(z\delta)
-                + \left(\frac{v_{1}}{\delta}\text{tan}(z\delta)\right)^{2}
-                + \left(\frac{v_{1}}{\delta}\text{tan}(z\delta)\right)^{3} + \cdots \right]
+        &= \frac{v_{1}}{u_{2}} \frac{1 + \frac{\delta}{v_{1}}\tan(z\delta)}{1 - \frac{v_{1}}{\delta}\tan(z\delta)} - \frac{v_{1}}{u_{2}} \\
+        &= \frac{v_{1}}{u_{2}}\left[1 + \frac{\delta}{v_{1}}\tan(z\delta)\right]
+            \left[1 + \frac{v_{1}}{\delta}\tan(z\delta)
+                + \left(\frac{v_{1}}{\delta}\tan(z\delta)\right)^{2}
+                + \left(\frac{v_{1}}{\delta}\tan(z\delta)\right)^{3} + \cdots \right]
              - \frac{v_{1}}{u_{2}} \\
         &= \frac{v_{1}}{u_{2}}\left[1 + \frac{\delta}{v_{1}}\left(z\delta + \frac{(z\delta)^{3}}{3} + \cdots \right)\right]
             \left[1 + \frac{v_{1}}{\delta}\left(z\delta + \frac{(z\delta)^{3}}{3}\right)
@@ -743,16 +743,16 @@ Let us find the mean number of nodes of nullary, unary, and binary type from the
 \subhead{Nullary Type}
 Set $u_{1} = u_{1}' = u_{2} = 1$. Then $v_{1} = 1$ and $\delta = \sqrt{u_{0} - 1}$. We have
 \begin{equation*}
-    \hat{I}(z, u_{0}) = \delta\frac{1 + \delta\text{tan}(z\delta)}{\delta - \text{tan}(z\delta)} - 1 = (1 + \delta^{2})\frac{w}{1 - w}
+    \hat{I}(z, u_{0}) = \delta \frac{1 + \delta\tan(z\delta)}{\delta - \tan(z\delta)} - 1 = (1 + \delta^{2})\frac{w}{1 - w}
 \end{equation*}
-where $w \coloneqq \frac{\text{tan}(z\delta)}{\delta} = z + \frac{z^{3}}{3}\delta^{2} + O(\delta^{4})$.
+where $w \coloneqq \frac{\tan(z\delta)}{\delta} = z + \frac{z^{3}}{3}\delta^{2} + O(\delta^{4})$.
 Write $w = w_{0} + w_{2}\delta^{2} + O(\delta^{4})$ with $w_{0} = z$ and $w_{2} = z^{3}/3$. Then
 \begin{equation*}
     1 - w = 1 - w_{0} - w_{2}\delta^{2} + O(\delta^{4}) = (1 - w_{0})\left[1 - \frac{w_{2}}{1 - w_{0}}\delta^{2} + O(\delta^{4})\right]
 \end{equation*}
 Hence
 \begin{equation*}
-    \frac{1}{1 - w} = \frac{1}{1 - w_{0}}\frac{1}{1 - \frac{w_{2}}{1 - w_{0}}\delta^{2} + \cdots}
+    \frac{1}{1 - w} = \frac{1}{1 - w_{0}} \frac{1}{1 - \frac{w_{2}}{1 - w_{0}}\delta^{2} + \cdots}
         = \frac{1}{1 - w_{0}}\left[1 + \frac{w_{2}}{1 - w_{0}}\delta^{2} + O(\delta^{4})\right]
 \end{equation*}
 Multiplying by $w = w_{0} + w_{2}\delta^{2} + O(\delta^{4})$ yields
@@ -766,7 +766,7 @@ Substituting $w_{0} = z$ and $w_{2} = z^{3}/3$, we obtain
 Since $\delta^{2} = u_{0} - 1$, the first-order Taylor term in $u_{0}$ is exactly the coefficient of $\delta^{2}$. Hence
 \begin{equation*}
     \left.\frac{\partial I}{\partial u_{0}}\right|_{u_{0} = 1}
-        = [\delta^{2}]\left((1 + \delta^{2})\frac{w}{1 - w}\right)
+        = [\delta^{2}] \left((1 + \delta^{2})\frac{w}{1 - w} \right)
         = \frac{z}{1 - z} + \frac{z^{3}}{3(1 - z)^{2}}
 \end{equation*}
 The coefficient of $z^{n}$ in $\left.\frac{\partial I}{\partial u_{0}}\right|_{u_{0} = 1}$ is $(n + 1)/3$.
@@ -775,35 +775,35 @@ The coefficient of $z^{n}$ in $\left.\frac{\partial I}{\partial u_{0}}\right|_{u
 We consider both unary types simultaneously. Note that $\hat{I}$ depends on $u_{1}, u_{1}'$ only through
 $v_{1} = (u_{1} + u_{1}')/2$. Set $u_{0} = u_{2} = 1$. Then $\delta = \sqrt{1 - v_{1}^{2}}$ and
 \begin{equation*}
-    \hat{I}(z, v_{1}) = \delta\frac{v_{1} + \delta\text{tan}(z\delta)}{\delta - v_{1}\text{tan}(z\delta)} - v_{1}
+    \hat{I}(z, v_{1}) = \delta \frac{v_{1} + \delta\tan(z\delta)}{\delta - v_{1}\tan(z\delta)} - v_{1}
         = \frac{v_{1} + \delta^{2}w}{1 - v_{1}w} - v_{1} = \frac{w}{1 - v_{1}w}
 \end{equation*}
-where $w \coloneqq \frac{\text{tan}(z\delta)}{\delta} = z + \frac{z^{3}}{3}\delta^{2} + O(\delta^{4})$.
+where $w \coloneqq \frac{\tan(z\delta)}{\delta} = z + \frac{z^{3}}{3}\delta^{2} + O(\delta^{4})$.
 We have
 \begin{equation*}
-    \frac{\partial I}{\partial u_{1}} = \frac{\partial I}{\partial u_{1}'} = \frac{1}{2}\frac{\partial I}{\partial v_{1}}
+    \frac{\partial I}{\partial u_{1}} = \frac{\partial I}{\partial u_{1}'} = \frac{1}{2} \frac{\partial I}{\partial v_{1}}
 \end{equation*}
 We compute $\frac{\partial I}{\partial v_{1}}$ at $v_{1} = (1 + 1)/2 = 1$. First, $w$ depends on $v_{1}$ via $s \coloneqq \delta^{2} = 1 - v_{1}^{2}$:
 \begin{equation*}
     \frac{\partial w}{\partial v_{1}} = \frac{\partial w}{\partial s} \cdot (-2v_{1})
 \end{equation*}
-From the series $\left.\frac{\partial w}{\partial s}\right|_{s = 0} = \frac{z^{3}}{3}$, so at $v_{1} = 1$:
+From the series $\left.\frac{\partial w}{\partial s} \right|_{s = 0} = \frac{z^{3}}{3}$, so at $v_{1} = 1$:
 \begin{equation*}
     \left.\frac{\partial w}{\partial v_{1}}\right|_{v_{1} = 1} = -\frac{2z^{3}}{3}
 \end{equation*}
 Now differentiate $\hat{I}(z, v_{1})$:
 \begin{equation*}
     \frac{\partial \hat{I}}{\partial v_{1}}
-        = \frac{\frac{\partial w}{\partial v_{1}}(1 - v_{1}w) + w(w + v_{1}\frac{\partial w}{\partial v_{1}})}{(1 - v_{1}w)^{2}}
+        = \frac{\frac{\partial w}{\partial v_{1}}(1 - v_{1}w) + w(w + v_{1} \frac{\partial w}{\partial v_{1}})}{(1 - v_{1}w)^{2}}
 \end{equation*}
 Substituting $v_{1} = 1, w = z$ and $\frac{\partial w}{\partial v_{1}} = -\frac{2z^{3}}{3}$, we obtain
 \begin{equation*}
-    \left.\frac{\partial \hat{I}}{\partial v_{1}}\right|_{v_{1} = 1} = \frac{z^{2}\left(1 - \frac{2}{3}z\right)}{(1 - z)^{2}}
+    \left.\frac{\partial \hat{I}}{\partial v_{1}}\right|_{v_{1} = 1} = \frac{z^{2}\left(1 - \frac{2}{3} z\right)}{(1 - z)^{2}}
 \end{equation*}
 Consequently
 \begin{equation*}
     \left.\frac{\partial \hat{I}}{\partial u_{1}}\right|_{u_{1} = 1} = \left.\frac{\partial \hat{I}}{\partial u_{1}'}\right|_{u_{1}' = 1}
-        = \frac{z^{2}\left(1 - \frac{2}{3}z\right)}{2(1 - z)^{2}}
+        = \frac{z^{2}\left(1 - \frac{2}{3} z\right)}{2(1 - z)^{2}}
 \end{equation*}
 The coefficient of $z^{n}$ in $\left.\frac{\partial \hat{I}}{\partial u_{1}}\right|_{u_{1} = 1}$ and
 $\left.\frac{\partial \hat{I}}{\partial u_{1}'}\right|_{u_{1}' = 1}$ is $(n + 1)/6$.
@@ -811,13 +811,13 @@ $\left.\frac{\partial \hat{I}}{\partial u_{1}'}\right|_{u_{1}' = 1}$ is $(n + 1)
 \subhead{Binary Type}
 Set $u_{0} = 1$, $v_{1} = (1 + 1)/2 = 1$. Then $\delta = \sqrt{u_{2} - 1}$ and
 \begin{equation*}
-    \hat{I}(z, u_{2}) = \frac{\delta}{u_{2}}\frac{1 + \delta\text{tan}(z\delta)}{\delta - \text{tan}(z\delta)} - \frac{1}{u_{2}} = \frac{w}{1 - w}
+    \hat{I}(z, u_{2}) = \frac{\delta}{u_{2}} \frac{1 + \delta\tan(z\delta)}{\delta - \tan(z\delta)} - \frac{1}{u_{2}} = \frac{w}{1 - w}
 \end{equation*}
-where $w \coloneqq \frac{\text{tan}(z\delta)}{\delta} = z + \frac{z^{3}}{3}\delta^{2} + O(\delta^{4})$.
+where $w \coloneqq \frac{\tan(z\delta)}{\delta} = z + \frac{z^{3}}{3}\delta^{2} + O(\delta^{4})$.
 This is similar to the nullary case. From \ref{eq:III.23.1} we have
 \begin{equation*}
     \left.\frac{\partial \hat{I}}{\partial u_{2}}\right|_{u_{2} = 1}
-    = [\delta^{2}]\frac{w}{1 - w}
+    = [\delta^{2}] \frac{w}{1 - w}
     = \frac{z^{3}}{3(1 - z)^{2}}
 \end{equation*}
 The coefficient of $z^{n}$ in $\left.\frac{\partial \hat{I}}{\partial u_{2}}\right|_{u_{2} = 1}$ is $\frac{n - 2}{3}$.
@@ -916,32 +916,32 @@ The denominator
         u - e^{z(u - 1)}
         &= u - \left[1 + (u - 1)z + \frac{(u - 1)^{2}}{2}z^{2} + \frac{(u - 1)^{3}}{6}z^{3} + \frac{(u - 1)^{4}}{24}z^{4} + O(z^{5})\right] \\
         &= (u - 1) - (u - 1)z - \frac{(u - 1)^{2}}{2}z^{2} - \frac{(u - 1)^{3}}{6}z^{3} - \frac{(u - 1)^{4}}{24}z^{4} + O(z^{5}) \\
-        &= (u - 1)\left[1 - z - \frac{u - 1}{2}z^{2} - \frac{(u - 1)^{2}}{6}z^{3} - \frac{(u - 1)^{3}}{24}z^{4} + O(z^{5})\right]
+        &= (u - 1)\left[1 - z - \frac{u - 1}{2} z^{2} - \frac{(u - 1)^{2}}{6}z^{3} - \frac{(u - 1)^{3}}{24}z^{4} + O(z^{5})\right]
     \end{aligned}
 \end{equation*}
 Hence
 \begin{equation*}
     \begin{aligned}
         A(z, u)
-        &= \left(1 - z - \frac{u - 1}{2}z^{2} - \frac{(u - 1)^{2}}{6}z^{3} - \frac{(u - 1)^{3}}{24}z^{4} + O(z^{5})\right)^{-1} \\
-        &= \left(1 - z - \frac{u - 1}{2}z^{2} - \frac{(u - 1)^{2}}{6}z^{3} - \frac{(u - 1)^{3}}{24}z^{4}\right)^{-1} + O(z^{5})
+        &= \left(1 - z - \frac{u - 1}{2} z^{2} - \frac{(u - 1)^{2}}{6}z^{3} - \frac{(u - 1)^{3}}{24}z^{4} + O(z^{5})\right)^{-1} \\
+        &= \left(1 - z - \frac{u - 1}{2} z^{2} - \frac{(u - 1)^{2}}{6}z^{3} - \frac{(u - 1)^{3}}{24}z^{4}\right)^{-1} + O(z^{5})
     \end{aligned}
 \end{equation*}
 Set
 \begin{equation*}
-    w = z + \frac{u - 1}{2}z^{2} + \frac{(u - 1)^{2}}{6}z^{3} + \frac{(u - 1)^{3}}{24}z^{4}
+    w = z + \frac{u - 1}{2} z^{2} + \frac{(u - 1)^{2}}{6}z^{3} + \frac{(u - 1)^{3}}{24}z^{4}
 \end{equation*}
 Compute powers of $w$ up to $z^{4}$, dropping $O(z^{5})$ terms:
 \begin{equation*}
     \begin{aligned}
         w^{2}
-        &= \left(z + \frac{u - 1}{2}z^{2} + \frac{(u - 1)^{2}}{6}z^{3}\right)^{2} \\
-        &= z^{2} + \left(\frac{u - 1}{2}z^{2}\right)^{2} + 2z\frac{u - 1}{2}z^{2} + 2z\frac{(u - 1)^{2}}{6}z^{3} \\
+        &= \left(z + \frac{u - 1}{2} z^{2} + \frac{(u - 1)^{2}}{6}z^{3}\right)^{2} \\
+        &= z^{2} + \left(\frac{u - 1}{2} z^{2}\right)^{2} + 2z \frac{u - 1}{2} z^{2} + 2z \frac{(u - 1)^{2}}{6}z^{3} \\
         &= z^{2} + (u - 1)z^{3} + \frac{7}{12}(u - 1)^{2}z^{4}
     \end{aligned}
 \end{equation*}
 \begin{equation*}
-    w^{3} = \left(z + \frac{u - 1}{2}z^{2}\right)^{3} = z^{3} + 3z^{2}\frac{u - 1}{2}z^{2} = z^{3} + \frac{3}{2}(u - 1)z^{4}
+    w^{3} = \left(z + \frac{u - 1}{2} z^{2}\right)^{3} = z^{3} + 3z^{2} \frac{u - 1}{2} z^{2} = z^{3} + \frac{3}{2}(u - 1)z^{4}
 \end{equation*}
 \begin{equation*}
     w^{4} = z^{4}
@@ -970,24 +970,24 @@ Hence
     \begin{aligned}
         A(z, u)
         &= \left(1 - z - \frac{z^{2}}{2}v - \frac{z^{3}}{6}v^{2} + O(v^{3})\right)^{-1} \\
-        &= \frac{1}{1 - z}\left(1 - \frac{z^{2}}{2(1 - z)}v - \frac{z^{3}}{6(1 - z)}v^{2} + O(v^{3})\right)^{-1} \\
-        &= \frac{1}{1 - z}\left(1 - \frac{z^{2}}{2(1 - z)}v - \frac{z^{3}}{6(1 - z)}v^{2}\right)^{-1} + O(v^{3}) \\
-        &= \frac{1}{1 - z}\left(1 + \frac{z^{2}}{2(1 - z)}v + \frac{z^{3}}{6(1 - z)}v^{2} + \left(\frac{z^{2}}{2(1 - z)}v\right)^{2}\right) + O(v^{3}) \\
-        &= \frac{1}{1 - z} + \frac{z^{2}}{2(1 - z)^{2}}v + \frac{2z^{3} + z^{4}}{6(1 - z)^{3}}\frac{v^{2}}{2!} + \cdots
+        &= \frac{1}{1 - z} \left(1 - \frac{z^{2}}{2(1 - z)}v - \frac{z^{3}}{6(1 - z)}v^{2} + O(v^{3})\right)^{-1} \\
+        &= \frac{1}{1 - z} \left(1 - \frac{z^{2}}{2(1 - z)}v - \frac{z^{3}}{6(1 - z)}v^{2}\right)^{-1} + O(v^{3}) \\
+        &= \frac{1}{1 - z} \left(1 + \frac{z^{2}}{2(1 - z)}v + \frac{z^{3}}{6(1 - z)}v^{2} + \left(\frac{z^{2}}{2(1 - z)}v\right)^{2}\right) + O(v^{3}) \\
+        &= \frac{1}{1 - z} + \frac{z^{2}}{2(1 - z)^{2}}v + \frac{2z^{3} + z^{4}}{6(1 - z)^{3}} \frac{v^{2}}{2!} + \cdots
     \end{aligned}
 \end{equation*}
 Extracting coefficients gives
 \begin{equation*}
-    [z^{n}]\frac{z^{2}}{2(1 - z)^{2}} = \frac{1}{2}[z^{n - 2}]\sum_{m = 0}^{\infty}(m + 1)z^{m} = \frac{n - 1}{2}
+    [z^{n}] \frac{z^{2}}{2(1 - z)^{2}} = \frac{1}{2} [z^{n - 2}] \sum_{m = 0}^{\infty}(m + 1)z^{m} = \frac{n - 1}{2}
 \end{equation*}
 \begin{equation*}
-    [z^{n}]\frac{2z^{3} + z^{4}}{6(1 - z)^{3}}
-        = \frac{1}{3}[z^{n - 3}]\sum_{m = 0}^{\infty}\binom{m + 2}{2}z^{m} + \frac{1}{6}[z^{n - 4}]\sum_{m = 0}^{\infty}\binom{m + 2}{2}z^{m}
+    [z^{n}] \frac{2z^{3} + z^{4}}{6(1 - z)^{3}}
+        = \frac{1}{3} [z^{n - 3}] \sum_{m = 0}^{\infty} \binom{m + 2}{2} z^{m} + \frac{1}{6} [z^{n - 4}] \sum_{m = 0}^{\infty} \binom{m + 2}{2} z^{m}
         = \frac{3n^{2} - 11n + 10}{12}
 \end{equation*}
 The mean of the number of rises in a random permutation of size $n$ is $\frac{n - 1}{2}$, the variance is
 \begin{equation*}
-    \frac{3n^{2} - 11n + 10}{12} + \frac{n - 1}{2} - \left(\frac{n - 1}{2}\right)^{2} = \frac{n + 1}{12}
+    \frac{3n^{2} - 11n + 10}{12} + \frac{n - 1}{2} - \left(\frac{n - 1}{2} \right)^{2} = \frac{n + 1}{12}
 \end{equation*}
 
 \subhead{Ascending Runs}
@@ -995,7 +995,7 @@ The mean of the number of rises in a random permutation of size $n$ is $\frac{n 
 The ordinary generating function $I(z,v)$ is an improper rational function: its numerator degree is $l + 1$ and denominator degree is $l$.
 By polynomial long division and standard partial fraction decomposition, $I(z, v)$ can be written exactly as:
 \begin{equation*}
-    I(z, v) = 1 - z + \sum_{j = 1}^{l}\frac{c_{j}}{1 - \omega_{j}z}
+    I(z, v) = 1 - z + \sum_{j = 1}^{l} \frac{c_{j}}{1 - \omega_{j}z}
 \end{equation*}
 The polynomial part is $1 - z$ (or more precisely, $-z - \frac{1}{v}$ for the $l = 1$ case). Why does the formula have $(1 - z)(v + 1)$?
 The factor $v + 1$ might be a typographical error.
@@ -1003,12 +1003,12 @@ The factor $v + 1$ might be a typographical error.
 The mean number of ascending runs of length $l - 1$ is $\frac{n - l + 1}{l!} \sim \frac{n}{l!}$; the variance is $\sim \frac{n}{l!}$.
 Concentration of distribution holds if
 \begin{equation*}
-    \lim_{n \to \infty}\frac{\sigma_{n}}{\mu_{n}} = 0
+    \lim_{n \to \infty} \frac{\sigma_{n}}{\mu_{n}} = 0
 \end{equation*}
 Now
 \begin{equation*}
     \left(\frac{\sigma_{n}}{\mu_{n}}\right)^{2} = \frac{\sigma_{n}^{2}}{\mu_{n}^{2}}
-        = \frac{\frac{n}{l!}}{\left(\frac{n}{l!}\right)^{2}} = \frac{l!}{n}
+        = \frac{\frac{n}{l!}}{\left(\frac{n}{l!} \right)^{2}} = \frac{l!}{n}
 \end{equation*}
 which tends to 0 if $l! = o(n)$. The text writes $(l + 1)! = o(n)$, which might be a strict sufficient condition, or a typographical error.
 
@@ -1024,7 +1024,7 @@ $\frac{1 - z}{1 - z^{m}}$ using the $m$-th root of unity. Let $\omega_{k} = e^{2
 the roots of $z^{m} = 1$.
 Standard partial fraction expansion of $\frac{1}{1 - z^{m}}$ gives:
 \begin{equation*}
-    \frac{1}{1 - z^{m}} = \frac{1}{m}\sum_{k = 0}^{m - 1}\frac{1}{1 - \omega_{k}z}
+    \frac{1}{1 - z^{m}} = \frac{1}{m} \sum_{k = 0}^{m - 1} \frac{1}{1 - \omega_{k}z}
 \end{equation*}
 Now apply the transform:
 \begin{equation*}
@@ -1032,29 +1032,29 @@ Now apply the transform:
         \text{EGF Denominator}
         &= \widehat{(1 - z)\frac{1}{1 - z^{m}}} \\
         &= \widehat{\frac{1}{1 - z^{m}}} - \widehat{\frac{z}{1 - z^{m}}} \\
-        &= \widehat{\frac{1}{1 - z^{m}}} - \int_{0}^{z}\widehat{\frac{1}{1 - t^{m}}}dt \\
-        &= \frac{1}{m}\sum_{k = 0}^{m - 1}e^{\omega_{k}z} - \int_{0}^{z}\frac{1}{m}\sum_{k = 0}^{m - 1}e^{\omega_{k}t}dt \\
-        &= \frac{1}{m}\sum_{k = 0}^{m - 1}\sum_{n \geq 0}\omega_{k}^{n}\frac{z^{n}}{n!}
-            - \int_{0}^{z}\frac{1}{m}\sum_{k = 0}^{m - 1}\sum_{n \geq 0}\omega_{k}^{n}\frac{t^{n}}{n!}dt \\
-        &= \frac{1}{m}\sum_{n \geq 0}\left(\sum_{k = 0}^{m - 1}\omega_{k}^{n}\right)\frac{z^{n}}{n!}
-            - \int_{0}^{z}\frac{1}{m}\sum_{n \geq 0}\left(\sum_{k = 0}^{m - 1}\omega_{k}^{n}\right)\frac{t^{n}}{n!}dt \\
-        &= \sum_{i \geq 0}\frac{z^{m \cdot i}}{(m \cdot i)!} - \int_{0}^{z}\sum_{i \geq 0}\frac{t^{m \cdot i}}{(m \cdot i)!}dt \\
-        &= \sum_{i \geq 0}\frac{z^{m \cdot i}}{(m \cdot i)!} - \frac{z^{m \cdot i + 1}}{(m \cdot i + 1)!}
+        &= \widehat{\frac{1}{1 - z^{m}}} - \int_{0}^{z} \widehat{\frac{1}{1 - t^{m}}}\,\dd t \\
+        &= \frac{1}{m} \sum_{k = 0}^{m - 1} e^{\omega_{k}z} - \int_{0}^{z} \frac{1}{m} \sum_{k = 0}^{m - 1} e^{\omega_{k}t}\,\dd t \\
+        &= \frac{1}{m} \sum_{k = 0}^{m - 1} \sum_{n \geq 0} \omega_{k}^{n} \frac{z^{n}}{n!}
+            - \int_{0}^{z} \frac{1}{m} \sum_{k = 0}^{m - 1} \sum_{n \geq 0} \omega_{k}^{n} \frac{t^{n}}{n!}\,\dd t \\
+        &= \frac{1}{m} \sum_{n \geq 0} \left(\sum_{k = 0}^{m - 1} \omega_{k}^{n}\right)\frac{z^{n}}{n!}
+            - \int_{0}^{z} \frac{1}{m} \sum_{n \geq 0} \left(\sum_{k = 0}^{m - 1} \omega_{k}^{n}\right)\frac{t^{n}}{n!}\,\dd t \\
+        &= \sum_{i \geq 0} \frac{z^{m \cdot i}}{(m \cdot i)!} - \int_{0}^{z} \sum_{i \geq 0} \frac{t^{m \cdot i}}{(m \cdot i)!}\,\dd t \\
+        &= \sum_{i \geq 0} \frac{z^{m \cdot i}}{(m \cdot i)!} - \frac{z^{m \cdot i + 1}}{(m \cdot i + 1)!}
     \end{aligned}
 \end{equation*}
 The third equality holds because the true operator mapping from the OGF domain to the EGF domain for a function multiplied by $z$
-involves a differential shift. The second-to-last equality holds because $\sum_{k = 0}^{m - 1}\omega_{k}^{n}$ is zero unless $n$
+involves a differential shift. The second-to-last equality holds because $\sum_{k = 0}^{m - 1} \omega_{k}^{n}$ is zero unless $n$
 is a multiple of $m$, in which case the sum is $m$.
 
 Let's expand the EGF for $m = 2, 3, 4$:
 \begin{equation*}
     \begin{aligned}
-        \text{A.R. of length 1} \quad \left(\sum_{i \geq 0}\frac{z^{2i}}{(2i)!} - \frac{z^{2i + 1}}{(2i + 1)!}\right)^{-1}
+        \text{A.R. of length 1} \quad \left(\sum_{i \geq 0} \frac{z^{2i}}{(2i)!} - \frac{z^{2i + 1}}{(2i + 1)!}\right)^{-1}
             &= 1 + z + \frac{z^{2}}{2!} + \frac{z^{3}}{3!} + \frac{z^{4}}{4!} + O(z^{5}) \\
-        \text{A.R. of length 2} \quad \left(\sum_{i \geq 0}\frac{z^{3i}}{(3i)!} - \frac{z^{3i + 1}}{(3i + 1)!}\right)^{-1}
-            &= 1 + z + 2\frac{z^{2}}{2!} + 5\frac{z^{3}}{3!} + 17\frac{z^{4}}{4!} + O(z^{5}) \\
-        \text{A.R. of length 3} \quad \left(\sum_{i \geq 0}\frac{z^{4i}}{(4i)!} - \frac{z^{4i + 1}}{(4i + 1)!}\right)^{-1}
-            &= 1 + z + \frac{z^{2}}{2!} + \frac{z^{3}}{3!} + 23\frac{z^{4}}{4!} + O(z^{5})
+        \text{A.R. of length 2} \quad \left(\sum_{i \geq 0} \frac{z^{3i}}{(3i)!} - \frac{z^{3i + 1}}{(3i + 1)!}\right)^{-1}
+            &= 1 + z + 2 \frac{z^{2}}{2!} + 5 \frac{z^{3}}{3!} + 17 \frac{z^{4}}{4!} + O(z^{5}) \\
+        \text{A.R. of length 3} \quad \left(\sum_{i \geq 0} \frac{z^{4i}}{(4i)!} - \frac{z^{4i + 1}}{(4i + 1)!}\right)^{-1}
+            &= 1 + z + \frac{z^{2}}{2!} + \frac{z^{3}}{3!} + 23 \frac{z^{4}}{4!} + O(z^{5})
     \end{aligned}
 \end{equation*}
 For example, there're 17 permutations in $\mathcal{P}_4$ without ascending runs of length 2: 1324, 1423, 1432, 2143, 2314,
@@ -1080,14 +1080,14 @@ The bivariate generating function is defined by summing over all possible binary
 \begin{equation*}
     \begin{aligned}
         B(z, u)
-        &= \sum_{\tau}z^{|\tau|}u^{\omega[\tau]} \\
-        &= z^{|\emptyset|}u^{\omega[\emptyset]} + \sum_{\tau \neq \emptyset}z^{|\tau|}u^{\omega[\tau]} \\
-        &= z^{0}u^{0} + \sum_{\tau \neq \emptyset}z^{|\tau|}u^{\omega[\tau]} \\
-        &= 1 + \sum_{\tau \neq \emptyset}z^{|\tau|}
+        &= \sum_{\tau} z^{|\tau|}u^{\omega[\tau]} \\
+        &= z^{|\emptyset|}u^{\omega[\emptyset]} + \sum_{\tau \neq \emptyset} z^{|\tau|}u^{\omega[\tau]} \\
+        &= z^{0}u^{0} + \sum_{\tau \neq \emptyset} z^{|\tau|}u^{\omega[\tau]} \\
+        &= 1 + \sum_{\tau \neq \emptyset} z^{|\tau|}
             \left(u^{\omega[\tau_{0}]}u^{\omega[\tau_{1}]} + \llbracket \tau = \mathfrak{t} \rrbracket \cdot (u - 1)\right) \\
         &= 1 + \sum_{\tau_{0}, \tau_{1}}z^{1 + |\tau_{0}| + |\tau_{1}|}u^{\omega[\tau_{0}]}u^{\omega[\tau_{1}]}
-            + \sum_{\tau \neq \emptyset}z^{|\tau|}\llbracket \tau = \mathfrak{t} \rrbracket \cdot (u - 1) \\
-        &= 1 + z\sum_{\tau_{0}, \tau_{1}}z^{|\tau_{0}|}u^{\omega[\tau_{0}]} \cdot z^{|\tau_{1}|}u^{\omega[\tau_{1}]}
+            + \sum_{\tau \neq \emptyset} z^{|\tau|}\llbracket \tau = \mathfrak{t} \rrbracket \cdot (u - 1) \\
+        &= 1 + z \sum_{\tau_{0}, \tau_{1}}z^{|\tau_{0}|}u^{\omega[\tau_{0}]} \cdot z^{|\tau_{1}|}u^{\omega[\tau_{1}]}
             + z^{|\mathfrak{t}|} \cdot (u - 1) \\
         &= 1 + zB(z, u)^{2} + z^{m}(u - 1)
     \end{aligned}
@@ -1103,21 +1103,21 @@ We can express the linear factor $h$ as a sum of ones:
 \end{equation*}
 Substituting this into the original expression gives a double summation:
 \begin{equation*}
-    \Xi(z) = \sum_{h = 0}^{\infty}\left(\sum_{j = 1}^{h}1\right)\left[f^{[h]}(z) - f^{[h-1]}(z)\right]
-        = \sum_{h = 1}^{\infty}\sum_{j = 1}^{h}\left[f^{[h]}(z) - f^{[h - 1]}(z)\right]
+    \Xi(z) = \sum_{h = 0}^{\infty} \left(\sum_{j = 1}^{h}1\right)\left[f^{[h]}(z) - f^{[h-1]}(z)\right]
+        = \sum_{h = 1}^{\infty} \sum_{j = 1}^{h} \left[f^{[h]}(z) - f^{[h - 1]}(z)\right]
 \end{equation*}
 The region of summation is defined by $1 \leq j \leq h < \infty$. Flipping the order of summation so that we sum over $h$ first
 means $h$ ranges from $j$ to $\infty$, and $j$ ranges from $1$ to $\infty$:
 \begin{equation*}
-    \Xi(z) = \sum_{j = 1}^{\infty}\sum_{h = j}^{\infty}\left[f^{[h]}(z) - f^{[h - 1]}(z)\right]
+    \Xi(z) = \sum_{j = 1}^{\infty} \sum_{h = j}^{\infty} \left[f^{[h]}(z) - f^{[h - 1]}(z)\right]
 \end{equation*}
 Now, the inner sum over $h$ is a classic telescoping sum:
 \begin{equation*}
-    \sum_{h = j}^{\infty}\left[f^{[h]}(z) - f^{[h - 1]}(z)\right] = \lim_{N \to \infty}\sum_{h = j}^{N}\left[ f^{[h]}(z) - f^{[h - 1]}(z)\right]
+    \sum_{h = j}^{\infty} \left[f^{[h]}(z) - f^{[h - 1]}(z)\right] = \lim_{N \to \infty} \sum_{h = j}^{N} \left[ f^{[h]}(z) - f^{[h - 1]}(z)\right]
 \end{equation*}
 Expanding the terms shows that everything cancels out except the upper limit and the lower limit:
 \begin{equation*}
-    \lim_{N \to \infty}\left(\left[f^{[j]} - f^{[j - 1]}\right] + \left[f^{[j + 1]} - f^{[j]}\right] + \dots + \left[f^{[N]} - f^{[N - 1]}\right]\right)
+    \lim_{N \to \infty} \left(\left[f^{[j]} - f^{[j - 1]}\right] + \left[f^{[j + 1]} - f^{[j]}\right] + \dots + \left[f^{[N]} - f^{[N - 1]}\right]\right)
         = \lim_{N \to \infty} \left(f^{[N]}(z) - f^{[j - 1]}(z)\right)
 \end{equation*}
 Because $f^{[N]}(z)$ represents objects with parameter at most $N$, taking the limit as $N \to \infty$ simply yields the unconstrained generating function,
@@ -1127,11 +1127,11 @@ $f(z)$. Thus, the inner sum collapses to:
 \end{equation*}
 Plugging this back into our outer sum:
 \begin{equation*}
-    \Xi(z) = \sum_{j = 1}^{\infty}\left[f(z) - f^{[j - 1]}(z)\right]
+    \Xi(z) = \sum_{j = 1}^{\infty} \left[f(z) - f^{[j - 1]}(z)\right]
 \end{equation*}
 Finally, shift the index by letting $h = j - 1$. As $j$ runs from $1$ to $\infty$, $h$ runs from $0$ to $\infty$:
 \begin{equation*}
-    \Xi(z) = \sum_{h = 0}^{\infty}\left[f(z) - f^{[h]}(z)\right]
+    \Xi(z) = \sum_{h = 0}^{\infty} \left[f(z) - f^{[h]}(z)\right]
 \end{equation*}
 
 \section{Perspective}

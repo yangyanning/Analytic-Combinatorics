@@ -16,7 +16,7 @@
 
 We want to derive
 \begin{equation*}
-    L(z) = T\left(\frac{1}{2}e^{z/2 - 1/2}\right) + \frac{z}{2} - \frac{1}{2}
+    L(z) = T\left(\frac{1}{2} e^{z/2 - 1/2}\right) + \frac{z}{2} - \frac{1}{2}
 \end{equation*}
 from
 \begin{equation*}
@@ -63,11 +63,11 @@ Since $u = \frac{z - 1}{2} - L$, we have $-L = u - \frac{z - 1}{2}$. Substitutin
 \end{equation*}
 Now, isolate $ue^{u}$:
 \begin{equation*}
-    ue^{u} = -\frac{1}{2}e^{\frac{z - 1}{2}}
+    ue^{u} = -\frac{1}{2} e^{\frac{z - 1}{2}}
 \end{equation*}
 Since $ue^{u} = v$ implies $u = W(v)$, and we know $W(v) = -T(-v)$:
 \begin{equation*}
-    u = W\left(-\frac{1}{2}e^{\frac{z - 1}{2}}\right) = -T\left(\frac{1}{2} e^{\frac{z - 1}{2}}\right)
+    u = W\left(-\frac{1}{2} e^{\frac{z - 1}{2}}\right) = -T\left(\frac{1}{2} e^{\frac{z - 1}{2}}\right)
 \end{equation*}
 Substituting $u$ back in:
 \begin{equation*}
@@ -87,31 +87,31 @@ Let $\mathcal{T}$ be the class of all Cayley trees. Then
 \end{equation*}
 This result follows from Lagrange inversion. The standard formulation states that
 \begin{equation*}
-    z = T / \phi(T) \implies [z^{n}]T(z) = \frac{1}{n}[w^{n - 1}]\phi(w)^{n}
+    z = T / \phi(T) \implies [z^{n}] T(z) = \frac{1}{n} [w^{n - 1}] \phi(w)^{n}
 \end{equation*}
 More generally
 \begin{equation*}
-    [z^{n}]H(T(z)) = \frac{1}{n}[w^{n - 1}]H'(w)\phi(w)^{n}
+    [z^{n}] H(T(z)) = \frac{1}{n} [w^{n - 1}] H'(w)\phi(w)^{n}
 \end{equation*}
 Substituting $H(w) = (1 - w)^{-1}$ and $\phi(w) = e^{w}$ yields
 \begin{equation*}
     \begin{aligned}
         F_{n}
-        &= n![z^{n}]F(z) \\
-        &= n!\frac{1}{n}[w^{n - 1}]\left(\frac{1}{1 - w}\right)'(e^{w})^{n} \\
-        &= (n - 1)![w^{n - 1}]\frac{e^{nw}}{(1- w)^{2}} \\
-        &= (n - 1)![w^{n - 1}]\sum_{k = 0}^{\infty}(k + 1)w^{k} \cdot \sum_{j = 0}^{\infty}\frac{n^{j}}{j!}w^{j} \\
+        &= n![z^{n}] F(z) \\
+        &= n!\frac{1}{n} [w^{n - 1}] \left(\frac{1}{1 - w} \right)'(e^{w})^{n} \\
+        &= (n - 1)![w^{n - 1}] \frac{e^{nw}}{(1 - w)^{2}} \\
+        &= (n - 1)![w^{n - 1}] \sum_{k = 0}^{\infty}(k + 1)w^{k} \cdot \sum_{j = 0}^{\infty} \frac{n^{j}}{j!}w^{j} \\
         &= (n - 1)!\sum_{j = 0}^{n - 1}((n - 1 - j) + 1)\frac{n^{j}}{j!} \\
         &= (n - 1)!\sum_{j = 0}^{n - 1}(n - j)\frac{n^{j}}{j!} \\
-        &= (n - 1)!\left(\sum_{j = 0}^{n - 1}n\frac{n^{j}}{j!} - \sum_{j = 0}^{n - 1}j\frac{n^{j}}{j!}\right) \\
-        &= (n - 1)!\left(\sum_{j = 0}^{n - 1}\frac{n^{j + 1}}{j!} - \sum_{j = 1}^{n - 1}\frac{n^{j}}{(j - 1)!}\right) \\
-        &= (n - 1)!\left(\sum_{j = 0}^{n - 1}\frac{n^{j + 1}}{j!} - \sum_{j = 0}^{n - 2}\frac{n^{j + 1}}{j!}\right) \\
+        &= (n - 1)!\left(\sum_{j = 0}^{n - 1} n \frac{n^{j}}{j!} - \sum_{j = 0}^{n - 1} j \frac{n^{j}}{j!}\right) \\
+        &= (n - 1)!\left(\sum_{j = 0}^{n - 1} \frac{n^{j + 1}}{j!} - \sum_{j = 1}^{n - 1} \frac{n^{j}}{(j - 1)!}\right) \\
+        &= (n - 1)!\left(\sum_{j = 0}^{n - 1} \frac{n^{j + 1}}{j!} - \sum_{j = 0}^{n - 2} \frac{n^{j + 1}}{j!}\right) \\
         &= (n - 1)!\frac{n^{n}}{(n - 1)!} \\
         &= n^{n}
     \end{aligned}
 \end{equation*}
 
-Now consider $K = \log{(1 - T)^{-1}}$. Then
+Now consider $K = \log\left((1 - T)^{-1}\right)$. Then
 \begin{equation*}
      K_{n} = n^{n - 1}Q(n)
 \end{equation*}
@@ -121,18 +121,18 @@ where
 \end{equation*}
 From Note II.18 we have
 \begin{equation*}
-    n![z^{n}]\frac{T(z)^{k}}{k!} = \binom{n - 1}{k - 1}n^{n - k} \implies
-        n![z^{n}]\frac{T(z)^{k}}{k} = (k - 1)!\binom{n - 1}{k - 1}n^{n - k} = \frac{(n - 1)!}{(n - k)!}n^{n - k}
+    n![z^{n}] \frac{T(z)^{k}}{k!} = \binom{n - 1}{k - 1} n^{n - k} \implies
+        n![z^{n}] \frac{T(z)^{k}}{k} = (k - 1)!\binom{n - 1}{k - 1} n^{n - k} = \frac{(n - 1)!}{(n - k)!} n^{n - k}
 \end{equation*}
 Consequently
 \begin{equation*}
     \begin{aligned}
         K_{n}
-        &= n![z^{n}]K(z) \\
-        &= n![z^{n}]\sum_{j = 1}^{\infty}\frac{T(z)^{j}}{j} \\
-        &= \sum_{j = 1}^{\infty}n![z^{n}]\frac{T(z)^{j}}{j} \\
-        &= \sum_{j = 1}^{\infty}\frac{(n - 1)!}{(n - j)!}n^{n - j} \\
-        &= n^{n - 1}\sum_{j = 1}^{\infty}\frac{(n - 1)!}{(n - j)!n^{j - 1}} \\
+        &= n![z^{n}] K(z) \\
+        &= n![z^{n}] \sum_{j = 1}^{\infty} \frac{T(z)^{j}}{j} \\
+        &= \sum_{j = 1}^{\infty} n![z^{n}] \frac{T(z)^{j}}{j} \\
+        &= \sum_{j = 1}^{\infty} \frac{(n - 1)!}{(n - j)!} n^{n - j} \\
+        &= n^{n - 1} \sum_{j = 1}^{\infty} \frac{(n - 1)!}{(n - j)!n^{j - 1}} \\
         &= n^{n - 1}\left(1 + \frac{n - 1}{n} + \frac{(n - 1)(n - 2)}{n^{2}} + \cdots\right)
     \end{aligned}
 \end{equation*}
@@ -145,16 +145,16 @@ The class of all maps without fixed points has EGF:
 \end{equation*}
 We aim to show that
 \begin{equation*}
-    n![z^{n}]\frac{e^{-T(z)}}{1 - T(z)} = (n - 1)^{n}
+    n![z^{n}] \frac{e^{-T(z)}}{1 - T(z)} = (n - 1)^{n}
 \end{equation*}
 Substituting $H(w) = \frac{e^{-w}}{1 - w}$ and $\phi(w) = e^{w}$ into Lagrange inversion yields
 \begin{equation*}
     \begin{aligned}
-        n![z^{n}]\frac{e^{-T(z)}}{1 - T(z)}
-        &= n!\frac{1}{n}[w^{n - 1}]\left(\frac{e^{-w}}{1 - w}\right)'(e^{w})^{n} \\
-        &= (n - 1)![w^{n - 1}]\frac{we^{(n - 1)w}}{(1 - w)^{2}} \\
-        &= (n - 1)![w^{n - 2}]\frac{e^{(n - 1)w}}{(1 - w)^{2}} \\
-        &= (n - 1)![w^{n - 2}]\sum_{k = 0}^{\infty}(k + 1)w^{k} \cdot \sum_{j = 0}^{\infty}\frac{(n - 1)^{j}}{j!}w^{j} \\
+        n![z^{n}] \frac{e^{-T(z)}}{1 - T(z)}
+        &= n!\frac{1}{n} [w^{n - 1}] \left(\frac{e^{-w}}{1 - w}\right)'(e^{w})^{n} \\
+        &= (n - 1)![w^{n - 1}] \frac{we^{(n - 1)w}}{(1 - w)^{2}} \\
+        &= (n - 1)![w^{n - 2}] \frac{e^{(n - 1)w}}{(1 - w)^{2}} \\
+        &= (n - 1)![w^{n - 2}] \sum_{k = 0}^{\infty}(k + 1)w^{k} \cdot \sum_{j = 0}^{\infty} \frac{(n - 1)^{j}}{j!}w^{j} \\
         &= (n - 1)!\sum_{j = 0}^{n - 2}((n - 2 - j) + 1)\frac{(n - 1)^{j}}{j!} \\
         &= (n - 1)!\sum_{j = 0}^{m - 1}(m - j)\frac{m^{j}}{j!} \\
         &= (n - 1)!\frac{m^{m}}{(m - 1)!} \\
@@ -166,20 +166,20 @@ Substituting $H(w) = \frac{e^{-w}}{1 - w}$ and $\phi(w) = e^{w}$ into Lagrange i
 % II.5.3.
 \topicblock{II.5.3}{Unrooted trees and acyclic graphs.}
 
-To understand why $U(z) = \int_{0}^{z}T(w)\frac{dw}{w}$, we begin with the exponential generating functions:
+To understand why $U(z) = \int_{0}^{z} \frac{T(w)}{w}\,\dd w$, we begin with the exponential generating functions:
 \begin{equation*}
-    T(z) = \sum_{n \geq 0}T_{n}\frac{z^{n}}{n!}, \quad
-    U(z) = \sum_{n \geq 0}U_{n}\frac{z^{n}}{n!}
+    T(z) = \sum_{n \geq 0} T_{n} \frac{z^{n}}{n!}, \quad
+    U(z) = \sum_{n \geq 0} U_{n} \frac{z^{n}}{n!}
 \end{equation*}
 Differentiate $U(z)$ and then multiply by $z$ (noting that $T_{0} = 0$) gives
 \begin{equation*}
-    z\frac{d}{dz}U(z) = z\frac{d}{dz}\sum_{n \geq 0}U_{n}\frac{z^{n}}{n!} = z\sum_{n \geq 1}nU_{n}\frac{z^{n - 1}}{n!}
-        = \sum_{n \geq 1}T_{n}\frac{z^{n}}{n!} = T(z)
+    z \frac{\dd}{\dd z} U(z) = z \frac{\dd}{\dd z} \sum_{n \geq 0} U_{n} \frac{z^{n}}{n!} = z \sum_{n \geq 1} nU_{n} \frac{z^{n - 1}}{n!}
+        = \sum_{n \geq 1} T_{n} \frac{z^{n}}{n!} = T(z)
 \end{equation*}
-Rearranging yields $\frac{d}{dz}U(z) = \frac{T(z)}{z}$. Integrating both sides with respect to $z$ and using $w$ as a
+Rearranging yields $\frac{\dd}{\dd z} U(z) = \frac{T(z)}{z}$. Integrating both sides with respect to $z$ and using $w$ as a
 dummy variable for the integration from $0$ to $z$, we obtain
 \begin{equation*}
-    U(z) - U(0) = \int_{0}^{z}\frac{T(w)}{w}dw
+    U(z) - U(0) = \int_{0}^{z} \frac{T(w)}{w}\,\dd w
 \end{equation*}
 The EGF for rooted trees, $T(z)$, satisfies the functional equation:
 \begin{equation*}
@@ -187,11 +187,11 @@ The EGF for rooted trees, $T(z)$, satisfies the functional equation:
 \end{equation*}
 which can be rearranged to $z = Te^{-T}$. Differentiating with respect to $T$ gives
 \begin{equation*}
-    dz = \left(e^{-T} - Te^{-T}\right)dT = e^{-T}(1 - T)dT
+    \dd z = \left(e^{-T} - Te^{-T}\right)\dd T = e^{-T}(1 - T)\dd T
 \end{equation*}
-Substituting $z = Te^{-T}$ and $dz$ into the integral $U(z) = \int\frac{T(z)}{z}dz$ yields
+Substituting $z = Te^{-T}$ and $\dd z$ into the integral $U(z) = \int \frac{T(z)}{z}\,\dd z$ yields
 \begin{equation*}
-    U(z) = \int \frac{T}{Te^{-T}} \cdot e^{-T}(1 - T)dT = \int (1 - T)dT = T - \frac{T^{2}}{2} + C
+    U(z) = \int \frac{T}{Te^{-T}} \cdot e^{-T}(1 - T)\,\dd T = \int (1 - T)\,\dd T = T - \frac{T^{2}}{2} + C
 \end{equation*}
 Since $U(0) = 0$ and $T(0) = 0$, the constant $C = 0$.
 
@@ -204,9 +204,9 @@ We establish a bijection between clouds and 2-regular graphs on $n$ labeled vert
     \item Intersection point $\{i,\; j\}$ in the cloud $\leftrightarrow$ edge $i - j$ in the graph.
 \end{itemize}
 Let $n_{i}$ be the number of chosen intersection points on line $i$.
-Since each point lies on two lines, $\sum_{i = 1}^{n}n_{i} = 2n$.
-\textit{If no three points are collinear}, then $n_{i} \leq 2$ for all $i$, so $\sum_{i = 1}^{n}n_{i} \leq 2n$.
-Equality $\sum_{i = 1}^{n}n_{i} = 2n$ forces $n_{i} = 2$ for every $i$, i.e. every vertex has degree 2 in the graph.
+Since each point lies on two lines, $\sum_{i = 1}^{n} n_{i} = 2n$.
+\textit{If no three points are collinear}, then $n_{i} \leq 2$ for all $i$, so $\sum_{i = 1}^{n} n_{i} \leq 2n$.
+Equality $\sum_{i = 1}^{n} n_{i} = 2n$ forces $n_{i} = 2$ for every $i$, i.e. every vertex has degree 2 in the graph.
 
 Conversely, if every vertex has degree 2, then $n_{i} = 2$ for all $i$, so each line contains exactly two intersection points — hence no three collinear.
 
@@ -243,7 +243,7 @@ We want to reverse this process to build all possible directed-edge-pointed grap
 Now let's align these actions with the differential recurrence:
 \begin{equation*}
     2\partial_{y}w_{k + 1} = \left(z^{2}\partial_{z}^{2}w_{k} - 2y\partial_{y}w_{k}\right) +
-        \sum_{h = -1}^{k + 1}\left(z\partial_{z}w_{h}\right) \cdot \left(z\partial_{z}w_{k - h}\right)
+        \sum_{h = -1}^{k + 1} \left(z\partial_{z}w_{h}\right) \cdot \left(z\partial_{z}w_{k - h}\right)
 \end{equation*}
 
 Left-Hand Side: The Initial Pool
@@ -270,7 +270,7 @@ Right-Hand Side, Term 2: The Disconnected Outcome (Case 2)
 \begin{itemize}
     \item $w_{h}$ and $w_{k - h}$: The two separate, independent components. Their generating functions are multiplied together because
         the components are combinatorially disjoint.
-    \item $z\partial_{z}$: The pointing operator for vertices ($z\frac{\partial}{\partial z}(z^{V}) = V \cdot z^{V}$).
+    \item $z\partial_{z}$: The pointing operator for vertices ($z \frac{\partial}{\partial z}(z^{V}) = V \cdot z^{V}$).
         \begin{itemize}
             \item Applied to the first component ($z\partial_{z}w_{h}$), it selects exactly one vertex ($A$) to act as the source bridgehead.
             \item Applied to the second component ($z\partial_{z}w_{k - h}$), it selects exactly one vertex ($B$) to act as the target bridgehead.
@@ -287,10 +287,10 @@ We want to show
 \begin{equation*}
     n!^{2}\pi_{n} = (n - 1)!I_{n + 1}
 \end{equation*}
-The EGF of pairs of permutations $\sum_{n \geq 0}n!^{2}\frac{z^{n}}{n!} = \sum_{n \geq 0}n!z^{n}$ happens to be the OGF $P(z)$ of all permutations.
+The EGF of pairs of permutations $\sum_{n \geq 0} n!^{2} \frac{z^{n}}{n!} = \sum_{n \geq 0} n!z^{n}$ happens to be the OGF $P(z)$ of all permutations.
 By the exponential formula, the EGF $C(z)$ of connected graphs satisfies
 \begin{equation*}
-    C(z) = \log{P(z)} = \log{\left(\sum_{n \geq 0}n!z^{n}\right)}
+    C(z) = \log P(z) = \log\left(\sum_{n \geq 0} n!z^{n}\right)
 \end{equation*}
 Since every permutation can be uniquely decomposed into a sequence of indecomposable components, the OGF $I(z)$ of indecomposable permutations satisfies
 \begin{equation*}
@@ -309,7 +309,7 @@ Since $C(z) = \sum_{n \geq 1}(n!^{2}\pi_{n})\frac{z^{n}}{n!}$, its derivative is
 \end{equation*}
 Thus, the coefficient of $z^{n - 1}$ is
 \begin{equation*}
-    [z^{n - 1}]C'(z) = \frac{n!^{2}\pi_{n}}{(n - 1)!} = n \cdot n!\pi_{n}
+    [z^{n - 1}] C'(z) = \frac{n!^{2}\pi_{n}}{(n - 1)!} = n \cdot n!\pi_{n}
 \end{equation*}
 
 \subhead{Right-Hand Side}
@@ -319,32 +319,32 @@ Differentiate both sides of $P(z)(1 - I(z)) = 1$ with respect to $z$:
 \end{equation*}
 Now we just need to extract the coefficient of $z^{n - 1}$ from $P(z)I'(z)$:
 \begin{equation*}
-    [z^{n - 1}](P'(z) - P'(z)I(z)) = [z^{n - 1}]P(z)I'(z) = \sum_{k = 1}^{n}kI_{k}(n - k)!
+    [z^{n - 1}] (P'(z) - P'(z)I(z)) = [z^{n - 1}] P(z)I'(z) = \sum_{k = 1}^{n} kI_{k}(n - k)!
 \end{equation*}
 Let's denote this sum by $S_{n}$. We will show $S_{n} = I_{n + 1}$.
 Extracting the coefficient of $z^{N}$ from $P(z) = 1 + I(z)P(z)$ for $N \geq 1$ yields the recurrence (noting that $I_{0} = 0$):
 \begin{equation} \label{eq:II.28.1}
-    \sum_{k = 1}^{N}I_{k}(N - k)! = N!
+    \sum_{k = 1}^{N} I_{k}(N - k)! = N!
 \end{equation}
 Use \ref{eq:II.28.1} with $N = n + 1$:
 \begin{equation} \label{eq:II.28.2}
-    \sum_{k = 1}^{n + 1}I_{k}(n + 1 - k)! = (n + 1)! \implies \sum_{k = 1}^{n}I_{k}(n + 1 - k)! = (n + 1)! - I_{n + 1}
+    \sum_{k = 1}^{n + 1} I_{k}(n + 1 - k)! = (n + 1)! \implies \sum_{k = 1}^{n} I_{k}(n + 1 - k)! = (n + 1)! - I_{n + 1}
 \end{equation}
 Expand the left hand side of \ref{eq:II.28.2}:
 \begin{equation*}
     \begin{aligned}
-        \sum_{k = 1}^{n}I_{k}(n + 1 - k)!
-        &= \sum_{k = 1}^{n}I_{k}(n + 1 - k)(n - k)! \\
-        &= (n + 1)\sum_{k = 1}^{n}I_{k}(n - k)! - \sum_{k = 1}^{n}kI_{k}(n - k)! \\
+        \sum_{k = 1}^{n} I_{k}(n + 1 - k)!
+        &= \sum_{k = 1}^{n} I_{k}(n + 1 - k)(n - k)! \\
+        &= (n + 1)\sum_{k = 1}^{n} I_{k}(n - k)! - \sum_{k = 1}^{n} kI_{k}(n - k)! \\
     \end{aligned}
 \end{equation*}
 By \ref{eq:II.28.1} with $N = n$:
 \begin{equation*}
-    \sum_{k = 1}^{n}I_{k}(n - k)! = n!
+    \sum_{k = 1}^{n} I_{k}(n - k)! = n!
 \end{equation*}
 Hence the left hand side of \ref{eq:II.28.2} equals
 \begin{equation*}
-    \sum_{k = 1}^{n}I_{k}(n + 1 - k)! = (n + 1)n! - S_{n} = (n + 1)! - S_{n}
+    \sum_{k = 1}^{n} I_{k}(n + 1 - k)! = (n + 1)n! - S_{n} = (n + 1)! - S_{n}
 \end{equation*}
 Substituting into \ref{eq:II.28.2} gives $S_{n} = I_{n + 1}$.
 

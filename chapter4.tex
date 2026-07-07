@@ -7,7 +7,7 @@
 \noteblock{IV.6}{Integrals of rational fractions.}
 
 \begin{equation*}
-    J_{m} = \int_{-\infty}^{\infty}\frac{dx}{(1 + x^{2})^{m}}
+    J_{m} = \int_{-\infty}^{\infty} \frac{\dd x}{(1 + x^{2})^{m}}
 \end{equation*}
 Define $f(z) = \frac{1}{(1 + z^{2})^{m}} = \frac{1}{(z - i)^{m}(z + i)^{m}}$. We integrate over the contour $\Gamma_{R}$ consisting of the real
 interval $[-R, R]$ and the upper semicircle $C_{R} = \{ z = Re^{i\theta}: 0 \leq \theta \leq \pi \}$.
@@ -18,50 +18,50 @@ For $z \in C_{R}$ and $R > 1$, $|z^{2} + 1| \geq |z^{2}| - 1 = R^{2} - 1$. Thus
 \end{equation*}
 The length of $C_{R}$ is $\pi R$, so
 \begin{equation*}
-    \left|\int_{C_{R}}f(z)dz\right| \leq \frac{\pi R}{(R^{2} - 1)^{m}} \to 0 \; \text{as} \; R \to \infty
+    \left|\int_{C_{R}}f(z)\dd z\right| \leq \frac{\pi R}{(R^{2} - 1)^{m}} \to 0 \; \text{as} \; R \to \infty
 \end{equation*}
 Hence
 \begin{equation*}
-    \lim_{R \to \infty}\int_{\Gamma_{R}}f(z)dz = \int_{-\infty}^{\infty}\frac{dx}{(1 + x^{2})^{m}} = J_{m}
+    \lim_{R \to \infty} \int_{\Gamma_{R}}f(z)\dd z = \int_{-\infty}^{\infty} \frac{\dd x}{(1 + x^{2})^{m}} = J_{m}
 \end{equation*}
 For $R > 1$, the only singularity inside $\Gamma_{R}$ is the pole of order $m$ at $z = i$. By the residue theorem,
 \begin{equation*}
-    \int_{\Gamma_{R}}f(z)dz = 2\pi i\text{Res}(f; i)
+    \int_{\Gamma_{R}}f(z)\dd z = 2\pi i\Res(f; i)
 \end{equation*}
 Compute the residue at $z = i$:
 \begin{equation*}
-    \text{Res}(f; i) = \frac{1}{(m - 1)!}\lim_{z \to i}\frac{d^{m - 1}}{dz^{m - 1}}[(z - i)^{m}f(z)]
-        = \frac{1}{(m - 1)!}\lim_{z \to i}\frac{d^{m - 1}}{dz^{m - 1}}(z + i)^{-m}
+    \Res(f; i) = \frac{1}{(m - 1)!} \lim_{z \to i} \frac{\dd^{m - 1}}{\dd z^{m - 1}}[(z - i)^{m}f(z)]
+        = \frac{1}{(m - 1)!} \lim_{z \to i} \frac{\dd^{m - 1}}{\dd z^{m - 1}}(z + i)^{-m}
 \end{equation*}
 The $k$-th derivative of $g(z) \coloneqq (z + i)^{-m}$ is
 \begin{equation*}
-    g^{(k)}(z) = (-1)^{k}\frac{(m + k - 1)!}{(m - 1)!}(z + i)^{-m - k}
+    g^{(k)}(z) = (-1)^{k} \frac{(m + k - 1)!}{(m - 1)!}(z + i)^{-m - k}
 \end{equation*}
 For $k = m - 1$:
 \begin{equation*}
-    g^{(m - 1)}(z) = (-1)^{m - 1}\frac{(2m - 2)!}{(m - 1)!}(z + i)^{-2m + 1}
+    g^{(m - 1)}(z) = (-1)^{m - 1} \frac{(2m - 2)!}{(m - 1)!}(z + i)^{-2m + 1}
 \end{equation*}
 Evaluating at $z = i$ gives
 \begin{equation*}
-    g^{(m - 1)}(i) = (-1)^{m - 1}\frac{(2m - 2)!}{(m - 1)!}(2i)^{-2m + 1}
+    g^{(m - 1)}(i) = (-1)^{m - 1} \frac{(2m - 2)!}{(m - 1)!}(2i)^{-2m + 1}
 \end{equation*}
 Hence
 \begin{equation*}
     \begin{aligned}
-        \text{Res}(f; i)
-        &= \frac{1}{(m - 1)!}(-1)^{m - 1}\frac{(2m - 2)!}{(m - 1)!}(2i)^{-2m + 1} \\
-        &= (-1)^{m - 1}\frac{(2m - 2)!}{[(m - 1)!]^{2}}\frac{(-1)^{m}i}{2^{2m - 1}} \\
-        &= -i\frac{(2m - 2)!}{[(m - 1)!]^{2}2^{2m - 1}} \\
+        \Res(f; i)
+        &= \frac{1}{(m - 1)!}(-1)^{m - 1} \frac{(2m - 2)!}{(m - 1)!}(2i)^{-2m + 1} \\
+        &= (-1)^{m - 1} \frac{(2m - 2)!}{[(m - 1)!]^{2}} \frac{(-1)^{m}i}{2^{2m - 1}} \\
+        &= -i \frac{(2m - 2)!}{[(m - 1)!]^{2}2^{2m - 1}} \\
     \end{aligned}
 \end{equation*}
 \begin{equation*}
-    J_{m} = 2\pi i\left(-i\frac{(2m - 2)!}{[(m - 1)!]^{2}2^{2m - 1}}\right) = \frac{\pi}{2^{2m - 2}}\binom{2m - 2}{m - 1}
-        = \frac{\pi}{4^{m - 1}}\binom{2m - 2}{m - 1}
+    J_{m} = 2\pi i\left(-i \frac{(2m - 2)!}{[(m - 1)!]^{2}2^{2m - 1}}\right) = \frac{\pi}{2^{2m - 2}} \binom{2m - 2}{m - 1}
+        = \frac{\pi}{4^{m - 1}} \binom{2m - 2}{m - 1}
 \end{equation*}
 
 \partsep
 \begin{equation*}
-    K_{m} = \int_{-\infty}^{\infty}\frac{dx}{(1^{2} + x^{2})(2^{2} + x^{2}) \cdots (m^{2} + x^{2})}
+    K_{m} = \int_{-\infty}^{\infty} \frac{\dd x}{(1^{2} + x^{2})(2^{2} + x^{2}) \cdots (m^{2} + x^{2})}
 \end{equation*}
 Define $f(z) = \frac{1}{\prod_{k = 1}^{m}(z^{2} + k^{2})}$. We integrate over the contour $\Gamma_{R}$ consisting of the real
 interval $[-R, R]$ and the upper semicircle $C_{R} = \{ z = Re^{i\theta}: 0 \leq \theta \leq \pi \}$.
@@ -69,25 +69,25 @@ interval $[-R, R]$ and the upper semicircle $C_{R} = \{ z = Re^{i\theta}: 0 \leq
 For $R > m$, the poles inside $\Gamma_{R}$ are $z_{k} = ik, k = 1, \cdots m$. On $C_{R}$, $|z^{2} + k^{2}| \geq R^{2} - k^{2} \geq (R/2)^{2}$ eventually,
 so $|f(z)| \leq \text{const}/R^{2m}$ and the length of $C_{R}$ is $\pi R$. Hence
 \begin{equation*}
-    \lim_{R \to \infty}\int_{C_{R}}f(z)dz = 0
+    \lim_{R \to \infty} \int_{C_{R}}f(z)\dd z = 0
 \end{equation*}
 and by the residue theorem
 \begin{equation*}
-    K_{m} = 2\pi i\sum_{k = 1}^{m}\text{Res}(f; ik)
+    K_{m} = 2\pi i \sum_{k = 1}^{m} \Res(f; ik)
 \end{equation*}
 Since the poles are simple
 \begin{equation*}
-    \text{Res}(f; ik) = \lim_{z \to ik}(z - ik)f(z) = \frac{1}{2ik}\prod_{j \neq k}\frac{1}{(ik)^{2} + j^{2}}
-        = \frac{1}{2ik}\prod_{j \neq k}\frac{1}{j^{2} - k^{2}}
+    \Res(f; ik) = \lim_{z \to ik}(z - ik)f(z) = \frac{1}{2ik} \prod_{j \neq k} \frac{1}{(ik)^{2} + j^{2}}
+        = \frac{1}{2ik} \prod_{j \neq k} \frac{1}{j^{2} - k^{2}}
 \end{equation*}
 Thus
 \begin{equation*}
-    K_{m} = 2\pi i\sum_{k = 1}^{m}\frac{1}{2ik}\prod_{j \neq k}\frac{1}{j^{2} - k^{2}}
-        = \pi\sum_{k = 1}^{m}\frac{1}{k}\prod_{j \neq k}\frac{1}{j^{2} - k^{2}}
+    K_{m} = 2\pi i \sum_{k = 1}^{m} \frac{1}{2ik} \prod_{j \neq k} \frac{1}{j^{2} - k^{2}}
+        = \pi \sum_{k = 1}^{m} \frac{1}{k} \prod_{j \neq k} \frac{1}{j^{2} - k^{2}}
 \end{equation*}
 Factor the product:
 \begin{equation*}
-    \prod_{j \neq k}j^{2} - k^{2} = \prod_{j \neq k}(j - k)\prod_{j \neq k}(j + k)
+    \prod_{j \neq k} j^{2} - k^{2} = \prod_{j \neq k}(j - k)\prod_{j \neq k}(j + k)
 \end{equation*}
 For fixed $k$,
 \begin{equation*}
@@ -98,23 +98,23 @@ For fixed $k$,
 \end{equation*}
 Therefore
 \begin{equation*}
-    \frac{1}{k}\prod_{j \neq k}\frac{1}{j^{2} - k^{2}} = \frac{1}{k}\left((-1)^{k - 1}(k - 1)!(m - k)! \cdot \frac{(m + k)!}{k!(2k)}\right)^{-1}
+    \frac{1}{k} \prod_{j \neq k} \frac{1}{j^{2} - k^{2}} = \frac{1}{k} \left((-1)^{k - 1}(k - 1)!(m - k)! \cdot \frac{(m + k)!}{k!(2k)} \right)^{-1}
         = \frac{(-1)^{k - 1}2k}{(m - k)!(m + k)!}
 \end{equation*}
 and
 \begin{equation*}
-    K_{m} = \pi\sum_{k = 1}^{m}\frac{(-1)^{k - 1}2k}{(m - k)!(m + k)!} = \frac{2\pi}{(2m)!}\sum_{k = 1}^{m}(-1)^{k - 1}k\binom{2m}{m - k}
+    K_{m} = \pi \sum_{k = 1}^{m} \frac{(-1)^{k - 1}2k}{(m - k)!(m + k)!} = \frac{2\pi}{(2m)!} \sum_{k = 1}^{m}(-1)^{k - 1}k \binom{2m}{m - k}
 \end{equation*}
 
-To simplify the sum $S \coloneqq \sum_{k = 1}^{m}(-1)^{k - 1}k\binom{2m}{m + k}$, we can use the method of generating functions (what else?).
+To simplify the sum $S \coloneqq \sum_{k = 1}^{m}(-1)^{k - 1}k \binom{2m}{m + k}$, we can use the method of generating functions (what else?).
 Recall the coefficient of $z^{m}$ in the product of two polynomials $A(z) = \sum a_{k}z^{k}$ and $B(z) = \sum b_{j}z^{j}$ is given by
 \begin{equation*}
-    [z^{m}]A(z)B(z) = \sum_{k}a_{k}b_{m - k}
+    [z^{m}] A(z)B(z) = \sum_{k} a_{k}b_{m - k}
 \end{equation*}
-Let's choose $A(z) = \sum_{k = 1}^{m}(-1)^{k - 1}kz^{k}$ and $B(z) = (1 + z)^{2m} = \sum_{j = 0}^{2m}\binom{2m}{j}z^{j}$. Then, the coefficient
+Let's choose $A(z) = \sum_{k = 1}^{m}(-1)^{k - 1}kz^{k}$ and $B(z) = (1 + z)^{2m} = \sum_{j = 0}^{2m} \binom{2m}{j} z^{j}$. Then, the coefficient
 of $z^{m}$ in the product $A(z)B(z)$ is precisely our sum $S$:
 \begin{equation*}
-    S = [z^{m}]\sum_{k = 1}^{m}(-1)^{k - 1}kz^{k}(1 + z)^{2m}
+    S = [z^{m}] \sum_{k = 1}^{m}(-1)^{k - 1}kz^{k}(1 + z)^{2m}
 \end{equation*}
 Since we only care about the coefficient of $z^{m}$, any terms in $A(z)$ with powers of $z$ strictly greater than $m$ will not contribute to the $z^{m}$ term
 when multiplied by $B(z)$ (as $B(z)$ contains only non-negative powers of $z$). Therefore, we can extend the upper limit of the sum in $A(z)$ to infinity
@@ -124,12 +124,12 @@ without changing the coefficient of $z^{m}$:
 \end{equation*}
 Hence
 \begin{equation*}
-    S = [z^{m}]\frac{z}{(1 + z)^{2}} \cdot (1 + z)^{2m} = [z^{m}]z(1 + z)^{2m - 2} = \binom{2m - 2}{m - 1}
+    S = [z^{m}] \frac{z}{(1 + z)^{2}} \cdot (1 + z)^{2m} = [z^{m}] z(1 + z)^{2m - 2} = \binom{2m - 2}{m - 1}
 \end{equation*}
 
 Finally
 \begin{equation*}
-    K_{m} = \frac{2\pi}{(2m)!}\binom{2m - 2}{m - 1} = \frac{\pi}{m(2m - 1)[(m - 1)!]^{2}}
+    K_{m} = \frac{2\pi}{(2m)!} \binom{2m - 2}{m - 1} = \frac{\pi}{m(2m - 1)[(m - 1)!]^{2}}
 \end{equation*}
 
 \section{Analytic functions and meromorphic functions}

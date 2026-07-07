@@ -11,15 +11,15 @@ A unimodal permutation can be viewed as a sequence of elements increasing to a p
     \mathcal{P}^{\mathcal{U}} = \mathrm{S}\textsc{et}(\mathcal{Z}) \star \mathcal{Z}^{\blacksquare} \star \mathrm{S}\textsc{et}(\mathcal{Z})
 \end{equation*}
 \begin{equation*}
-    P^{U}(z) = \int_{0}^{z}(e^{t} \cdot \frac{d}{dt}t \cdot e^{t})dt = \frac{1}{2}(e^{2z} - 1)
+    P^{U}(z) = \int_{0}^{z}\left(e^{t} \cdot \frac{\dd}{\dd t} t \cdot e^{t}\right)\dd t = \frac{1}{2}(e^{2z} - 1)
 \end{equation*}
 which yields
 \begin{equation*}
-    P^{U}_{n} = n![z^{n}]\frac{1}{2}e^{2z} = n!\frac{1}{2}\frac{2^{n}}{n!} = 2^{n - 1}
+    P^{U}_{n} = n![z^{n}] \frac{1}{2} e^{2z} = n!\frac{1}{2} \frac{2^{n}}{n!} = 2^{n - 1}
 \end{equation*}
 Alternatively
 \begin{equation*}
-    P^{U}_{n} = \sum_{k = 1}^{n}\binom{n - 1}{k - 1} = \sum_{j = 0}^{n - 1}\binom{n - 1}{j} = 2^{n - 1}
+    P^{U}_{n} = \sum_{k = 1}^{n} \binom{n - 1}{k - 1} = \sum_{j = 0}^{n - 1} \binom{n - 1}{j} = 2^{n - 1}
 \end{equation*}
 where $k$ is the position of $n$ in the permutation.
 
@@ -31,7 +31,7 @@ where $k$ is the position of $n$ in the permutation.
 
 The number of partitions of size $n$ with at most $k$ summands, each at most $l$, is
 \begin{equation} \label{eq:I.16.1}
-    [z^{n}]\frac{(1 - z)(1 - z^{2}) \cdots (1 - z^{k + l})}{((1 - z)(1 - z^{2}) \cdots (1 - z^{k})) \cdot ((1 - z)(1 - z^{2}) \cdots (1 - z^{l}))}
+    [z^{n}] \frac{(1 - z)(1 - z^{2}) \cdots (1 - z^{k + l})}{((1 - z)(1 - z^{2}) \cdots (1 - z^{k})) \cdot ((1 - z)(1 - z^{2}) \cdots (1 - z^{l}))}
 \end{equation}
 Let $f(k, l)$ denote the generating function where the coefficient of $z^{n}$ represents the number of such partitions.
 To derive a functional equation, consider the value of the largest part. There are two mutually exclusive possibilities:
@@ -41,7 +41,7 @@ the largest part is strictly less than $l$, or it is exactly $l$. This distincti
 \end{equation}
 We can derive \ref{eq:I.16.1} from this relation by introducing $F_{k}(x)$, the generating function for $f(k, l)$ with respect to the index $l$:
 \begin{equation*}
-    F_{k}(x) = \sum_{l = 0}^{\infty}f(k, l)x^{l}
+    F_{k}(x) = \sum_{l = 0}^{\infty} f(k, l)x^{l}
 \end{equation*}
 For the base case $k = 0$, the only valid partition is the empty partition of size $0$, implying $f(0,l) = 1$ for all $l \geq 0$. Thus
 \begin{equation*}
@@ -49,7 +49,7 @@ For the base case $k = 0$, the only valid partition is the empty partition of si
 \end{equation*}
 Summing \ref{eq:I.16.2} over $l \geq 1$ after multiplying by $x^{l}$, we obtain
 \begin{equation*}
-    \sum_{l = 1}^{\infty}f(k, l)x^{l} - \sum_{l = 1}^{\infty}f(k, l - 1)x^{l} = \sum_{l = 1}^{\infty}f(k - 1, l)(zx)^{l}
+    \sum_{l = 1}^{\infty} f(k, l)x^{l} - \sum_{l = 1}^{\infty} f(k, l - 1)x^{l} = \sum_{l = 1}^{\infty} f(k - 1, l)(zx)^{l}
 \end{equation*}
 \begin{itemize}
     \item The first term simplifies to $F_{k}(x) - 1$, since $f(k, 0) = 1$.
@@ -58,24 +58,24 @@ Summing \ref{eq:I.16.2} over $l \geq 1$ after multiplying by $x^{l}$, we obtain
 \end{itemize}
 Plugging these in:
 \begin{equation*}
-    (1 - x)F_{k}(x) - 1 = F_{k - 1}(zx) - 1 \implies F_{k}(x) = \frac{1}{1 - x}F_{k - 1}(zx)
+    (1 - x)F_{k}(x) - 1 = F_{k - 1}(zx) - 1 \implies F_{k}(x) = \frac{1}{1 - x} F_{k - 1}(zx)
 \end{equation*}
 Now we apply this functional relation repeatedly:
 \begin{equation*}
     \begin{aligned}
         F_{k}(x)
-        &= \frac{1}{1 - x}F_{k - 1}(zx) \\
-        &= \frac{1}{1 - x}\frac{1}{1 - zx}F_{k - 2}(z^{2}x) \\
+        &= \frac{1}{1 - x} F_{k - 1}(zx) \\
+        &= \frac{1}{1 - x} \frac{1}{1 - zx} F_{k - 2}(z^{2}x) \\
         &= \frac{1}{(1 - x)(1 - zx) \cdots (1 - z^{k - 1}x)}F_{0}(z^{k}x)
     \end{aligned}
 \end{equation*}
 Since $F_{0}(x) = \frac{1}{1 - x}$, we have $F_{0}(z^{k}x) = \frac{1}{1 - z^{k}x}$. Thus
 \begin{equation*}
-    F_{k}(x) = \sum_{l = 0}^{\infty}f(k, l)x^{l} = \frac{1}{(1 - x)(1 - zx) \cdots (1 - z^{k}x)}
+    F_{k}(x) = \sum_{l = 0}^{\infty} f(k, l)x^{l} = \frac{1}{(1 - x)(1 - zx) \cdots (1 - z^{k}x)}
 \end{equation*}
 Since all the roots of the denominator are distinct (assuming $|z| < 1$ or that $z$ is a formal variable), we can decompose this into a sum of partial fractions:
 \begin{equation*}
-    \frac{1}{\prod_{i = 0}^{k}(1 - z^{i}x)} = \sum_{j = 0}^{k}\frac{A_{j}}{1 - z^{j}x}
+    \frac{1}{\prod_{i = 0}^{k}(1 - z^{i}x)} = \sum_{j = 0}^{k} \frac{A_{j}}{1 - z^{j}x}
 \end{equation*}
 To find a specific $A_{j}$, we multiply both sides by $(1 - z^{j}x)$ and then
 set $x = z^{-j}$:
@@ -92,9 +92,9 @@ in each partial fraction. For a term $\frac{A_{j}}{1 - z^{j}x}$, the coefficient
 \begin{equation*}
     \begin{aligned}
         f(k, l)
-        &= \sum_{j = 0}^{k}A_{j}(z^{j})^{l} \\
-        &= \sum_{j = 0}^{k}\frac{(-1)^{j}z^{j(j + 1)/2} \cdot z^{jl}}{\prod_{i = 1}^{j}(1 - z^{i})\prod_{i = 1}^{k - j}(1 - z^{i})} \\
-        &= \frac{1}{\prod_{i = 1}^{k}(1 - z^{i})}\sum_{j = 0}^{k}\binom{k}{j}_{z}(-1)^{j}z^{j(j + 1)/2 + jl}
+        &= \sum_{j = 0}^{k} A_{j}(z^{j})^{l} \\
+        &= \sum_{j = 0}^{k} \frac{(-1)^{j}z^{j(j + 1)/2} \cdot z^{jl}}{\prod_{i = 1}^{j}(1 - z^{i})\prod_{i = 1}^{k - j}(1 - z^{i})} \\
+        &= \frac{1}{\prod_{i = 1}^{k}(1 - z^{i})} \sum_{j = 0}^{k} \binom{k}{j}_{z}(-1)^{j}z^{j(j + 1)/2 + jl}
     \end{aligned}
 \end{equation*}
 where $\binom{k}{j}_{z}$ is the Gaussian binomial coefficient:
@@ -111,11 +111,11 @@ We can rewrite the exponent in the sum:
 \end{equation*}
 Now the sum becomes
 \begin{equation*}
-    f(k, l) = \frac{1}{\prod_{i = 1}^{k}(1 - z^{i})}\sum_{j = 0}^{k}\binom{k}{j}_{z}(-1)^{j}z^{j(j - 1)/2}(z^{l + 1})^{j}
+    f(k, l) = \frac{1}{\prod_{i = 1}^{k}(1 - z^{i})} \sum_{j = 0}^{k} \binom{k}{j}_{z}(-1)^{j}z^{j(j - 1)/2}(z^{l + 1})^{j}
 \end{equation*}
 The $q$-binomial theorem states that for a variable $X$:
 \begin{equation} \label{eq:I.16.3}
-    \prod_{i = 0}^{k - 1}(1 - z^{i}X) = \sum_{j = 0}^{k}\binom{k}{j}_{z}(-1)^{j}z^{j(j - 1)/2}X^{j}
+    \prod_{i = 0}^{k - 1}(1 - z^{i}X) = \sum_{j = 0}^{k} \binom{k}{j}_{z}(-1)^{j}z^{j(j - 1)/2}X^{j}
 \end{equation}
 Plugging $X = z^{l + 1}$ into the theorem yields \ref{eq:I.16.1}
 \begin{equation*}
@@ -129,7 +129,7 @@ To prove \ref{eq:I.16.3}, let $P_{k}(X)$ be the product we are expanding:
 \begin{equation*}
     P_{k}(X) = \prod_{i = 0}^{k - 1}(1 - z^{i}X)
 \end{equation*}
-We want to show that $P_{k}(X) = \sum_{j = 0}^{k}\binom{k}{j}_{z}(-1)^{j}z^{j(j - 1)/2}X^{j}$.
+We want to show that $P_{k}(X) = \sum_{j = 0}^{k} \binom{k}{j}_{z}(-1)^{j}z^{j(j - 1)/2}X^{j}$.
 Consider the relationship between $P_{k}(X)$ and $P_{k - 1}(X)$. By definition:
 \begin{equation*}
     P_{k}(X) = (1 - z^{k - 1}X)P_{k - 1}(X)
@@ -142,9 +142,9 @@ Rearranging this gives us a functional equation for $P_{k}(X)$:
 \begin{equation*}
     (1 - X)P_{k}(zX) = (1 - z^{k}X)P_{k}(X)
 \end{equation*}
-Let $P_{k}(X) = \sum_{j = 0}^{k}c_{j}X^{j}$. We substitute this power series into the functional equation:
+Let $P_{k}(X) = \sum_{j = 0}^{k} c_{j}X^{j}$. We substitute this power series into the functional equation:
 \begin{equation*}
-    (1 - X)\sum_{j = 0}^{k}c_{j}(zX)^{j} = (1 - z^{k}X)\sum_{j = 0}^{k}c_{j}X^{j}
+    (1 - X)\sum_{j = 0}^{k} c_{j}(zX)^{j} = (1 - z^{k}X)\sum_{j = 0}^{k} c_{j}X^{j}
 \end{equation*}
 Now, we compare the coefficients of $X^{j}$ on both sides. For a specific power $j$:
 \begin{equation*}
@@ -152,22 +152,22 @@ Now, we compare the coefficients of $X^{j}$ on both sides. For a specific power 
 \end{equation*}
 Rearranging to solve for $c_{j}$ in terms of $c_{j - 1}$:
 \begin{equation*}
-    c_{j} = c_{j - 1}\frac{z^{j - 1} - z^{k}}{z^{j} - 1} = -c_{j - 1}z^{j - 1}\frac{1 - z^{k - j + 1}}{1 - z^{j}}
+    c_{j} = c_{j - 1} \frac{z^{j - 1} - z^{k}}{z^{j} - 1} = -c_{j - 1}z^{j - 1} \frac{1 - z^{k - j + 1}}{1 - z^{j}}
 \end{equation*}
 Starting from the base case $c_{0} = P_{k}(0) = 1$, we can find $c_{j}$ by iteration:
 \begin{equation*}
-    c_{1} = -c_{0}z^{0}\frac{1 - z^{k}}{1 - z^{1}}, \quad
-    c_{2} = -c_{1}z^{1}\frac{1 - z^{k - 1}}{1 - z^{2}} = (-1)^{2}z^{0 + 1}\frac{(1 - z^{k})(1 - z^{k - 1})}{(1 - z^{1})(1 - z^{2})}
+    c_{1} = -c_{0}z^{0} \frac{1 - z^{k}}{1 - z^{1}}, \quad
+    c_{2} = -c_{1}z^{1} \frac{1 - z^{k - 1}}{1 - z^{2}} = (-1)^{2}z^{0 + 1} \frac{(1 - z^{k})(1 - z^{k - 1})}{(1 - z^{1})(1 - z^{2})}
 \end{equation*}
 The exponent of $z$ becomes $0 + 1 + 2 + \cdots + (j - 1) = \frac{j(j - 1)}{2}$.
 The fraction is the definition of the Gaussian binomial coefficient $\binom{k}{j}_{z}$.
 Thus, the coefficient is
 \begin{equation*}
-    c_{j} = (-1)^{j}z^{j(j - 1)/2}\binom{k}{j}_{z}
+    c_{j} = (-1)^{j}z^{j(j - 1)/2} \binom{k}{j}_{z}
 \end{equation*}
 Plugging the coefficients back into the sum, we obtain
 \begin{equation*}
-    \prod_{i = 0}^{k - 1}(1 - z^{i}X) = \sum_{j = 0}^{k}\binom{k}{j}_{z}(-1)^{j}z^{j(j - 1)/2}X^{j}
+    \prod_{i = 0}^{k - 1}(1 - z^{i}X) = \sum_{j = 0}^{k} \binom{k}{j}_{z}(-1)^{j}z^{j(j - 1)/2}X^{j}
 \end{equation*}
 This completes the proof.
 
@@ -263,7 +263,7 @@ Now $G_{=}(z)$ is the OGF for compositions in which the sum of the first two var
 the sum of the last two.
 \begin{itemize}
     \item The number of compositions with $x_{1} + x_{2} = n$ is
-        $[z^{n}]\frac{1}{(1 - z)^{2}} = n + 1$.
+        $[z^{n}] \frac{1}{(1 - z)^{2}} = n + 1$.
     \item The number of compositions with $x_{3} + x_{4} = n$ is the same.
     \item For the equality $x_{1} + x_{2} = x_{3} + x_{4}$ to hold, both sums must equal some $n\geq 0$.
         \begin{equation*}
@@ -272,7 +272,7 @@ the sum of the last two.
 \end{itemize}
 Substituting $U(z)$ and $G_{=}(z)$ into our formula yields
 \begin{equation*}
-    F(z) = \frac{1}{2}\left[\frac{1}{(1 - z)^{4}} + \frac{1 + z^{2}}{(1 - z^{2})^{3}}\right] = \frac{1 + z + 2z^{2}}{(1 - z)^{4}(1 + z)^{3}}
+    F(z) = \frac{1}{2} \left[\frac{1}{(1 - z)^{4}} + \frac{1 + z^{2}}{(1 - z^{2})^{3}}\right] = \frac{1 + z + 2z^{2}}{(1 - z)^{4}(1 + z)^{3}}
 \end{equation*}
 
 \partsep
@@ -385,7 +385,7 @@ Euler's Pentagonal Number Theorem states that this product expands into the foll
 The exponents $g_{k} = \frac{k(3k - 1)}{2}$ are the generalized pentagonal numbers.
 The product of $P(z)$ and $A(z)$ must equal $1$:
 \begin{equation*}
-    \sum_{n = 0}^{\infty}p(n)z^{n} \cdot \sum_{k = -\infty}^{\infty}(-1)^{k}z^{g_{k}} = 1
+    \sum_{n = 0}^{\infty} p(n)z^{n} \cdot \sum_{k = -\infty}^{\infty}(-1)^{k}z^{g_{k}} = 1
 \end{equation*}
 Comparing the coefficient of $z^{n}$ on both sides yields the algorithmically useful recurrence:
 \begin{equation*}
@@ -451,16 +451,16 @@ The partial sums are
 % Note I.21
 \noteblock{I.21}{Lattice points.}
 
-We are interested in the number of integer solutions to the inequality $\sum_{i = 1}^{d}x_{i}^{2} \le n^{2}$.
+We are interested in the number of integer solutions to the inequality $\sum_{i = 1}^{d} x_{i}^{2} \le n^{2}$.
 First, consider a single coordinate $x_{i} \in \mathbb{Z}$. The ``size'' contributed by this coordinate to the sum of squares is $x_{i}^{2}$.
 The generating function for the possible values of a single coordinate, where the exponent of $z$ represents the square of the coordinate, is
 \begin{equation*}
-    \Theta(z) = \sum_{x \in \mathbb{Z}}z^{x^{2}} = 1 + 2\sum_{n = 1}^{\infty} z^{n^{2}}
+    \Theta(z) = \sum_{x \in \mathbb{Z}}z^{x^{2}} = 1 + 2 \sum_{n = 1}^{\infty} z^{n^{2}}
 \end{equation*}
 Since each coordinate $x_{1}, \cdots, x_{d}$ is chosen independently, the generating function for the sum of squares
 $\sum x_{i}^{2}$ is the $d$-th power of the individual generating function:
 \begin{equation*}
-    S(z) = (\Theta(z))^{d} = \sum_{k = 0}^{\infty}r_{d}(k)z^{k}
+    S(z) = (\Theta(z))^{d} = \sum_{k = 0}^{\infty} r_{d}(k)z^{k}
 \end{equation*}
 In this series, the coefficient $[z^{k}] S(z)$ (denoted as $r_{d}(k)$) is exactly the number of ways to represent the integer $k$ as a sum of $d$ squares.
 Geometrically, this is the number of lattice points on the sphere (the boundary) of radius $\sqrt{k}$.
@@ -470,11 +470,11 @@ The number of points $N(n, d)$ in the closed ball of radius $n$ is
 \end{equation*}
 In generating functions, the prefix sum of a sequence's coefficients is obtained by multiplying the generating function by $\frac{1}{1 - z}$. Therefore
 \begin{equation*}
-    \sum_{k = 0}^{\infty}\left(\sum_{j = 0}^{k}r_{d}(j)\right)z^{k} = \frac{1}{1 - z}S(z) = \frac{1}{1 - z}(\Theta(z))^{d}
+    \sum_{k = 0}^{\infty} \left(\sum_{j = 0}^{k} r_{d}(j)\right)z^{k} = \frac{1}{1 - z} S(z) = \frac{1}{1 - z}(\Theta(z))^{d}
 \end{equation*}
 To find the total count up to $k = n^{2}$, we simply extract the coefficient of $z^{n^{2}}$:
 \begin{equation*}
-    N(n, d) = [z^{n^{2}}]\frac{1}{1 - z}(\Theta(z))^{d}
+    N(n, d) = [z^{n^{2}}] \frac{1}{1 - z}(\Theta(z))^{d}
 \end{equation*}
 
 \section{Words and regular languages}
@@ -490,16 +490,16 @@ we consider the sum of the first $L + 1$ coefficients. This is represented by th
 \begin{equation*}
     S(z) = \frac{C(z)}{1 - z} = \frac{1 + z}{(1 - z)(1 - z - z^{2})}
 \end{equation*}
-The asymptotic growth of the sum $\sum_{j = 0}^{L}C_{j}$ is governed by the smallest singularity of $S(z)$.
+The asymptotic growth of the sum $\sum_{j = 0}^{L} C_{j}$ is governed by the smallest singularity of $S(z)$.
 Since the pole at $z = 1/\varphi$ (where $\varphi = \frac{1+\sqrt{5}}{2}$) is closer to the origin than the pole at $z = 1$,
 the exponential growth is dominated by $C(z)$. Specifically, as $L \to \infty$:
 \begin{equation*}
-    \sum_{j = 0}^{L}C_{j} \sim A \cdot \varphi^{L}
+    \sum_{j = 0}^{L} C_{j} \sim A \cdot \varphi^{L}
 \end{equation*}
 for some constant $A$. To find the required code length $L(n)$ for $n$ bits of information,
 we solve for $2^{n} \leq \sum_{j = 0}^{L} C_{j}$ by taking the base-2 logarithm:
 \begin{equation*}
-    n \leq \log_{2}\left(\sum_{j = 0}^{L}C_{j}\right) = L \log_{2}\varphi + O(1)
+    n \leq \log_{2}\left(\sum_{j = 0}^{L} C_{j}\right) = L \log_{2}\varphi + O(1)
 \end{equation*}
 Rearranging for $L$, we obtain the lower bound:
 \begin{equation*}
@@ -565,7 +565,7 @@ one word of length 2 and one word of length 3. Let $\hat{\mathcal{L}} = \{aa, bb
     \item Probability: $\hat{L}(1/2)$: This represents the probability that a random infinite string starts with a word in $\mathcal{L}$:
         $\hat{L}(1/2) = (1/2)^{2} + (1/2)^{3} = 1/4 + 1/8 = 3/8$. This means there is a 37.5\% chance
         that a random string begins with a word from this language.
-    \item Expected Time: $\frac{1}{2}\hat{L}'(1/2)$. To find the expected time (or more precisely, the \textbf{expected matched length}) at which a word
+    \item Expected Time: $\frac{1}{2} \hat{L}'(1/2)$. To find the expected time (or more precisely, the \textbf{expected matched length}) at which a word
         in $\mathcal{L}$ is first encountered: $\hat{L}'(z) = 2z + 3z^{2} \implies \hat{L}'(1/2) = 1.75 \implies E = 0.875$.
     \item Breakdown of the Result: The total expected value of 0.875 is formed as follows:
         \begin{itemize}
@@ -585,7 +585,7 @@ Consider a binary pattern of length $k$. The generating function $T(z)$ for the 
 The average waiting time (or expected occurrence time) can be derived directly from $T(z)$
 by evaluating its derivative at the point of the alphabet's inverse size ($z = 1/2$):
 \begin{equation*}
-    \left.z \frac{d}{dz} T(z)\right|_{z = 1/2} = 2^{k} c(1/2)
+    \left.z \frac{\dd}{\dd z} T(z)\right|_{z = 1/2} = 2^{k} c(1/2)
 \end{equation*}
 
 \section{Tree structures}
@@ -593,18 +593,18 @@ by evaluating its derivative at the point of the alphabet's inverse size ($z = 1
 \noteblock{I.39}{Unary–binary trees and Motzkin numbers.}
 
 We identify the characteristic polynomial as $\phi(u) = 1 + u + u^{2}$.
-To find the number of trees with $n$ nodes, $M_{n} = [z^{n}]M(z)$, we apply the Lagrange Inversion Theorem:
+To find the number of trees with $n$ nodes, $M_{n} = [z^{n}] M(z)$, we apply the Lagrange Inversion Theorem:
 \begin{equation*}
     \begin{aligned}
         M_{n}
-        &= \frac{1}{n}[u^{n - 1}]\phi(u)^{n} \\
-        &= \frac{1}{n}[u^{n - 1}](1 + u + u^{2})^{n} \\
-        &= \frac{1}{n}[u^{n - 1}]\sum_{j}\binom{n}{j}(u + u^{2})^{j} \\
-        &= \frac{1}{n}\sum_{j}\binom{n}{j}[u^{n - 1}]u^{j}(1 + u)^{j} \\
-        &= \frac{1}{n}\sum_{j}\binom{n}{j}[u^{n - j - 1}]\sum_{l}\binom{j}{l}u^{l} \\
-        &= \frac{1}{n}\sum_{j}\binom{n}{j}\binom{j}{n - j - 1} \\
-        &= \frac{1}{n}\sum_{k}\binom{n}{n - k}\binom{n - k}{n - (n - k) - 1} \\
-        &= \frac{1}{n}\sum_{k}\binom{n}{k}\binom{n - k}{k - 1}
+        &= \frac{1}{n} [u^{n - 1}] \phi(u)^{n} \\
+        &= \frac{1}{n} [u^{n - 1}] (1 + u + u^{2})^{n} \\
+        &= \frac{1}{n} [u^{n - 1}] \sum_{j} \binom{n}{j}(u + u^{2})^{j} \\
+        &= \frac{1}{n} \sum_{j} \binom{n}{j} [u^{n - 1}] u^{j}(1 + u)^{j} \\
+        &= \frac{1}{n} \sum_{j} \binom{n}{j} [u^{n - j - 1}] \sum_{l} \binom{j}{l} u^{l} \\
+        &= \frac{1}{n} \sum_{j} \binom{n}{j} \binom{j}{n - j - 1} \\
+        &= \frac{1}{n} \sum_{k} \binom{n}{n - k} \binom{n - k}{n - (n - k) - 1} \\
+        &= \frac{1}{n} \sum_{k} \binom{n}{k} \binom{n - k}{k - 1}
     \end{aligned}
 \end{equation*}
 
@@ -613,32 +613,32 @@ To find the number of trees with $n$ nodes, $M_{n} = [z^{n}]M(z)$, we apply the 
 
 We want to prove the last equality:
 \begin{equation*}
-    \frac{(-1)^{n - 1}}{n}\sum_{k}(-2)^{k}\binom{n}{k + 1}\binom{n + k - 1}{k} =
-        \frac{1}{n}\sum_{k = 0}^{n - 2}\binom{2n - k - 2}{n - 1}\binom{n - 2}{k}
+    \frac{(-1)^{n - 1}}{n} \sum_{k}(-2)^{k} \binom{n}{k + 1} \binom{n + k - 1}{k} =
+        \frac{1}{n} \sum_{k = 0}^{n - 2} \binom{2n - k - 2}{n - 1} \binom{n - 2}{k}
 \end{equation*}
 Multiplying by $n$, the statement is equivalent to
 \begin{equation*}
-    (-1)^{n - 1}\sum_{k = 0}^{n - 1}(-2)^{k}\binom{n}{k + 1}\binom{n + k - 1}{k} = \sum_{k = 0}^{n - 2}\binom{2n - k - 2}{n - 1}\binom{n - 2}{k}
+    (-1)^{n - 1} \sum_{k = 0}^{n - 1}(-2)^{k} \binom{n}{k + 1} \binom{n + k - 1}{k} = \sum_{k = 0}^{n - 2} \binom{2n - k - 2}{n - 1} \binom{n - 2}{k}
 \end{equation*}
 
 \subhead{Step 1. Re-index the left sum.}
 Using $\binom{n}{k + 1} = \binom{n}{n - 1 - k}$ and $\binom{n + k - 1}{k} = \binom{n + k - 1}{n - 1}$, set $j = n - 1 - k$:
 \begin{equation*}
-    L = (-1)^{n - 1}\sum_{j = 0}^{n - 1}(-2)^{n - 1 - j}\binom{n}{j}\binom{2n - 2 - j}{n - 1} =
-        2^{n - 1}\sum_{j = 0}^{n - 1}\left(-\frac{1}{2}\right)^{j}\binom{n}{j}\binom{2n - 2 - j}{n - 1}
+    L = (-1)^{n - 1} \sum_{j = 0}^{n - 1}(-2)^{n - 1 - j} \binom{n}{j} \binom{2n - 2 - j}{n - 1} =
+        2^{n - 1} \sum_{j = 0}^{n - 1} \left(-\frac{1}{2} \right)^{j} \binom{n}{j} \binom{2n - 2 - j}{n - 1}
 \end{equation*}
 
 \subhead{Step 2. Express as a coefficient extraction.}
-Since $\binom{2n - 2 - j}{n - 1} = [z^{n - 1}](1 + z)^{2n - 2 - j}$, we have
+Since $\binom{2n - 2 - j}{n - 1} = [z^{n - 1}] (1 + z)^{2n - 2 - j}$, we have
 \begin{equation*}
     \begin{aligned}
         L
-        &= 2^{n - 1}\sum_{j = 0}^{n - 1}\left(-\frac{1}{2}\right)^{j}\binom{n}{j}[z^{n - 1}](1 + z)^{2n - 2 - j} \\
-        &= 2^{n - 1}[z^{n - 1}]\sum_{j = 0}^{n - 1}\left(-\frac{1}{2}\right)^{j}\binom{n}{j}(1 + z)^{2n - 2 - j} \\
-        &= 2^{n - 1}[z^{n - 1}](1 + z)^{2n - 2}\sum_{j = 0}^{n - 1}\binom{n}{j}\left(-\frac{1}{2(1 + z)}\right)^{j} \; \text{safe to add} \; j = n \\
-        &= 2^{n - 1}[z^{n - 1}](1 + z)^{2n - 2}\left(1 - \frac{1}{2(1 + z)}\right)^{n} \\
-        &= 2^{n - 1}[z^{n - 1}](1 + z)^{2n - 2}\frac{(1 + 2z)^{n}}{2^{n}(1 + z)^{n}} \\
-        &= \frac{1}{2}[z^{n - 1}](1 + z)^{n - 2}(1 + 2z)^{n}
+        &= 2^{n - 1} \sum_{j = 0}^{n - 1} \left(-\frac{1}{2} \right)^{j} \binom{n}{j} [z^{n - 1}] (1 + z)^{2n - 2 - j} \\
+        &= 2^{n - 1}[z^{n - 1}] \sum_{j = 0}^{n - 1} \left(-\frac{1}{2} \right)^{j} \binom{n}{j}(1 + z)^{2n - 2 - j} \\
+        &= 2^{n - 1}[z^{n - 1}] (1 + z)^{2n - 2} \sum_{j = 0}^{n - 1} \binom{n}{j} \left(-\frac{1}{2(1 + z)} \right)^{j} \; \text{safe to add} \; j = n \\
+        &= 2^{n - 1}[z^{n - 1}] (1 + z)^{2n - 2}\left(1 - \frac{1}{2(1 + z)} \right)^{n} \\
+        &= 2^{n - 1}[z^{n - 1}] (1 + z)^{2n - 2} \frac{(1 + 2z)^{n}}{2^{n}(1 + z)^{n}} \\
+        &= \frac{1}{2} [z^{n - 1}] (1 + z)^{n - 2}(1 + 2z)^{n}
     \end{aligned}
 \end{equation*}
 
@@ -646,25 +646,25 @@ Since $\binom{2n - 2 - j}{n - 1} = [z^{n - 1}](1 + z)^{2n - 2 - j}$, we have
 Let $P(z) = (1 + z)^{n - 2}(1 + 2z)^{n}$, of degree $2n - 2$.
 The coefficient of $z^{n - 1}$ in $P(z)$ equals the coefficient of $z^{n - 1}$ in its reversed polynomial $z^{2n - 2}P(1/z)$:
 \begin{equation*}
-    z^{2n - 2}P(1/z) = z^{2n - 2}\left(1 + \frac{1}{z}\right)^{n - 2}\left(1 + \frac{2}{z}\right)^{n} = (z + 1)^{n - 2}(z + 2)^{n}
+    z^{2n - 2}P(1/z) = z^{2n - 2}\left(1 + \frac{1}{z} \right)^{n - 2}\left(1 + \frac{2}{z} \right)^{n} = (z + 1)^{n - 2}(z + 2)^{n}
 \end{equation*}
 Hence
 \begin{equation*}
-    L = \frac{1}{2}[z^{n - 1}](1 + z)^{n - 2}(2 + z)^{n}
+    L = \frac{1}{2} [z^{n - 1}] (1 + z)^{n - 2}(2 + z)^{n}
 \end{equation*}
 
 \subhead{Step 4. Express the right sum as a coefficient.}
-Similarly, $\binom{2n - k - 2}{n - 1} = [z^{n - 1}](1 + z)^{2n - k - 2}$, so
+Similarly, $\binom{2n - k - 2}{n - 1} = [z^{n - 1}] (1 + z)^{2n - k - 2}$, so
 \begin{equation*}
     \begin{aligned}
         R
-        &= \sum_{k = 0}^{n - 2}\binom{2n - k - 2}{n - 1}\binom{n - 2}{k} \\
-        &= \sum_{k = 0}^{n - 2}[z^{n - 1}](1 + z)^{2n - k - 2}\binom{n - 2}{k} \\
-        &= [z^{n - 1}]\sum_{k = 0}^{n - 2}(1 + z)^{2n - k - 2}\binom{n - 2}{k} \\
-        &= [z^{n - 1}](1 + z)^{2n - 2}\sum_{k = 0}^{n - 2}\binom{n - 2}{k}(1 + z)^{-k} \\
-        &= [z^{n - 1}](1 + z)^{2n - 2}\left(1 + \frac{1}{1 + z}\right)^{n - 2} \\
-        &= [z^{n - 1}](1 + z)^{2n - 2}\frac{(2 + z)^{n - 2}}{(1 + z)^{n - 2}} \\
-        &= [z^{n - 1}](1 + z)^{n}(2 + z)^{n - 2}
+        &= \sum_{k = 0}^{n - 2} \binom{2n - k - 2}{n - 1} \binom{n - 2}{k} \\
+        &= \sum_{k = 0}^{n - 2} [z^{n - 1}] (1 + z)^{2n - k - 2} \binom{n - 2}{k} \\
+        &= [z^{n - 1}] \sum_{k = 0}^{n - 2}(1 + z)^{2n - k - 2} \binom{n - 2}{k} \\
+        &= [z^{n - 1}] (1 + z)^{2n - 2} \sum_{k = 0}^{n - 2} \binom{n - 2}{k}(1 + z)^{-k} \\
+        &= [z^{n - 1}] (1 + z)^{2n - 2}\left(1 + \frac{1}{1 + z} \right)^{n - 2} \\
+        &= [z^{n - 1}] (1 + z)^{2n - 2} \frac{(2 + z)^{n - 2}}{(1 + z)^{n - 2}} \\
+        &= [z^{n - 1}] (1 + z)^{n}(2 + z)^{n - 2}
     \end{aligned}
 \end{equation*}
 
@@ -674,12 +674,12 @@ have the same coefficient of $z^{n - 1}$. Their difference is
 \begin{equation*}
     \begin{aligned}
         \Delta
-        &= \frac{1}{2}[z^{n - 1}](1 + z)^{n - 2}(2 + z)^{n} - [z^{n - 1}](1 + z)^{n}(2 + z)^{n - 2} \\
-        &= \frac{1}{2}[z^{n - 1}](1 + z)^{n - 2}(2 + z)^{n - 2}[(2 + z)^{2} - 2(1 + z)^{2}] \\
-        &= \frac{1}{2}[z^{n - 1}](1 + z)^{n - 2}(2 + z)^{n - 2}(2 - z^{2})
+        &= \frac{1}{2} [z^{n - 1}] (1 + z)^{n - 2}(2 + z)^{n} - [z^{n - 1}] (1 + z)^{n}(2 + z)^{n - 2} \\
+        &= \frac{1}{2} [z^{n - 1}] (1 + z)^{n - 2}(2 + z)^{n - 2}[(2 + z)^{2} - 2(1 + z)^{2}] \\
+        &= \frac{1}{2} [z^{n - 1}] (1 + z)^{n - 2}(2 + z)^{n - 2}(2 - z^{2})
     \end{aligned}
 \end{equation*}
-We must prove $[z^{n - 1}]f(z) = 0$, where
+We must prove $[z^{n - 1}] f(z) = 0$, where
 \begin{equation*}
     f(z) = (1 + z)^{n - 2}(2 + z)^{n - 2}(2 - z^{2})
 \end{equation*}
@@ -690,12 +690,12 @@ $f(z)$ is a polynomial of degree $2n - 2$. Compute $f(2 / z)$:
     \begin{aligned}
         f(2/z)
         &= (1 + 2/z)^{n - 2}(2 + 2/z)^{n - 2}\left(2 - (2/z)^{2}\right) \\
-        &= \left(\frac{2 + z}{z}\right)^{n - 2}\left(\frac{2(1 + z)}{z}\right)^{n - 2}\left(2 - \frac{4}{z^{2}}\right) \\
+        &= \left(\frac{2 + z}{z} \right)^{n - 2}\left(\frac{2(1 + z)}{z} \right)^{n - 2}\left(2 - \frac{4}{z^{2}}\right) \\
         &= \frac{(2 + z)^{n - 2}(1 + z)^{n - 2}2^{n - 2}}{z^{2n - 4}} \cdot \frac{-2(2 - z^{2})}{z^{2}} \\
-        &= -2^{n - 1}\frac{f(z)}{z^{2n - 2}}
+        &= -2^{n - 1} \frac{f(z)}{z^{2n - 2}}
     \end{aligned}
 \end{equation*}
-Hence $z^{2n - 2}f(2/z) = -2^{n - 1}f(z)$. Writing $f(z) = \sum_{k = 0}^{2n - 2}a_{k}z^{k}$, the coefficient of $z^{n - 1}$ corresponds to
+Hence $z^{2n - 2}f(2/z) = -2^{n - 1}f(z)$. Writing $f(z) = \sum_{k = 0}^{2n - 2} a_{k}z^{k}$, the coefficient of $z^{n - 1}$ corresponds to
 $k = n - 1$. Equating coefficients gives $a_{n - 1}2^{n - 1} = -2^{n - 1}a_{n - 1} \implies a_{n - 1} = 0$.
 
 % Note I.42.
@@ -718,7 +718,7 @@ Multiplying both sides by $r(z)$:
 \end{equation*}
 Rearranging:
 \begin{equation*}
-    p(z)r(z)S'(z) + (p'(z)r(z) - \frac{1}{k}p(z)r'(z))S(z) = \frac{1}{k}q(z)r'(z) - q'(z)r(z)
+    p(z)r(z)S'(z) + (p'(z)r(z) - \frac{1}{k} p(z)r'(z))S(z) = \frac{1}{k} q(z)r'(z) - q'(z)r(z)
 \end{equation*}
 Plugging $p(z) = -4$, $q(z) = 1 + z$, $k = 2$, and $r(z) = 1 - 6z + z^{2}$ into the equation and simplifying yields
 \begin{equation*}
@@ -729,36 +729,36 @@ from which the recurrence follows.
 % Note I.43.
 \noteblock{I.43}{Fast determination of the Cayley–Pólya numbers.}
 \begin{equation*}
-    H(z) = z \exp\left(H(z) + \frac{1}{2}H(z^{2}) + \cdots\right)
+    H(z) = z \exp\left(H(z) + \frac{1}{2} H(z^{2}) + \cdots\right)
 \end{equation*}
 
 \subhead{Step 1. Take the Natural Logarithm.}
 First, we take the log of both sides to bring down the terms in the exponent:
 \begin{equation*}
-    \ln H(z) = \ln z + \sum_{k = 1}^{\infty}\frac{1}{k}H(z^{k})
+    \ln H(z) = \ln z + \sum_{k = 1}^{\infty} \frac{1}{k} H(z^{k})
 \end{equation*}
 
 \subhead{Step 2. Differentiate with respect to $z$.}
-Now, we apply the derivative operator $\frac{d}{dz}$:
+Now, we apply the derivative operator $\frac{\dd}{\dd z}$:
 \begin{equation*}
-    \frac{H'(z)}{H(z)} = \frac{1}{z} + \sum_{k = 1}^{\infty}\frac{1}{k}H'(z^{k}) \cdot kz^{k - 1} = \frac{1}{z} + \sum_{k = 1}^{\infty}z^{k - 1}H'(z^{k})
+    \frac{H'(z)}{H(z)} = \frac{1}{z} + \sum_{k = 1}^{\infty} \frac{1}{k} H'(z^{k}) \cdot kz^{k - 1} = \frac{1}{z} + \sum_{k = 1}^{\infty} z^{k - 1}H'(z^{k})
 \end{equation*}
 
 \subhead{Step 3. Multiply by $zH(z)$.}
 To clear the fractions and align the powers of $z$, we multiply the entire equation by $zH(z)$
 \begin{equation*}
-    zH'(z) = H(z)\left(1 + \sum_{k = 1}^{\infty}z^{k}H'(z^{k})\right)
+    zH'(z) = H(z)\left(1 + \sum_{k = 1}^{\infty} z^{k}H'(z^{k})\right)
 \end{equation*}
 
 \subhead{Step 4. Substitute Power Series.}
-We represent $H(z)$ as a formal power series $\sum_{n = 1}^{\infty}H_{n}z^{n}$. Note that
+We represent $H(z)$ as a formal power series $\sum_{n = 1}^{\infty} H_{n}z^{n}$. Note that
 \begin{itemize}
-    \item $zH'(z) = \sum_{n = 1}^{\infty}n H_{n} z^{n}$
-    \item $z^{k}H'(z^{k}) = \sum_{m = 1}^{\infty}m H_{m} z^{mk}$
+    \item $zH'(z) = \sum_{n = 1}^{\infty} n H_{n} z^{n}$
+    \item $z^{k}H'(z^{k}) = \sum_{m = 1}^{\infty} m H_{m} z^{mk}$
 \end{itemize}
 Plugging these into our equation:
 \begin{equation*}
-    \sum_{n = 1}^{\infty}n H_{n} z^{n} = H(z) + H(z)\sum_{k = 1}^{\infty}\sum_{m = 1}^{\infty}m H_{m} z^{mk}
+    \sum_{n = 1}^{\infty} n H_{n} z^{n} = H(z) + H(z)\sum_{k = 1}^{\infty} \sum_{m = 1}^{\infty} m H_{m} z^{mk}
 \end{equation*}
 
 \subhead{Step 5. The Recurrence Relation.}
@@ -766,25 +766,25 @@ By extracting the coefficient of $z^{n}$ from both sides, we arrive at the recur
 The double sum represents a convolution where we look for indices such that $mk + j = n$ (where $j$ is the index from the $H(z)$ term).
 The standard form for the recurrence of these coefficients is
 \begin{equation*}
-    (n - 1)H_{n} = \sum_{l = 1}^{n - 1}H_{n - l}\left(\sum_{d|l}d H_{d}\right)
+    (n - 1)H_{n} = \sum_{l = 1}^{n - 1} H_{n - l}\left(\sum_{d|l} d H_{d}\right)
 \end{equation*}
 Or, more commonly expressed by isolating $H_{n}$:
 \begin{equation*}
     H_{n}
-    = \frac{1}{n - 1}\sum_{l = 1}^{n - 1}H_{n - l}\left(\sum_{d|l}d H_{d}\right)
-    = \frac{1}{n - 1}\sum_{l = 1}^{n - 1}a_{l}H_{n - l}
+    = \frac{1}{n - 1} \sum_{l = 1}^{n - 1} H_{n - l}\left(\sum_{d|l} d H_{d}\right)
+    = \frac{1}{n - 1} \sum_{l = 1}^{n - 1} a_{l}H_{n - l}
 \end{equation*}
 To manually calculate the first few values using this recurrence, we start with the base case $H_{1} = 1$
 representing the root of the tree.
 \begin{itemize}
     \item To find $H_{2}$, we set $n = 2$. The summation runs for $l = 1$. The only divisor of $1$ is $1$.
-        $a_{1} = \sum_{d|1}d H_{d} = 1 \cdot H_{1} = 1 \implies
+        $a_{1} = \sum_{d|1} d H_{d} = 1 \cdot H_{1} = 1 \implies
         H_{2} = \frac{1}{2 - 1}(H_{2 - 1} \cdot a_{1}) = 1$.
     \item For $H_{3}$, the summation runs for $l = 1$ and $l = 2$. The divisors of $2$ are $1$ and $2$.
-        $a_{2} = \sum_{d|2}d H_{d} = 1 \cdot H_{1} + 2 \cdot H_{2} = 3 \implies
+        $a_{2} = \sum_{d|2} d H_{d} = 1 \cdot H_{1} + 2 \cdot H_{2} = 3 \implies
         H_{3} = \frac{1}{3 - 1}(H_{3 - 1} \cdot a_{1} + H_{3 - 2} \cdot a_{2}) = 2$.
     \item For $H_{4}$, the summation runs for $l = 1, 2, 3$. The divisors of $3$ are $1$ and $3$.
-        $a_{3} = \sum_{d|3}d H_{d} = 1 \cdot H_{1} + 3 \cdot H_{3} = 7 \implies
+        $a_{3} = \sum_{d|3} d H_{d} = 1 \cdot H_{1} + 3 \cdot H_{3} = 7 \implies
         H_{4} = \frac{1}{4 - 1}(H_{4 - 1} \cdot a_{1} + H_{4 - 2} \cdot a_{2} + H_{4 - 3} \cdot a_{3}) = 4$.
 \end{itemize}
 
@@ -818,7 +818,7 @@ that hit $-1$ and end at $k \geq 0$ is exactly the same as the number of unrestr
 that end at $-k - 2 < -1$. Thus, Meanders end at $k$ = (Paths that end at $k$) $-$ (Paths that hit $-1$ and end at $k$)
 = (Paths that end at $k$) $-$ (Paths end at $-k - 2$). Summing over all possible final altitudes $k \geq 0$, we get a telescoping sum:
 \begin{equation*}
-    M_{n} = \sum_{k \geq 0}[N(n, k) - N(n, k + 2)]
+    M_{n} = \sum_{k \geq 0} [N(n, k) - N(n, k + 2)]
 \end{equation*}
 \begin{itemize}
     \item $n$ is even ($n = 2m$)
@@ -836,44 +836,44 @@ We want to show that
 \end{equation*}
 implies
 \begin{equation*}
-    \sum_{j = 0}^{v}D_{j} = O(16^{v}m^{v}v^{-3/2})
+    \sum_{j = 0}^{v} D_{j} = O(16^{v}m^{v}v^{-3/2})
 \end{equation*}
 We prove the following general statement: \\
 Let $c > 1$ and $\alpha > 0$. Define $a_{n} = c^{n}n^{-\alpha}$ for $n \geq 1$ and let $a_{0} > 0$ be a constant.
-If $D_{n} = O(a_{n})$, then $\sum_{j = 0}^{v}D_{j} = O(c^{v}v^{-\alpha})$ as $v \to \infty$. \\
+If $D_{n} = O(a_{n})$, then $\sum_{j = 0}^{v} D_{j} = O(c^{v}v^{-\alpha})$ as $v \to \infty$. \\
 
 Proof. Because $D_{n} = O(a_{n})$, there exists $M > 0$ and $N \geq 1$ such that $D_{n} \leq Mc^{n}n^{-\alpha}$ for all $n \geq N$.
 For $v \geq N$ we split:
 \begin{equation*}
-    \sum_{j = 0}^{v}D_{j} \leq \underbrace{\sum_{j = 0}^{N - 1}D_{j}}_{C_{0}} + M\sum_{j = N}^{v}c^{j}j^{-\alpha}
+    \sum_{j = 0}^{v} D_{j} \leq \underbrace{\sum_{j = 0}^{N - 1} D_{j}}_{C_{0}} + M \sum_{j = N}^{v} c^{j}j^{-\alpha}
 \end{equation*}
-Focus on $S(v) = \sum_{j = N}^{v}c^{j}j^{-\alpha}$. Split at $j = \lfloor v/2 \rfloor$:
+Focus on $S(v) = \sum_{j = N}^{v} c^{j}j^{-\alpha}$. Split at $j = \lfloor v/2 \rfloor$:
 \begin{equation*}
-    S(v) = \underbrace{\sum_{j = N}^{\lfloor v/2 \rfloor}c^{j}j^{-\alpha}}_{\text{early}}
-        + \underbrace{\sum_{j = \lfloor v/2 \rfloor + 1}^{v}c^{j}j^{-\alpha}}_{\text{tail}}
+    S(v) = \underbrace{\sum_{j = N}^{\lfloor v/2 \rfloor} c^{j}j^{-\alpha}}_{\text{early}}
+        + \underbrace{\sum_{j = \lfloor v/2 \rfloor + 1}^{v} c^{j}j^{-\alpha}}_{\text{tail}}
 \end{equation*}
 \textbf{Early terms.} For $j \leq v/2$ we have $c^{j} \leq c^{v/2}$. Also since $\alpha > 0$, the factor $j^{-\alpha}$ is decreasing;
 its maximum is at $j = N$, so $j^{-\alpha} \leq N^{-\alpha}$. Thus
 \begin{equation*}
-    \sum_{j = N}^{\lfloor v/2 \rfloor}c^{j}j^{-\alpha}
-        \leq N^{-\alpha}\sum_{j = N}^{\lfloor v/2 \rfloor}c^{j}
-        \leq N^{-\alpha}\frac{c^{v/2 + 1}}{c - 1} = O(c^{v/2})
+    \sum_{j = N}^{\lfloor v/2 \rfloor} c^{j}j^{-\alpha}
+        \leq N^{-\alpha} \sum_{j = N}^{\lfloor v/2 \rfloor} c^{j}
+        \leq N^{-\alpha} \frac{c^{v/2 + 1}}{c - 1} = O(c^{v/2})
 \end{equation*}
 Because $c > 1$, $c^{v/2}$ is exponentially smaller than $c^{v}$, so this part is $o(c^{v}v^{-\alpha})$. \\
 \textbf{Tail terms.} For $j \geq v/2$, $j^{-\alpha} \leq (v/2)^{-\alpha} = 2^{\alpha}v^{-\alpha}$. Consequently
 \begin{equation*}
-    \sum_{j = \lfloor v/2 \rfloor + 1}^{v}c^{j}j^{-\alpha}
-        \leq 2^{\alpha}v^{-\alpha}\sum_{j = \lfloor v/2 \rfloor + 1}^{v}c^{j}
-        \leq 2^{\alpha}v^{-\alpha}\frac{c^{v + 1}}{c - 1} = O(c^{v}v^{-\alpha})
+    \sum_{j = \lfloor v/2 \rfloor + 1}^{v} c^{j}j^{-\alpha}
+        \leq 2^{\alpha}v^{-\alpha} \sum_{j = \lfloor v/2 \rfloor + 1}^{v} c^{j}
+        \leq 2^{\alpha}v^{-\alpha} \frac{c^{v + 1}}{c - 1} = O(c^{v}v^{-\alpha})
 \end{equation*}
 Putting it together, $S(v) = o(c^{v}v^{-\alpha}) + O(c^{v}v^{-\alpha}) = O(c^{v}v^{-\alpha})$. Hence
 \begin{equation*}
-    \sum_{j = 0}^{v}D_{j} = C_{0} + MS(v) = O(1) + O(c^{v}v^{-\alpha}) = O(c^{v}v^{-\alpha})
+    \sum_{j = 0}^{v} D_{j} = C_{0} + MS(v) = O(1) + O(c^{v}v^{-\alpha}) = O(c^{v}v^{-\alpha})
 \end{equation*}
 
 Now we show
 \begin{equation*}
-    \sum_{j = 0}^{v}D_{j} = O(16^{v}m^{v}v^{-3/2}) = o(\lVert \Omega \rVert)
+    \sum_{j = 0}^{v} D_{j} = O(16^{v}m^{v}v^{-3/2}) = o(\lVert \Omega \rVert)
 \end{equation*}
 by taking for $v$ the value
 \begin{equation*}
@@ -885,17 +885,17 @@ Note that
 \end{equation*}
 Hence the whole bound becomes
 \begin{equation*}
-    \sum_{j = 0}^{v}D_{j} = O(2^{2^{m}}v^{-3/2})
+    \sum_{j = 0}^{v} D_{j} = O(2^{2^{m}}v^{-3/2})
 \end{equation*}
 Dividing by $\lVert \Omega \rVert$:
 \begin{equation*}
-    \frac{\sum_{j = 0}^{v}D_{j}}{\lVert \Omega \rVert} = O(v^{-3/2})
+    \frac{\sum_{j = 0}^{v} D_{j}}{\lVert \Omega \rVert} = O(v^{-3/2})
 \end{equation*}
 As $m \to \infty$, $v \to \infty$, so $v^{-3/2} \to 0$; therefore
 \begin{equation*}
-    \frac{\sum_{j = 0}^{v}D_{j}}{\lVert \Omega \rVert} \to 0
+    \frac{\sum_{j = 0}^{v} D_{j}}{\lVert \Omega \rVert} \to 0
 \end{equation*}
-which is exactly $\sum_{j = 0}^{v}D_{j} = o(\lVert \Omega \rVert)$.
+which is exactly $\sum_{j = 0}^{v} D_{j} = o(\lVert \Omega \rVert)$.
 
 \section{Additional constructions}
 % Note I.62.
@@ -907,24 +907,24 @@ The generating function for the power set construction $\mathrm{PS}\textsc{et}(\
 \begin{equation*}
     A(z, u)
         = \prod_{\beta \in \mathcal{B}}\left(1 + uz^{|\beta|}\right)
-        = \exp\left(\sum_{j \geq 1}(-1)^{j - 1}\frac{u^{j}}{j}B(z^{j})\right)
+        = \exp\left(\sum_{j \geq 1}(-1)^{j - 1} \frac{u^{j}}{j}B(z^{j})\right)
 \end{equation*}
-Here, the coefficient $[u^{k}]A(z, u) = f^{\langle k \rangle}(z)$ represents the generating function for sets containing exactly $k$ distinct components.
+Here, the coefficient $[u^{k}] A(z, u) = f^{\langle k \rangle}(z)$ represents the generating function for sets containing exactly $k$ distinct components.
 While the power set construction satisfies the ``no-repeat'' constraint, it treats the collection as unordered.
 To transform these sets into sequences, we multiply the generating function for sets of size $k$ by $k!$ to account for all possible permutations.
-Using the Eulerian integral representation $k! = \int_{0}^{\infty}e^{-u}u^{k}du$, we can express the generating function for distinct sequences,
+Using the Eulerian integral representation $k! = \int_{0}^{\infty} e^{-u}u^{k}\,\dd u$, we can express the generating function for distinct sequences,
 $\mathcal{S}_{\text{distinct}}(z)$, as follows:
 \begin{equation*}
     \begin{aligned}
         \mathcal{S}_{\text{distinct}}(z)
             &= \sum_{k \geq 0}(\text{Sets of size k}) \cdot k! \\
-            &= \sum_{k \geq 0}f^{\langle k \rangle}(z) \cdot k! \\
-            &= \sum_{k \geq 0}f^{\langle k \rangle}(z) \cdot \int_{0}^{\infty}e^{-u}u^{k}du \\
-            &= \sum_{k \geq 0}\int_{0}^{\infty}f^{\langle k \rangle}(z)e^{-u}u^{k}du \\
-            &= \int_{0}^{\infty}\sum_{k \geq 0}f^{\langle k \rangle}(z)e^{-u}u^{k}du \\
-            &= \int_{0}^{\infty}\sum_{k \geq 0}f^{\langle k \rangle}(z)u^{k} \cdot e^{-u}du \\
-            &= \int_{0}^{\infty}A(z, u) \cdot e^{-u}du \\
-            &= \int_{0}^{\infty}\exp\left(\sum_{j \geq 1}(-1)^{j - 1}\frac{u^{j}}{j}B(z^{j})\right)e^{-u}du
+            &= \sum_{k \geq 0} f^{\langle k \rangle}(z) \cdot k! \\
+            &= \sum_{k \geq 0} f^{\langle k \rangle}(z) \cdot \int_{0}^{\infty} e^{-u}u^{k}\,\dd u \\
+            &= \sum_{k \geq 0} \int_{0}^{\infty} f^{\langle k \rangle}(z)e^{-u}u^{k}\,\dd u \\
+            &= \int_{0}^{\infty} \sum_{k \geq 0} f^{\langle k \rangle}(z)e^{-u}u^{k}\,\dd u \\
+            &= \int_{0}^{\infty} \sum_{k \geq 0} f^{\langle k \rangle}(z)u^{k} \cdot e^{-u}\,\dd u \\
+            &= \int_{0}^{\infty} A(z, u) \cdot e^{-u}\,\dd u \\
+            &= \int_{0}^{\infty} \exp\left(\sum_{j \geq 1}(-1)^{j - 1} \frac{u^{j}}{j}B(z^{j})\right)e^{-u}\,\dd u
     \end{aligned}
 \end{equation*}
 
