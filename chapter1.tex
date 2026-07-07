@@ -2,16 +2,10 @@
 \chapter{COMBINATORIAL STRUCTURES AND ORDINARY GENERATING FUNCTIONS}
 \label{chap:combinatorial structures and ordinary generating functions}
 
-
-
 \section{Symbolic enumeration methods}
 % Note I.2
-\vspace{\baselineskip}
-\noindent
-$\rhd$ \textbf{I.2.} \textit{Unimodal permutations.}
+\noteblock{I.2}{Unimodal permutations.}
 
-\vspace{\baselineskip}
-\noindent
 A unimodal permutation can be viewed as a sequence of elements increasing to a peak and then decreasing. This structure is represented by
 \begin{equation*}
     \mathcal{P}^{\mathcal{U}} = \mathrm{S}\textsc{et}(\mathcal{Z}) \star \mathcal{Z}^{\blacksquare} \star \mathrm{S}\textsc{et}(\mathcal{Z})
@@ -29,20 +23,12 @@ Alternatively
 \end{equation*}
 where $k$ is the position of $n$ in the permutation.
 
-
-
 \section{Admissible constructions and specifications}
-
-
 
 \section{Integer compositions and partitions}
 % Note I.16
-\vspace{\baselineskip}
-\noindent
-$\rhd$ \textbf{I.16.} \textit{Partitions with summands bounded in number and size.}
+\noteblock{I.16}{Partitions with summands bounded in number and size.}
 
-\vspace{\baselineskip}
-\noindent
 The number of partitions of size $n$ with at most $k$ summands, each at most $l$, is
 \begin{equation} \label{eq:I.16.1}
     [z^{n}]\frac{(1 - z)(1 - z^{2}) \cdots (1 - z^{k + l})}{((1 - z)(1 - z^{2}) \cdots (1 - z^{k})) \cdot ((1 - z)(1 - z^{2}) \cdots (1 - z^{l}))}
@@ -185,11 +171,8 @@ Plugging the coefficients back into the sum, we obtain
 \end{equation*}
 This completes the proof.
 
-
 % Note I.17
-\vspace{\baselineskip}
-\noindent
-$\rhd$ \textbf{I.17.} \textit{Systems of linear Diophantine inequalities.}
+\noteblock{I.17}{Systems of linear Diophantine inequalities.}
 \begin{equation*}
     \left\{x_{1}\geq 0,\; x_{2}\geq 2x_{1},\; x_{3}\geq 2x_{2},\; x_{4}\geq 2x_{3}\right\}
 \end{equation*}
@@ -213,7 +196,7 @@ Multiplying these together yields the desired OGF:
     F(z) = \frac{1}{(1 -z)(1 -z^{3})(1 -z^{7})(1 -z^{15})}
 \end{equation*}
 
-\vspace{2\baselineskip}
+\partsep
 \begin{equation*}
     \left\{x_{1} + x_{2}\leq x_{3}\right\}
 \end{equation*}
@@ -236,7 +219,7 @@ Multiplying these together gives
     F(z) = \frac{1}{(1 -z^{2})^{2}(1 -z)^{2}}
 \end{equation*}
 
-\vspace{2\baselineskip}
+\partsep
 \begin{equation*}
     \left\{x_{1} + x_{2}\geq x_{3}\right\}
 \end{equation*}
@@ -257,7 +240,7 @@ The OGF for our constraint is then
     F(z) = U(z) - C(z) = \frac{1}{(1 - z)^{4}} - \frac{z}{(1 - z^{2})^{2}(1 - z)^{2}} = \frac{1 + z + z^{2}}{(1 - z)^{4}(1 + z)^{2}}
 \end{equation*}
 
-\vspace{2\baselineskip}
+\partsep
 \begin{equation*}
     \left\{x_{1} + x_{2}\leq x_{3} + x_{4}\right\}
 \end{equation*}
@@ -292,7 +275,7 @@ Substituting $U(z)$ and $G_{=}(z)$ into our formula yields
     F(z) = \frac{1}{2}\left[\frac{1}{(1 - z)^{4}} + \frac{1 + z^{2}}{(1 - z^{2})^{3}}\right] = \frac{1 + z + 2z^{2}}{(1 - z)^{4}(1 + z)^{3}}
 \end{equation*}
 
-\vspace{2\baselineskip}
+\partsep
 \begin{equation*}
     \left\{x_{1}\leq x_{2},\; x_{2}\geq x_{3},\; x_{3}\leq x_{4}\right\}
 \end{equation*}
@@ -343,14 +326,9 @@ The OGF for the zigzag constraint is the OGF for the two independent pairs minus
     \end{aligned}
 \end{equation*}
 
-
 % Note I.18
-\vspace{\baselineskip}
-\noindent
-$\rhd$ \textbf{I.18.} \textit{Odd versus distinct summands.}
+\noteblock{I.18}{Odd versus distinct summands.}
 
-\vspace{\baselineskip}
-\noindent
 We establish a one-to-one correspondence between partitions into odd parts and partitions into distinct parts.
 \begin{itemize}
     \item Odd $\rightarrow$ Distinct
@@ -388,14 +366,9 @@ As an example:
     \end{aligned}
 \end{equation*}
 
-
 % Note I.19
-\vspace{\baselineskip}
-\noindent
-$\rhd$ \textbf{I.19.} \textit{Euler’s pentagonal number theorem.}
+\noteblock{I.19}{Euler’s pentagonal number theorem.}
 
-\vspace{\baselineskip}
-\noindent
 To find a recurrence for the partition numbers, we consider the reciprocal of the generating function $P(z)$:
 \begin{equation*}
     A(z) = \prod_{n = 1}^{\infty}(1 - z^{n})
@@ -452,11 +425,8 @@ A Python implementation is provided below
     return P
 \end{lstlisting}
 
-
 % Note I.20
-\vspace{\baselineskip}
-\noindent
-$\rhd$ \textbf{I.20.} \textit{A digital surprise.}
+\noteblock{I.20}{A digital surprise.}
 \begin{equation*}
     \begin{aligned}
         \varphi
@@ -478,14 +448,9 @@ The partial sums are
     \item $\varphi_{8} = .89001 00999 98999 00000 00999$
 \end{itemize}
 
-
 % Note I.21
-\vspace{\baselineskip}
-\noindent
-$\rhd$ \textbf{I.21.} \textit{Lattice points.}
+\noteblock{I.21}{Lattice points.}
 
-\vspace{\baselineskip}
-\noindent
 We are interested in the number of integer solutions to the inequality $\sum_{i = 1}^{d}x_{i}^{2} \le n^{2}$.
 First, consider a single coordinate $x_{i} \in \mathbb{Z}$. The ``size'' contributed by this coordinate to the sum of squares is $x_{i}^{2}$.
 The generating function for the possible values of a single coordinate, where the exponent of $z$ represents the square of the coordinate, is
@@ -512,16 +477,10 @@ To find the total count up to $k = n^{2}$, we simply extract the coefficient of 
     N(n, d) = [z^{n^{2}}]\frac{1}{1 - z}(\Theta(z))^{d}
 \end{equation*}
 
-
-
 \section{Words and regular languages}
 % Note I.23
-\vspace{\baselineskip}
-\noindent
-$\rhd$ \textbf{I.23.} \textit{Alice, Bob, and coding bounds.}
+\noteblock{I.23}{Alice, Bob, and coding bounds.}
 
-\vspace{\baselineskip}
-\noindent
 Following Proposition I.4, the class $\mathcal{C}$ of binary strings avoiding the pattern $11$ has the OGF:
 \begin{equation*}
     C(z) = \frac{1 + z}{1 - z - z^{2}}
@@ -547,14 +506,9 @@ Rearranging for $L$, we obtain the lower bound:
     L \geq \frac{n}{\log_{2}\varphi} + O(1) \approx 1.440420n + O(1)
 \end{equation*}
 
-
 % Note I.27
-\vspace{\baselineskip}
-\noindent
-$\rhd$ \textbf{I.27.} \textit{Congruence languages.}
+\noteblock{I.27}{Congruence languages.}
 
-\vspace{\baselineskip}
-\noindent
 The DFA $\mathcal{A}$ for binary strings congruent to $2 \pmod{7}$ is structured as follows
 \begin{itemize}
     \item \textbf{States}: A set $\mathcal{Q} = \{S_{0}, \dots, S_{6}\}$, where each state $S_{r}$ represents the current remainder $r$ modulo 7.
@@ -582,14 +536,9 @@ Each transition follows the rule $q_{r} \circ b = q_{(2r + b) \pmod{7}}$
     \end{tabularx}
 \end{table}
 
-
 % Note I.29
-\vspace{\baselineskip}
-\noindent
-$\rhd$ \textbf{I.29.} \textit{The forward equations.}
+\noteblock{I.29}{The forward equations.}
 
-\vspace{\baselineskip}
-\noindent
 By a ``last-letter decomposition'', the set $\mathcal{M}_{k}$ of words leading to state $q_{k}$ from the initial state $q_{0}$ satisfies the combinatorial relation:
 \begin{equation*}
     \mathcal{M}_{k} \cong \llbracket k = 0 \rrbracket \cdot \{\epsilon\} +
@@ -604,11 +553,8 @@ In vector notation, with $\mathbf{M}(z)$ as a column vector and $\mathbf{e}_{0}$
     \mathbf{M}(z)^{T} = \mathbf{e}_{0}^{T} + z\mathbf{M}(z)^{T}T
 \end{equation*}
 
-
 % Note I.33.
-\vspace{\baselineskip}
-\noindent
-$\rhd$ \textbf{I.33.} \textit{Waiting times in strings.}
+\noteblock{I.33}{Waiting times in strings.}
 To illustrate the formulas, let's define a prefix language $\hat{\mathcal{L}}$ containing
 one word of length 2 and one word of length 3. Let $\hat{\mathcal{L}} = \{aa, bbb\}$.
 \begin{enumerate}
@@ -629,14 +575,9 @@ one word of length 2 and one word of length 3. Let $\hat{\mathcal{L}} = \{aa, bb
         \end{itemize}
 \end{enumerate}
 
-
 % Note I.34.
-\vspace{\baselineskip}
-\noindent
-$\rhd$ \textbf{I.34.} \textit{A probabilistic paradox on strings.}
+\noteblock{I.34}{A probabilistic paradox on strings.}
 
-\vspace{\baselineskip}
-\noindent
 Consider a binary pattern of length $k$. The generating function $T(z)$ for the first occurrence of this pattern is given by
 \begin{equation*}
     T(z) = \frac{z^{k}}{z^{k} + (1 - mz)c(z)} = \frac{z^{k}}{z^{k} + (1 - 2z)c(z)}
@@ -647,16 +588,10 @@ by evaluating its derivative at the point of the alphabet's inverse size ($z = 1
     \left.z \frac{d}{dz} T(z)\right|_{z = 1/2} = 2^{k} c(1/2)
 \end{equation*}
 
-
-
 \section{Tree structures}
 % Note I.39.
-\vspace{\baselineskip}
-\noindent
-$\rhd$ \textbf{I.39.} \textit{Unary–binary trees and Motzkin numbers.}
+\noteblock{I.39}{Unary–binary trees and Motzkin numbers.}
 
-\vspace{\baselineskip}
-\noindent
 We identify the characteristic polynomial as $\phi(u) = 1 + u + u^{2}$.
 To find the number of trees with $n$ nodes, $M_{n} = [z^{n}]M(z)$, we apply the Lagrange Inversion Theorem:
 \begin{equation*}
@@ -673,14 +608,9 @@ To find the number of trees with $n$ nodes, $M_{n} = [z^{n}]M(z)$, we apply the 
     \end{aligned}
 \end{equation*}
 
-
 % Note I.41.
-\vspace{\baselineskip}
-\noindent
-$\rhd$ \textbf{I.41.} \textit{The Lagrangean form of Schröder’s GF.}
+\noteblock{I.41}{The Lagrangean form of Schröder’s GF.}
 
-\vspace{\baselineskip}
-\noindent
 We want to prove the last equality:
 \begin{equation*}
     \frac{(-1)^{n - 1}}{n}\sum_{k}(-2)^{k}\binom{n}{k + 1}\binom{n + k - 1}{k} =
@@ -691,16 +621,14 @@ Multiplying by $n$, the statement is equivalent to
     (-1)^{n - 1}\sum_{k = 0}^{n - 1}(-2)^{k}\binom{n}{k + 1}\binom{n + k - 1}{k} = \sum_{k = 0}^{n - 2}\binom{2n - k - 2}{n - 1}\binom{n - 2}{k}
 \end{equation*}
 
-\noindent
-\textbf{Step 1. Re-index the left sum.}
+\subhead{Step 1. Re-index the left sum.}
 Using $\binom{n}{k + 1} = \binom{n}{n - 1 - k}$ and $\binom{n + k - 1}{k} = \binom{n + k - 1}{n - 1}$, set $j = n - 1 - k$:
 \begin{equation*}
     L = (-1)^{n - 1}\sum_{j = 0}^{n - 1}(-2)^{n - 1 - j}\binom{n}{j}\binom{2n - 2 - j}{n - 1} =
         2^{n - 1}\sum_{j = 0}^{n - 1}\left(-\frac{1}{2}\right)^{j}\binom{n}{j}\binom{2n - 2 - j}{n - 1}
 \end{equation*}
 
-\noindent
-\textbf{Step 2. Express as a coefficient extraction.}
+\subhead{Step 2. Express as a coefficient extraction.}
 Since $\binom{2n - 2 - j}{n - 1} = [z^{n - 1}](1 + z)^{2n - 2 - j}$, we have
 \begin{equation*}
     \begin{aligned}
@@ -714,8 +642,7 @@ Since $\binom{2n - 2 - j}{n - 1} = [z^{n - 1}](1 + z)^{2n - 2 - j}$, we have
     \end{aligned}
 \end{equation*}
 
-\noindent
-\textbf{Step 3. Reverse the polynomial.}
+\subhead{Step 3. Reverse the polynomial.}
 Let $P(z) = (1 + z)^{n - 2}(1 + 2z)^{n}$, of degree $2n - 2$.
 The coefficient of $z^{n - 1}$ in $P(z)$ equals the coefficient of $z^{n - 1}$ in its reversed polynomial $z^{2n - 2}P(1/z)$:
 \begin{equation*}
@@ -726,8 +653,7 @@ Hence
     L = \frac{1}{2}[z^{n - 1}](1 + z)^{n - 2}(2 + z)^{n}
 \end{equation*}
 
-\noindent
-\textbf{Step 4. Express the right sum as a coefficient.}
+\subhead{Step 4. Express the right sum as a coefficient.}
 Similarly, $\binom{2n - k - 2}{n - 1} = [z^{n - 1}](1 + z)^{2n - k - 2}$, so
 \begin{equation*}
     \begin{aligned}
@@ -742,8 +668,7 @@ Similarly, $\binom{2n - k - 2}{n - 1} = [z^{n - 1}](1 + z)^{2n - k - 2}$, so
     \end{aligned}
 \end{equation*}
 
-\noindent
-\textbf{Step 5. Show equality of the two coefficient expressions.}
+\subhead{Step 5. Show equality of the two coefficient expressions.}
 We need to show $\frac{1}{2}(1 + z)^{n - 2}(2 + z)^{n}$ and $(1 + z)^{n}(2 + z)^{n - 2}$
 have the same coefficient of $z^{n - 1}$. Their difference is
 \begin{equation*}
@@ -759,8 +684,7 @@ We must prove $[z^{n - 1}]f(z) = 0$, where
     f(z) = (1 + z)^{n - 2}(2 + z)^{n - 2}(2 - z^{2})
 \end{equation*}
 
-\noindent
-\textbf{Step 6. A symmetry argument.}
+\subhead{Step 6. A symmetry argument.}
 $f(z)$ is a polynomial of degree $2n - 2$. Compute $f(2 / z)$:
 \begin{equation*}
     \begin{aligned}
@@ -774,11 +698,8 @@ $f(z)$ is a polynomial of degree $2n - 2$. Compute $f(2 / z)$:
 Hence $z^{2n - 2}f(2/z) = -2^{n - 1}f(z)$. Writing $f(z) = \sum_{k = 0}^{2n - 2}a_{k}z^{k}$, the coefficient of $z^{n - 1}$ corresponds to
 $k = n - 1$. Equating coefficients gives $a_{n - 1}2^{n - 1} = -2^{n - 1}a_{n - 1} \implies a_{n - 1} = 0$.
 
-
 % Note I.42.
-\vspace{\baselineskip}
-\noindent
-$\rhd$ \textbf{I.42.} \textit{Faster determination of Schröder numbers.}
+\noteblock{I.42}{Faster determination of Schröder numbers.}
 \begin{equation*}
     S(z) = \frac{1}{4}(1 + z - \sqrt{1 - 6z + z^{2}})
 \end{equation*}
@@ -805,38 +726,31 @@ Plugging $p(z) = -4$, $q(z) = 1 + z$, $k = 2$, and $r(z) = 1 - 6z + z^{2}$ into 
 \end{equation*}
 from which the recurrence follows.
 
-
 % Note I.43.
-\vspace{\baselineskip}
-\noindent
-$\rhd$ \textbf{I.43.} \textit{Fast determination of the Cayley–Pólya numbers.}
+\noteblock{I.43}{Fast determination of the Cayley–Pólya numbers.}
 \begin{equation*}
     H(z) = z \exp\left(H(z) + \frac{1}{2}H(z^{2}) + \cdots\right)
 \end{equation*}
 
-\noindent
-\textbf{Step 1. Take the Natural Logarithm.}
+\subhead{Step 1. Take the Natural Logarithm.}
 First, we take the log of both sides to bring down the terms in the exponent:
 \begin{equation*}
     \ln H(z) = \ln z + \sum_{k = 1}^{\infty}\frac{1}{k}H(z^{k})
 \end{equation*}
 
-\noindent
-\textbf{Step 2. Differentiate with respect to $z$.}
+\subhead{Step 2. Differentiate with respect to $z$.}
 Now, we apply the derivative operator $\frac{d}{dz}$:
 \begin{equation*}
     \frac{H'(z)}{H(z)} = \frac{1}{z} + \sum_{k = 1}^{\infty}\frac{1}{k}H'(z^{k}) \cdot kz^{k - 1} = \frac{1}{z} + \sum_{k = 1}^{\infty}z^{k - 1}H'(z^{k})
 \end{equation*}
 
-\noindent
-\textbf{Step 3. Multiply by $zH(z)$.}
+\subhead{Step 3. Multiply by $zH(z)$.}
 To clear the fractions and align the powers of $z$, we multiply the entire equation by $zH(z)$
 \begin{equation*}
     zH'(z) = H(z)\left(1 + \sum_{k = 1}^{\infty}z^{k}H'(z^{k})\right)
 \end{equation*}
 
-\noindent
-\textbf{Step 4. Substitute Power Series.}
+\subhead{Step 4. Substitute Power Series.}
 We represent $H(z)$ as a formal power series $\sum_{n = 1}^{\infty}H_{n}z^{n}$. Note that
 \begin{itemize}
     \item $zH'(z) = \sum_{n = 1}^{\infty}n H_{n} z^{n}$
@@ -847,8 +761,7 @@ Plugging these into our equation:
     \sum_{n = 1}^{\infty}n H_{n} z^{n} = H(z) + H(z)\sum_{k = 1}^{\infty}\sum_{m = 1}^{\infty}m H_{m} z^{mk}
 \end{equation*}
 
-\noindent
-\textbf{Step 5. The Recurrence Relation.}
+\subhead{Step 5. The Recurrence Relation.}
 By extracting the coefficient of $z^{n}$ from both sides, we arrive at the recurrence.
 The double sum represents a convolution where we look for indices such that $mk + j = n$ (where $j$ is the index from the $H(z)$ term).
 The standard form for the recurrence of these coefficients is
@@ -875,14 +788,9 @@ representing the root of the tree.
         H_{4} = \frac{1}{4 - 1}(H_{4 - 1} \cdot a_{1} + H_{4 - 2} \cdot a_{2} + H_{4 - 3} \cdot a_{3}) = 4$.
 \end{itemize}
 
-
 % Note I.50.
-\vspace{\baselineskip}
-\noindent
-$\rhd$ \textbf{I.50.} \textit{Excursions, bridges, and meanders.}
+\noteblock{I.50}{Excursions, bridges, and meanders.}
 
-\vspace{\baselineskip}
-\noindent
 A meander of final altitude $k$ consists of k ``up-steps'' ($\mathcal{Z}$) that lead to new ``floors'',
 with Dyck paths (excursions $\mathcal{D}$) occurring between them and at the very end.
 \begin{equation*}
@@ -919,14 +827,9 @@ that end at $-k - 2 < -1$. Thus, Meanders end at $k$ = (Paths that end at $k$) $
         $M_{n} = N(n, 1) = N(2m + 1, 1) = \binom{2m + 1}{\frac{2m + 1 + 1}{2}} = \binom{2m + 1}{m} = \binom{n}{\lfloor n/2 \rfloor}$
 \end{itemize}
 
-
 % Example I.17.
-\vspace{\baselineskip}
-\noindent
-\textbf{\textit{Example} I.17.} \textit{The complexity of boolean functions.}
+\exampleblock{I.17}{The complexity of boolean functions.}
 
-\vspace{\baselineskip}
-\noindent
 We want to show that
 \begin{equation*}
     D_{n} = O(16^{n}m^{n}n^{-3/2})
@@ -939,8 +842,6 @@ We prove the following general statement: \\
 Let $c > 1$ and $\alpha > 0$. Define $a_{n} = c^{n}n^{-\alpha}$ for $n \geq 1$ and let $a_{0} > 0$ be a constant.
 If $D_{n} = O(a_{n})$, then $\sum_{j = 0}^{v}D_{j} = O(c^{v}v^{-\alpha})$ as $v \to \infty$. \\
 
-\vspace{\baselineskip}
-\noindent
 Proof. Because $D_{n} = O(a_{n})$, there exists $M > 0$ and $N \geq 1$ such that $D_{n} \leq Mc^{n}n^{-\alpha}$ for all $n \geq N$.
 For $v \geq N$ we split:
 \begin{equation*}
@@ -970,8 +871,6 @@ Putting it together, $S(v) = o(c^{v}v^{-\alpha}) + O(c^{v}v^{-\alpha}) = O(c^{v}
     \sum_{j = 0}^{v}D_{j} = C_{0} + MS(v) = O(1) + O(c^{v}v^{-\alpha}) = O(c^{v}v^{-\alpha})
 \end{equation*}
 
-\vspace{\baselineskip}
-\noindent
 Now we show
 \begin{equation*}
     \sum_{j = 0}^{v}D_{j} = O(16^{v}m^{v}v^{-3/2}) = o(\lVert \Omega \rVert)
@@ -998,16 +897,10 @@ As $m \to \infty$, $v \to \infty$, so $v^{-3/2} \to 0$; therefore
 \end{equation*}
 which is exactly $\sum_{j = 0}^{v}D_{j} = o(\lVert \Omega \rVert)$.
 
-
-
 \section{Additional constructions}
 % Note I.62.
-\vspace{\baselineskip}
-\noindent
-$\rhd$ \textbf{I.62.} \textit{Sequences without repeated components.}
+\noteblock{I.62}{Sequences without repeated components.}
 
-\vspace{\baselineskip}
-\noindent
 A sequence without repeated components is essentially an ordered arrangement of a subset of distinct elements from a base class $\mathcal{B}$.
 To derive its generating function, we first consider the construction of a set of distinct elements (the power set), then account for the ordering.
 The generating function for the power set construction $\mathrm{PS}\textsc{et}(\mathcal{B})$ is given by
@@ -1034,7 +927,5 @@ $\mathcal{S}_{\text{distinct}}(z)$, as follows:
             &= \int_{0}^{\infty}\exp\left(\sum_{j \geq 1}(-1)^{j - 1}\frac{u^{j}}{j}B(z^{j})\right)e^{-u}du
     \end{aligned}
 \end{equation*}
-
-
 
 \section{Perspective}

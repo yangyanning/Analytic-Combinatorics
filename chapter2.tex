@@ -2,32 +2,18 @@
 \chapter{LABELLED STRUCTURES AND EXPONENTIAL GENERATING FUNCTIONS}
 \label{chap:labelled structures and exponential generating functions}
 
-
-
 \section{Labelled classes}
-
-
 
 \section{Admissible labelled constructions}
 
-
-
 \section{Surjections, set partitions, and words}
-
-
 
 \section{Alignments, permutations, and related structures}
 
-
-
 \section{Labelled trees, mappings, and graphs}
 % Note II.19.
-\vspace{\baselineskip}
-\noindent
-$\rhd$ \textbf{II.19.} \textit{Labelled hierarchies.}
+\noteblock{II.19}{Labelled hierarchies.}
 
-\vspace{\baselineskip}
-\noindent
 We want to derive
 \begin{equation*}
     L(z) = T\left(\frac{1}{2}e^{z/2 - 1/2}\right) + \frac{z}{2} - \frac{1}{2}
@@ -37,9 +23,7 @@ from
     L = z + e^{L} - 1 - L
 \end{equation*}
 
-\vspace{\baselineskip}
-\noindent
-\textbf{Step 1. Re-arranging the target equation.}
+\subhead{Step 1. Re-arranging the target equation.}
 We start with the given equation, moving all terms involving $L$ to the left side and constant/independent terms to the right:
 \begin{equation*}
     2L + 1 - e^{L} = z
@@ -47,23 +31,19 @@ We start with the given equation, moving all terms involving $L$ to the left sid
 This form does not immediately match $T(z) = ze^{T(z)}$. To make them compatible, we should attempt to isolate an exponential term
 that mirrors the functional form of the tree function.
 
-\vspace{\baselineskip}
-\noindent
-\textbf{Step 2. Utilizing the Lambert W identity.}
+\subhead{Step 2. Utilizing the Lambert W identity.}
 The Cayley tree function $T(z)$ is related to the \textbf{Lambert W function} (specifically $W(-z)$). The identity $T(z) = ze^{T(z)}$ can be rewritten as
 \begin{equation*}
     -T(z)e^{-T(z)} = -z \leftrightarrow z = -T(-z)e^{-T(-z)}
 \end{equation*}
 Which implies $W(z) = -T(-z) \leftrightarrow T(z) = -W(-z)$.
 
-\vspace{\baselineskip}
-\noindent
-\textbf{Step 3. Substitution and Solving.}
+\subhead{Step 3. Substitution and Solving.}
 Let's rearrange the original equation to isolate the exponential:
 \begin{equation*}
     e^{L} = 2L - z + 1
 \end{equation*}
-For equations where a variable appears both linearly and in the exponent, the solution is typically logarithmic or involves the $W$ function. 
+For equations where a variable appears both linearly and in the exponent, the solution is typically logarithmic or involves the $W$ function.
 Let's rewrite the equation for $L$ in the form $f(L)e^{f(L)} = \text{something}$:
 \begin{equation*}
     1 = (2L - z + 1)e^{-L}
@@ -80,7 +60,7 @@ Substituting this back into our equation:
 Since $u = \frac{z - 1}{2} - L$, we have $-L = u - \frac{z - 1}{2}$. Substituting this into the exponent:
 \begin{equation*}
     1 = -2u \cdot e^{u - \frac{z - 1}{2}} = -2u \cdot e^{u} \cdot e^{-\frac{z - 1}{2}}
-\end{equation*} 
+\end{equation*}
 Now, isolate $ue^{u}$:
 \begin{equation*}
     ue^{u} = -\frac{1}{2}e^{\frac{z - 1}{2}}
@@ -98,14 +78,9 @@ Solving for $L$:
     L = T\left(\frac{1}{2} e^{\frac{z - 1}{2}}\right) + \frac{z - 1}{2}
 \end{equation*}
 
-
 % II.5.2.
-\vspace{\baselineskip}
-\noindent
-\textbf{II.5.2.} \textit{\textbf{Mappings and associated graphs.}}
+\topicblock{II.5.2}{Mappings and associated graphs.}
 
-\vspace{\baselineskip}
-\noindent
 Let $\mathcal{T}$ be the class of all Cayley trees. Then
 \begin{equation*}
     F = (1 - T)^{-1} \implies F_{n} = n^{n}
@@ -136,8 +111,6 @@ Substituting $H(w) = (1 - w)^{-1}$ and $\phi(w) = e^{w}$ yields
     \end{aligned}
 \end{equation*}
 
-\vspace{\baselineskip}
-\noindent
 Now consider $K = \log{(1 - T)^{-1}}$. Then
 \begin{equation*}
      K_{n} = n^{n - 1}Q(n)
@@ -164,12 +137,8 @@ Consequently
     \end{aligned}
 \end{equation*}
 
-\vspace{\baselineskip}
-\noindent
-\textbf{II.5.2.} \textit{\textbf{Constrained mappings.}}
+\topicblock{II.5.2}{Constrained mappings.}
 
-\vspace{\baselineskip}
-\noindent
 The class of all maps without fixed points has EGF:
 \begin{equation*}
     \frac{e^{-T(z)}}{1 - T(z)}
@@ -194,14 +163,9 @@ Substituting $H(w) = \frac{e^{-w}}{1 - w}$ and $\phi(w) = e^{w}$ into Lagrange i
     \end{aligned}
 \end{equation*}
 
-
 % II.5.3.
-\vspace{\baselineskip}
-\noindent
-\textbf{II.5.3.} \textit{\textbf{Unrooted trees and acyclic graphs.}}
+\topicblock{II.5.3}{Unrooted trees and acyclic graphs.}
 
-\vspace{\baselineskip}
-\noindent
 To understand why $U(z) = \int_{0}^{z}T(w)\frac{dw}{w}$, we begin with the exponential generating functions:
 \begin{equation*}
     T(z) = \sum_{n \geq 0}T_{n}\frac{z^{n}}{n!}, \quad
@@ -231,14 +195,9 @@ Substituting $z = Te^{-T}$ and $dz$ into the integral $U(z) = \int\frac{T(z)}{z}
 \end{equation*}
 Since $U(0) = 0$ and $T(0) = 0$, the constant $C = 0$.
 
-
 % Note II.22.
-\vspace{\baselineskip}
-\noindent
-$\rhd$ \textbf{II.22.} \textit{2–Regular graphs.}
+\noteblock{II.22}{2–Regular graphs.}
 
-\vspace{\baselineskip}
-\noindent
 We establish a bijection between clouds and 2-regular graphs on $n$ labeled vertices. Number the lines $1, 2, ..., n$.
 \begin{itemize}
     \item Line $i$ in the cloud $\leftrightarrow$ vertex $i$ in the graph.
@@ -249,41 +208,28 @@ Since each point lies on two lines, $\sum_{i = 1}^{n}n_{i} = 2n$.
 \textit{If no three points are collinear}, then $n_{i} \leq 2$ for all $i$, so $\sum_{i = 1}^{n}n_{i} \leq 2n$.
 Equality $\sum_{i = 1}^{n}n_{i} = 2n$ forces $n_{i} = 2$ for every $i$, i.e. every vertex has degree 2 in the graph.
 
-\vspace{\baselineskip}
-\noindent
 Conversely, if every vertex has degree 2, then $n_{i} = 2$ for all $i$, so each line contains exactly two intersection points — hence no three collinear.
 
-\vspace{\baselineskip}
-\noindent
-Thus the cloud condition and the 2-regular graph condition are equivalent. 
-
+Thus the cloud condition and the 2-regular graph condition are equivalent.
 
 % Note II.23.
-\vspace{\baselineskip}
-\noindent
-$\rhd$ \textbf{II.23.} \textit{Wright’s surgery.}
+\noteblock{II.23}{Wright’s surgery.}
 
-\vspace{\baselineskip}
-\noindent
-\textbf{The Surgery in Forward Direction: Deconstruction}
+\subhead{The Surgery in Forward Direction: Deconstruction}
 
-\noindent
 We start with a connected graph $G$ of excess $k+1$. Pick an edge of $G$ and an orientation (a direction) for it.
 This gives us a starting vertex $A$ and an ending vertex $B$. Remove this directed edge from the graph.
 Depending on the role that edge played in the connectivity of $G$, one of two mutually exclusive cases occurs
 \begin{itemize}
-    \item \textbf{Case 1 (Connected)}: The removed edge was part of a cycle. The graph remains connected. Because we lost an edge but kept all vertices, 
+    \item \textbf{Case 1 (Connected)}: The removed edge was part of a cycle. The graph remains connected. Because we lost an edge but kept all vertices,
         the excess drops to $k$. The graph now possesses two designated, ordered, pointed vertices: a ``source'' point at $A$ and a ``target'' point at $B$.
     \item \textbf{Case 2 (Disconnected)}: The removed edge was a bridge. The graph splits into two separate connected components, $G_{1}$ and $G_{2}$.
         If $G_{1}$ takes on an excess of $h$, then $G_{2}$ must take on the remaining excess of $k - h$. Furthermore, $G_{1}$ contains exactly one
         pointed vertex (where $A$ used to connect), and $G_{2}$ contains exactly one pointed vertex (where $B$ used to connect).
 \end{itemize}
 
-\vspace{\baselineskip}
-\noindent
-\textbf{The Surgery in Backward Direction: Reconstruction}
+\subhead{The Surgery in Backward Direction: Reconstruction}
 
-\noindent
 We want to reverse this process to build all possible directed-edge-pointed graphs of excess $k+1$. We do this by reversing both cases
 \begin{itemize}
     \item \textbf{Reversing Case 1}: Take a single connected graph of excess $k$. Pick any two distinct vertices in an ordered fashion, call them $A$ and $B$,
@@ -294,14 +240,12 @@ We want to reverse this process to build all possible directed-edge-pointed grap
         merging them into a single connected graph of excess $k + 1$.
 \end{itemize}
 
-\noindent
 Now let's align these actions with the differential recurrence:
 \begin{equation*}
     2\partial_{y}w_{k + 1} = \left(z^{2}\partial_{z}^{2}w_{k} - 2y\partial_{y}w_{k}\right) +
         \sum_{h = -1}^{k + 1}\left(z\partial_{z}w_{h}\right) \cdot \left(z\partial_{z}w_{k - h}\right)
 \end{equation*}
 
-\noindent
 Left-Hand Side: The Initial Pool
 \begin{itemize}
     \item $w_{k + 1}$: Represents the universe of connected graphs of excess $k + 1$.
@@ -312,7 +256,6 @@ Left-Hand Side: The Initial Pool
     \item Together ($2\partial_{y}w_{k + 1}$): Represents a graph of excess $k + 1$ with one structurally deleted, but memory-tracked, directed edge.
 \end{itemize}
 
-\noindent
 Right-Hand Side, Term 1: The Connected Outcome (Case 1)
 \begin{itemize}
     \item $w_{k}$: The base graph of excess $k$.
@@ -323,7 +266,6 @@ Right-Hand Side, Term 1: The Connected Outcome (Case 1)
         the $z^{2}\partial_{z}^{2}$ operator from choosing an existing edge's endpoints and accidentally creating a double-edge.
 \end{itemize}
 
-\noindent
 Right-Hand Side, Term 2: The Disconnected Outcome (Case 2)
 \begin{itemize}
     \item $w_{h}$ and $w_{k - h}$: The two separate, independent components. Their generating functions are multiplied together because
@@ -337,16 +279,10 @@ Right-Hand Side, Term 2: The Disconnected Outcome (Case 2)
         Because the simplest possible connected graph is a tree (which has an excess of $E - V = -1$), the lowest possible excess a component can hold is $-1$.
 \end{itemize}
 
-
-
 \section{Additional constructions}
 % Note II.28.
-\vspace{\baselineskip}
-\noindent
-$\rhd$ \textbf{II.28.} \textit{Do two permutations generate the symmetric group?}
+\noteblock{II.28}{Do two permutations generate the symmetric group?}
 
-\vspace{\baselineskip}
-\noindent
 We want to show
 \begin{equation*}
     n!^{2}\pi_{n} = (n - 1)!I_{n + 1}
@@ -366,9 +302,7 @@ Let's find a differential relationship. Take the derivative of $C(z)$ with respe
 \end{equation*}
 Now, let's extract the coefficient of $z^{n - 1}$ from both sides of this derivative equation.
 
-\vspace{\baselineskip}
-\noindent
-\textbf{Left-Hand Side}
+\subhead{Left-Hand Side}
 Since $C(z) = \sum_{n \geq 1}(n!^{2}\pi_{n})\frac{z^{n}}{n!}$, its derivative is
 \begin{equation*}
     C'(z) = \sum_{n \geq 1}(n!^{2}\pi_{n})\frac{z^{n - 1}}{(n - 1)!}
@@ -378,9 +312,7 @@ Thus, the coefficient of $z^{n - 1}$ is
     [z^{n - 1}]C'(z) = \frac{n!^{2}\pi_{n}}{(n - 1)!} = n \cdot n!\pi_{n}
 \end{equation*}
 
-\vspace{\baselineskip}
-\noindent
-\textbf{Right-Hand Side}
+\subhead{Right-Hand Side}
 Differentiate both sides of $P(z)(1 - I(z)) = 1$ with respect to $z$:
 \begin{equation*}
     P'(z)(1 - I(z)) - P(z)I'(z) = 0 \implies P'(z) - P'(z)I(z) = P(z)I'(z)
@@ -416,10 +348,6 @@ Hence the left hand side of \ref{eq:II.28.2} equals
 \end{equation*}
 Substituting into \ref{eq:II.28.2} gives $S_{n} = I_{n + 1}$.
 
-\vspace{\baselineskip}
-\noindent
 Finally $n \cdot n!\pi_{n} = S_{n} \implies n!^{2}\pi_{n} = (n - 1)!I_{n + 1}$.
-
-
 
 \section{Perspective}

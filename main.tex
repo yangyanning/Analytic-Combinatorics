@@ -7,6 +7,7 @@
 \usepackage{float}
 \usepackage{geometry}
 \usepackage{hyperref}
+\usepackage{indentfirst}
 \usepackage{listings}
 \usepackage{mathtools}
 \usepackage{stmaryrd}
@@ -25,6 +26,29 @@
 }
 
 \newcommand{\cnum}[1]{\textcircled{#1}}
+\newcommand{\noteblock}[2]{%
+    \par\addvspace{\baselineskip}%
+    \noindent$\rhd$ \textbf{#1.} \textit{#2}%
+    \par\addvspace{\baselineskip}%
+}
+\newcommand{\exampleblock}[2]{%
+    \par\addvspace{\baselineskip}%
+    \noindent\textbf{\textit{Example} #1.} \textit{#2}%
+    \par\addvspace{\baselineskip}%
+}
+\newcommand{\topicblock}[2]{%
+    \par\addvspace{\baselineskip}%
+    \noindent\textbf{#1.} \textit{\textbf{#2}}%
+    \par\addvspace{\baselineskip}%
+}
+\newcommand{\partsep}{%
+    \par\addvspace{2\baselineskip}%
+}
+\newcommand{\subhead}[1]{%
+    \par\addvspace{\baselineskip}%
+    \noindent\textbf{#1}%
+    \par\smallskip
+}
 
 \geometry{margin=1in}
 

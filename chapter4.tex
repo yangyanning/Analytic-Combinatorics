@@ -2,24 +2,16 @@
 \chapter{COMPLEX ANALYSIS, RATIONAL AND MEROMORPHIC ASYMPTOTICS}
 \label{chap:complex analysis, rational and meromorphic asymptotics}
 
-
-
 \section{Generating functions as analytic objects}
 % Note IV.6.
-\vspace{\baselineskip}
-\noindent
-$\rhd$ \textbf{IV.6.} \textit{Integrals of rational fractions.}
+\noteblock{IV.6}{Integrals of rational fractions.}
 
-\vspace{\baselineskip}
-\noindent
 \begin{equation*}
     J_{m} = \int_{-\infty}^{\infty}\frac{dx}{(1 + x^{2})^{m}}
 \end{equation*}
 Define $f(z) = \frac{1}{(1 + z^{2})^{m}} = \frac{1}{(z - i)^{m}(z + i)^{m}}$. We integrate over the contour $\Gamma_{R}$ consisting of the real
 interval $[-R, R]$ and the upper semicircle $C_{R} = \{ z = Re^{i\theta}: 0 \leq \theta \leq \pi \}$.
 
-\vspace{\baselineskip}
-\noindent
 For $z \in C_{R}$ and $R > 1$, $|z^{2} + 1| \geq |z^{2}| - 1 = R^{2} - 1$. Thus
 \begin{equation*}
     |f(z)| \leq \frac{1}{(R^{2} - 1)^{m}}
@@ -67,16 +59,13 @@ Hence
         = \frac{\pi}{4^{m - 1}}\binom{2m - 2}{m - 1}
 \end{equation*}
 
-\vspace{2\baselineskip}
-\noindent
+\partsep
 \begin{equation*}
     K_{m} = \int_{-\infty}^{\infty}\frac{dx}{(1^{2} + x^{2})(2^{2} + x^{2}) \cdots (m^{2} + x^{2})}
 \end{equation*}
 Define $f(z) = \frac{1}{\prod_{k = 1}^{m}(z^{2} + k^{2})}$. We integrate over the contour $\Gamma_{R}$ consisting of the real
 interval $[-R, R]$ and the upper semicircle $C_{R} = \{ z = Re^{i\theta}: 0 \leq \theta \leq \pi \}$.
 
-\vspace{\baselineskip}
-\noindent
 For $R > m$, the poles inside $\Gamma_{R}$ are $z_{k} = ik, k = 1, \cdots m$. On $C_{R}$, $|z^{2} + k^{2}| \geq R^{2} - k^{2} \geq (R/2)^{2}$ eventually,
 so $|f(z)| \leq \text{const}/R^{2m}$ and the length of $C_{R}$ is $\pi R$. Hence
 \begin{equation*}
@@ -93,7 +82,7 @@ Since the poles are simple
 \end{equation*}
 Thus
 \begin{equation*}
-    K_{m} = 2\pi i\sum_{k = 1}^{m}\frac{1}{2ik}\prod_{j \neq k}\frac{1}{j^{2} - k^{2}} 
+    K_{m} = 2\pi i\sum_{k = 1}^{m}\frac{1}{2ik}\prod_{j \neq k}\frac{1}{j^{2} - k^{2}}
         = \pi\sum_{k = 1}^{m}\frac{1}{k}\prod_{j \neq k}\frac{1}{j^{2} - k^{2}}
 \end{equation*}
 Factor the product:
@@ -117,8 +106,6 @@ and
     K_{m} = \pi\sum_{k = 1}^{m}\frac{(-1)^{k - 1}2k}{(m - k)!(m + k)!} = \frac{2\pi}{(2m)!}\sum_{k = 1}^{m}(-1)^{k - 1}k\binom{2m}{m - k}
 \end{equation*}
 
-\vspace{\baselineskip}
-\noindent
 To simplify the sum $S \coloneqq \sum_{k = 1}^{m}(-1)^{k - 1}k\binom{2m}{m + k}$, we can use the method of generating functions (what else?).
 Recall the coefficient of $z^{m}$ in the product of two polynomials $A(z) = \sum a_{k}z^{k}$ and $B(z) = \sum b_{j}z^{j}$ is given by
 \begin{equation*}
@@ -140,37 +127,21 @@ Hence
     S = [z^{m}]\frac{z}{(1 + z)^{2}} \cdot (1 + z)^{2m} = [z^{m}]z(1 + z)^{2m - 2} = \binom{2m - 2}{m - 1}
 \end{equation*}
 
-\vspace{\baselineskip}
-\noindent
 Finally
 \begin{equation*}
     K_{m} = \frac{2\pi}{(2m)!}\binom{2m - 2}{m - 1} = \frac{\pi}{m(2m - 1)[(m - 1)!]^{2}}
 \end{equation*}
 
-
-
 \section{Analytic functions and meromorphic functions}
-
-
 
 \section{Singularities and exponential growth of coefficients}
 
-
-
 \section{Closure properties and computable bounds}
-
-
 
 \section{Rational and meromorphic functions}
 
-
-
 \section{Localization of singularities}
 
-
-
 \section{Singularities and functional equations}
-
-
 
 \section{Perspective}
