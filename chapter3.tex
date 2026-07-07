@@ -10,19 +10,19 @@
 % Note III.7.
 \noteblock{III.7}{Largest summands in compositions.}
 
-Let $M$ be the largest summand in a random composition. We want to show that for any $\epsilon \in (0, 1)$, as $n \to \infty$:
+Let $M$ be the largest summand in a random composition. We claim that for any $\epsilon \in (0, 1)$,
 \begin{equation*}
     \mathbb{P}\left((1 - \epsilon)\log_{2}n \leq M \leq (1 + \epsilon)\log_{2}n\right) \to 1
 \end{equation*}
 
-\subhead{Upper bound: first moment method}
+\stephead{1}{Upper bound via the first moment method.}
 
-Let $r_{+} = \lfloor(1 + \epsilon)\log_{2}n\rfloor$. If $M \geq r_{+}$ then there exists at least one summand of size $\geq r_{+}$.
-The number of such summands is $S = \sum_{k = r_{+}}^{\infty}X_{k}$ where $X_{k}$ is the number of summands of size exactly $k$. By Markov's inequality:
+Set $r_{+} = \lfloor(1 + \epsilon)\log_{2}n\rfloor$. If $M \geq r_{+}$, then some summand has size at least $r_{+}$.
+Let $S = \sum_{k = r_{+}}^{\infty}X_{k}$, where $X_{k}$ counts summands of size exactly $k$. Then Markov gives:
 \begin{equation*}
     \mathbb{P}(M \geq r_{+}) = \mathbb{P}(S \geq 1) \leq \frac{\mathbb{E}[S]}{1} = \sum_{k = r_{+}}^{\infty}\mathbb{E}[X_{k}]
 \end{equation*}
-Proposition III.4 gives $E[X_{k}] = \frac{n - k + 3}{2^{k + 1}} \leq \frac{n}{2^{k}}$. Then (noting that $X_{k} = 0$ for $k > n$)
+Proposition III.4 gives $\mathbb{E}[X_{k}] = \frac{n - k + 3}{2^{k + 1}} \leq \frac{n}{2^{k}}$. Hence, noting that $X_{k} = 0$ for $k > n$,
 \begin{equation*}
     \mathbb{E}[S] \leq \sum_{k = r_{+}}^{n} \frac{n}{2^{k}} < \frac{n}{2^{r_{+} - 1}}
         < \frac{n}{2^{(1 + \epsilon)\log_{2}n - 2}} = 4n^{-\epsilon} \to 0
@@ -30,12 +30,13 @@ Proposition III.4 gives $E[X_{k}] = \frac{n - k + 3}{2^{k + 1}} \leq \frac{n}{2^
 Since $M > (1 + \epsilon)\log_{2}n$ implies $M \geq \lfloor (1 + \epsilon)\log_{2}n \rfloor = r_{+}$, we have
 $\mathbb{P}(M > (1 + \epsilon)\log_{2}n) \leq \mathbb{P}(M \geq r_{+}) \to 0$.
 
-\subhead{Lower bound: second moment method}
+\stephead{2}{Lower bound via the second moment method.}
 
-We have a random composition of $n$, given by $n - 1$ independent gaps, each a ``cut'' with probability $1/2$.
-Let $r_{-} = \lceil (1 - \epsilon)\log_{2}n \rceil$. Cut the $n$ ones into $m = \left\lfloor \frac{n}{r_{-}} \right\rfloor$ disjoint blocks
-of length $r_{-}$, ignoring leftover $1$'s. Inside a block of length $r_{-}$ there are $r_{-} - 1$ internal gaps. The block contains \textbf{no cut} internally
-with probability $p = \left(\frac{1}{2} \right)^{r_{-} - 1}$, independently for each block (the gaps of different blocks are disjoint and independent).
+For the lower bound, view a composition of $n$ as $n - 1$ independent gaps, each cut with probability $1/2$.
+Let $r_{-} = \lceil (1 - \epsilon)\log_{2}n \rceil$. Split the $n$ ones into
+$m = \left\lfloor \frac{n}{r_{-}} \right\rfloor$ disjoint blocks of length $r_{-}$, ignoring the leftovers.
+Each block has $r_{-} - 1$ internal gaps, so it contains no internal cut with probability
+$p = \left(\frac{1}{2} \right)^{r_{-} - 1}$.
 
 Define the indicator random variables
 \begin{equation*}
@@ -44,20 +45,21 @@ Define the indicator random variables
         0 & \text{otherwise}
     \end{cases}
 \end{equation*}
-for $i = 1, \cdots, m$. Let $Y = \sum_{i = 1}^{m} I_{i}$ which is the number of blocks that are completely uncut internally. If $Y \geq 1$ then
-at least one block is a single summand of size at least $r_{-}$. Therefore $\mathbb{P}(M \geq r_{-}) \geq \mathbb{P}(Y \geq 1) = \mathbb{P}(Y > 0)$.
+for $i = 1, \cdots, m$. Let $Y = \sum_{i = 1}^{m} I_{i}$, the number of blocks that survive intact.
+If $Y \geq 1$, then at least one block forms a summand of size at least $r_{-}$, so
+$\mathbb{P}(M \geq r_{-}) \geq \mathbb{P}(Y > 0)$.
 
-By the Paley–Zygmund inequality (a short proof of which is provided later), any non-negative random variable with finite variance satisfies:
+Now the Paley–Zygmund inequality does exactly the required job:
 \begin{equation*}
     \mathbb{P}(Y > 0) \geq \frac{(\mathbb{E}[Y])^{2}}{\mathbb{E}[Y^{2}]}
 \end{equation*}
 In our setting, $Y \sim \text{Binomial}(m, p)$.
 
-First, we analyze the expectation (the first moment), given by:
+First compute the expectation:
 \begin{equation*}
     \mathbb{E}[Y] = mp = \left\lfloor \frac{n}{r_{-}} \right\rfloor \left(\frac{1}{2} \right)^{r_{-} - 1}
 \end{equation*}
-We bound each factor individually as follows:
+Estimate the two factors separately:
 \begin{itemize}
     \item For the floor term $\lfloor n/r_{-} \rfloor$:
         \begin{equation*}
@@ -73,39 +75,39 @@ We bound each factor individually as follows:
             \left(\frac{1}{2} \right)^{r_{-} - 1} > \left(\frac{1}{2} \right)^{(1 - \epsilon)\log_{2}n} = n^{-(1 - \epsilon)}
         \end{equation*}
 \end{itemize}
-Combining these two bounds yields:
+Putting these together,
 \begin{equation*}
     \mathbb{E}[Y] > \frac{n^{\epsilon}}{4(1 - \epsilon)\log_{2}n} \to \infty \quad \text{as } n \to \infty
 \end{equation*}
 
-Next, we bound the second moment. Recall that $\mathbb{E}[Y^{2}] = \text{Var}(Y) + (\mathbb{E}[Y])^{2}$. Since $Y$ is binomial, its variance satisfies:
+Next control the second moment. Since $Y$ is binomial,
 \begin{equation*}
     \text{Var}(Y) = mp(1 - p) \leq mp = \mathbb{E}[Y]
 \end{equation*}
 
-Substituting these results back into the Paley–Zygmund inequality, we obtain:
+Substitute this into Paley–Zygmund:
 \begin{equation*}
     \mathbb{P}(Y > 0) \geq \frac{(\mathbb{E}[Y])^{2}}{\mathbb{E}[Y^{2}]} = \frac{(\mathbb{E}[Y])^{2}}{\text{Var}(Y) + (\mathbb{E}[Y])^{2}}
             \geq \frac{(\mathbb{E}[Y])^{2}}{\mathbb{E}[Y] + (\mathbb{E}[Y])^{2}} = \frac{1}{1 + \frac{1}{\mathbb{E}[Y]}} \to 1
 \end{equation*}
-Finally, because the event $M \geq r_{-}$ implies $M \geq (1 - \epsilon)\log_{2}n$, we conclude that:
+Finally, $M \geq r_{-}$ implies $M \geq (1 - \epsilon)\log_{2}n$, so
 \begin{equation*}
     \mathbb{P}(M \geq (1 - \epsilon)\log_{2}n) \geq \mathbb{P}(M \geq r_{-}) \geq \mathbb{P}(Y > 0) \to 1
 \end{equation*}
 
-\subhead{Direct Proof of}
+\stephead{3}{Direct proof of the Paley--Zygmund bound.}
 \begin{equation*}
     \mathbb{P}(Y > 0) \geq \frac{(\mathbb{E}[Y])^{2}}{\mathbb{E}[Y^{2}]}
 \end{equation*}
-Start with the expectation of $Y$ and split it according to whether $Y > 0$:
+Start from $\mathbb{E}[Y]$ and split according to whether $Y > 0$:
 \begin{equation*}
     \mathbb{E}[Y] = \mathbb{E}[Y \cdot \textbf{1}_{Y > 0}] + \mathbb{E}[Y \cdot \textbf{1}_{Y = 0}] = \mathbb{E}[Y \cdot \textbf{1}_{Y > 0}]
 \end{equation*}
-Apply the Cauchy-Schwarz inequality:
+Now apply Cauchy–Schwarz:
 \begin{equation*}
     \mathbb{E}[Y] \leq \sqrt{\mathbb{E}[Y^{2}]} \sqrt{\mathbb{E}[\textbf{1}_{Y > 0}]} = \sqrt{\mathbb{E}[Y^{2}]} \sqrt{\mathbb{P}(Y > 0)}
 \end{equation*}
-Because all terms are nonnegative, we can square both sides to obtain
+Since everything is nonnegative, we may square both sides:
 \begin{equation*}
     (\mathbb{E}[Y])^{2} \leq \mathbb{E}[Y^{2}] \cdot \mathbb{P}(Y > 0) \implies \mathbb{P}(Y > 0) \geq \frac{(\mathbb{E}[Y])^{2}}{\mathbb{E}[Y^{2}]}
 \end{equation*}
@@ -114,14 +116,14 @@ Because all terms are nonnegative, we can square both sides to obtain
 % Note III.10.
 \noteblock{III.10}{A hundred prisoners II.}
 
-We show the ``randomization'' trick with an example. Imagine there are 10 drawers sitting in a row. The director maliciously arranged them in one giant
-cycle $1 \rightarrow 2 \rightarrow 3 \rightarrow \cdots \rightarrow 10 \rightarrow 1$ to ensure that if any prisoner opens only 5 drawers, they will
-never find their own number: Prisoner 1 opens Drawer 1, finds ``2'', goes to Drawer 2, finds ``3'', and so on. He won't find ``1'' until the 10th drawer.
-Since he can only open 5, he fails.
+The randomisation trick is easiest to see on a small example. Suppose there are 10 drawers, and the director arranges them in one giant cycle
+$1 \rightarrow 2 \rightarrow 3 \rightarrow \cdots \rightarrow 10 \rightarrow 1$.
+Then any prisoner who follows the cycle strategy but may open only 5 drawers is doomed: prisoner 1 will not see ``1'' until the 10th step.
 
-Before the game, the prisoners agree on a random remapping. Let's say their secret permutation is: ``Draw 1 is 7, 2 is 3, 3 is 9, 4 is 1, 5 is 8,
-6 is 2, 7 is 10, 8 is 4, 9 is 6, 10 is 5''. Now when a prisoner thinks ``I am opening Drawer $n$'', they actually go to the physical drawer assigned to
-$n$ in their secret code. Each prisoner now follows the cycle strategy using their secret map:
+Before the game, the prisoners agree on a random relabelling. Say their secret permutation is:
+``Drawer 1 means 7, 2 means 3, 3 means 9, 4 means 1, 5 means 8, 6 means 2, 7 means 10, 8 means 4, 9 means 6, 10 means 5.''
+Now when a prisoner says ``open drawer $n$'', they actually open the physical drawer assigned to $n$ by this secret code.
+Under that relabelling, the same deterministic strategy behaves quite differently:
 \begin{itemize}
     \item Prisoner 1
     \begin{itemize}
@@ -191,16 +193,18 @@ $n$ in their secret code. Each prisoner now follows the cycle strategy using the
             \prod_{n = 1}^{\infty} \mathcal{E} + u\mathrm{S}\textsc{et}_{\geq 1}(\mathrm{C}\textsc{yc}_{n}(\mathcal{Z}))
         \end{equation*}
 \end{itemize}
+The point in both cases is the same: for each admissible size $n$, we either use no component of size $n$, or we use a non-empty set of them and mark that size once with $u$.
 
 \section{Recursive parameters}
 % Example III.14.
 \exampleblock{III.14}{Leaves and node types in binary trees.}
 
-Actually we are dealing with the class $\bar{\mathcal{B}}$ of $\textit{pruned binary trees}$ (see \textbf{\textit{Example} I.13.}):
+Strictly speaking, the relevant object here is not the full class of binary trees but the class $\bar{\mathcal{B}}$ of
+\textit{pruned binary trees} (see \textbf{\textit{Example} I.13.}). So we begin with the correct class:
 \begin{equation*}
     \hat{B}(z) = C(z) - 1 = \frac{1 - \sqrt{1 - 4z}}{2z} - 1 = \frac{1 - 2z - \sqrt{1 - 4z}}{2z}
 \end{equation*}
-where $C(z)$ is the OGF for the Catalan numbers: $C(z) = 1 + zC(z)^{2}$.
+where $C(z)$ is the usual Catalan generating function, satisfying $C(z) = 1 + zC(z)^{2}$.
 
 \subhead{Leaves}
 \begin{equation*}
@@ -239,17 +243,18 @@ where $C(z)$ is the OGF for the Catalan numbers: $C(z) = 1 + zC(z)^{2}$.
         \left.\frac{\partial \hat{B}}{\partial u}\right|_{u = 1} = \frac{z\hat{B}(z)^{2}}{1 - 2z - 2z\hat{B}(z)}
         = \frac{z\hat{B}(z)^{2}}{\sqrt{1 - 4z}} = \frac{z^{3}C(z)^{4}}{\sqrt{1 - 4z}}
 \end{equation*}
-Since $C'(z)$ satisfies $C'(z) = C(z)^{2} + 2zC(z)C'(z)$, we have
+At this point a standard Catalan identity saves a fair amount of algebra. Since
+$C'(z)$ satisfies $C'(z) = C(z)^{2} + 2zC(z)C'(z)$, we have
 \begin{equation*}
     C'(z) = \frac{C(z)^{2}}{1 - 2zC(z)} = \frac{C(z)^{2}}{\sqrt{1 - 4z}}
 \end{equation*}
-Plugging this into our equation:
+Plugging that back in gives:
 \begin{equation*}
     \left.\frac{\partial \hat{B}}{\partial u}\right|_{u = 1} = z^{3}C(z)^{2} \cdot \frac{C(z)^{2}}{\sqrt{1 - 4z}}
         = z^{3}C(z)^{2}C'(z) = \frac{z^{3}}{3} \frac{\dd}{\dd z} C(z)^{3} = z^{3} \frac{\dd}{\dd z} F(z)
 \end{equation*}
 where $F(z) = \frac{1}{3} C(z)^{3}$.
-Now
+Now:
 \begin{equation*}
     \begin{aligned}
         [z^{n}] \left.\frac{\partial \hat{B}}{\partial u}\right|_{u = 1}
@@ -262,18 +267,18 @@ Now
     \end{aligned}
 \end{equation*}
 
-Consequently, number of \textbf{Leaves} + number of \textbf{1-nodes} + number of \textbf{2-nodes} is
+After collecting the three contributions, the total number of \textbf{Leaves} + \textbf{1-nodes} + \textbf{2-nodes} is
 \begin{equation*}
     \binom{2n - 2}{n - 1} + \binom{2n}{n} - 2 \binom{2n - 2}{n - 1} + \binom{2n - 2}{n - 3} = \frac{n}{n + 1} \binom{2n}{n}
 \end{equation*}
-as expected.
+which is exactly what it should be.
 
 % Note III.18.
 \noteblock{III.18}{Node-degree profile in simple varieties of trees.}
 \begin{equation*}
     T(z, u) = z\left(\phi(T(z, u)) + \phi_{k}(u - 1)T(z, u)^{k}\right)
 \end{equation*}
-Differentiating with respect to $u$ gives
+Differentiating with respect to $u$ gives:
 \begin{equation*}
     \frac{\partial T}{\partial u} =
         z\left(\phi'(T)\frac{\partial T}{\partial u} + \phi_{k}T^{k} + k\phi_{k}(u - 1)T^{k - 1} \frac{\partial T}{\partial u} \right) \implies
@@ -282,11 +287,11 @@ Differentiating with respect to $u$ gives
     \Omega(z) = z\left(\phi'(T(z))\Omega(z) + \phi_{k}T(z)^{k}\right) \implies
         \Omega(z) = z \frac{\phi_{k}T(z)^{k}}{1 - z\phi'(T(z))}
 \end{equation*}
-Since $T(z) = z\phi(T(z))$, differentiating with respect to $z$ yields
+Since $T(z) = z\phi(T(z))$, differentiating with respect to $z$ yields:
 \begin{equation*}
     T'(z) = \phi(T(z)) + z\phi'(T(z))T'(z) \implies 1 = \frac{\phi(T(z))}{T'(z)} + z\phi'(T(z))
 \end{equation*}
-Hence
+Hence,
 \begin{equation*}
     \Omega(z) = \phi_{k}zT(z)^{k} \cdot \frac{T'(z)}{\phi(T(z))} = \phi_{k}zT(z)^{k} \cdot \frac{T'(z)}{T(z)/z} = \phi_{k}z^{2}T(z)^{k - 1}T'(z)
 \end{equation*}
@@ -310,14 +315,14 @@ We want to show
 \begin{equation*}
     z^{2} \frac{G'(z)}{(1 - G(z))^{2} - z} = \frac{z}{2(1 - 4z)} - \frac{z}{2\sqrt{1 - 4z}}
 \end{equation*}
-Express $z$ and $G'$ in terms of $G$:
+The clean route is to rewrite everything in terms of $G$:
 \begin{equation*}
     G = \frac{z}{1 - G} \implies z = G(1 - G) = G - G^{2}
 \end{equation*}
 \begin{equation*}
     z = G - G^{2} \implies 1 = G' - 2GG' \implies G' = \frac{1}{1 - 2G}
 \end{equation*}
-Hence
+Hence,
 \begin{equation*}
     \begin{aligned}
         z^{2} \frac{G'(z)}{(1 - G(z))^{2} - z}
@@ -334,25 +339,25 @@ Hence
 % Note III.20.
 \noteblock{III.20}{Path length in simple varieties of trees.}
 
-We start with the functional equations:
+Start from the functional equations
 \begin{equation*}
     T(z) = z\phi(T(z)) \; \text{where} \; T(z) = T(z, 1); \quad
     T(z, u) = z\phi(T(zu, u))
 \end{equation*}
-Differentiating the second equation with respect to $u$ using the chain rule:
+Differentiate the second equation with respect to $u$:
 \begin{equation*}
     \frac{\partial}{\partial u} T(z, u)
         = z\phi'(T(zu, u)) \cdot \frac{\dd}{\dd u} T(zu, u) = z\phi'(T(zu, u))[T_z(zu, u)z + T_u(zu, u)]
 \end{equation*}
-At $u = 1$, the expression becomes
+At $u = 1$, this becomes
 \begin{equation} \label{eq:III.20.1}
     T_u(z, 1) = z\phi'(T(z))[zT'(z) + T_u(z, 1)] \implies T_u(z, 1) = \frac{z^{2}\phi'(T(z))T'(z)}{1 - z\phi'(T(z))}
 \end{equation}
-Differentiating the first equation with respect to $z$ gives
+Differentiating the first equation with respect to $z$ gives:
 \begin{equation*}
     T'(z) = \phi(T(z)) + z\phi'(T(z))T'(z) \implies \frac{1}{1 - z\phi'(T(z))} = \frac{T'(z)}{\phi(T(z))}
 \end{equation*}
-Plugging this fraction into \ref{eq:III.20.1}:
+Insert this into \ref{eq:III.20.1}:
 \begin{equation*}
     T_u(z, 1) = z^{2}\phi'(T(z))T'(z) \cdot \frac{T'(z)}{\phi(T(z))} = \frac{\phi'(T(z))}{\phi(T(z))}(zT'(z))^{2}
 \end{equation*}
@@ -380,65 +385,75 @@ Plugging this fraction into \ref{eq:III.20.1}:
 % Example III.19.
 \exampleblock{III.19}{Rises in Bernoulli trials: Simon Newcomb's problem.}
 
-The recurrence relation for $W_j$, given by
+\stephead{1}{Pass from $W_j$ to $X_j$.}
+Start from the recurrence:
 \begin{equation} \label{eq:III.19.1}
     W_{j} = z_{j} + z_{j} \sum_{k = 1}^{j - 1} W_{k} + vz_{j} \sum_{k = j}^{r} W_{k},
 \end{equation}
-implies a corresponding recurrence for $X_j$:
+It is convenient to pass to $X_j$:
 \begin{equation} \label{eq:III.19.2}
     X_{j} = 1 + \sum_{k = 1}^{j - 1} W_{k} + v \sum_{k = j}^{r} W_{k} = 1 + \sum_{k = 1}^{j - 1} z_{k}X_{k} + v \sum_{k = j}^{r} z_{k}X_{k}.
 \end{equation}
-Taking the forward difference of $X_j$, we find that
+Now take the forward difference:
 \begin{equation*}
     X_{j + 1} - X_{j} = W_{j} - vW_{j} = z_{j}X_{j}(1 - v),
 \end{equation*}
-which yields the first-order linear recurrence
-\begin{equation*}
+This gives the first-order recurrence:
+\begin{equation} \label{eq:III.19.4}
     X_{j + 1} = X_{j}(1 + z_{j}(1 - v)).
-\end{equation*}
-By unfolding this recurrence inductively, we can express any $X_{j}$ in terms of the initial term $X_{1}$:
+\end{equation}
+
+\stephead{2}{Solve the first-order recurrence.}
+Unwinding \eqref{eq:III.19.4} shows that every $X_j$ is determined by $X_1$:
 \begin{equation} \label{eq:III.19.3}
     X_{j} = X_{1} \prod_{k = 1}^{j - 1}(1 + (1 - v)z_{k}).
 \end{equation}
-To determine $X_{1}$, we evaluate \eqref{eq:III.19.1} at the boundary case $j = 1$:
+
+\stephead{3}{Determine $X_1$.}
+To determine $X_1$, look at the boundary case $j = 1$:
 \begin{equation*}
     W_{1} = z_{1} + vz_{1} \sum_{k = 1}^{r} W_{k} \implies z_{1}X_{1} = z_{1} + vz_{1} \sum_{k = 1}^{r} z_{k}X_{k}.
 \end{equation*}
-Canceling $z_{1}$ gives
+Canceling $z_{1}$ gives:
 \begin{equation*}
     X_{1} = 1 + v \sum_{k = 1}^{r} z_{k}X_{k}.
 \end{equation*}
-To evaluate the remaining sum, we extend the definition in \eqref{eq:III.19.2} to a boundary term $X_{r + 1}$ by setting $j = r + 1$.
-This causes the second summation to vanish, leaving
+To evaluate the remaining sum, introduce the formal boundary term $X_{r + 1}$ by setting $j = r + 1$ in \eqref{eq:III.19.2}. Then the second sum disappears, leaving
 \begin{equation*}
     X_{r + 1} = 1 + \sum_{k = 1}^{r} z_{k}X_{k} \implies \sum_{k = 1}^{r} z_{k}X_{k} = X_{r + 1} - 1.
 \end{equation*}
-Substituting this back into the expression for $X_1$ yields
+Substituting back gives:
 \begin{equation*}
     X_{1} = 1 + v(X_{r + 1} - 1).
 \end{equation*}
-On the other hand, applying the product formula \eqref{eq:III.19.3} at $j = r + 1$ reveals that $X_{r + 1} = X_{1}P$, where we define the product
-$P = \prod_{j = 1}^{r}(1 + (1 - v)z_{j})$. Substituting $X_{r+1} = X_1 P$ into our equation for $X_1$, we have
+On the other hand, \eqref{eq:III.19.3} at $j = r + 1$ gives $X_{r + 1} = X_{1}P$, where
+$P = \prod_{j = 1}^{r}(1 + (1 - v)z_{j})$. Plugging this into the equation for $X_1$,
 \begin{equation*}
     X_{1} = 1 + v(X_{1}P - 1),
 \end{equation*}
-which can be solved explicitly for $X_1$ to obtain
-\begin{equation*}
+and solving for $X_1$ gives:
+\begin{equation} \label{eq:III.19.5}
     X_{1} = \frac{1 - v}{1 - vP}.
-\end{equation*}
-Finally, the total generating function $W$ can be summed and simplified as follows:
-\begin{equation*}
+\end{equation}
+
+\stephead{4}{Recover the total generating function.}
+Finally, the total generating function is:
+\begin{equation} \label{eq:III.19.6}
     W = 1 + \sum_{k = 1}^{r} W_{k} = 1 + \sum_{k = 1}^{r} z_{k}X_{k} = X_{r + 1} = \frac{P(1 - v)}{1 - vP}.
-\end{equation*}
+\end{equation}
 
 \section{Additional constructions}
 % Example III.22.
 \exampleblock{III.22}{Constrained integer compositions and “slicing”.}
 
+This example concerns two independent regions, $\mathcal{R}_{1}$ and $\mathcal{R}_{2}$. They illustrate the same slicing philosophy, but the functional equations and resulting series are derived separately.
+
+\subhead{Region $\mathcal{R}_{1}$}
+\stephead{1}{Derive the functional equation for $\mathcal{R}_{1}$.}
 \begin{equation*}
     \mathcal{R}_{1} = \{(x, y)|1 \leq x \leq y\}
 \end{equation*}
-To derive the functional equation, note that
+To obtain the functional equation, note that
 \begin{equation*}
     \begin{aligned}
         f(z) &= z + z^{2} + \cdots = \frac{z}{1 - z} \\
@@ -449,45 +464,46 @@ To derive the functional equation, note that
             &= \frac{1}{1 - u} F(z, u)
     \end{aligned}
 \end{equation*}
-Hence
-\begin{equation*}
+Therefore,
+\begin{equation} \label{eq:III.22.3}
     F(z, u) = f(zu) + (\mathcal{L}[F(z, u)])_{u \mapsto zu} = \frac{zu}{1 - zu} + \frac{1}{1 - zu} F(z, zu)
-\end{equation*}
+\end{equation}
 
-Now we demonstrate the equivalence of the two alternative forms of $F(z, u)$:
+\stephead{2}{Check the closed form for $\mathcal{R}_{1}$.}
+Now let us check that the two advertised forms of $F(z, u)$ really agree:
 \begin{equation} \label{eq:III.22.1}
     F(z, u) = \frac{zu}{1 - zu} + \frac{z^{2}u}{(1 - zu)(1 - z^{2}u)} + \frac{z^{3}u}{(1 - zu)(1 - z^{2}u)(1 - z^{3}u)} + \cdots
 \end{equation}
 \begin{equation} \label{eq:III.22.2}
     F(z, u) = \frac{zu}{1 - z} + \frac{z^{2}u^{2}}{(1 - z)(1 - z^{2})} + \frac{z^{3}u^{3}}{(1 - z)(1 - z^{2})(1 - z^{3})} + \cdots
 \end{equation}
-\ref{eq:III.22.1} is obtained by repeated substitution. While \ref{eq:III.22.2} can be verified via Taylor expansion, it is a bit mechanical.
-Let's try a purely algebraic approach. Assume $F(z, u) = \sum_{k \geq 1} A_{k}(z)u^{k}$ and plug it into the rearranged functional equation:
+\ref{eq:III.22.1} comes from repeated substitution. One could verify \ref{eq:III.22.2} by series expansion, but there is a cleaner algebraic route.
+Assume $F(z, u) = \sum_{k \geq 1} A_{k}(z)u^{k}$ and substitute into the functional equation \eqref{eq:III.22.3}:
 \begin{equation*}
     (1 - zu)F(z, u) = zu + F(z, zu)
 \end{equation*}
-Expand both sides:
+Expanding both sides gives:
 \begin{equation*}
     \sum_{k \geq 1} A_{k}(z)u^{k} - zu\left(\sum_{k \geq 1} A_{k}(z)u^{k}\right) = zu + \sum_{k \geq 1} A_{k}(z)(zu)^{k}
 \end{equation*}
-Align the powers of $u$:
+Now collect powers of $u$:
 \begin{equation*}
     \sum_{k \geq 1} A_{k}(z)u^{k} - \sum_{k \geq 1} A_{k}(z)zu^{k + 1} = zu + \sum_{k \geq 1} A_{k}(z)z^{k}u^{k}
 \end{equation*}
 Extract the coefficients of $u^{k}$ (for $k > 1$):
-\begin{equation*}
+\begin{equation} \label{eq:III.22.4}
     A_{k}(z) - zA_{k - 1}(z) = z^{k}A_{k}(z) \implies A_{k}(z) = \frac{z}{1 - z^{k}}A_{k - 1}(z)
-\end{equation*}
-Starting from the base case $A_{1}(z) = z + z^{2} + \cdots = \frac{z}{1 - z}$ (\ref{eq:III.22.1}), the telescoping product gives
+\end{equation}
+Starting from $A_{1}(z) = z + z^{2} + \cdots = \frac{z}{1 - z}$, the recurrence telescopes to
 \begin{equation*}
     A_{k}(z) = \frac{z}{1 - z^{k}} \frac{z}{1 - z^{k - 1}} \cdots \frac{z}{1 - z^{2}} \frac{z}{1 - z}
         = \frac{z^{k}}{(1 - z)(1 - z^{2}) \cdots (1 -z^{k})}
 \end{equation*}
-This confirms the $k$-th term of \ref{eq:III.22.2} is exactly $A_{k}(z)u^{k}$.
+So the $k$th term of \ref{eq:III.22.2} is exactly $A_{k}(z)u^{k}$.
 
-There is a combinatorial interpretation: the $k$-th term of \ref{eq:III.22.1} represents a partition with \textbf{exactly $k$ summands}; while
-the $k$-th term of \ref{eq:III.22.2} represents a partition where the \textbf{largest summand is exactly $k$}.
-We illustrate the idea with the case $k = 3$.
+\stephead{3}{Compare the two combinatorial interpretations.}
+There is also a nice combinatorial punchline: the $k$th term of \ref{eq:III.22.1} counts partitions with exactly $k$ summands, whereas the $k$th term of \ref{eq:III.22.2} counts partitions whose largest summand is exactly $k$.
+The case $k = 3$ makes the contrast visible.
 
 The 3rd term in \ref{eq:III.22.1}:
 \begin{equation*}
@@ -499,7 +515,7 @@ The 3rd term in \ref{eq:III.22.1}:
     \item $z^{0} \cdot z^{k} \cdot (zu)^{k}$ places $k \geq 0$ cells on the rightmost two columns
     \item $z^{l} \cdot z^{l} \cdot (zu)^{l}$ places $l \geq 0$ cells on all three columns
 \end{itemize}
-This ``lifting'' mechanism ensures the summands remain weakly increasing.
+This lifting mechanism is what keeps the summands weakly increasing.
 
 The 3rd term in \ref{eq:III.22.2}:
 \begin{equation*}
@@ -510,10 +526,14 @@ The 3rd term in \ref{eq:III.22.2}:
     \item $\frac{1}{(1 - z)(1 - z^{2})(1 - z^{3})}$ is the standard generating function for partitions using parts of size $\{1, 2, 3\}$.
 \end{itemize}
 
+We now leave $\mathcal{R}_{1}$ entirely and start a separate analysis for $\mathcal{R}_{2}$.
+
+\subhead{Region $\mathcal{R}_{2}$}
+\stephead{1}{Derive the functional equation for $\mathcal{R}_{2}$.}
 \begin{equation*}
     \mathcal{R}_{2} = \{(x, y)|1 \leq y \leq 2x\}
 \end{equation*}
-Now
+For this second region, the slicing operator changes, so we begin again:
 \begin{equation*}
     \begin{aligned}
         f(z) &= z \\
@@ -525,11 +545,11 @@ Now
             &= \frac{u}{1 - u} \left(F(z, 1) - F(z, u^{2})\right)
     \end{aligned}
 \end{equation*}
-Hence
-\begin{equation*}
+Hence,
+\begin{equation} \label{eq:III.22.5}
     F(z, u) = f(zu) + (\mathcal{L}[F(z, u)])_{u \mapsto zu} = zu + \frac{zu}{1 - zu} \left(F(z, 1) - F(z, z^{2}u^{2})\right)
-\end{equation*}
-By repeated substitution:
+\end{equation}
+Repeated substitution gives:
 \begin{equation*}
     F(z, u) = \alpha(u) - \frac{zu}{1 - zu} \alpha(z^{2}u^{2}) + \frac{zu}{1 - zu} \frac{z^{3}u^{2}}{1 - z^{3}u^{2}}\alpha(z^{6}u^{4}) - \cdots
 \end{equation*}
@@ -537,7 +557,9 @@ where
 \begin{equation*}
     \alpha(u) = zu + \frac{zu}{1 - zu} F(z, 1), \quad \beta(u) = -\frac{zu}{1 - zu}, \quad \sigma(u) = z^{2}u^{2}
 \end{equation*}
-Substitute $u = 1$ and solve for $X \coloneqq F(z, 1)$:
+
+\stephead{2}{Solve for $F(z, 1)$.}
+Set $u = 1$ and write $X \coloneqq F(z, 1)$:
 \begin{equation*}
     \begin{aligned}
         X
@@ -548,10 +570,10 @@ Substitute $u = 1$ and solve for $X \coloneqq F(z, 1)$:
     \end{aligned}
 \end{equation*}
 This is a linear equation in $X$:
-\begin{equation*}
+\begin{equation} \label{eq:III.22.6}
     X = \text{Series A involving z} + X \cdot \text{Series B involving z}
-\end{equation*}
-where
+\end{equation}
+From here, separate the constant contribution from the coefficient of $X$. This gives
 \begin{equation*}
     \begin{aligned}
         \text{Series A}
@@ -561,7 +583,7 @@ where
         &= \sum_{j \geq 1}(-1)^{j - 1}z^{2^{j + 1} - j - 2}/Q_{j - 1}(z)
     \end{aligned}
 \end{equation*}
-The exponent
+The exponent is:
 \begin{equation*}
     \begin{aligned}
         1 + 3 + 7 + \cdots + (2^{j} - 1)
@@ -580,12 +602,15 @@ The exponent
         &= \sum_{j \geq 0}(-1)^{j}z^{2^{j + 1} - j - 2}/Q_{j}(z)
     \end{aligned}
 \end{equation*}
-Finally
-\begin{equation*}
+Finally,
+\begin{equation} \label{eq:III.22.7}
     F(z, 1) = X = \frac{\sum_{j \geq 1}(-1)^{j - 1}z^{2^{j + 1} - j - 2}/Q_{j - 1}(z)}{\sum_{j \geq 0}(-1)^{j}z^{2^{j + 1} - j - 2}/Q_{j}(z)}
-\end{equation*}
+\end{equation}
 
-The sequence starts as \textbf{1, 1, 2, 3, 5,} 9, 16, 28, 50 and is \textit{EIS} \textbf{A002572}. It represents the number of partitions of 1 into summands of the form
+This conclusion belongs only to $\mathcal{R}_{2}$; it does not depend on the earlier computation for $\mathcal{R}_{1}$.
+
+The sequence begins
+\textbf{1, 1, 2, 3, 5,} 9, 16, 28, 50 and is \textit{EIS} \textbf{A002572}. It counts partitions of $1$ into summands of the form
 $\frac{1}{2}, \frac{1}{4}, \frac{1}{8}, \cdots$: there is \textbf{1} way to represent 1 as \textit{2} summands; \textbf{1} way as \textit{3} summands;
 \textbf{2} ways as \textit{4} summands; \textbf{3} ways as \textit{5} summands; \textbf{5} ways as \textit{6} summands $\cdots$
 \begin{equation*}
@@ -608,7 +633,7 @@ $\frac{1}{2}, \frac{1}{4}, \frac{1}{8}, \cdots$: there is \textbf{1} way to repr
 % Note III.32.
 \noteblock{III.32}{Carlitz compositions I.}
 
-To derive the functional equation, note that
+To obtain the functional equation, note that
 \begin{equation*}
     \begin{aligned}
         k(z) &= z + z^{2} + \cdots = \frac{z}{1 - z} \\
@@ -619,19 +644,19 @@ To derive the functional equation, note that
             &= \frac{u}{1 - u} K(z, 1) - K(z, u)
     \end{aligned}
 \end{equation*}
-Hence
+Therefore,
 \begin{equation*}
     K(z, u) = k(zu) + (\mathcal{L}[K(z, u)])_{u \mapsto zu} = \frac{zu}{1 - zu} + \frac{zu}{1 - zu} K(z, 1) - K(z, zu)
 \end{equation*}
-To solve for $K(z, 1)$, let $X = K(z, 1)$:
+To solve for $K(z, 1)$, write $X = K(z, 1)$:
 \begin{equation*}
     K(z, u) = \frac{zu}{1 - zu}(1 + X) - K(z, zu)
 \end{equation*}
-Iterate once:
+One iteration gives:
 \begin{equation*}
     K(z, u) = \frac{zu}{1 - zu}(1 + X) - \left(\frac{z^{2}u}{1 - z^{2}u}(1 + X) - K(z, z^{2}u)\right)
 \end{equation*}
-Iterate infinitely:
+Iterating all the way gives:
 \begin{equation*}
     \begin{aligned}
         K(z, u)
@@ -639,42 +664,43 @@ Iterate infinitely:
         &= (1 + X)\sum_{j \geq 1}(-1)^{j - 1} \frac{z^{j}u}{1 - z^{j}u}
     \end{aligned}
 \end{equation*}
-Now set $u = 1$ so that $K(z, 1) = X$:
+Now set $u = 1$:
 \begin{equation*}
     X = (1 + X)\sum_{j \geq 1} \frac{(-1)^{j - 1}z^{j}}{1 - z^{j}}
 \end{equation*}
-Let the sum be $S$:
+If we call the sum $S$, then
 \begin{equation*}
     X = (1 + X)S \implies 1 + X = \frac{1}{1 - S} = \left(1 - \sum_{j \geq 1} \frac{(-1)^{j - 1}z^{j}}{1 - z^{j}}\right)^{-1}
         = \left(1 + \sum_{j \geq 1} \frac{(-z)^{j}}{1 - z^{j}}\right)^{-1}
 \end{equation*}
-Note that the last expression is $1 + X$, not $X$.
+The small bookkeeping point is that the final expression equals $1 + X$, not $X$ itself.
 
 % Example III.23.
 \exampleblock{III.23}{Local order patterns in permutations.}
 
-For simplicity, let's denote $\hat{I}(z, \textbf{u})$ by $I$. The differential equation becomes
+\stephead{1}{Solve the differential equation.}
+For brevity, let $\hat{I}(z, \textbf{u})$ be abbreviated to $I$. Then the differential equation becomes
 \begin{equation*}
     \frac{\dd I}{\dd z} = u_{0} + (u_{1} + u_{1}')I + u_{2}I^{2} = u_{0} + 2v_{1}I + u_{2}I^{2}
 \end{equation*}
-Separating variables yields
+Separating variables yields:
 \begin{equation*}
     \frac{\dd I}{u_{0} + 2v_{1}I + u_{2}I^{2}} = \dd z
 \end{equation*}
-which we integrate from the initial condition $I(0) = 0$ to a general $z$:
+Integrate this from the initial condition $I(0) = 0$ up to a general $z$:
 \begin{equation*}
     \int_{\xi = I(0)}^{\xi = I(z)} \frac{\dd \xi}{u_{0} + 2v_{1}\xi + u_{2}\xi^{2}} = \int_{\zeta = 0}^{\zeta = z} \dd \zeta
 \end{equation*}
-Inserting $I(0) = 0$ and writing $I(z)$ simply as $I$ for brevity:
+Using $I(0) = 0$ and writing $I(z)$ simply as $I$,
 \begin{equation*}
     \int_{0}^{I} \frac{\dd \xi}{u_{0} + 2v_{1}\xi + u_{2}\xi^{2}} = \int_{0}^{z} \dd \zeta = z
 \end{equation*}
-Completing the square in the denominator:
+Complete the square in the denominator:
 \begin{equation*}
     u_{0} + 2v_{1}\xi + u_{2}\xi^{2}
     = u_{2}\left[\left(\xi + \frac{v_{1}}{u_{2}}\right)^{2} + \frac{\delta^{2}}{u_{2}^{2}}\right]
 \end{equation*}
-and substituting this into the integral gives
+which turns the integral into
 \begin{equation*}
     \int_{0}^{I} \frac{\dd \xi}{u_{2}\left[\left(\xi + \frac{v_{1}}{u_{2}}\right)^{2} + \left(\frac{\delta}{u_{2}}\right)^{2}\right]} = z
 \end{equation*}
@@ -686,18 +712,19 @@ Using the standard integral $\int \frac{\dd x}{x^{2} +a^{2}} = \frac{1}{a} \arct
             \arctan\left(\frac{u_{2}I + v_{1}}{\delta}\right) - \arctan\left(\frac{v_{1}}{\delta}\right)
         \right]
 \end{equation*}
-Rearranging and taking the tangent of both sides, we obtain
+Now rearrange and take tangents:
 \begin{equation*}
     \frac{u_{2}I + v_{1}}{\delta} = \tan\left[\arctan\left(\frac{v_{1}}{\delta}\right) + z\delta\right]
         = \frac{\frac{v_{1}}{\delta} + \tan(z\delta)}{1 - \frac{v_{1}}{\delta}\tan(z\delta)}
         = \frac{v_{1} + \delta\tan(z\delta)}{\delta - v_{1}\tan(z\delta)}
 \end{equation*}
-Solving for $I$ yields the final expression:
-\begin{equation*}
+Solving for $I$ yields:
+\begin{equation} \label{eq:III.23.2}
     I = \frac{\delta}{u_{2}} \frac{v_{1} + \delta\tan(z\delta)}{\delta - v_{1}\tan(z\delta)} - \frac{v_{1}}{u_{2}}
-\end{equation*}
+\end{equation}
 
-We now expand $I$ as a power series. Starting from the closed-form expression:
+\stephead{2}{Expand the closed form.}
+Now expand $I$ as a power series. Start from the closed form \eqref{eq:III.23.2}:
 \begin{equation*}
     \begin{aligned}
         I
@@ -716,10 +743,10 @@ We now expand $I$ as a power series. Starting from the closed-form expression:
         &= u_{0}z + u_{0}(u_{1} + u_{1}')\frac{z^{2}}{2!} + u_{0}((u_{1} + u_{1}')^{2} + 2u_{0}u_{2})\frac{z^{3}}{3!} + \cdots
     \end{aligned}
 \end{equation*}
-Alternatively, this result may be obtained directly by Taylor series expansion, computing successive derivatives of $I$ with respect to $z$
-from the differential equation itself.
+The same coefficients could also be recovered directly from the differential equation by repeated differentiation, but the closed form is shorter.
 
-Alternatively, the series can also be obtained by simply listing the elements for each $n \geq 1$.
+\stephead{3}{Check the first few objects directly.}
+There is also a direct check: list the objects for small $n$.
 \begin{equation*}
     \begin{aligned}
         \mathcal{P}_{1} &= \{ \cnum{1} \} \implies \\
@@ -737,8 +764,7 @@ Alternatively, the series can also be obtained by simply listing the elements fo
     \end{aligned}
 \end{equation*}
 
-\subhead{Node Types}
-Let us find the mean number of nodes of nullary, unary, and binary type from the closed-form solution.
+With the closed form established, we can now extract the mean numbers of the three node types by specializing one marker at a time.
 
 \subhead{Nullary Type}
 Set $u_{1} = u_{1}' = u_{2} = 1$. Then $v_{1} = 1$ and $\delta = \sqrt{u_{0} - 1}$. We have
@@ -750,12 +776,12 @@ Write $w = w_{0} + w_{2}\delta^{2} + O(\delta^{4})$ with $w_{0} = z$ and $w_{2} 
 \begin{equation*}
     1 - w = 1 - w_{0} - w_{2}\delta^{2} + O(\delta^{4}) = (1 - w_{0})\left[1 - \frac{w_{2}}{1 - w_{0}}\delta^{2} + O(\delta^{4})\right]
 \end{equation*}
-Hence
+Hence,
 \begin{equation*}
     \frac{1}{1 - w} = \frac{1}{1 - w_{0}} \frac{1}{1 - \frac{w_{2}}{1 - w_{0}}\delta^{2} + \cdots}
         = \frac{1}{1 - w_{0}}\left[1 + \frac{w_{2}}{1 - w_{0}}\delta^{2} + O(\delta^{4})\right]
 \end{equation*}
-Multiplying by $w = w_{0} + w_{2}\delta^{2} + O(\delta^{4})$ yields
+Multiplying by $w = w_{0} + w_{2}\delta^{2} + O(\delta^{4})$ yields:
 \begin{equation*}
     \frac{w}{1 - w} = \frac{w_{0}}{1 - w_{0}} + \frac{w_{2}}{(1 - w_{0})^{2}}\delta^{2} + O(\delta^{4})
 \end{equation*}
@@ -763,7 +789,7 @@ Substituting $w_{0} = z$ and $w_{2} = z^{3}/3$, we obtain
 \begin{equation} \label{eq:III.23.1}
     \frac{w}{1 - w} = \frac{z}{1 - z} + \frac{z^{3}}{3(1 - z)^{2}}\delta^{2} + O(\delta^{4})
 \end{equation}
-Since $\delta^{2} = u_{0} - 1$, the first-order Taylor term in $u_{0}$ is exactly the coefficient of $\delta^{2}$. Hence
+Since $\delta^{2} = u_{0} - 1$, the first-order Taylor term in $u_{0}$ is exactly the coefficient of $\delta^{2}$. Hence,
 \begin{equation*}
     \left.\frac{\partial I}{\partial u_{0}}\right|_{u_{0} = 1}
         = [\delta^{2}] \left((1 + \delta^{2})\frac{w}{1 - w} \right)
@@ -772,7 +798,7 @@ Since $\delta^{2} = u_{0} - 1$, the first-order Taylor term in $u_{0}$ is exactl
 The coefficient of $z^{n}$ in $\left.\frac{\partial I}{\partial u_{0}}\right|_{u_{0} = 1}$ is $(n + 1)/3$.
 
 \subhead{Unary Type}
-We consider both unary types simultaneously. Note that $\hat{I}$ depends on $u_{1}, u_{1}'$ only through
+Treat the two unary types together. Note that $\hat{I}$ depends on $u_{1}, u_{1}'$ only through
 $v_{1} = (u_{1} + u_{1}')/2$. Set $u_{0} = u_{2} = 1$. Then $\delta = \sqrt{1 - v_{1}^{2}}$ and
 \begin{equation*}
     \hat{I}(z, v_{1}) = \delta \frac{v_{1} + \delta\tan(z\delta)}{\delta - v_{1}\tan(z\delta)} - v_{1}
@@ -783,7 +809,7 @@ We have
 \begin{equation*}
     \frac{\partial I}{\partial u_{1}} = \frac{\partial I}{\partial u_{1}'} = \frac{1}{2} \frac{\partial I}{\partial v_{1}}
 \end{equation*}
-We compute $\frac{\partial I}{\partial v_{1}}$ at $v_{1} = (1 + 1)/2 = 1$. First, $w$ depends on $v_{1}$ via $s \coloneqq \delta^{2} = 1 - v_{1}^{2}$:
+So it is enough to compute $\frac{\partial I}{\partial v_{1}}$ at $v_{1} = 1$. First, $w$ depends on $v_{1}$ through $s \coloneqq \delta^{2} = 1 - v_{1}^{2}$:
 \begin{equation*}
     \frac{\partial w}{\partial v_{1}} = \frac{\partial w}{\partial s} \cdot (-2v_{1})
 \end{equation*}
@@ -814,7 +840,7 @@ Set $u_{0} = 1$, $v_{1} = (1 + 1)/2 = 1$. Then $\delta = \sqrt{u_{2} - 1}$ and
     \hat{I}(z, u_{2}) = \frac{\delta}{u_{2}} \frac{1 + \delta\tan(z\delta)}{\delta - \tan(z\delta)} - \frac{1}{u_{2}} = \frac{w}{1 - w}
 \end{equation*}
 where $w \coloneqq \frac{\tan(z\delta)}{\delta} = z + \frac{z^{3}}{3}\delta^{2} + O(\delta^{4})$.
-This is similar to the nullary case. From \ref{eq:III.23.1} we have
+This is the same calculation as in the nullary case, with one parameter renamed. From \ref{eq:III.23.1} we obtain
 \begin{equation*}
     \left.\frac{\partial \hat{I}}{\partial u_{2}}\right|_{u_{2} = 1}
     = [\delta^{2}] \frac{w}{1 - w}
@@ -831,14 +857,14 @@ as expected.
 % III.7.4.
 \topicblock{III.7.4}{Symbolic inclusion-exclusion.}
 
-To illustrate the relation $\mathcal{Q} \cong \mathcal{U} \star \mathcal{P}$, let's list all elements in $\mathcal{Q}_{3}$.
+To make the relation $\mathcal{Q} \cong \mathcal{U} \star \mathcal{P}$ concrete, let us list the elements of $\mathcal{Q}_{3}$.
 \begin{equation*}
     \begin{aligned}
         \mathcal{U} &= \{ \emptyset, \{1\}, \{1, 2\}, \{1, 2, 3\}, \cdots \} \\
         \mathcal{P} &= \{ \emptyset, (1), (1,2), (2,1), (1,2,3), (1,3,2), (2,1,3), (2,3,1), (3,1,2), (3,2,1), \cdots \}
     \end{aligned}
 \end{equation*}
-We pick an element from $\mathcal{U}$ with size $k$ and an element from $\mathcal{P}$ with size $3 - k$, where $0 \leq k \leq 3$.
+Pick an element of $\mathcal{U}$ of size $k$ and an element of $\mathcal{P}$ of size $3 - k$, with $0 \leq k \leq 3$.
 
 \subhead{$\mathcal{U}_{0} \star \mathcal{P}_{3}$}
 \begin{itemize}
@@ -906,11 +932,12 @@ We pick an element from $\mathcal{U}$ with size $k$ and an element from $\mathca
 \exampleblock{III.25}{Rises and ascending runs in permutations.}
 
 \subhead{Rises}
-First, we expand $A(z, u)$ as a power series in $z$ at $z = 0$.
+\stephead{1}{Expand around $z = 0$.}
+First expand $A(z, u)$ as a power series in $z$ around $0$.
 \begin{equation*}
     A(z, u) = \frac{u - 1}{u - e^{z(u - 1)}}
 \end{equation*}
-The denominator
+The denominator is:
 \begin{equation*}
     \begin{aligned}
         u - e^{z(u - 1)}
@@ -919,7 +946,7 @@ The denominator
         &= (u - 1)\left[1 - z - \frac{u - 1}{2} z^{2} - \frac{(u - 1)^{2}}{6}z^{3} - \frac{(u - 1)^{3}}{24}z^{4} + O(z^{5})\right]
     \end{aligned}
 \end{equation*}
-Hence
+Hence,
 \begin{equation*}
     \begin{aligned}
         A(z, u)
@@ -931,7 +958,7 @@ Set
 \begin{equation*}
     w = z + \frac{u - 1}{2} z^{2} + \frac{(u - 1)^{2}}{6}z^{3} + \frac{(u - 1)^{3}}{24}z^{4}
 \end{equation*}
-Compute powers of $w$ up to $z^{4}$, dropping $O(z^{5})$ terms:
+Compute powers of $w$ up to order $z^{4}$:
 \begin{equation*}
     \begin{aligned}
         w^{2}
@@ -956,7 +983,8 @@ Then
     \end{aligned}
 \end{equation*}
 
-Now, we expand $A(z, u)$ as a power series in $u$ at $z = 1$. Set $v = u - 1$.
+\stephead{2}{Expand around $u = 1$.}
+Now expand $A(z, u)$ in powers of $u$ around $u = 1$. Set $v = u - 1$.
 \begin{equation*}
     A(z, u) = \frac{v}{(v + 1) - e^{zv}}
 \end{equation*}
@@ -965,7 +993,7 @@ The denominator
     v + 1 - e^{zv} = v + 1 - \left(1 + zv + \frac{z^{2}}{2}v^{2} + \frac{z^{3}}{6}v^{3} + O(v^{4})\right)
         = (1 - z)v - \frac{z^{2}}{2}v^{2} - \frac{z^{3}}{6}v^{3} + O(v^{4})
 \end{equation*}
-Hence
+Hence,
 \begin{equation*}
     \begin{aligned}
         A(z, u)
@@ -976,7 +1004,8 @@ Hence
         &= \frac{1}{1 - z} + \frac{z^{2}}{2(1 - z)^{2}}v + \frac{2z^{3} + z^{4}}{6(1 - z)^{3}} \frac{v^{2}}{2!} + \cdots
     \end{aligned}
 \end{equation*}
-Extracting coefficients gives
+\stephead{3}{Extract the mean and variance.}
+Extracting coefficients gives:
 \begin{equation*}
     [z^{n}] \frac{z^{2}}{2(1 - z)^{2}} = \frac{1}{2} [z^{n - 2}] \sum_{m = 0}^{\infty}(m + 1)z^{m} = \frac{n - 1}{2}
 \end{equation*}
@@ -985,23 +1014,24 @@ Extracting coefficients gives
         = \frac{1}{3} [z^{n - 3}] \sum_{m = 0}^{\infty} \binom{m + 2}{2} z^{m} + \frac{1}{6} [z^{n - 4}] \sum_{m = 0}^{\infty} \binom{m + 2}{2} z^{m}
         = \frac{3n^{2} - 11n + 10}{12}
 \end{equation*}
-The mean of the number of rises in a random permutation of size $n$ is $\frac{n - 1}{2}$, the variance is
+The mean of the number of rises in a random permutation of size $n$ is $\frac{n - 1}{2}$, and the variance is:
 \begin{equation*}
     \frac{3n^{2} - 11n + 10}{12} + \frac{n - 1}{2} - \left(\frac{n - 1}{2} \right)^{2} = \frac{n + 1}{12}
 \end{equation*}
 
 \subhead{Ascending Runs}
 
-The ordinary generating function $I(z,v)$ is an improper rational function: its numerator degree is $l + 1$ and denominator degree is $l$.
+\stephead{1}{Decompose the rational form.}
+The ordinary generating function $I(z,v)$ is an improper rational function: the numerator has degree $l + 1$ and the denominator has degree $l$.
 By polynomial long division and standard partial fraction decomposition, $I(z, v)$ can be written exactly as:
 \begin{equation*}
     I(z, v) = 1 - z + \sum_{j = 1}^{l} \frac{c_{j}}{1 - \omega_{j}z}
 \end{equation*}
-The polynomial part is $1 - z$ (or more precisely, $-z - \frac{1}{v}$ for the $l = 1$ case). Why does the formula have $(1 - z)(v + 1)$?
-The factor $v + 1$ might be a typographical error.
+The polynomial part is $1 - z$ (or more precisely, $-z - \frac{1}{v}$ when $l = 1$). This suggests rechecking the factor $(1 - z)(v + 1)$ in the text, because the computation here points instead to the polynomial part stated above.
 
+\stephead{2}{Estimate the moments.}
 The mean number of ascending runs of length $l - 1$ is $\frac{n - l + 1}{l!} \sim \frac{n}{l!}$; the variance is $\sim \frac{n}{l!}$.
-Concentration of distribution holds if
+Concentration holds provided
 \begin{equation*}
     \lim_{n \to \infty} \frac{\sigma_{n}}{\mu_{n}} = 0
 \end{equation*}
@@ -1010,19 +1040,19 @@ Now
     \left(\frac{\sigma_{n}}{\mu_{n}}\right)^{2} = \frac{\sigma_{n}^{2}}{\mu_{n}^{2}}
         = \frac{\frac{n}{l!}}{\left(\frac{n}{l!} \right)^{2}} = \frac{l!}{n}
 \end{equation*}
-which tends to 0 if $l! = o(n)$. The text writes $(l + 1)! = o(n)$, which might be a strict sufficient condition, or a typographical error.
+This tends to $0$ whenever $l! = o(n)$. So the condition $l! = o(n)$ already suffices for concentration; if the text writes $(l + 1)! = o(n)$, that stronger condition is not needed for the estimate derived here.
 
 % Note III.36.
 \noteblock{III.36}{Permutations without l-ascending runs.}
 
-Consider the denominator of $\left.A(z, u)\right|_{u = 0}$ before the transformation:
+Consider the denominator of $\left.A(z, u)\right|_{u = 0}$ before applying the transform:
 \begin{equation*}
     1 - z - I(z, -1) = \frac{1}{1 + z + \cdots + z^{l}} = \frac{1 - z}{1 - z^{l + 1}} = \frac{1 - z}{1 - z^{m}}
 \end{equation*}
 where $m \coloneqq l + 1$. To prepare for the transform $(1 - \omega z)^{-1} \mapsto e^{\omega z}$, we decompose
 $\frac{1 - z}{1 - z^{m}}$ using the $m$-th root of unity. Let $\omega_{k} = e^{2\pi ik/m}$ for $k = 0, 1, \cdots, m - 1$ be
 the roots of $z^{m} = 1$.
-Standard partial fraction expansion of $\frac{1}{1 - z^{m}}$ gives:
+The standard partial fraction expansion is:
 \begin{equation*}
     \frac{1}{1 - z^{m}} = \frac{1}{m} \sum_{k = 0}^{m - 1} \frac{1}{1 - \omega_{k}z}
 \end{equation*}
@@ -1042,11 +1072,11 @@ Now apply the transform:
         &= \sum_{i \geq 0} \frac{z^{m \cdot i}}{(m \cdot i)!} - \frac{z^{m \cdot i + 1}}{(m \cdot i + 1)!}
     \end{aligned}
 \end{equation*}
-The third equality holds because the true operator mapping from the OGF domain to the EGF domain for a function multiplied by $z$
-involves a differential shift. The second-to-last equality holds because $\sum_{k = 0}^{m - 1} \omega_{k}^{n}$ is zero unless $n$
-is a multiple of $m$, in which case the sum is $m$.
+At this point the root-of-unity filter has done its job: the denominator is now a sparse exponential series that can be read term by term.
+The key points are these: multiplying by $z$ in the ordinary generating-function setting becomes an integral after passage to exponential generating functions, and
+$\sum_{k = 0}^{m - 1} \omega_{k}^{n}$ vanishes unless $n$ is a multiple of $m$, in which case it equals $m$.
 
-Let's expand the EGF for $m = 2, 3, 4$:
+For orientation, here are the first few EGFs when $m = 2,3,4$:
 \begin{equation*}
     \begin{aligned}
         \text{A.R. of length 1} \quad \left(\sum_{i \geq 0} \frac{z^{2i}}{(2i)!} - \frac{z^{2i + 1}}{(2i + 1)!}\right)^{-1}
@@ -1057,7 +1087,8 @@ Let's expand the EGF for $m = 2, 3, 4$:
             &= 1 + z + \frac{z^{2}}{2!} + \frac{z^{3}}{3!} + 23 \frac{z^{4}}{4!} + O(z^{5})
     \end{aligned}
 \end{equation*}
-For example, there're 17 permutations in $\mathcal{P}_4$ without ascending runs of length 2: 1324, 1423, 1432, 2143, 2314,
+For example, there are 17 permutations in $\mathcal{P}_4$ without ascending runs of length 2:
+1324, 1423, 1432, 2143, 2314,
 2413, 2431, 3142, 3214, 3241, 3412, 3421, 4132, 4213, 4231, 4312, 4321.
 
 % Note III.41.
@@ -1076,7 +1107,7 @@ We want to show
         $\text{LHS} = u^{1}u^{0}u^{0} = u$;
         $\text{RHS} = u^{0}u^{0} + 1 \cdot (u - 1) = u$
 \end{itemize}
-The bivariate generating function is defined by summing over all possible binary trees $\tau$:
+Now sum over all binary trees $\tau$ to get the bivariate generating function:
 \begin{equation*}
     \begin{aligned}
         B(z, u)
@@ -1095,41 +1126,40 @@ The bivariate generating function is defined by summing over all possible binary
 
 \section{Extremal parameters}
 % Note III.8.3.
-\subhead{III.8.3. Averages and moments.}
-To see how the first sum rearranges into the second, we use a discrete version of summation by parts.
-We can express the linear factor $h$ as a sum of ones:
+\topicblock{III.8.3}{Averages and moments.}
+To see why the first sum rearranges into the second, use a discrete summation-by-parts trick.
+Write the linear factor $h$ as
 \begin{equation*}
     h = \sum_{j = 1}^{h}1
 \end{equation*}
-Substituting this into the original expression gives a double summation:
+Substituting this produces a double sum:
 \begin{equation*}
     \Xi(z) = \sum_{h = 0}^{\infty} \left(\sum_{j = 1}^{h}1\right)\left[f^{[h]}(z) - f^{[h-1]}(z)\right]
         = \sum_{h = 1}^{\infty} \sum_{j = 1}^{h} \left[f^{[h]}(z) - f^{[h - 1]}(z)\right]
 \end{equation*}
-The region of summation is defined by $1 \leq j \leq h < \infty$. Flipping the order of summation so that we sum over $h$ first
-means $h$ ranges from $j$ to $\infty$, and $j$ ranges from $1$ to $\infty$:
+The summation region is $1 \leq j \leq h < \infty$. Reverse the order: then $j$ runs from $1$ to $\infty$, while $h$ runs from $j$ to $\infty$.
 \begin{equation*}
     \Xi(z) = \sum_{j = 1}^{\infty} \sum_{h = j}^{\infty} \left[f^{[h]}(z) - f^{[h - 1]}(z)\right]
 \end{equation*}
-Now, the inner sum over $h$ is a classic telescoping sum:
+The inner sum over $h$ now telescopes:
 \begin{equation*}
     \sum_{h = j}^{\infty} \left[f^{[h]}(z) - f^{[h - 1]}(z)\right] = \lim_{N \to \infty} \sum_{h = j}^{N} \left[ f^{[h]}(z) - f^{[h - 1]}(z)\right]
 \end{equation*}
-Expanding the terms shows that everything cancels out except the upper limit and the lower limit:
+Expanding the finite sum makes the cancellation explicit:
 \begin{equation*}
     \lim_{N \to \infty} \left(\left[f^{[j]} - f^{[j - 1]}\right] + \left[f^{[j + 1]} - f^{[j]}\right] + \dots + \left[f^{[N]} - f^{[N - 1]}\right]\right)
         = \lim_{N \to \infty} \left(f^{[N]}(z) - f^{[j - 1]}(z)\right)
 \end{equation*}
-Because $f^{[N]}(z)$ represents objects with parameter at most $N$, taking the limit as $N \to \infty$ simply yields the unconstrained generating function,
-$f(z)$. Thus, the inner sum collapses to:
+Because $f^{[N]}(z)$ counts objects with parameter at most $N$, letting $N \to \infty$ recovers the unconstrained generating function $f(z)$.
+So the inner sum collapses to
 \begin{equation*}
     f(z) - f^{[j - 1]}(z)
 \end{equation*}
-Plugging this back into our outer sum:
+Putting this back into the outer sum,
 \begin{equation*}
     \Xi(z) = \sum_{j = 1}^{\infty} \left[f(z) - f^{[j - 1]}(z)\right]
 \end{equation*}
-Finally, shift the index by letting $h = j - 1$. As $j$ runs from $1$ to $\infty$, $h$ runs from $0$ to $\infty$:
+Finally shift the index by $h = j - 1$:
 \begin{equation*}
     \Xi(z) = \sum_{h = 0}^{\infty} \left[f(z) - f^{[h]}(z)\right]
 \end{equation*}

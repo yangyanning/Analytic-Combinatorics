@@ -6,18 +6,18 @@
 % Note I.2
 \noteblock{I.2}{Unimodal permutations.}
 
-A unimodal permutation can be viewed as a sequence of elements increasing to a peak and then decreasing. This structure is represented by
+A unimodal permutation climbs to a single peak and then descends. In symbolic terms,
 \begin{equation*}
     \mathcal{P}^{\mathcal{U}} = \mathrm{S}\textsc{et}(\mathcal{Z}) \star \mathcal{Z}^{\blacksquare} \star \mathrm{S}\textsc{et}(\mathcal{Z})
 \end{equation*}
 \begin{equation*}
     P^{U}(z) = \int_{0}^{z}\left(e^{t} \cdot \frac{\dd}{\dd t} t \cdot e^{t}\right)\dd t = \frac{1}{2}(e^{2z} - 1)
 \end{equation*}
-which yields
+which immediately yields
 \begin{equation*}
     P^{U}_{n} = n![z^{n}] \frac{1}{2} e^{2z} = n!\frac{1}{2} \frac{2^{n}}{n!} = 2^{n - 1}
 \end{equation*}
-Alternatively
+For a direct counting argument,
 \begin{equation*}
     P^{U}_{n} = \sum_{k = 1}^{n} \binom{n - 1}{k - 1} = \sum_{j = 0}^{n - 1} \binom{n - 1}{j} = 2^{n - 1}
 \end{equation*}
@@ -29,25 +29,24 @@ where $k$ is the position of $n$ in the permutation.
 % Note I.16
 \noteblock{I.16}{Partitions with summands bounded in number and size.}
 
-The number of partitions of size $n$ with at most $k$ summands, each at most $l$, is
+Consider partitions of size $n$ with at most $k$ summands, each bounded by $l$. Their generating function is
 \begin{equation} \label{eq:I.16.1}
     [z^{n}] \frac{(1 - z)(1 - z^{2}) \cdots (1 - z^{k + l})}{((1 - z)(1 - z^{2}) \cdots (1 - z^{k})) \cdot ((1 - z)(1 - z^{2}) \cdots (1 - z^{l}))}
 \end{equation}
-Let $f(k, l)$ denote the generating function where the coefficient of $z^{n}$ represents the number of such partitions.
-To derive a functional equation, consider the value of the largest part. There are two mutually exclusive possibilities:
-the largest part is strictly less than $l$, or it is exactly $l$. This distinction yields
+Let $f(k, l)$ denote this generating function, so the coefficient of $z^{n}$ counts the admissible partitions of $n$.
+The natural split is by the largest part: it is either strictly smaller than $l$, or exactly $l$. Thus
 \begin{equation} \label{eq:I.16.2}
     f(k, l) = f(k, l - 1) + z^{l}f(k - 1, l)
 \end{equation}
-We can derive \ref{eq:I.16.1} from this relation by introducing $F_{k}(x)$, the generating function for $f(k, l)$ with respect to the index $l$:
+To package the dependence on $l$, write
 \begin{equation*}
     F_{k}(x) = \sum_{l = 0}^{\infty} f(k, l)x^{l}
 \end{equation*}
-For the base case $k = 0$, the only valid partition is the empty partition of size $0$, implying $f(0,l) = 1$ for all $l \geq 0$. Thus
+For the base case $k = 0$, only the empty partition survives, so $f(0,l) = 1$ for all $l \geq 0$. Hence
 \begin{equation*}
     F_{0}(x) = \sum_{l = 0}^{\infty}1 \cdot x^{l} = \frac{1}{1 - x}
 \end{equation*}
-Summing \ref{eq:I.16.2} over $l \geq 1$ after multiplying by $x^{l}$, we obtain
+Now multiply \ref{eq:I.16.2} by $x^{l}$ and sum over $l \geq 1$:
 \begin{equation*}
     \sum_{l = 1}^{\infty} f(k, l)x^{l} - \sum_{l = 1}^{\infty} f(k, l - 1)x^{l} = \sum_{l = 1}^{\infty} f(k - 1, l)(zx)^{l}
 \end{equation*}
@@ -56,11 +55,11 @@ Summing \ref{eq:I.16.2} over $l \geq 1$ after multiplying by $x^{l}$, we obtain
     \item The second term is simply $x F_{k}(x)$.
     \item The right-hand side yields $F_{k - 1}(zx) - 1$.
 \end{itemize}
-Plugging these in:
+Substituting these pieces back in gives
 \begin{equation*}
     (1 - x)F_{k}(x) - 1 = F_{k - 1}(zx) - 1 \implies F_{k}(x) = \frac{1}{1 - x} F_{k - 1}(zx)
 \end{equation*}
-Now we apply this functional relation repeatedly:
+Iterating the relation gives
 \begin{equation*}
     \begin{aligned}
         F_{k}(x)
@@ -73,12 +72,11 @@ Since $F_{0}(x) = \frac{1}{1 - x}$, we have $F_{0}(z^{k}x) = \frac{1}{1 - z^{k}x
 \begin{equation*}
     F_{k}(x) = \sum_{l = 0}^{\infty} f(k, l)x^{l} = \frac{1}{(1 - x)(1 - zx) \cdots (1 - z^{k}x)}
 \end{equation*}
-Since all the roots of the denominator are distinct (assuming $|z| < 1$ or that $z$ is a formal variable), we can decompose this into a sum of partial fractions:
+Since the denominator has distinct linear factors, we may use partial fractions:
 \begin{equation*}
     \frac{1}{\prod_{i = 0}^{k}(1 - z^{i}x)} = \sum_{j = 0}^{k} \frac{A_{j}}{1 - z^{j}x}
 \end{equation*}
-To find a specific $A_{j}$, we multiply both sides by $(1 - z^{j}x)$ and then
-set $x = z^{-j}$:
+To isolate $A_{j}$, multiply through by $(1 - z^{j}x)$ and then set $x = z^{-j}$:
 \begin{equation*}
     \begin{aligned}
         A_{j}
@@ -87,8 +85,7 @@ set $x = z^{-j}$:
         &= \frac{(-1)^{j}z^{j(j + 1)/2}}{\prod_{i = 1}^{j}(1 - z^{i})\prod_{i = 1}^{k - j}(1 - z^{i})}
     \end{aligned}
 \end{equation*}
-The coefficient of $x^{l}$ in $F_{k}(x)$ is the sum of the coefficients of $x^{l}$
-in each partial fraction. For a term $\frac{A_{j}}{1 - z^{j}x}$, the coefficient is $A_{j}(z^{j})^{l}$.
+The coefficient of $x^{l}$ in $F_{k}(x)$ is then read off term by term. For $\frac{A_{j}}{1 - z^{j}x}$, it is simply $A_{j}(z^{j})^{l}$.
 \begin{equation*}
     \begin{aligned}
         f(k, l)
@@ -105,11 +102,11 @@ where $\binom{k}{j}_{z}$ is the Gaussian binomial coefficient:
         &= \frac{(1 - z^{k})(1 - z^{k - 1}) \cdots (1 - z^{k - j + 1})}{(1 - z)(1 - z^{2}) \cdots (1 - z^{j})}
     \end{aligned}
 \end{equation*}
-We can rewrite the exponent in the sum:
+A small rearrangement of the exponent gives
 \begin{equation*}
     \frac{j(j + 1)}{2} + jl = \frac{j(j - 1)}{2} + j(l + 1)
 \end{equation*}
-Now the sum becomes
+so the sum becomes
 \begin{equation*}
     f(k, l) = \frac{1}{\prod_{i = 1}^{k}(1 - z^{i})} \sum_{j = 0}^{k} \binom{k}{j}_{z}(-1)^{j}z^{j(j - 1)/2}(z^{l + 1})^{j}
 \end{equation*}
@@ -117,7 +114,7 @@ The $q$-binomial theorem states that for a variable $X$:
 \begin{equation} \label{eq:I.16.3}
     \prod_{i = 0}^{k - 1}(1 - z^{i}X) = \sum_{j = 0}^{k} \binom{k}{j}_{z}(-1)^{j}z^{j(j - 1)/2}X^{j}
 \end{equation}
-Plugging $X = z^{l + 1}$ into the theorem yields \ref{eq:I.16.1}
+Substituting $X = z^{l + 1}$ into the theorem recovers \ref{eq:I.16.1}:
 \begin{equation*}
     \begin{aligned}
         f(k, l)
@@ -125,20 +122,20 @@ Plugging $X = z^{l + 1}$ into the theorem yields \ref{eq:I.16.1}
         &= \frac{(1 - z)(1 - z^{2}) \cdots (1 - z^{k + l})}{((1 - z)(1 - z^{2}) \cdots (1 - z^{k})) \cdot ((1 - z)(1 - z^{2}) \cdots (1 - z^{l}))}
     \end{aligned}
 \end{equation*}
-To prove \ref{eq:I.16.3}, let $P_{k}(X)$ be the product we are expanding:
+For completeness, let us also justify \ref{eq:I.16.3}. Set
 \begin{equation*}
     P_{k}(X) = \prod_{i = 0}^{k - 1}(1 - z^{i}X)
 \end{equation*}
-We want to show that $P_{k}(X) = \sum_{j = 0}^{k} \binom{k}{j}_{z}(-1)^{j}z^{j(j - 1)/2}X^{j}$.
-Consider the relationship between $P_{k}(X)$ and $P_{k - 1}(X)$. By definition:
+We claim that $P_{k}(X) = \sum_{j = 0}^{k} \binom{k}{j}_{z}(-1)^{j}z^{j(j - 1)/2}X^{j}$.
+Start from the elementary relation
 \begin{equation*}
     P_{k}(X) = (1 - z^{k - 1}X)P_{k - 1}(X)
 \end{equation*}
-Now notice what happens if we replace $X$ with $zX$ in $P_{k}(X)$:
+Next, replace $X$ by $zX$:
 \begin{equation*}
     P_{k}(zX) = \prod_{i = 0}^{k - 1}(1 - z^{i + 1}X) = \frac{1 - z^{k}X}{1 - X}P_{k}(X)
 \end{equation*}
-Rearranging this gives us a functional equation for $P_{k}(X)$:
+After rearranging, this becomes the functional equation
 \begin{equation*}
     (1 - X)P_{k}(zX) = (1 - z^{k}X)P_{k}(X)
 \end{equation*}
@@ -146,61 +143,69 @@ Let $P_{k}(X) = \sum_{j = 0}^{k} c_{j}X^{j}$. We substitute this power series in
 \begin{equation*}
     (1 - X)\sum_{j = 0}^{k} c_{j}(zX)^{j} = (1 - z^{k}X)\sum_{j = 0}^{k} c_{j}X^{j}
 \end{equation*}
-Now, we compare the coefficients of $X^{j}$ on both sides. For a specific power $j$:
+Comparing coefficients of $X^{j}$ on both sides yields:
 \begin{equation*}
     c_{j}z^{j} - c_{j - 1}z^{j - 1} = c_{j} - c_{j - 1}z^{k}
 \end{equation*}
-Rearranging to solve for $c_{j}$ in terms of $c_{j - 1}$:
+so
 \begin{equation*}
     c_{j} = c_{j - 1} \frac{z^{j - 1} - z^{k}}{z^{j} - 1} = -c_{j - 1}z^{j - 1} \frac{1 - z^{k - j + 1}}{1 - z^{j}}
 \end{equation*}
-Starting from the base case $c_{0} = P_{k}(0) = 1$, we can find $c_{j}$ by iteration:
+Starting from $c_{0} = P_{k}(0) = 1$, we iterate:
 \begin{equation*}
     c_{1} = -c_{0}z^{0} \frac{1 - z^{k}}{1 - z^{1}}, \quad
     c_{2} = -c_{1}z^{1} \frac{1 - z^{k - 1}}{1 - z^{2}} = (-1)^{2}z^{0 + 1} \frac{(1 - z^{k})(1 - z^{k - 1})}{(1 - z^{1})(1 - z^{2})}
 \end{equation*}
-The exponent of $z$ becomes $0 + 1 + 2 + \cdots + (j - 1) = \frac{j(j - 1)}{2}$.
-The fraction is the definition of the Gaussian binomial coefficient $\binom{k}{j}_{z}$.
-Thus, the coefficient is
+The exponent of $z$ is $0 + 1 + 2 + \cdots + (j - 1) = \frac{j(j - 1)}{2}$, and the remaining fraction is exactly the Gaussian binomial coefficient. Therefore,
 \begin{equation*}
     c_{j} = (-1)^{j}z^{j(j - 1)/2} \binom{k}{j}_{z}
 \end{equation*}
-Plugging the coefficients back into the sum, we obtain
+Plugging the coefficients back into the expansion, we obtain
 \begin{equation*}
     \prod_{i = 0}^{k - 1}(1 - z^{i}X) = \sum_{j = 0}^{k} \binom{k}{j}_{z}(-1)^{j}z^{j(j - 1)/2}X^{j}
 \end{equation*}
-This completes the proof.
+which is exactly what we wanted.
 
 % Note I.17
 \noteblock{I.17}{Systems of linear Diophantine inequalities.}
+
+This note contains five separate counting problems. They are related by theme, but each one has its own constraint set and should be read independently.
+
+\subhead{Problem 1}
 \begin{equation*}
     \left\{x_{1}\geq 0,\; x_{2}\geq 2x_{1},\; x_{3}\geq 2x_{2},\; x_{4}\geq 2x_{3}\right\}
 \end{equation*}
-We introduce non-negative slack variables $y_{j} \in \mathbb{Z}_{\geq 0}$ to quantify the ``excess'' of each term relative to its lower bound.
+At first glance this system looks mildly unfriendly, but slack variables settle it almost at once. Introduce non-negative variables
+$y_{j} \in \mathbb{Z}_{\geq 0}$ to measure the ``excess'' of each term above its lower bound.
 \begin{align*}
     x_{1} &= y_{1} \\
     x_{2} &= 2x_{1} + y_{2} = 2y_{1} + y_{2} \\
     x_{3} &= 2x_{2} + y_{3} = 4y_{1} + 2y_{2} + y_{3} \\
     x_{4} &= 2x_{3} + y_{4} = 8y_{1} + 4y_{2} + 2y_{3} + y_{4}
 \end{align*}
-The total weight is $S = x_{1} + x_{2} + x_{3} + x_{4} = 15y_{1} + 7y_{2} + 3y_{3} + y_{4}$.
-Since $y_{j}$ are independent and range freely over non-negative integers, the OGF $F(z)$ is the product of the individual generating functions for each $y_{j}$:
+The total weight is:
+\begin{equation*}
+    S = x_{1} + x_{2} + x_{3} + x_{4} = 15y_{1} + 7y_{2} + 3y_{3} + y_{4}.
+\end{equation*}
+Now the generating function is immediate: the variables $y_{j}$ are independent and each ranges freely over
+the non-negative integers, so the OGF $F(z)$ is just the product of the four one-variable OGFs:
 \begin{itemize}
     \item For $15y_{1}: \sum_{y_{1} = 0}^{\infty}(z^{15})^{y_{1}} = \frac{1}{1 - z^{15}}$
     \item For $ 7y_{2}: \sum_{y_{2} = 0}^{\infty}(z^{ 7})^{y_{2}} = \frac{1}{1 - z^{ 7}}$
     \item For $ 3y_{3}: \sum_{y_{3} = 0}^{\infty}(z^{ 3})^{y_{3}} = \frac{1}{1 - z^{ 3}}$
     \item For $  y_{4}: \sum_{y_{4} = 0}^{\infty}(z^{ 1})^{y_{4}} = \frac{1}{1 - z^{ 1}}$
 \end{itemize}
-Multiplying these together yields the desired OGF:
+Multiplying them together gives the answer:
 \begin{equation*}
     F(z) = \frac{1}{(1 -z)(1 -z^{3})(1 -z^{7})(1 -z^{15})}
 \end{equation*}
 
 \partsep
+\subhead{Problem 2}
 \begin{equation*}
     \left\{x_{1} + x_{2}\leq x_{3}\right\}
 \end{equation*}
-Following the same approach as in the previous problem, we use slack variables to convert the inequality into an equality of independent parts.
+This is a new problem, so we start again from its own constraint. Here slack variables turn the inequality into an equality with independent parts.
 The constraint $x_{3}\geq x_{1} + x_{2}$ can be rewritten by introducing a non-negative integer $y\geq 0$:
 \begin{equation*}
     x_{3} = x_{1} + x_{2} + y
@@ -214,24 +219,25 @@ the generating functions for the individual terms in the sum:
     \item For $y: \frac{1}{1 - z}$
     \item For $x_{4}: \frac{1}{1 - z}$
 \end{itemize}
-Multiplying these together gives
+Multiplying these factors gives
 \begin{equation*}
     F(z) = \frac{1}{(1 -z^{2})^{2}(1 -z)^{2}}
 \end{equation*}
 
 \partsep
+\subhead{Problem 3}
 \begin{equation*}
     \left\{x_{1} + x_{2}\geq x_{3}\right\}
 \end{equation*}
-Since the inequality does not immediately suggest a single slack variable, a more robust approach uses the complement method.
+This third problem is independent of the previous two. Since the inequality does not suggest a single slack variable, the cleanest route is to work with the complement.
 Let $U(z) = (1 - z)^{-4}$ be the OGF for four unrestricted variables. The universe of compositions partitions into
 those where $x_{1} + x_{2} < x_{3}$ and our target class $x_{1} + x_{2} \geq x_{3}$. We find the OGF for the complement
 $x_{1} + x_{2} < x_{3}$. Set $x_{3} = x_{1} + x_{2} + 1 + y$, where $y\geq 0$.
-The total sum $S$ is
+The total sum $S$ is:
 \begin{equation*}
     S = x_{1} + x_{2} + (x_{1} + x_{2} + 1 + y) + x_{4} = 2x_{1} + 2x_{2} + y + x_{4} + 1
 \end{equation*}
-The OGF for this complement, which we denote by $C(z)$, is
+The OGF for this complement, denoted by $C(z)$, is
 \begin{equation*}
     C(z) = \frac{z}{(1 - z^{2})^{2}(1 - z)^{2}}
 \end{equation*}
@@ -241,28 +247,29 @@ The OGF for our constraint is then
 \end{equation*}
 
 \partsep
+\subhead{Problem 4}
 \begin{equation*}
     \left\{x_{1} + x_{2}\leq x_{3} + x_{4}\right\}
 \end{equation*}
-To find the OGF for $\left\{x_{1} + x_{2}\leq x_{3} + x_{4}\right\}$, we can use the complement method
-combined with the symmetry of the variables. Let $A = x_{1} + x_{2}$ and $B = x_{3} + x_{4}$.
-We seek the OGF for compositions satisfying $A\leq B$. In the universe of all possible compositions
+We now move to a fourth, separate problem.
+To find the OGF for $\left\{x_{1} + x_{2}\leq x_{3} + x_{4}\right\}$, combine the complement method with the symmetry of the variables. Let $A = x_{1} + x_{2}$ and $B = x_{3} + x_{4}$.
+We seek the OGF for compositions satisfying $A\leq B$. In the universe of all compositions
 $(x_{1}, x_{2}, x_{3}, x_{4})$, there are three mutually exclusive cases
 $1.\; A < B,\; 2.\; A > B,\; 3.\; A = B$. By symmetry, the OGF for case 1 must be identical to the OGF for case 2,
 since $A$ and $B$ are built from the same number of variables with the same weights.
 Denote this common OGF by $G_{<}(z)$, and let $G_{=}(z)$ be the OGF for case 3.
-The total unrestricted OGF is $U(z) = \frac{1}{(1 - z)^{4}}$. Therefore
+The total unrestricted OGF is $U(z) = \frac{1}{(1 - z)^{4}}$. Therefore,
 \begin{equation*}
     U(z) = 2G_{<}(z) + G_{=}(z)
 \end{equation*}
-Our target OGF is $F(z) = G_{<}(z) + G_{=}(z)$. Solving the system gives
+Our target OGF is $F(z) = G_{<}(z) + G_{=}(z)$. Solving the system gives:
 \begin{equation*}
     F(z) = \frac{U(z) + G_{=}(z)}{2}
 \end{equation*}
 Now $G_{=}(z)$ is the OGF for compositions in which the sum of the first two variables equals
 the sum of the last two.
 \begin{itemize}
-    \item The number of compositions with $x_{1} + x_{2} = n$ is
+    \item The number of compositions with $x_{1} + x_{2} = n$ is:
         $[z^{n}] \frac{1}{(1 - z)^{2}} = n + 1$.
     \item The number of compositions with $x_{3} + x_{4} = n$ is the same.
     \item For the equality $x_{1} + x_{2} = x_{3} + x_{4}$ to hold, both sums must equal some $n\geq 0$.
@@ -270,17 +277,18 @@ the sum of the last two.
             G_{=}(z) = \sum_{n = 0}^{\infty}(n + 1)^{2}z^{2n} = \frac{1 + z^{2}}{(1 - z^{2})^{3}}
         \end{equation*}
 \end{itemize}
-Substituting $U(z)$ and $G_{=}(z)$ into our formula yields
+Substituting $U(z)$ and $G_{=}(z)$ into our formula yields:
 \begin{equation*}
     F(z) = \frac{1}{2} \left[\frac{1}{(1 - z)^{4}} + \frac{1 + z^{2}}{(1 - z^{2})^{3}}\right] = \frac{1 + z + 2z^{2}}{(1 - z)^{4}(1 + z)^{3}}
 \end{equation*}
 
 \partsep
+\subhead{Problem 5}
 \begin{equation*}
     \left\{x_{1}\leq x_{2},\; x_{2}\geq x_{3},\; x_{3}\leq x_{4}\right\}
 \end{equation*}
-Because the inequalities alternate direction (up, down, up), we cannot use a straightforward chain of slack variable substitutions
-as we did for $x_{1}\leq x_{2}\leq x_{3}\leq x_{4}$. Instead, we apply the inclusion–exclusion principle to the constraints.
+The fifth problem is again independent.
+Because the inequalities alternate direction, we cannot use the simple slack-variable chain that works for $x_{1}\leq x_{2}\leq x_{3}\leq x_{4}$. Instead, we use inclusion--exclusion.
 We begin with the universe of all unrestricted compositions, whose OGF is $U(z) = \frac{1}{(1 - z)^{4}}$.
 We wish to enforce three conditions
 \begin{itemize}
@@ -288,11 +296,10 @@ We wish to enforce three conditions
     \item $C_{2}: x_{2}\geq x_{3}$
     \item $C_{3}: x_{3}\leq x_{4}$
 \end{itemize}
-However, it is simpler to work with chains of ``less than or equal'' inequalities. Consider the complement of the downward middle step.
+It is easier to work with chains of ``less than or equal'' inequalities, so consider the complement of the middle downward step.
 Take the set of all compositions satisfying both $x_{1}\leq x_{2}$ and $x_{3}\leq x_{4}$.
 From this set, we subtract those compositions that violate the middle constraint (i.e., $x_{2} < x_{3}$). \\
-The OGF for the set defined by $x_{1}\leq x_{2}$ and $x_{3}\leq x_{4}$
-These two pairs are independent.
+The OGF for the set defined by $x_{1}\leq x_{2}$ and $x_{3}\leq x_{4}$ is easy to obtain because the two pairs are independent.
 \begin{itemize}
     \item For $x_{1}\leq x_{2}$, set $x_{2} = x_{1} + y_{1}$. The total contribution is $2x_{1} + y_{1}$,
         so the OGF is $\frac{1}{(1 - z^{2})(1 - z)}$.
@@ -309,7 +316,7 @@ Now we find the OGF for the violation $x_{1}\leq x_{2} < x_{3}\leq x_{4}$ by int
     \item $x_{3} = y_{1} + y_{2} + 1 + y_{3}$
     \item $x_{4} = y_{1} + y_{2} + 1 + y_{3} + y_{4}$
 \end{itemize}
-Summing the four expressions gives
+Summing the four expressions gives:
 \begin{equation*}
     S = 4y_{1} + 3y_{2} + 2y_{3} + y_{4} + 2
 \end{equation*}
@@ -329,7 +336,7 @@ The OGF for the zigzag constraint is the OGF for the two independent pairs minus
 % Note I.18
 \noteblock{I.18}{Odd versus distinct summands.}
 
-We establish a one-to-one correspondence between partitions into odd parts and partitions into distinct parts.
+This bijection looks clever on first meeting and then almost inevitable in retrospect. We build a one-to-one correspondence between partitions into odd parts and partitions into distinct parts.
 \begin{itemize}
     \item Odd $\rightarrow$ Distinct
         \begin{enumerate}
@@ -347,7 +354,7 @@ We establish a one-to-one correspondence between partitions into odd parts and p
             \item Sort the resulting parts to obtain a partition into odd parts.
         \end{enumerate}
 \end{itemize}
-As an example:
+Here is a concrete pass through the map:
 \begin{equation*}
     \begin{aligned}
         3 + 3 + 3 + 3 + 3 + 1 + 1
@@ -369,11 +376,11 @@ As an example:
 % Note I.19
 \noteblock{I.19}{Euler’s pentagonal number theorem.}
 
-To find a recurrence for the partition numbers, we consider the reciprocal of the generating function $P(z)$:
+To get a usable recurrence for the partition numbers, it is natural to look at the reciprocal of $P(z)$:
 \begin{equation*}
     A(z) = \prod_{n = 1}^{\infty}(1 - z^{n})
 \end{equation*}
-Euler's Pentagonal Number Theorem states that this product expands into the following sparse power series:
+Euler's Pentagonal Number Theorem says that this product collapses to a remarkably sparse series:
 \begin{equation*}
     \begin{aligned}
         A(z)
@@ -382,16 +389,15 @@ Euler's Pentagonal Number Theorem states that this product expands into the foll
             &= 1 - z^{1} - z^{2} + z^{5} + z^{7} - z^{12} - z^{15} + \cdots
     \end{aligned}
 \end{equation*}
-The exponents $g_{k} = \frac{k(3k - 1)}{2}$ are the generalized pentagonal numbers.
-The product of $P(z)$ and $A(z)$ must equal $1$:
+The exponents $g_{k} = \frac{k(3k - 1)}{2}$ are the generalized pentagonal numbers. Since $A(z)$ is the reciprocal of $P(z)$, we have
 \begin{equation*}
     \sum_{n = 0}^{\infty} p(n)z^{n} \cdot \sum_{k = -\infty}^{\infty}(-1)^{k}z^{g_{k}} = 1
 \end{equation*}
-Comparing the coefficient of $z^{n}$ on both sides yields the algorithmically useful recurrence:
+Comparing coefficients of $z^{n}$ now gives the recurrence that is genuinely useful in computation:
 \begin{equation*}
     p(n) = p(n - 1) + p(n - 2) - p(n - 5) - p(n - 7) + p(n - 12) + p(n - 15) \cdots
 \end{equation*}
-A Python implementation is provided below
+A straightforward Python implementation is:
 \newpage
 \begin{lstlisting}
     def compute_partitions(N):
@@ -451,28 +457,25 @@ The partial sums are
 % Note I.21
 \noteblock{I.21}{Lattice points.}
 
-We are interested in the number of integer solutions to the inequality $\sum_{i = 1}^{d} x_{i}^{2} \le n^{2}$.
-First, consider a single coordinate $x_{i} \in \mathbb{Z}$. The ``size'' contributed by this coordinate to the sum of squares is $x_{i}^{2}$.
-The generating function for the possible values of a single coordinate, where the exponent of $z$ represents the square of the coordinate, is
+We want the number of integer solutions to $\sum_{i = 1}^{d} x_{i}^{2} \le n^{2}$.
+The natural object here is the theta series. For one coordinate $x_{i} \in \mathbb{Z}$, the contribution to the sum of squares is $x_{i}^{2}$, so the one-variable generating function is
 \begin{equation*}
     \Theta(z) = \sum_{x \in \mathbb{Z}}z^{x^{2}} = 1 + 2 \sum_{n = 1}^{\infty} z^{n^{2}}
 \end{equation*}
-Since each coordinate $x_{1}, \cdots, x_{d}$ is chosen independently, the generating function for the sum of squares
-$\sum x_{i}^{2}$ is the $d$-th power of the individual generating function:
+Because the coordinates are independent, the generating function for $\sum x_{i}^{2}$ is simply the $d$th power:
 \begin{equation*}
     S(z) = (\Theta(z))^{d} = \sum_{k = 0}^{\infty} r_{d}(k)z^{k}
 \end{equation*}
-In this series, the coefficient $[z^{k}] S(z)$ (denoted as $r_{d}(k)$) is exactly the number of ways to represent the integer $k$ as a sum of $d$ squares.
-Geometrically, this is the number of lattice points on the sphere (the boundary) of radius $\sqrt{k}$.
-The number of points $N(n, d)$ in the closed ball of radius $n$ is
+Here $[z^{k}] S(z)$, denoted $r_{d}(k)$, counts representations of $k$ as a sum of $d$ squares. Geometrically, that is the number of lattice points on the sphere of radius $\sqrt{k}$.
+Therefore, the number of points $N(n, d)$ in the closed ball of radius $n$ is:
 \begin{equation*}
     N(n, d) = \sum_{k = 0}^{n^{2}}r_{d}(k)
 \end{equation*}
-In generating functions, the prefix sum of a sequence's coefficients is obtained by multiplying the generating function by $\frac{1}{1 - z}$. Therefore
+Passing from exact radius to radius at most $n$ is just a prefix sum, so we multiply by $\frac{1}{1 - z}$:
 \begin{equation*}
     \sum_{k = 0}^{\infty} \left(\sum_{j = 0}^{k} r_{d}(j)\right)z^{k} = \frac{1}{1 - z} S(z) = \frac{1}{1 - z}(\Theta(z))^{d}
 \end{equation*}
-To find the total count up to $k = n^{2}$, we simply extract the coefficient of $z^{n^{2}}$:
+Extracting the coefficient of $z^{n^{2}}$ finishes the job:
 \begin{equation*}
     N(n, d) = [z^{n^{2}}] \frac{1}{1 - z}(\Theta(z))^{d}
 \end{equation*}
@@ -481,23 +484,19 @@ To find the total count up to $k = n^{2}$, we simply extract the coefficient of 
 % Note I.23
 \noteblock{I.23}{Alice, Bob, and coding bounds.}
 
-Following Proposition I.4, the class $\mathcal{C}$ of binary strings avoiding the pattern $11$ has the OGF:
+By Proposition I.4, the class $\mathcal{C}$ of binary strings avoiding the pattern $11$ has generating function
 \begin{equation*}
     C(z) = \frac{1 + z}{1 - z - z^{2}}
 \end{equation*}
-To account for a variable-length coding scheme where codewords are selected from $\bigcup_{j = 0}^{L} \mathcal{C}_{j}$,
-we consider the sum of the first $L + 1$ coefficients. This is represented by the OGF:
+If codewords are allowed to have any length up to $L$, we need the sum of the first $L + 1$ coefficients. Its generating function is:
 \begin{equation*}
     S(z) = \frac{C(z)}{1 - z} = \frac{1 + z}{(1 - z)(1 - z - z^{2})}
 \end{equation*}
-The asymptotic growth of the sum $\sum_{j = 0}^{L} C_{j}$ is governed by the smallest singularity of $S(z)$.
-Since the pole at $z = 1/\varphi$ (where $\varphi = \frac{1+\sqrt{5}}{2}$) is closer to the origin than the pole at $z = 1$,
-the exponential growth is dominated by $C(z)$. Specifically, as $L \to \infty$:
+As usual, the nearest singularity controls the asymptotics. Since the pole at $z = 1/\varphi$ (with $\varphi = \frac{1+\sqrt{5}}{2}$) lies closer to the origin than the pole at $z = 1$, we obtain, as $L \to \infty$,
 \begin{equation*}
     \sum_{j = 0}^{L} C_{j} \sim A \cdot \varphi^{L}
 \end{equation*}
-for some constant $A$. To find the required code length $L(n)$ for $n$ bits of information,
-we solve for $2^{n} \leq \sum_{j = 0}^{L} C_{j}$ by taking the base-2 logarithm:
+for some constant $A$. To encode $n$ bits of information, we want $2^{n} \leq \sum_{j = 0}^{L} C_{j}$, so taking base-2 logarithms gives:
 \begin{equation*}
     n \leq \log_{2}\left(\sum_{j = 0}^{L} C_{j}\right) = L \log_{2}\varphi + O(1)
 \end{equation*}
@@ -509,14 +508,14 @@ Rearranging for $L$, we obtain the lower bound:
 % Note I.27
 \noteblock{I.27}{Congruence languages.}
 
-The DFA $\mathcal{A}$ for binary strings congruent to $2 \pmod{7}$ is structured as follows
+The DFA $\mathcal{A}$ for binary strings congruent to $2 \pmod{7}$ is the standard remainder automaton:
 \begin{itemize}
     \item \textbf{States}: A set $\mathcal{Q} = \{S_{0}, \dots, S_{6}\}$, where each state $S_{r}$ represents the current remainder $r$ modulo 7.
     \item \textbf{Initial State}: $S_{0}$ (representing the value 0).
     \item \textbf{Accepting State}: $\overline{Q} = \{S_{2}\}$.
     \item \textbf{Alphabet}: $\mathcal{A} = \{0, 1\}$.
 \end{itemize}
-Each transition follows the rule $q_{r} \circ b = q_{(2r + b) \pmod{7}}$
+Each transition follows the familiar update rule $q_{r} \circ b = q_{(2r + b) \pmod{7}}$.
 \begin{table}[H]
     \centering
     \caption{State Transition}
@@ -539,35 +538,32 @@ Each transition follows the rule $q_{r} \circ b = q_{(2r + b) \pmod{7}}$
 % Note I.29
 \noteblock{I.29}{The forward equations.}
 
-By a ``last-letter decomposition'', the set $\mathcal{M}_{k}$ of words leading to state $q_{k}$ from the initial state $q_{0}$ satisfies the combinatorial relation:
+A last-letter decomposition gives the usual recurrence for the set $\mathcal{M}_{k}$ of words leading from the initial state $q_{0}$ to state $q_{k}$:
 \begin{equation*}
     \mathcal{M}_{k} \cong \llbracket k = 0 \rrbracket \cdot \{\epsilon\} +
         \sum_{j, \alpha: q_{j} \circ \alpha = q_{k}} (\mathcal{M}_{j} \times \{\alpha\})
 \end{equation*}
-where $\llbracket \cdot \rrbracket$ is the Iverson bracket. This translates to a linear system of OGFs:
+where $\llbracket \cdot \rrbracket$ is the Iverson bracket. Translating directly to generating functions,
 \begin{equation*}
     M_{k}(z) = \delta_{k, 0} + z \sum_{j} M_{j}(z) T_{j, k}
 \end{equation*}
-In vector notation, with $\mathbf{M}(z)$ as a column vector and $\mathbf{e}_{0}$ the first basis vector, the system is a transposed version of the backward equations:
+In vector form, with $\mathbf{M}(z)$ as a column vector and $\mathbf{e}_{0}$ the first basis vector, this is simply the transposed analogue of the backward equations:
 \begin{equation*}
     \mathbf{M}(z)^{T} = \mathbf{e}_{0}^{T} + z\mathbf{M}(z)^{T}T
 \end{equation*}
 
 % Note I.33.
 \noteblock{I.33}{Waiting times in strings.}
-To illustrate the formulas, let's define a prefix language $\hat{\mathcal{L}}$ containing
-one word of length 2 and one word of length 3. Let $\hat{\mathcal{L}} = \{aa, bbb\}$.
+Let us test the formulas on a deliberately tiny prefix language, $\hat{\mathcal{L}} = \{aa, bbb\}$.
 \begin{enumerate}
-    \item Verification of Prefix Property: The word $aa$ is not a prefix of $bbb$, and $bbb$ is not a prefix of $aa$.
-        Since no word is a strict prefix of another, this is a valid prefix language $\hat{\mathcal{L}}$.
-    \item The Generating Function $\hat{L}(z)$: The OGF is the sum of $z$ raised to the power of each word's length
+    \item Prefix property: $aa$ is not a prefix of $bbb$, and conversely, so the language is prefix-free.
+    \item Generating function: the OGF is
         $\hat{L}(z) = z^{2} + z^{3}$.
-    \item Probability: $\hat{L}(1/2)$: This represents the probability that a random infinite string starts with a word in $\mathcal{L}$:
-        $\hat{L}(1/2) = (1/2)^{2} + (1/2)^{3} = 1/4 + 1/8 = 3/8$. This means there is a 37.5\% chance
-        that a random string begins with a word from this language.
-    \item Expected Time: $\frac{1}{2} \hat{L}'(1/2)$. To find the expected time (or more precisely, the \textbf{expected matched length}) at which a word
-        in $\mathcal{L}$ is first encountered: $\hat{L}'(z) = 2z + 3z^{2} \implies \hat{L}'(1/2) = 1.75 \implies E = 0.875$.
-    \item Breakdown of the Result: The total expected value of 0.875 is formed as follows:
+    \item Probability: $\hat{L}(1/2)$ is the probability that a random infinite string starts with a word of $\hat{\mathcal{L}}$:
+        $\hat{L}(1/2) = (1/2)^{2} + (1/2)^{3} = 1/4 + 1/8 = 3/8$.
+    \item Expected time: $\frac{1}{2} \hat{L}'(1/2)$ gives the expected matched length:
+        $\hat{L}'(z) = 2z + 3z^{2} \implies \hat{L}'(1/2) = 1.75 \implies E = 0.875$.
+    \item Unpacking the value:
         \begin{itemize}
             \item Word ``aa'': Probability $1/4$ of length 2 $\rightarrow$ Contribution: $2 \times 0.25 = 0.5$.
             \item Word ``bbb'': Probability $1/8$ of length 3 $\rightarrow$ Contribution: $3 \times 0.125 = 0.375$.
@@ -578,12 +574,11 @@ one word of length 2 and one word of length 3. Let $\hat{\mathcal{L}} = \{aa, bb
 % Note I.34.
 \noteblock{I.34}{A probabilistic paradox on strings.}
 
-Consider a binary pattern of length $k$. The generating function $T(z)$ for the first occurrence of this pattern is given by
+Fix a binary pattern of length $k$. The generating function $T(z)$ for its first occurrence is:
 \begin{equation*}
     T(z) = \frac{z^{k}}{z^{k} + (1 - mz)c(z)} = \frac{z^{k}}{z^{k} + (1 - 2z)c(z)}
 \end{equation*}
-The average waiting time (or expected occurrence time) can be derived directly from $T(z)$
-by evaluating its derivative at the point of the alphabet's inverse size ($z = 1/2$):
+The expected waiting time then follows immediately from the derivative at $z = 1/2$:
 \begin{equation*}
     \left.z \frac{\dd}{\dd z} T(z)\right|_{z = 1/2} = 2^{k} c(1/2)
 \end{equation*}
@@ -592,8 +587,8 @@ by evaluating its derivative at the point of the alphabet's inverse size ($z = 1
 % Note I.39.
 \noteblock{I.39}{Unary–binary trees and Motzkin numbers.}
 
-We identify the characteristic polynomial as $\phi(u) = 1 + u + u^{2}$.
-To find the number of trees with $n$ nodes, $M_{n} = [z^{n}] M(z)$, we apply the Lagrange Inversion Theorem:
+Here the characteristic polynomial is $\phi(u) = 1 + u + u^{2}$.
+To extract the number of trees with $n$ nodes, $M_{n} = [z^{n}] M(z)$, we apply Lagrange inversion:
 \begin{equation*}
     \begin{aligned}
         M_{n}
@@ -611,50 +606,50 @@ To find the number of trees with $n$ nodes, $M_{n} = [z^{n}] M(z)$, we apply the
 % Note I.41.
 \noteblock{I.41}{The Lagrangean form of Schröder’s GF.}
 
-We want to prove the last equality:
+What remains is to prove the last equality:
 \begin{equation*}
     \frac{(-1)^{n - 1}}{n} \sum_{k}(-2)^{k} \binom{n}{k + 1} \binom{n + k - 1}{k} =
         \frac{1}{n} \sum_{k = 0}^{n - 2} \binom{2n - k - 2}{n - 1} \binom{n - 2}{k}
 \end{equation*}
-Multiplying by $n$, the statement is equivalent to
+Multiplying both sides by $n$ simplifies the notation:
 \begin{equation*}
     (-1)^{n - 1} \sum_{k = 0}^{n - 1}(-2)^{k} \binom{n}{k + 1} \binom{n + k - 1}{k} = \sum_{k = 0}^{n - 2} \binom{2n - k - 2}{n - 1} \binom{n - 2}{k}
 \end{equation*}
 
-\subhead{Step 1. Re-index the left sum.}
-Using $\binom{n}{k + 1} = \binom{n}{n - 1 - k}$ and $\binom{n + k - 1}{k} = \binom{n + k - 1}{n - 1}$, set $j = n - 1 - k$:
+\stephead{1}{Re-index the left sum.}
+Using $\binom{n}{k + 1} = \binom{n}{n - 1 - k}$ and $\binom{n + k - 1}{k} = \binom{n + k - 1}{n - 1}$, set $j = n - 1 - k$. Then
 \begin{equation*}
     L = (-1)^{n - 1} \sum_{j = 0}^{n - 1}(-2)^{n - 1 - j} \binom{n}{j} \binom{2n - 2 - j}{n - 1} =
         2^{n - 1} \sum_{j = 0}^{n - 1} \left(-\frac{1}{2} \right)^{j} \binom{n}{j} \binom{2n - 2 - j}{n - 1}
 \end{equation*}
 
-\subhead{Step 2. Express as a coefficient extraction.}
-Since $\binom{2n - 2 - j}{n - 1} = [z^{n - 1}] (1 + z)^{2n - 2 - j}$, we have
+\stephead{2}{Express as a coefficient extraction.}
+Since $\binom{2n - 2 - j}{n - 1} = [z^{n - 1}] (1 + z)^{2n - 2 - j}$, coefficient extraction gives:
 \begin{equation*}
     \begin{aligned}
         L
         &= 2^{n - 1} \sum_{j = 0}^{n - 1} \left(-\frac{1}{2} \right)^{j} \binom{n}{j} [z^{n - 1}] (1 + z)^{2n - 2 - j} \\
         &= 2^{n - 1}[z^{n - 1}] \sum_{j = 0}^{n - 1} \left(-\frac{1}{2} \right)^{j} \binom{n}{j}(1 + z)^{2n - 2 - j} \\
-        &= 2^{n - 1}[z^{n - 1}] (1 + z)^{2n - 2} \sum_{j = 0}^{n - 1} \binom{n}{j} \left(-\frac{1}{2(1 + z)} \right)^{j} \; \text{safe to add} \; j = n \\
+        &= 2^{n - 1}[z^{n - 1}] (1 + z)^{2n - 2} \sum_{j = 0}^{n} \binom{n}{j} \left(-\frac{1}{2(1 + z)} \right)^{j} \\
         &= 2^{n - 1}[z^{n - 1}] (1 + z)^{2n - 2}\left(1 - \frac{1}{2(1 + z)} \right)^{n} \\
         &= 2^{n - 1}[z^{n - 1}] (1 + z)^{2n - 2} \frac{(1 + 2z)^{n}}{2^{n}(1 + z)^{n}} \\
         &= \frac{1}{2} [z^{n - 1}] (1 + z)^{n - 2}(1 + 2z)^{n}
     \end{aligned}
 \end{equation*}
 
-\subhead{Step 3. Reverse the polynomial.}
-Let $P(z) = (1 + z)^{n - 2}(1 + 2z)^{n}$, of degree $2n - 2$.
-The coefficient of $z^{n - 1}$ in $P(z)$ equals the coefficient of $z^{n - 1}$ in its reversed polynomial $z^{2n - 2}P(1/z)$:
+\stephead{3}{Reverse the polynomial.}
+Let $P(z) = (1 + z)^{n - 2}(1 + 2z)^{n}$, which has degree $2n - 2$.
+The coefficient of $z^{n - 1}$ in $P(z)$ is the same as in the reversed polynomial $z^{2n - 2}P(1/z)$:
 \begin{equation*}
     z^{2n - 2}P(1/z) = z^{2n - 2}\left(1 + \frac{1}{z} \right)^{n - 2}\left(1 + \frac{2}{z} \right)^{n} = (z + 1)^{n - 2}(z + 2)^{n}
 \end{equation*}
-Hence
+Hence,
 \begin{equation*}
     L = \frac{1}{2} [z^{n - 1}] (1 + z)^{n - 2}(2 + z)^{n}
 \end{equation*}
 
-\subhead{Step 4. Express the right sum as a coefficient.}
-Similarly, $\binom{2n - k - 2}{n - 1} = [z^{n - 1}] (1 + z)^{2n - k - 2}$, so
+\stephead{4}{Express the right sum as a coefficient.}
+Likewise, $\binom{2n - k - 2}{n - 1} = [z^{n - 1}] (1 + z)^{2n - k - 2}$, so
 \begin{equation*}
     \begin{aligned}
         R
@@ -668,9 +663,8 @@ Similarly, $\binom{2n - k - 2}{n - 1} = [z^{n - 1}] (1 + z)^{2n - k - 2}$, so
     \end{aligned}
 \end{equation*}
 
-\subhead{Step 5. Show equality of the two coefficient expressions.}
-We need to show $\frac{1}{2}(1 + z)^{n - 2}(2 + z)^{n}$ and $(1 + z)^{n}(2 + z)^{n - 2}$
-have the same coefficient of $z^{n - 1}$. Their difference is
+\stephead{5}{Show equality of the two coefficient expressions.}
+So we are down to showing that $\frac{1}{2}(1 + z)^{n - 2}(2 + z)^{n}$ and $(1 + z)^{n}(2 + z)^{n - 2}$ have the same coefficient of $z^{n - 1}$. Their difference is:
 \begin{equation*}
     \begin{aligned}
         \Delta
@@ -679,13 +673,13 @@ have the same coefficient of $z^{n - 1}$. Their difference is
         &= \frac{1}{2} [z^{n - 1}] (1 + z)^{n - 2}(2 + z)^{n - 2}(2 - z^{2})
     \end{aligned}
 \end{equation*}
-We must prove $[z^{n - 1}] f(z) = 0$, where
+Thus it suffices to prove $[z^{n - 1}] f(z) = 0$, where
 \begin{equation*}
     f(z) = (1 + z)^{n - 2}(2 + z)^{n - 2}(2 - z^{2})
 \end{equation*}
 
-\subhead{Step 6. A symmetry argument.}
-$f(z)$ is a polynomial of degree $2n - 2$. Compute $f(2 / z)$:
+\stephead{6}{A symmetry argument.}
+$f(z)$ has degree $2n - 2$. Now compute $f(2 / z)$:
 \begin{equation*}
     \begin{aligned}
         f(2/z)
@@ -695,32 +689,31 @@ $f(z)$ is a polynomial of degree $2n - 2$. Compute $f(2 / z)$:
         &= -2^{n - 1} \frac{f(z)}{z^{2n - 2}}
     \end{aligned}
 \end{equation*}
-Hence $z^{2n - 2}f(2/z) = -2^{n - 1}f(z)$. Writing $f(z) = \sum_{k = 0}^{2n - 2} a_{k}z^{k}$, the coefficient of $z^{n - 1}$ corresponds to
-$k = n - 1$. Equating coefficients gives $a_{n - 1}2^{n - 1} = -2^{n - 1}a_{n - 1} \implies a_{n - 1} = 0$.
+Hence, $z^{2n - 2}f(2/z) = -2^{n - 1}f(z)$. Writing $f(z) = \sum_{k = 0}^{2n - 2} a_{k}z^{k}$ and comparing the middle coefficient gives:
+$a_{n - 1}2^{n - 1} = -2^{n - 1}a_{n - 1}$, so necessarily $a_{n - 1} = 0$.
 
 % Note I.42.
 \noteblock{I.42}{Faster determination of Schröder numbers.}
 \begin{equation*}
     S(z) = \frac{1}{4}(1 + z - \sqrt{1 - 6z + z^{2}})
 \end{equation*}
-Consider in general
+The general template is
 \begin{equation*}
     p(z)S(z) + q(z) = \sqrt[k]{r(z)}
 \end{equation*}
-where $p(z)$, $q(z)$, and $r(z)$ are functions of $z$.
-Taking the derivative with respect to $z$:
+with $p(z)$, $q(z)$, and $r(z)$ depending on $z$. Differentiate both sides:
 \begin{equation*}
     p'(z)S(z) + p(z)S'(z) + q'(z) = \frac{1}{k}{r(z)}^{\frac{1}{k}-1}r'(z)
 \end{equation*}
-Multiplying both sides by $r(z)$:
+Then multiply through by $r(z)$:
 \begin{equation*}
     p'(z)r(z)S(z) + p(z)r(z)S'(z) + q'(z)r(z) = \frac{1}{k}(p(z)S(z) + q(z))r'(z)
 \end{equation*}
-Rearranging:
+After rearranging,
 \begin{equation*}
     p(z)r(z)S'(z) + (p'(z)r(z) - \frac{1}{k} p(z)r'(z))S(z) = \frac{1}{k} q(z)r'(z) - q'(z)r(z)
 \end{equation*}
-Plugging $p(z) = -4$, $q(z) = 1 + z$, $k = 2$, and $r(z) = 1 - 6z + z^{2}$ into the equation and simplifying yields
+Now plug in $p(z) = -4$, $q(z) = 1 + z$, $k = 2$, and $r(z) = 1 - 6z + z^{2}$. A short simplification yields:
 \begin{equation*}
     (z^{2} - 6z + 1)S'(z) + (3 - z)S(z) = 1 - z
 \end{equation*}
@@ -732,50 +725,47 @@ from which the recurrence follows.
     H(z) = z \exp\left(H(z) + \frac{1}{2} H(z^{2}) + \cdots\right)
 \end{equation*}
 
-\subhead{Step 1. Take the Natural Logarithm.}
-First, we take the log of both sides to bring down the terms in the exponent:
+\stephead{1}{Take the natural logarithm.}
+The logarithm brings the exponent down to a more manageable level:
 \begin{equation*}
     \ln H(z) = \ln z + \sum_{k = 1}^{\infty} \frac{1}{k} H(z^{k})
 \end{equation*}
 
-\subhead{Step 2. Differentiate with respect to $z$.}
-Now, we apply the derivative operator $\frac{\dd}{\dd z}$:
+\stephead{2}{Differentiate with respect to $z$.}
+Differentiating gives:
 \begin{equation*}
     \frac{H'(z)}{H(z)} = \frac{1}{z} + \sum_{k = 1}^{\infty} \frac{1}{k} H'(z^{k}) \cdot kz^{k - 1} = \frac{1}{z} + \sum_{k = 1}^{\infty} z^{k - 1}H'(z^{k})
 \end{equation*}
 
-\subhead{Step 3. Multiply by $zH(z)$.}
-To clear the fractions and align the powers of $z$, we multiply the entire equation by $zH(z)$
+\stephead{3}{Multiply by $zH(z)$.}
+Multiplying by $zH(z)$ clears the fractions and lines up the powers of $z$:
 \begin{equation*}
     zH'(z) = H(z)\left(1 + \sum_{k = 1}^{\infty} z^{k}H'(z^{k})\right)
 \end{equation*}
 
-\subhead{Step 4. Substitute Power Series.}
-We represent $H(z)$ as a formal power series $\sum_{n = 1}^{\infty} H_{n}z^{n}$. Note that
+\stephead{4}{Substitute power series.}
+Now expand $H(z)$ as a formal power series $\sum_{n = 1}^{\infty} H_{n}z^{n}$. Then
 \begin{itemize}
     \item $zH'(z) = \sum_{n = 1}^{\infty} n H_{n} z^{n}$
     \item $z^{k}H'(z^{k}) = \sum_{m = 1}^{\infty} m H_{m} z^{mk}$
 \end{itemize}
-Plugging these into our equation:
+Substituting these series into the equation,
 \begin{equation*}
     \sum_{n = 1}^{\infty} n H_{n} z^{n} = H(z) + H(z)\sum_{k = 1}^{\infty} \sum_{m = 1}^{\infty} m H_{m} z^{mk}
 \end{equation*}
 
-\subhead{Step 5. The Recurrence Relation.}
-By extracting the coefficient of $z^{n}$ from both sides, we arrive at the recurrence.
-The double sum represents a convolution where we look for indices such that $mk + j = n$ (where $j$ is the index from the $H(z)$ term).
-The standard form for the recurrence of these coefficients is
+\stephead{5}{The recurrence relation.}
+Extracting the coefficient of $z^{n}$ leads to the recurrence. The double sum is a divisor-type convolution, and the standard form is
 \begin{equation*}
     (n - 1)H_{n} = \sum_{l = 1}^{n - 1} H_{n - l}\left(\sum_{d|l} d H_{d}\right)
 \end{equation*}
-Or, more commonly expressed by isolating $H_{n}$:
+or, solving explicitly for $H_{n}$,
 \begin{equation*}
     H_{n}
     = \frac{1}{n - 1} \sum_{l = 1}^{n - 1} H_{n - l}\left(\sum_{d|l} d H_{d}\right)
     = \frac{1}{n - 1} \sum_{l = 1}^{n - 1} a_{l}H_{n - l}
 \end{equation*}
-To manually calculate the first few values using this recurrence, we start with the base case $H_{1} = 1$
-representing the root of the tree.
+To see the recurrence at work, start from the base case $H_{1} = 1$, corresponding to the one-node tree.
 \begin{itemize}
     \item To find $H_{2}$, we set $n = 2$. The summation runs for $l = 1$. The only divisor of $1$ is $1$.
         $a_{1} = \sum_{d|1} d H_{d} = 1 \cdot H_{1} = 1 \implies
@@ -791,8 +781,7 @@ representing the root of the tree.
 % Note I.50.
 \noteblock{I.50}{Excursions, bridges, and meanders.}
 
-A meander of final altitude $k$ consists of k ``up-steps'' ($\mathcal{Z}$) that lead to new ``floors'',
-with Dyck paths (excursions $\mathcal{D}$) occurring between them and at the very end.
+A meander ending at altitude $k$ can be read as $k$ up-steps that create new floors, with Dyck excursions $\mathcal{D}$ inserted between consecutive floors and after the last one.
 \begin{equation*}
     \mathcal{M}
         = \mathcal{D}
@@ -801,22 +790,19 @@ with Dyck paths (excursions $\mathcal{D}$) occurring between them and at the ver
             + \cdots
         = \mathcal{D} \times \sum_{k = 0}^{\infty}(\mathcal{Z} \times \mathcal{D})^{k}
 \end{equation*}
-A bridge is a sequence of primitive excursions. A primitive excursion starts at 0, takes one step (up or down),
-wanders without returning to 0, and then takes one step back to 0.
+A bridge is a sequence of primitive excursions. Each primitive excursion leaves 0, avoids returning in the middle, and comes back only at the end.
 \begin{itemize}
     \item \textbf{Going Above:} Starts with +1, ends with -1, with a Dyck path in between: $\mathcal{Z} \times \mathcal{D} \times \mathcal{Z}$
-    \item \textbf{Going Down:} Starts with -1, ends with 1, with mirrored a Dyck path in between: $\mathcal{Z} \times \mathcal{D} \times \mathcal{Z}$
+    \item \textbf{Going Down:} Starts with -1, ends with 1, with a mirrored Dyck path in between: $\mathcal{Z} \times \mathcal{D} \times \mathcal{Z}$
 \end{itemize}
 \begin{equation*}
     \mathcal{B}
         = \mathrm{S}\textsc{eq}(\mathcal{Z} \times \mathcal{D} \times \mathcal{Z} + \mathcal{Z} \times \mathcal{D} \times \mathcal{Z})
         = \mathrm{S}\textsc{eq}(2 \times \mathcal{Z}^{2} \times \mathcal{D})
 \end{equation*}
-We want to show $M_{n} = \binom{n}{\lfloor n/2 \rfloor}$. A meander represents a path that stays in the first quadrant.
-Let $N(n, k)$ be the number of paths of length $n$ ending at altitude $k$. By the reflection principle, the number of paths
-that hit $-1$ and end at $k \geq 0$ is exactly the same as the number of unrestricted paths
-that end at $-k - 2 < -1$. Thus, Meanders end at $k$ = (Paths that end at $k$) $-$ (Paths that hit $-1$ and end at $k$)
-= (Paths that end at $k$) $-$ (Paths end at $-k - 2$). Summing over all possible final altitudes $k \geq 0$, we get a telescoping sum:
+To prove $M_{n} = \binom{n}{\lfloor n/2 \rfloor}$, let $N(n, k)$ be the number of unrestricted paths of length $n$ ending at altitude $k$.
+The reflection principle does the main work: paths that ever hit $-1$ and end at $k \geq 0$ are in bijection with unrestricted paths ending at $-k - 2$.
+So the number of meanders ending at $k$ is $N(n, k) - N(n, k + 2)$, and summing over $k \geq 0$ gives the telescoping identity
 \begin{equation*}
     M_{n} = \sum_{k \geq 0} [N(n, k) - N(n, k + 2)]
 \end{equation*}
@@ -830,7 +816,7 @@ that end at $-k - 2 < -1$. Thus, Meanders end at $k$ = (Paths that end at $k$) $
 % Example I.17.
 \exampleblock{I.17}{The complexity of boolean functions.}
 
-We want to show that
+We claim that
 \begin{equation*}
     D_{n} = O(16^{n}m^{n}n^{-3/2})
 \end{equation*}
@@ -838,16 +824,20 @@ implies
 \begin{equation*}
     \sum_{j = 0}^{v} D_{j} = O(16^{v}m^{v}v^{-3/2})
 \end{equation*}
-We prove the following general statement: \\
+The clean way is to prove a slightly more general statement first. \\
 Let $c > 1$ and $\alpha > 0$. Define $a_{n} = c^{n}n^{-\alpha}$ for $n \geq 1$ and let $a_{0} > 0$ be a constant.
 If $D_{n} = O(a_{n})$, then $\sum_{j = 0}^{v} D_{j} = O(c^{v}v^{-\alpha})$ as $v \to \infty$. \\
 
-Proof. Because $D_{n} = O(a_{n})$, there exists $M > 0$ and $N \geq 1$ such that $D_{n} \leq Mc^{n}n^{-\alpha}$ for all $n \geq N$.
+Proof. Since $D_{n} = O(a_{n})$, there exist constants $M > 0$ and $N \geq 1$ such that $D_{n} \leq Mc^{n}n^{-\alpha}$ for all $n \geq N$.
 For $v \geq N$ we split:
 \begin{equation*}
     \sum_{j = 0}^{v} D_{j} \leq \underbrace{\sum_{j = 0}^{N - 1} D_{j}}_{C_{0}} + M \sum_{j = N}^{v} c^{j}j^{-\alpha}
 \end{equation*}
-Focus on $S(v) = \sum_{j = N}^{v} c^{j}j^{-\alpha}$. Split at $j = \lfloor v/2 \rfloor$:
+So the problem reduces to controlling
+\begin{equation*}
+    S(v) = \sum_{j = N}^{v} c^{j}j^{-\alpha}.
+\end{equation*}
+Split the sum at $j = \lfloor v/2 \rfloor$:
 \begin{equation*}
     S(v) = \underbrace{\sum_{j = N}^{\lfloor v/2 \rfloor} c^{j}j^{-\alpha}}_{\text{early}}
         + \underbrace{\sum_{j = \lfloor v/2 \rfloor + 1}^{v} c^{j}j^{-\alpha}}_{\text{tail}}
@@ -859,19 +849,19 @@ its maximum is at $j = N$, so $j^{-\alpha} \leq N^{-\alpha}$. Thus
         \leq N^{-\alpha} \sum_{j = N}^{\lfloor v/2 \rfloor} c^{j}
         \leq N^{-\alpha} \frac{c^{v/2 + 1}}{c - 1} = O(c^{v/2})
 \end{equation*}
-Because $c > 1$, $c^{v/2}$ is exponentially smaller than $c^{v}$, so this part is $o(c^{v}v^{-\alpha})$. \\
+Because $c > 1$, $c^{v/2}$ is exponentially smaller than $c^{v}$, so this part is negligible on the relevant scale. \\
 \textbf{Tail terms.} For $j \geq v/2$, $j^{-\alpha} \leq (v/2)^{-\alpha} = 2^{\alpha}v^{-\alpha}$. Consequently
 \begin{equation*}
     \sum_{j = \lfloor v/2 \rfloor + 1}^{v} c^{j}j^{-\alpha}
         \leq 2^{\alpha}v^{-\alpha} \sum_{j = \lfloor v/2 \rfloor + 1}^{v} c^{j}
         \leq 2^{\alpha}v^{-\alpha} \frac{c^{v + 1}}{c - 1} = O(c^{v}v^{-\alpha})
 \end{equation*}
-Putting it together, $S(v) = o(c^{v}v^{-\alpha}) + O(c^{v}v^{-\alpha}) = O(c^{v}v^{-\alpha})$. Hence
+Putting the two pieces together, we get $S(v) = O(c^{v}v^{-\alpha})$, and hence
 \begin{equation*}
     \sum_{j = 0}^{v} D_{j} = C_{0} + MS(v) = O(1) + O(c^{v}v^{-\alpha}) = O(c^{v}v^{-\alpha})
 \end{equation*}
 
-Now we show
+With the general estimate in hand, return to the original problem. We now show
 \begin{equation*}
     \sum_{j = 0}^{v} D_{j} = O(16^{v}m^{v}v^{-3/2}) = o(\lVert \Omega \rVert)
 \end{equation*}
@@ -879,11 +869,11 @@ by taking for $v$ the value
 \begin{equation*}
     v = \frac{2^{m}}{4 + \log_{2}m}
 \end{equation*}
-Note that
+Observe that
 \begin{equation*}
     v\log_{2}(16m) = \frac{2^{m}}{4 + \log_{2}m}(4 + \log_{2}m) = 2^{m} \implies 16^{v}m^{v} = 2^{2^{m}}
 \end{equation*}
-Hence the whole bound becomes
+So the bound simplifies to
 \begin{equation*}
     \sum_{j = 0}^{v} D_{j} = O(2^{2^{m}}v^{-3/2})
 \end{equation*}
@@ -891,7 +881,7 @@ Dividing by $\lVert \Omega \rVert$:
 \begin{equation*}
     \frac{\sum_{j = 0}^{v} D_{j}}{\lVert \Omega \rVert} = O(v^{-3/2})
 \end{equation*}
-As $m \to \infty$, $v \to \infty$, so $v^{-3/2} \to 0$; therefore
+As $m \to \infty$, we also have $v \to \infty$, hence $v^{-3/2} \to 0$. Therefore,
 \begin{equation*}
     \frac{\sum_{j = 0}^{v} D_{j}}{\lVert \Omega \rVert} \to 0
 \end{equation*}
@@ -901,18 +891,16 @@ which is exactly $\sum_{j = 0}^{v} D_{j} = o(\lVert \Omega \rVert)$.
 % Note I.62.
 \noteblock{I.62}{Sequences without repeated components.}
 
-A sequence without repeated components is essentially an ordered arrangement of a subset of distinct elements from a base class $\mathcal{B}$.
-To derive its generating function, we first consider the construction of a set of distinct elements (the power set), then account for the ordering.
-The generating function for the power set construction $\mathrm{PS}\textsc{et}(\mathcal{B})$ is given by
+A sequence without repeated components is an ordered arrangement of distinct objects drawn from a base class $\mathcal{B}$.
+The natural route is to build the set first and recover the ordering afterward. The generating function for the power-set construction $\mathrm{PS}\textsc{et}(\mathcal{B})$ is
 \begin{equation*}
     A(z, u)
         = \prod_{\beta \in \mathcal{B}}\left(1 + uz^{|\beta|}\right)
         = \exp\left(\sum_{j \geq 1}(-1)^{j - 1} \frac{u^{j}}{j}B(z^{j})\right)
 \end{equation*}
-Here, the coefficient $[u^{k}] A(z, u) = f^{\langle k \rangle}(z)$ represents the generating function for sets containing exactly $k$ distinct components.
-While the power set construction satisfies the ``no-repeat'' constraint, it treats the collection as unordered.
-To transform these sets into sequences, we multiply the generating function for sets of size $k$ by $k!$ to account for all possible permutations.
-Using the Eulerian integral representation $k! = \int_{0}^{\infty} e^{-u}u^{k}\,\dd u$, we can express the generating function for distinct sequences,
+Here $[u^{k}] A(z, u) = f^{\langle k \rangle}(z)$ is the generating function for sets with exactly $k$ distinct components.
+The no-repeat condition is already built in, but order is not. To turn sets into sequences, we multiply by $k!$ to account for all permutations.
+Using the Eulerian integral representation $k! = \int_{0}^{\infty} e^{-u}u^{k}\,\dd u$, we can write the generating function for distinct sequences,
 $\mathcal{S}_{\text{distinct}}(z)$, as follows:
 \begin{equation*}
     \begin{aligned}
