@@ -14,87 +14,85 @@
 % Note II.19.
 \noteblock{II.19}{Labelled hierarchies.}
 
-We want to obtain
+The class $\mathcal{L}$ of labelled hierarchies is made of rooted trees whose leaves carry
+labels, while internal nodes are unlabelled and have outdegree at least $2$. The size is the
+number of labels, so internal nodes do not contribute to size. This gives the labelled
+specification
 \begin{equation*}
-    L(z) = T\left(\frac{1}{2} e^{z/2 - 1/2}\right) + \frac{z}{2} - \frac{1}{2}
+    \mathcal{L} = \mathcal{Z} + \mathrm{SET}_{\geq 2}(\mathcal{L}),
 \end{equation*}
-from
+and therefore
 \begin{equation*}
-    L = z + e^{L} - 1 - L
+    L(z) = z + e^{L(z)} - 1 - L(z).
 \end{equation*}
+The term $\mathcal{Z}$ is the one-leaf hierarchy. The term
+$\mathrm{SET}_{\geq 2}(\mathcal{L})$ says that an internal node is just an unordered set of
+at least two smaller hierarchies.
 
-\stephead{1}{Re-arranging the target equation.}
-Collect the $L$-terms on one side:
+The book notes that this equation can be solved in terms of the Cayley tree function $T$,
+defined by $T(x) = xe^{T(x)}$. Let us derive the displayed form. First rewrite the equation as
 \begin{equation*}
-    2L + 1 - e^{L} = z
+    e^{L(z)} = 2L(z) - z + 1.
 \end{equation*}
-This still does not resemble $T(z) = ze^{T(z)}$, so we nudge it into Lambert-$W$ territory.
-
-\stephead{2}{Utilizing the Lambert W identity.}
-The Cayley tree function is really Lambert $W$ in disguise. In particular, $T(z) = ze^{T(z)}$ can be rewritten as
+Now set
 \begin{equation*}
-    -T(z)e^{-T(z)} = -z \leftrightarrow z = -T(-z)e^{-T(-z)}
+    u = \frac{z - 1}{2} - L(z).
 \end{equation*}
-So $W(z) = -T(-z)$, equivalently $T(z) = -W(-z)$.
-
-\stephead{3}{Substitution and solving.}
-Return to the original equation and isolate the exponential:
+Then $2L(z) - z + 1 = -2u$ and $-L(z) = u - (z - 1)/2$. Thus
 \begin{equation*}
-    e^{L} = 2L - z + 1
+    1 = (2L(z) - z + 1)e^{-L(z)}
+      = -2u\,e^{u - (z - 1)/2}.
 \end{equation*}
-Whenever a variable appears both linearly and in the exponent, Lambert $W$ is usually nearby. So rewrite the equation in the form $f(L)e^{f(L)} = \text{something}$:
+Hence
 \begin{equation*}
-    1 = (2L - z + 1)e^{-L}
+    u e^{u} = -\frac{1}{2}e^{(z - 1)/2}.
 \end{equation*}
-To make the linear term match the exponent, set
+Since $W(y)e^{W(y)} = y$ and $T(x) = -W(-x)$, we get
 \begin{equation*}
-    u = \frac{z - 1}{2} - L.
+    u = W\left(-\frac{1}{2}e^{(z - 1)/2}\right)
+      = -T\left(\frac{1}{2}e^{z/2 - 1/2}\right).
 \end{equation*}
-Then
+Substituting back gives
 \begin{equation*}
-    2u = z - 1 - 2L = -(2L - z + 1)
+    L(z) = T\left(\frac{1}{2} e^{z/2 - 1/2}\right) + \frac{z}{2} - \frac{1}{2}.
 \end{equation*}
-Substituting this into the previous equation,
+Expanding the EGF begins as
 \begin{equation*}
-    1 = (-2u)e^{-L}
+    L(z) = z + \frac{z^{2}}{2!} + 4\frac{z^{3}}{3!}
+        + 26\frac{z^{4}}{4!} + 236\frac{z^{5}}{5!} + \cdots.
 \end{equation*}
-Also, since $u = \frac{z - 1}{2} - L$, we have $-L = u - \frac{z - 1}{2}$. Plugging that into the exponent gives:
+So the labelled counts start as
 \begin{equation*}
-    1 = -2u \cdot e^{u - \frac{z - 1}{2}} = -2u \cdot e^{u} \cdot e^{-\frac{z - 1}{2}}
-\end{equation*}
-Now isolate $ue^{u}$:
-\begin{equation*}
-    ue^{u} = -\frac{1}{2} e^{\frac{z - 1}{2}}
-\end{equation*}
-Since $ue^{u} = v$ implies $u = W(v)$, and we know $W(v) = -T(-v)$:
-\begin{equation*}
-    u = W\left(-\frac{1}{2} e^{\frac{z - 1}{2}}\right) = -T\left(\frac{1}{2} e^{\frac{z - 1}{2}}\right)
-\end{equation*}
-Substitute $u$ back in:
-\begin{equation*}
-    \frac{z - 1}{2} - L = -T\left(\frac{1}{2} e^{\frac{z - 1}{2}}\right)
-\end{equation*}
-and solve for $L$:
-\begin{equation*}
-    L = T\left(\frac{1}{2} e^{\frac{z - 1}{2}}\right) + \frac{z - 1}{2}
+    L_{0}, L_{1}, L_{2}, L_{3}, L_{4}, L_{5}, \dots
+    = 0, 1, 1, 4, 26, 236, \dots.
 \end{equation*}
 
 % II.5.2.
 \topicblock{II.5.2}{Mappings and associated graphs.}
 
-Let $\mathcal{T}$ be the class of all Cayley trees. Then:
+Let $\mathcal{T}$ be the class of all Cayley trees, $\mathcal{K}$ the class of connected
+functional graphs, and $\mathcal{F}$ the class of all mappings. The symbolic decomposition is
 \begin{equation*}
-    F = (1 - T)^{-1} \implies F_{n} = n^{n}
+    \mathcal{F} = \mathrm{SET}(\mathcal{K}), \qquad
+    \mathcal{K} = \mathrm{CYC}(\mathcal{T}), \qquad
+    \mathcal{T} = \mathcal{Z} \star \mathrm{SET}(\mathcal{T}).
 \end{equation*}
-This follows neatly from Lagrange inversion. The standard form says
+At the level of EGFs this becomes
 \begin{equation*}
-    z = T / \phi(T) \implies [z^{n}] T(z) = \frac{1}{n} [w^{n - 1}] \phi(w)^{n}
+    F(z) = e^{K(z)}, \qquad
+    K(z) = \log\frac{1}{1 - T(z)}, \qquad
+    T(z) = ze^{T(z)}.
 \end{equation*}
-More generally,
+Thus
+\begin{equation*}
+    F(z) = \frac{1}{1 - T(z)}.
+\end{equation*}
+This is reassuring, since $F_n$ should count all mappings $[n]\to[n]$, hence $F_n=n^n$.
+Here is the Lagrange-inversion check. For $T=z\phi(T)$ with $\phi(w)=e^w$,
 \begin{equation*}
     [z^{n}] H(T(z)) = \frac{1}{n} [w^{n - 1}] H'(w)\phi(w)^{n}
 \end{equation*}
-Taking $H(w) = (1 - w)^{-1}$ and $\phi(w) = e^{w}$ gives:
+and taking $H(w) = (1 - w)^{-1}$ gives
 \begin{equation*}
     \begin{aligned}
         F_{n}
@@ -112,43 +110,60 @@ Taking $H(w) = (1 - w)^{-1}$ and $\phi(w) = e^{w}$ gives:
     \end{aligned}
 \end{equation*}
 
-Next consider $K = \log\left((1 - T)^{-1}\right)$. Then
+For connected functional graphs, start from
 \begin{equation*}
-     K_{n} = n^{n - 1}Q(n)
+    K(z) = \log\frac{1}{1 - T(z)}
+        = \sum_{k \geq 1} \frac{T(z)^{k}}{k}.
 \end{equation*}
-where
-\begin{equation*}
-    Q_{n} = 1 + \frac{n - 1}{n} + \frac{(n - 1)(n - 2)}{n^{2}} + \cdots
-\end{equation*}
-From Note II.18 we already know
+From Note II.18, for $1 \leq k \leq n$,
 \begin{equation*}
     n![z^{n}] \frac{T(z)^{k}}{k!} = \binom{n - 1}{k - 1} n^{n - k} \implies
         n![z^{n}] \frac{T(z)^{k}}{k} = (k - 1)!\binom{n - 1}{k - 1} n^{n - k} = \frac{(n - 1)!}{(n - k)!} n^{n - k}
 \end{equation*}
-Therefore,
+Therefore
 \begin{equation*}
     \begin{aligned}
         K_{n}
         &= n![z^{n}] K(z) \\
-        &= n![z^{n}] \sum_{j = 1}^{\infty} \frac{T(z)^{j}}{j} \\
-        &= \sum_{j = 1}^{\infty} n![z^{n}] \frac{T(z)^{j}}{j} \\
-        &= \sum_{j = 1}^{\infty} \frac{(n - 1)!}{(n - j)!} n^{n - j} \\
-        &= n^{n - 1} \sum_{j = 1}^{\infty} \frac{(n - 1)!}{(n - j)!n^{j - 1}} \\
-        &= n^{n - 1}\left(1 + \frac{n - 1}{n} + \frac{(n - 1)(n - 2)}{n^{2}} + \cdots\right)
+        &= \sum_{k = 1}^{n} \frac{(n - 1)!}{(n - k)!} n^{n - k} \\
+        &= n^{n - 1} \sum_{k = 1}^{n} \frac{(n - 1)!}{(n - k)!n^{k - 1}}.
     \end{aligned}
+\end{equation*}
+The last sum is Ramanujan's $Q$-function:
+\begin{equation*}
+    Q(n)
+        = 1 + \frac{n - 1}{n}
+            + \frac{(n - 1)(n - 2)}{n^{2}}
+            + \cdots
+            + \frac{(n - 1)!}{n^{n - 1}}.
+\end{equation*}
+Thus
+\begin{equation*}
+    K_n = n^{n - 1}Q(n).
 \end{equation*}
 
 \topicblock{II.5.2}{Constrained mappings.}
 
-The class of maps without fixed points has exponential generating function:
+We only look at the first constrained class: mappings without fixed points. In the functional
+graph decomposition, a fixed point is a $1$-cycle, with a rooted tree possibly attached to it. Since
+\[
+    \mathrm{CYC}(\mathcal{T}) \quad\leadsto\quad \log\frac{1}{1 - T(z)}
+\]
+and cycles of length $1$ contribute exactly $T(z)$, removing them changes the connected
+component EGF to
+\[
+    \log\frac{1}{1 - T(z)} - T(z).
+\]
+Thus the EGF of all fixed-point-free mappings is
 \begin{equation*}
-    \frac{e^{-T(z)}}{1 - T(z)}
+    \exp\left(\log\frac{1}{1 - T(z)} - T(z)\right)
+    = \frac{e^{-T(z)}}{1 - T(z)}.
 \end{equation*}
-and we want to show
+We want to recover the direct count, namely the fact that each element has $n - 1$ possible images:
 \begin{equation*}
     n![z^{n}] \frac{e^{-T(z)}}{1 - T(z)} = (n - 1)^{n}
 \end{equation*}
-Again, Lagrange inversion does the bookkeeping. With $H(w) = \frac{e^{-w}}{1 - w}$ and $\phi(w) = e^{w}$, we obtain
+by Lagrange inversion. For $n \geq 2$, with $H(w) = \frac{e^{-w}}{1 - w}$ and $\phi(w) = e^{w}$, we obtain
 \begin{equation*}
     \begin{aligned}
         n![z^{n}] \frac{e^{-T(z)}}{1 - T(z)}
@@ -157,134 +172,182 @@ Again, Lagrange inversion does the bookkeeping. With $H(w) = \frac{e^{-w}}{1 - w
         &= (n - 1)![w^{n - 2}] \frac{e^{(n - 1)w}}{(1 - w)^{2}} \\
         &= (n - 1)![w^{n - 2}] \sum_{k = 0}^{\infty}(k + 1)w^{k} \cdot \sum_{j = 0}^{\infty} \frac{(n - 1)^{j}}{j!}w^{j} \\
         &= (n - 1)!\sum_{j = 0}^{n - 2}((n - 2 - j) + 1)\frac{(n - 1)^{j}}{j!} \\
-        &= (n - 1)!\sum_{j = 0}^{m - 1}(m - j)\frac{m^{j}}{j!} \\
-        &= (n - 1)!\frac{m^{m}}{(m - 1)!} \\
+        &= (n - 1)!\sum_{j = 0}^{n - 2}(n - 1 - j)\frac{(n - 1)^{j}}{j!} \\
+        &= (n - 1)!\left(
+            \sum_{j = 0}^{n - 2}\frac{(n - 1)^{j + 1}}{j!}
+            - \sum_{j = 1}^{n - 2}\frac{(n - 1)^{j}}{(j - 1)!}
+        \right) \\
+        &= (n - 1)!\left(
+            \sum_{j = 0}^{n - 2}\frac{(n - 1)^{j + 1}}{j!}
+            - \sum_{j = 0}^{n - 3}\frac{(n - 1)^{j + 1}}{j!}
+        \right) \\
         &= (n - 1)!\frac{(n - 1)^{n - 1}}{(n - 2)!} \\
         &= (n - 1)^{n}
     \end{aligned}
 \end{equation*}
+For $n = 1$ the statement is also true, since there is no fixed-point-free map from a singleton
+to itself.
 
 % II.5.3.
 \topicblock{II.5.3}{Unrooted trees and acyclic graphs.}
 
-To see why $U(z) = \int_{0}^{z} \frac{T(w)}{w}\,\dd w$, start from the exponential generating functions
+Let $\mathcal{U}$ be the class of unrooted labelled trees. A rooted labelled tree is just an
+unrooted labelled tree with one vertex distinguished as the root. Therefore, for $n \geq 1$,
+\begin{equation*}
+    T_n = nU_n.
+\end{equation*}
+This immediately gives Cayley's unrooted-tree count
+\begin{equation*}
+    U_n = n^{n - 2},
+\end{equation*}
+but the generating-function form is also useful. Start from
 \begin{equation*}
     T(z) = \sum_{n \geq 0} T_{n} \frac{z^{n}}{n!}, \quad
     U(z) = \sum_{n \geq 0} U_{n} \frac{z^{n}}{n!}
 \end{equation*}
-Differentiate $U(z)$ and multiply by $z$; using $T_{0} = 0$, this gives:
+Differentiate $U(z)$ and multiply by $z$:
 \begin{equation*}
     z \frac{\dd}{\dd z} U(z) = z \frac{\dd}{\dd z} \sum_{n \geq 0} U_{n} \frac{z^{n}}{n!} = z \sum_{n \geq 1} nU_{n} \frac{z^{n - 1}}{n!}
         = \sum_{n \geq 1} T_{n} \frac{z^{n}}{n!} = T(z)
 \end{equation*}
-So $\frac{\dd}{\dd z} U(z) = \frac{T(z)}{z}$. Integrating from $0$ to $z$ gives:
+So $\frac{\dd}{\dd z} U(z) = \frac{T(z)}{z}$. Since $U(0) = 0$, integrating gives
 \begin{equation*}
-    U(z) - U(0) = \int_{0}^{z} \frac{T(w)}{w}\,\dd w
+    U(z) = \int_{0}^{z} \frac{T(w)}{w}\,\dd w.
 \end{equation*}
-Now use the functional equation for rooted trees:
+Now evaluate the integral using the functional equation for rooted trees:
 \begin{equation*}
     T(z) = ze^{T(z)}
 \end{equation*}
-This is equivalent to $z = Te^{-T}$. Differentiate with respect to $T$:
+Write $t = T(w)$. Then $w = te^{-t}$ and
 \begin{equation*}
-    \dd z = \left(e^{-T} - Te^{-T}\right)\dd T = e^{-T}(1 - T)\dd T
+    \dd w = e^{-t}(1 - t)\,\dd t.
 \end{equation*}
-Substituting $z = Te^{-T}$ and $\dd z$ into the integral turns it into
+As $w$ runs from $0$ to $z$, $t$ runs from $0$ to $T(z)$, so
 \begin{equation*}
-    U(z) = \int \frac{T}{Te^{-T}} \cdot e^{-T}(1 - T)\,\dd T = \int (1 - T)\,\dd T = T - \frac{T^{2}}{2} + C
+    U(z)
+        = \int_{0}^{T(z)} \frac{t}{te^{-t}} e^{-t}(1 - t)\,\dd t
+        = \int_{0}^{T(z)} (1 - t)\,\dd t
+        = T(z) - \frac{T(z)^{2}}{2}.
 \end{equation*}
-Since $U(0) = 0$ and $T(0) = 0$, the constant is $C = 0$.
+Thus the EGF of all acyclic labelled graphs, i.e. sets of unrooted labelled trees, is
+\begin{equation*}
+    A(z) = e^{U(z)} = \exp\left(T(z) - \frac{T(z)^2}{2}\right).
+\end{equation*}
 
 % Note II.22.
 \noteblock{II.22}{2–Regular graphs.}
 
-The clean way to view this is as a bijection between clouds and 2-regular graphs on $n$ labelled vertices. Number the lines $1, 2, \dots, n$.
+We only prove the equinumerosity statement. Take $n$ labelled lines
+$L_{1},\ldots,L_{n}$ in general position: no two lines are parallel and no three lines meet at
+one point. For the reverse direction below, we also use the usual generic reading of the setup:
+apart from the original lines themselves, no line contains three of the intersection points.
+Now turn a cloud into a graph on vertex set $\{1,\ldots,n\}$:
 \begin{itemize}
-    \item Line $i$ in the cloud $\leftrightarrow$ vertex $i$ in the graph.
-    \item Intersection point $\{i,\; j\}$ in the cloud $\leftrightarrow$ edge $i - j$ in the graph.
+    \item The line $L_i$ becomes vertex $i$.
+    \item The chosen intersection point $L_i \cap L_j$ becomes the edge $\{i,j\}$.
 \end{itemize}
-Let $n_{i}$ be the number of chosen intersection points on line $i$.
-Since each point lies on two lines, $\sum_{i = 1}^{n} n_{i} = 2n$.
-\textit{If no three points are collinear}, then $n_{i} \leq 2$ for all $i$, so $\sum_{i = 1}^{n} n_{i} \leq 2n$.
-Equality $\sum_{i = 1}^{n} n_{i} = 2n$ forces $n_{i} = 2$ for every $i$, so every vertex has degree 2.
+This is already reversible: an edge set tells us exactly which intersections to choose.
 
-Conversely, if every vertex has degree 2, then $n_{i} = 2$ for all $i$, so each line contains exactly two intersection points; in particular, no three chosen points are collinear.
+It remains to check the condition. Let $d_i$ be the number of chosen intersection points lying
+on $L_i$; in the graph this is exactly the degree of vertex $i$. Since a cloud contains $n$
+intersection points and each chosen point lies on two lines,
+\begin{equation*}
+    \sum_{i = 1}^{n} d_i = 2n.
+\end{equation*}
+If the cloud has no three collinear points, then no line $L_i$ contains three chosen points, so
+$d_i \leq 2$ for every $i$. The displayed sum then forces $d_i = 2$ for every $i$, hence the
+associated graph is $2$-regular.
 
-So the two conditions are equivalent.
+Conversely, if the graph is $2$-regular, then $d_i = 2$ for every $i$. Thus no original line
+contains three chosen intersection points; by the genericity assumption, this means the
+chosen intersections form a cloud. Therefore clouds on $n$ labelled lines and $2$-regular
+graphs on $n$ labelled vertices are equinumerous.
 
 % Note II.23.
 \noteblock{II.23}{Wright’s surgery.}
 
-\stephead{1}{Deconstruct the graph.}
+Let $W_k$ be the EGF of connected graphs of excess $k$, and introduce an edge marker by
+\begin{equation*}
+    w_k(z,y) = y^k W_k(zy).
+\end{equation*}
+This is just a compact way to say that a graph with $n$ vertices and excess $k$ has
+$n+k$ edges: each vertex contributes one factor $zy$, and the extra $k$ edges contribute
+$y^k$.
 
-Start with a connected graph $G$ of excess $k + 1$. Choose an edge and orient it, so we have a source vertex $A$ and a target vertex $B$. Remove that directed edge.
-At that point exactly two things can happen:
-\begin{itemize}
-    \item \textbf{Case 1 (Connected)}: The removed edge lay on a cycle, so the graph stays connected. We lost one edge and no vertices, hence the excess drops to $k$. What remains is a connected graph with two ordered distinguished vertices, $A$ and $B$.
-    \item \textbf{Case 2 (Disconnected)}: The removed edge was a bridge, so the graph splits into two connected components $G_{1}$ and $G_{2}$. If $G_{1}$ has excess $h$, then $G_{2}$ has excess $k - h$. Each component carries one distinguished vertex, recording where the deleted edge used to attach.
-\end{itemize}
+Start with a connected graph of excess $k+1$. Choose one edge, orient it, and remove it.
+In a generating function with $y$ marking edges, $\partial_y$ points an edge and removes one
+factor of $y$; in this surgery picture, this is exactly the chosen edge that we delete. The
+factor $2$ chooses its orientation, so the left-hand side is
+\begin{equation*}
+    2\partial_y w_{k+1}.
+\end{equation*}
+After the edge is removed, the total excess drops by $1$, from $k+1$ to $k$. There are two
+possibilities.
 
-\stephead{2}{Reconstruct the graph.}
+\textbf{Case 1: the graph stays connected.}
 
-To reconstruct all directed-edge-pointed graphs of excess $k + 1$, reverse the two cases:
-\begin{itemize}
-    \item \textbf{Reversing Case 1}: Start from one connected graph of excess $k$. Choose an ordered pair of distinct vertices $A,B$ and draw a directed edge from $A$ to $B$. If $A$ and $B$ were already adjacent, this would create a forbidden multi-edge, so those choices must be excluded.
-    \item \textbf{Reversing Case 2}: Start from two independent connected components, of excess $h$ and $k - h$. Choose one vertex in each and join them by a directed edge from $A$ to $B$. This merges the two components into a connected graph of excess $k + 1$.
-\end{itemize}
+If the removed edge was not a bridge, the remaining graph is connected of excess $k$, with two
+ordered distinguished vertices: the former tail and head of the removed directed edge. Choosing
+an ordered pair of distinct vertices in a labelled graph is represented by
+\begin{equation*}
+    z^2\partial_z^2 w_k.
+\end{equation*}
+However, not every ordered pair is allowed. If the two chosen vertices are already joined by an
+edge, adding back the deleted edge would create a multiple edge, which is forbidden for simple
+graphs. Ordered adjacent pairs are counted by choosing an edge and orienting it, namely
+$2y\partial_y w_k$. Thus the connected case contributes
+\begin{equation*}
+    z^2\partial_z^2 w_k - 2y\partial_y w_k.
+\end{equation*}
 
-Now match these operations with the differential recurrence:
+\textbf{Case 2: the graph splits into two components.}
+
+If the removed edge was a bridge, the remaining graph has two connected components. Suppose
+the component containing the tail has excess $h$; then the other component has excess $k-h$,
+because the total remaining excess is $k$. We must mark one vertex in each component, so the
+contribution is
+\begin{equation*}
+    \left(z\partial_z w_h\right)\left(z\partial_z w_{k-h}\right).
+\end{equation*}
+The possible excess values start at $-1$, since trees have excess $-1$. Hence $h$ ranges from
+$-1$ to $k+1$, which also keeps $k-h \geq -1$.
+
+Putting the connected and disconnected cases together gives Wright's differential recurrence:
 \begin{equation*}
     2\partial_{y}w_{k + 1} = \left(z^{2}\partial_{z}^{2}w_{k} - 2y\partial_{y}w_{k}\right) +
         \sum_{h = -1}^{k + 1} \left(z\partial_{z}w_{h}\right) \cdot \left(z\partial_{z}w_{k - h}\right)
 \end{equation*}
-
-\stephead{3}{Interpret the left-hand side.}
-\begin{itemize}
-    \item $w_{k + 1}$: Represents the universe of connected graphs of excess $k + 1$.
-    \item $\partial_{y}$: Differentiation with respect to the edge-marker $y$ means ``choose an edge and delete it''.
-    \item $2$: The deleted edge is oriented, so we must decide which endpoint is the source and which is the target.
-    \item Together, $2\partial_{y}w_{k + 1}$ counts connected excess-$(k + 1)$ graphs with one remembered directed edge removed.
-\end{itemize}
-
-\stephead{4}{Interpret the connected term.}
-\begin{itemize}
-    \item $w_{k}$: The base graph of excess $k$.
-    \item $\partial_{z}^{2}$: Differentiate twice with respect to the vertex-marker to select an ordered pair of distinct vertices $A,B$.
-    \item $z^{2}$: Put the two marked vertices back into the count.
-    \item $-2y\partial_{y}w_{k}$: This removes the bad choices where $A$ and $B$ were already joined by an edge. The factor 2 again accounts for orientation.
-\end{itemize}
-
-\stephead{5}{Interpret the disconnected term.}
-\begin{itemize}
-    \item $w_{h}$ and $w_{k - h}$: These are the two independent connected components, so their generating functions multiply.
-    \item $z\partial_{z}$: This is the standard pointing operator for vertices.
-        \begin{itemize}
-            \item Applied to the first component, it selects the source vertex $A$.
-            \item Applied to the second component, it selects the target vertex $B$.
-        \end{itemize}
-    \item $\sum_{h = -1}^{k + 1}$: Sum over all ways to distribute the remaining excess between the two components. The lower bound $-1$ appears because a tree already has excess $-1$.
-\end{itemize}
+The same recurrence can then be specialized to $W_k(z)$ by setting $y=1$.
 
 \section{Additional constructions}
 % Note II.28.
 \noteblock{II.28}{Do two permutations generate the symmetric group?}
 
-We want to show
+The index in the book appears to have a typo here: the relation should involve $I_{n+1}$,
+not $I_n$. We prove
 \begin{equation*}
     n!^{2}\pi_{n} = (n - 1)!I_{n + 1}
 \end{equation*}
-The first useful observation is that the exponential generating function of pairs of permutations,
+where $I_m$ denotes the number of indecomposable permutations of size $m$.
+
+The first useful observation is that the EGF of pairs of permutations is the same formal series
+as the ordinary generating function of permutations:
 \begin{equation*}
     \sum_{n \geq 0} n!^{2} \frac{z^{n}}{n!} = \sum_{n \geq 0} n!z^{n},
 \end{equation*}
-is exactly the ordinary generating function $P(z)$ of permutations.
-By the exponential formula, the exponential generating function $C(z)$ of connected graphs therefore satisfies
+so write
 \begin{equation*}
-    C(z) = \log P(z) = \log\left(\sum_{n \geq 0} n!z^{n}\right)
+    P(z) = \sum_{n \geq 0} n!z^n.
+\end{equation*}
+By the exponential formula, the EGF $C(z)$ of connected pairs satisfies
+\begin{equation*}
+    C(z) = \log P(z).
 \end{equation*}
 Since every permutation decomposes uniquely into a sequence of indecomposable blocks, the generating function $I(z)$ of indecomposable permutations satisfies
 \begin{equation*}
-    I(z) = 1 - \frac{1}{P(z)}
+    I(z) = \sum_{n \geq 1} I_n z^n, \qquad
+    P(z) = \frac{1}{1 - I(z)}, \qquad
+    I(z) = 1 - \frac{1}{P(z)}.
 \end{equation*}
 Now differentiate and extract the consequence:
 \begin{equation*}
@@ -303,24 +366,27 @@ So the coefficient of $z^{n - 1}$ is:
 \end{equation*}
 
 \stephead{2}{Extract the right-hand side coefficient.}
-Differentiate both sides of $P(z)(1 - I(z)) = 1$ with respect to $z$:
+First simplify the right-hand side. Differentiating $P(z)(1 - I(z)) = 1$ gives
 \begin{equation*}
     P'(z)(1 - I(z)) - P(z)I'(z) = 0 \implies P'(z) - P'(z)I(z) = P(z)I'(z)
 \end{equation*}
-So it remains to extract the coefficient of $z^{n - 1}$ from $P(z)I'(z)$:
+Therefore
 \begin{equation*}
     [z^{n - 1}] (P'(z) - P'(z)I(z)) = [z^{n - 1}] P(z)I'(z) = \sum_{k = 1}^{n} kI_{k}(n - k)!
 \end{equation*}
-Call this sum $S_{n}$. The whole problem is now to show $S_{n} = I_{n + 1}$.
-Extracting the coefficient of $z^{N}$ from $P(z) = 1 + I(z)P(z)$ for $N \geq 1$ gives the recurrence
+Call this last sum $S_n$. We now show directly that $S_n=I_{n+1}$.
+
+The only recurrence we need comes from $P(z)=1+I(z)P(z)$. Extracting $[z^N]$ for
+$N\geq 1$ gives
 \begin{equation} \label{eq:II.28.1}
     \sum_{k = 1}^{N} I_{k}(N - k)! = N!
 \end{equation}
-Apply \ref{eq:II.28.1} with $N = n + 1$:
+Now apply this with $N=n+1$, and separate the last term:
 \begin{equation} \label{eq:II.28.2}
-    \sum_{k = 1}^{n + 1} I_{k}(n + 1 - k)! = (n + 1)! \implies \sum_{k = 1}^{n} I_{k}(n + 1 - k)! = (n + 1)! - I_{n + 1}
+    \sum_{k = 1}^{n} I_{k}(n + 1 - k)! = (n + 1)! - I_{n + 1}.
 \end{equation}
-Expand the left-hand side of \ref{eq:II.28.2}:
+On the other hand, rewrite the same left-hand side by pulling out the factor
+$n+1-k$:
 \begin{equation*}
     \begin{aligned}
         \sum_{k = 1}^{n} I_{k}(n + 1 - k)!
@@ -328,17 +394,14 @@ Expand the left-hand side of \ref{eq:II.28.2}:
         &= (n + 1)\sum_{k = 1}^{n} I_{k}(n - k)! - \sum_{k = 1}^{n} kI_{k}(n - k)! \\
     \end{aligned}
 \end{equation*}
-By \ref{eq:II.28.1} with $N = n$:
+The first sum is $n!$ by \eqref{eq:II.28.1} with $N=n$, and the second sum is exactly
+$S_n$. Hence
 \begin{equation*}
-    \sum_{k = 1}^{n} I_{k}(n - k)! = n!
+    \sum_{k = 1}^{n} I_{k}(n + 1 - k)! = (n + 1)! - S_n.
 \end{equation*}
-Hence the left-hand side of \ref{eq:II.28.2} is:
-\begin{equation*}
-    \sum_{k = 1}^{n} I_{k}(n + 1 - k)! = (n + 1)n! - S_{n} = (n + 1)! - S_{n}
-\end{equation*}
-\stephead{3}{Conclude the identity.}
-Substituting back into \ref{eq:II.28.2} gives $S_{n} = I_{n + 1}$.
+Comparing this with \eqref{eq:II.28.2} gives $S_n=I_{n+1}$.
 
+\stephead{3}{Conclude the identity.}
 Finally, $n \cdot n!\pi_{n} = S_{n}$, so
 \begin{equation*}
     n!^{2}\pi_{n} = (n - 1)!I_{n + 1}.

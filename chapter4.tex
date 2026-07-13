@@ -6,6 +6,9 @@
 % Note IV.6.
 \noteblock{IV.6}{Integrals of rational fractions.}
 
+We compute the two displayed integrals by closing the contour in the upper half-plane. The
+only work is then residue computation plus a little finite algebra.
+
 \begin{equation*}
     J_{m} = \int_{-\infty}^{\infty} \frac{\dd x}{(1 + x^{2})^{m}}
 \end{equation*}
@@ -95,7 +98,7 @@ Therefore,
 The analytic work is now done; what remains is straightforward algebra, though it takes a little patience.
 Factor the product:
 \begin{equation*}
-    \prod_{j \neq k} j^{2} - k^{2} = \prod_{j \neq k}(j - k)\prod_{j \neq k}(j + k)
+    \prod_{j \neq k}(j^{2} - k^{2}) = \prod_{j \neq k}(j - k)\prod_{j \neq k}(j + k).
 \end{equation*}
 For fixed $k$,
 \begin{equation*}
@@ -116,7 +119,7 @@ and
 
 To simplify the sum
 \begin{equation*}
-    S \coloneqq \sum_{k = 1}^{m}(-1)^{k - 1}k \binom{2m}{m + k},
+    S \coloneqq \sum_{k = 1}^{m}(-1)^{k - 1}k \binom{2m}{m - k},
 \end{equation*}
 generating functions are again the quickest tool. The aim is to turn the alternating sum into a single coefficient extraction. Recall that the coefficient of $z^{m}$ in a product $A(z)B(z)$ is
 \begin{equation*}
@@ -134,7 +137,7 @@ Then the coefficient of $z^{m}$ in $A(z)B(z)$ is exactly $S$:
 \end{equation}
 Since we only care about the coefficient of $z^{m}$, terms of degree $> m$ in $A(z)$ are irrelevant. So we may extend the sum to infinity without changing the coefficient:
 \begin{equation*}
-    A(z) \equiv \sum_{k = 1}^{\infty}(-1)^{k - 1}kz^{k} = \frac{z}{(1 + z)^{2}} \mod z^{m + 1}
+    A(z) \equiv \sum_{k = 1}^{\infty}(-1)^{k - 1}kz^{k} = \frac{z}{(1 + z)^{2}} \pmod{z^{m + 1}}.
 \end{equation*}
 Hence, by \eqref{eq:IV.6.2},
 \begin{equation*}
